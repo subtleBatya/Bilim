@@ -20,7 +20,7 @@ const data = [
 ];
 
 // Current index for tracking content
-let currentIndex = 0;
+let currentIndex = 1;
 
 // Function to update content with animations
 function updateContent() {
