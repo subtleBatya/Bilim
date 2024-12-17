@@ -1,11 +1,10 @@
 
 
-
 const data = [
   {
     image: './images/Tesla.webp',
     title: 'Nikola Tesla',
-    text: '"Geljegiň güýji elektromagnetizmde ýatyr."'
+    text: '"Geljegiň güýji Elektromagnetizmde ýatyr"'
   },
   {
     image: './images/Newton.webp',
@@ -20,45 +19,45 @@ const data = [
 ];
 
 
-let currentIndex = 1;
+let currentIndex = 0;
 
+
+function removeAnimationClasses(element, animationClass) {
+  element.addEventListener("animationend", () => {
+    element.classList.remove(animationClass);
+  }, { once: true });
+}
 
 function updateContent() {
   const imageElement = document.getElementById('changing-image');
   const titleElement = document.getElementById('changing-title');
   const textElement = document.getElementById('changing-text');
 
-  
   imageElement.classList.add('fade-out');
   titleElement.classList.add('fade-out');
   textElement.classList.add('fade-out');
 
-  
   setTimeout(() => {
-    
     imageElement.src = data[currentIndex].image;
     titleElement.textContent = data[currentIndex].title;
     textElement.textContent = data[currentIndex].text;
 
-    
-    
-
     imageElement.classList.add('fade-in');
     titleElement.classList.add('fade-in');
     textElement.classList.add('fade-in');
-    
-    imageElement.classList.remove('fade-out');
-    titleElement.classList.remove('fade-out');
-    textElement.classList.remove('fade-out');
 
-    imageElement.classList.remove('fade-in');
-    titleElement.classList.remove('fade-in');
-    textElement.classList.remove('fade-in');
+    removeAnimationClasses(imageElement, 'fade-in');
+    removeAnimationClasses(titleElement, 'fade-in');
+    removeAnimationClasses(textElement, 'fade-in');
 
-    
+    removeAnimationClasses(imageElement, 'fade-out');
+    removeAnimationClasses(titleElement, 'fade-out');
+    removeAnimationClasses(textElement, 'fade-out');
+
     currentIndex = (currentIndex + 1) % data.length;
-  }, 500); 
+  }, 500);
 }
 
+updateContent();
 
 setInterval(updateContent, 5000);
