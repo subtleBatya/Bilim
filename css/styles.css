@@ -16,7 +16,18 @@
     to { opacity: 1;}
 } 
 .hover-effect:hover {
-    transform: scale(1.1); /* Увеличивает элемент на 10% */
-    transition: transform 0.4s ease; /* Добавляет плавность перехода */
+    transform: scale(1.1); 
+    transition: transform 0.4s ease; 
+    color: white !important;
+    background-color: #FFA000;
+}
+.arrow, #flag {
+  font-size: 14px;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+
 }
 
+.dropdown-menu.show .arrow {
+  transform: rotate(180deg); 
+}

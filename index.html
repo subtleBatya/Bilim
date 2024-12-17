@@ -12,59 +12,61 @@
 
 <body>
       <!-- Навигационное меню -->
-  <header class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top border-bottom border-dark">
-       <div class="container-fluid">
+  <header class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top border-bottom border-dark" id="navbar" style="transition: background-color 1s ease-in-out; ">
+      <div class="container-fluid">
           <a class="navbar-brand text-dark fw-bold" href="#">BILIM UNIVERSITY</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
               <ul class="navbar-nav fs-5">
-                  <li class="nav-item me-4">
-                      <a class="nav-link text-dark hover-effect" aria-current="page" href="#">Home</a>
+                  <li class="nav-item me-4 ">
+                      <a class="nav-link text-dark hover-effect border-rounded rounded-3" aria-current="page" href="#">Home</a>
                   </li>
                   <li class="nav-item me-4">
-                      <a class="nav-link text-dark hover-effect" href="#">Library</a>
+                      <a class="nav-link text-dark hover-effect border-rounded rounded-3" href="#">Library</a>
                   </li>
                   <li class="nav-item dropdown me-4">
-                      <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Courses
-                      </a>
-                      <ul class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item text-dark hover-effect" href="#">HTML5</a></li>
-                          <li><a class="dropdown-item text-dark hover-effect" href="#">CSS3</a></li>
-                          <li><a class="dropdown-item text-dark hover-effect" href="#">Java Script</a></li>
-                      </ul>
+                    <a class="nav-link  text-dark" href="#" id="coursesDropdown">Courses<span class="arrow ">▼</span></a>
+                    <ul class="dropdown-menu" id="coursesMenu">
+                      <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">HTML5</a></li>
+                      <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">CSS3</a></li>
+                      <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">JavaScript</a></li>
+                    </ul>
                   </li>
                   <li class="nav-item dropdown me-4">
-                      <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Profile
-                      </a>
-                      <ul class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item text-dark hover-effect" href="#">My list</a></li>
-                          <li><a class="dropdown-item text-dark hover-effect" href="#">Payment</a></li>
-                          <li><a class="dropdown-item text-dark hover-effect" href="#">Suggestions and complaints</a></li>
-                      </ul>
+                    <a class="nav-link  text-dark" href="#" id="profileDropdown">
+                      Profile <span class="arrow">▼</span>
+                    </a>
+                    <ul class="dropdown-menu" id="profileMenu">
+                      <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">My list</a></li>
+                      <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">Payment</a></li>
+                      <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">Suggestions and complaints</a></li>
+                    </ul>
                   </li>
-                  <li class="nav-item me-4">
-                      <a class="nav-link text-dark hover-effect" href="#">Sign in</a>
+                  <li class="nav-item dropdown me-4">
+                    <a class="nav-link text-dark" href="#" id="languageDropdown">
+                      <img src="./images/russian-flag.png" alt="russian" style="width: 30px; height: auto;">
+                      <span id="flag" class="flag">🇷🇺</span> 
+                    </a>
+                    <ul class="dropdown-menu" id="languageMenu">
+                      <li><a class="dropdown-item text-dark" href="#" id="turkmenistanFlag"><img src="./images/turkmen-flag.png" alt="turkmenistan" style="width: 30px; height: auto;"></a></li>
+                      <li><a class="dropdown-item text-dark" href="#" id="russiaFlag"><img src="./images/russian-flag.png" alt="russian" style="width: 30px; height: auto;"></a></li>
+                    </ul>
                   </li>
               </ul>
           </div>
       </div>
   </header>
-    
-  <div class="d-flex align-items-center overflow-hidden " style="height: 500px; position: relative;">
-    <!-- Внутренний блок с вращением -->
+  
+  <!-- Главная часть -->
+  <div class="d-flex align-items-center overflow-hidden " style="height: 75vh; position: relative;">
     <div style="transform: rotate(-8deg); height: 800px; width: 100%; background-color: #B2EBF2; bottom: 15%; position: absolute; transform-origin: center center; border-bottom-left-radius: 10%;"></div>
-    <!-- Содержимое поверх внутреннего блока -->
-    <div class="container d-flex flex-column flex-md-row justify-content- justify-content-md-around align-items-center position-relative" style="z-index: 1; height: 100%;">
-      <!-- Левая часть -->
+    <div class="container d-flex flex-column flex-md-row justify-content- justify-content-md-around align-items-center position-relative mb-5" style="z-index: 1; height: 100%;">
       <div class="text-center mt-5 mb-md-0">
         <h1 class="fw-bold fs-1">BILIM UNIVERSITY</h1>
         <h3 class="mt-4 fs-3">Discover Knowledge and Opportunities</h3>
       </div>
-      <!-- Правая часть -->
       <div>
         <img src="./images/graduation-hat.png" alt="University Logo" class="img-fluid" style="width: 50vh;">
       </div>
@@ -128,7 +130,7 @@
       <div class="col mx-auto">
         <div class="h3 font-bolder">Bize Gosul!</div>
         <div class="p">Bu gun siz ucin ajayyp gun Sebabi siz bize <br> gosuldynyz! :) </div>
-        <button class="btn btn-warning rounded-4  px-3 py-2" style="">Sign up</button>
+        <button class="btn btn-warning rounded-4  px-3 py-2">Sign up</button>
       </div>
       <div class="platform_img1 col">
         <img style="width: 40vw;" src="./images/online-study2.webp" alt="">
@@ -156,7 +158,7 @@
   <div class="col-7" >
     <img class="" id="changing-image" style=" border-radius: 50%; height: 35vh; max-width: 15vw" src="./images/Tesla.webp" alt="">
   </div>
-  <div class="col" style="">
+  <div class="col" >
     <div id="changing-title" class="fs-1 fw-bold">Albert Einstein</div>
     <div id="changing-text" class="p fs-5">"Bilim Geljegiň Açarydyr"</div>
   </div>
@@ -168,7 +170,7 @@
     <div class="row mx-auto align-items-center " style="width: 80vw;">
       <div class="col-7">
         <div class="h2">Platforma barada duzgunnama!</div>
-        <div class="mt-3"><button class="btn btn-warning rounded-4  px-3 py-2" style="">Download</button></div>
+        <div class="mt-3"><button class="btn btn-warning rounded-4  px-3 py-2" >Download</button></div>
       </div>
       <div class="col ms-5">
         <img src="./images/Books2.webp" style="width: 25vw;" alt="">
