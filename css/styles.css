@@ -50,6 +50,11 @@
     overflow: hidden;
 }
 
+.humanity-container {
+    width: 30vw;
+    overflow: hidden;
+}
+
 .image-wrapper {
     position: relative;
     width: 100%;
