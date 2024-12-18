@@ -1,61 +1,27 @@
 
 
-const data = [
-  {
-    image: './images/Tesla.webp',
-    title: 'Nikola Tesla',
-    text: '"Geljegiň güýji Elektromagnetizmde ýatyr"'
-  },
-  {
-    image: './images/Newton.webp',
-    title: 'Isaac Newton',
-    text: '"Men uzak serhetleri görüp bilýän bolsam, onda men ullakan eňňitleriň üstünde duranlygym üçin"'
-  },
-  {
-    image: './images/MarieCurie.webp',
-    title: 'Marie Curie',
-    text: '"Ylmyň çäksiz güýji bar"'
-  }
-];
-
+const parentDiv = document.querySelector('.einstein_animes'); 
+const rows = parentDiv.querySelectorAll('.einstein_anime'); 
 
 let currentIndex = 0;
 
+function showNextRow() {
+  rows.forEach((row) => {
+    row.style.display = 'none';
+  });
 
-function removeAnimationClasses(element, animationClass) {
-  element.addEventListener("animationend", () => {
-    element.classList.remove(animationClass);
-  }, { once: true });
+  rows[currentIndex].style.display = 'flex';
+
+  currentIndex = (currentIndex + 1) % rows.length;
 }
 
-function updateContent() {
-  const elements = [
-    document.getElementById('changing-image'),
-    document.getElementById('changing-title'),
-    document.getElementById('changing-text')
-  ];
+showNextRow();
 
-  elements.forEach(element => element.classList.add('fade-out'));
-
-  setTimeout(() => {
-    elements[0].src = data[currentIndex].image;
-    elements[1].textContent = data[currentIndex].title;
-    elements[2].textContent = data[currentIndex].text;
-
-    elements.forEach(element => {
-      element.classList.remove('fade-out');
-      element.classList.add('fade-in');
-      removeAnimationClasses(element, 'fade-in');
-    });
-
-    currentIndex = (currentIndex + 1) % data.length;
-  }, 500);
-}
+setInterval(showNextRow, 4000);
 
 
-updateContent();
 
-setInterval(updateContent, 5000);
+
 
 // Меняет цвет при скролле
 const header = document.querySelector('#navbar');
