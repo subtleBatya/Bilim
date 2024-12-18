@@ -25,7 +25,7 @@
         opacity: 1;
     }
 }
-
+ /*For header*/
 .hover-effect:hover {
     transform: scale(1.1);
     transition: transform 0.4s ease;
@@ -45,6 +45,7 @@
     transform: rotate(180deg);
 }
 
+/*for index*/
 .hover-container {
     width: 22vw;
     overflow: hidden;
@@ -83,4 +84,45 @@
 
 .image-wrapper:hover .hover-text {
     transform: translateY(0);
+}
+
+/*for library*/
+.card-img-top {
+    height: 70%;
+    object-fit: cover;
+}
+
+.card-book {
+    height: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+
+}
+
+.card-book:hover{
+    transform: scale(1.1);
+}
+
+.star {
+    color: #FF9431;
+    margin-right: 5px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.downloader {
+    background-color: #B2EBF2;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.downloader:hover {
+    background-color:  #FFA000;
+    color: white;
 }
