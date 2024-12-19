@@ -1,28 +1,24 @@
 
 
-function loopThroughDivs() {
-  const parentDiv = document.querySelector('div'); 
-  const rows = parentDiv.querySelectorAll('.row'); 
+const parentDiv = document.querySelector('.einstein_animes'); 
+const rows = parentDiv.querySelectorAll('.einstein_anime'); 
 
-  let currentIndex = 0; 
+let currentIndex = 0;
 
-  function showNextRow() {
-    rows.forEach((row) => {
-      row.style.display = 'none';
-    });
 
-    rows[currentIndex].style.display = 'flex'; 
+function showNextRow() {
+  rows.forEach((row) => {
+    row.style.display = 'none';
+  });
 
-    currentIndex = (currentIndex + 1) % rows.length;
-  }
+  rows[currentIndex].style.display = 'flex';
 
-  showNextRow();
-
-  setInterval(showNextRow, 3000);
+  currentIndex = (currentIndex + 1) % rows.length;
 }
 
+showNextRow();
 
-
+setInterval(showNextRow, 4000);
 
 
 
@@ -96,7 +92,5 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 })
 
-
-loopThroughDivs();
 
 
