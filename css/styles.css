@@ -1,3 +1,9 @@
+/* styles.css */
+body {
+    font-family: 'Kay Pho Du';
+  }
+  
+
 .fade-out {
     animation: fadeOut 0.5s forwards;
 }
@@ -131,3 +137,36 @@
     background-color:  #FFA000;
     color: white;
 }
+
+/*Poisk*/
+.dropdown-menu .dropdown-item {
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #FFA000;
+    color: white;
+    transform: scale(1.05);
+}
+.form-control {
+    box-shadow: none !important;
+}
+.expand-input {
+    width: 250px;
+    transition: width 0.3s ease;
+}
+
+.expand-input:focus {
+    width: 300px;
+}
+
+.video-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .video-js {
+    border: 2px solid #007bff;
+    border-radius: 10px;
+  }
+  
+

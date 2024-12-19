@@ -1,18 +1,19 @@
 
 
-const parentDiv = document.querySelector('.einstein_animes'); 
-const rows = parentDiv.querySelectorAll('.einstein_anime'); 
+const einParentDiv = document.querySelector('.einstein_animes'); 
+const einDivs = einParentDiv.querySelectorAll('.einstein_anime'); 
 
 let currentIndex = 0;
 
+
 function showNextRow() {
-  rows.forEach((row) => {
-    row.style.display = 'none';
+  einDivs.forEach((e) => {
+    e.style.display = 'none';
   });
 
-  rows[currentIndex].style.display = 'flex';
+  einDivs[currentIndex].style.display = 'flex';
 
-  currentIndex = (currentIndex + 1) % rows.length;
+  currentIndex = (currentIndex + 1) % einDivs.length;
 }
 
 showNextRow();
@@ -93,3 +94,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  const player = videojs('my-video', {
+    autoplay: false, 
+    controls: true, 
+    responsive: true,
+    fluid: true, 
+  });
+
+  
+  player.on('play', () => {
+    console.log('Video started playing!');
+  });
+
+  player.on('pause', () => {
+    console.log('Video paused.');
+  });
+
+  player.on('ended', () => {
+    console.log('Video ended.');
+  });
+
+  
+  document.getElementById("change-video-btn").addEventListener("click", () => {
+    player.src({
+      src: "path-to-another-video.mp4",
+      type: "video/mp4",
+    });
+    player.play();
+  });
+});
