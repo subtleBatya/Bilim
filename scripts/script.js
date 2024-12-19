@@ -1,29 +1,5 @@
 
 
-const einParentDiv = document.querySelector('.einstein_animes'); 
-const einDivs = einParentDiv.querySelectorAll('.einstein_anime'); 
-
-let currentIndex = 0;
-
-
-function showNextRow() {
-  einDivs.forEach((e) => {
-    e.style.display = 'none';
-  });
-
-  einDivs[currentIndex].style.display = 'flex';
-
-  currentIndex = (currentIndex + 1) % einDivs.length;
-}
-
-showNextRow();
-
-setInterval(showNextRow, 4000);
-
-
-
-
-
 // Меняет цвет при скролле
 const header = document.querySelector('#navbar');
 
@@ -93,13 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
-
+// VIDEO player
 document.addEventListener("DOMContentLoaded", () => {
   const player = videojs('my-video', {
     autoplay: false, 
     controls: true, 
     responsive: true,
     fluid: true, 
+    playbackRates: [0.5, 1, 1.5, 2],
   });
 
   
