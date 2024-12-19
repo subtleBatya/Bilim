@@ -88,44 +88,12 @@
     </div>
   </div>
 
-  <!--Poisk-->
-  <div class="container-fluid">
-    <div class="d-flex flex-column flex-lg-row justify-content-end align-items-start align-items-lg-center py-2 px-3">
-        <!-- Поле поиска -->
-        <div class="position-relative me-0 mb-3 mb-lg-0 me-lg-3">
-            <input type="text" class="form-control pe-5 rounded-4 expand-input fs-4" placeholder="Search..." style="border: 1px solid #FFA000;">
-            <span class="position-absolute top-50 translate-middle-y end-0 me-2" style="color: #FFA000;"></span>
-        </div>
-        <!-- Dropdown Category -->
-        <div class="dropdown me-3 mb-3 mb-lg-0">
-            <button class="btn btn-secondary border-0 dropdown-toggle rounded-4 fs-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #FFA000; color: white; width: 150px;">
-                Category
-            </button>
-            <ul class="dropdown-menu rounded-4" aria-labelledby="dropdownMenuButton1" style="border: 1px solid #FFA000;">
-                <li><a class="dropdown-item rounded-2" href="#">A-z</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">z-a</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">Aktiw</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">Aktiw dal</a></li>
-            </ul>
-        </div>
-        <!-- Dropdown Filter -->
-        <div class="dropdown ">
-            <button class="btn btn-secondary border-0 dropdown-toggle rounded-4 fs-4 " type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #FFA000; color: white; width: 100px;">
-                Filter
-            </button>
-            <ul class="dropdown-menu rounded-4" aria-labelledby="dropdownMenuButton2" style="border: 1px solid #FFA000;">
-                <li><a class="dropdown-item rounded-2" href="#">A-z</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">z-a</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">Aktiw</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">Aktiw dal</a></li>
-            </ul>
-        </div>
-    </div>
+  
 </div>
   
 <!-- VIDEO PLAYER -->
 
-<div class="">
+<div class="" style="margin-top: 4rem;">
     <div class="video-container">
         <video
           id="my-video"
@@ -146,7 +114,25 @@
         </video>
       </div>
       
+
 </div>
+<div class="">
+  <div class="d-flex" style="width: 90vw;">
+    <div id="video-actions" class="d-flex justify-content-center align-items-center">
+      <button id="like-btn" class="btn btn-success me-3">
+        👍 Like <span id="like-count">0</span>
+      </button>
+      <button id="dislike-btn" class="btn btn-danger">
+        👎 Dislike <span id="dislike-count">0</span>
+      </button>
+    </div>
+    <div id="view-counter" class=" mt-2">
+      Views: <span id="view-count">0</span>
+    </div>
+    
+  </div>
+</div>
+<div class="" style="margin-top: 400px;"></div>
 
 
   
@@ -166,6 +152,7 @@
     crossorigin="anonymous"></script>
     <script src="https://vjs.zencdn.net/8.5.2/video.min.js"></script>
     <script src="../scripts/script.js"></script>
+    <script src="../scripts/video_player.js"></script>
 </body>
 
 </html>
