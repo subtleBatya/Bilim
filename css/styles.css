@@ -160,3 +160,13 @@ body {
     width: 300px;
 }
 
+.video-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .video-js {
+    border: 2px solid #007bff;
+    border-radius: 10px;
+  }
+  
+
