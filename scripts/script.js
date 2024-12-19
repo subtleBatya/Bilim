@@ -1,19 +1,19 @@
 
 
-const parentDiv = document.querySelector('.einstein_animes'); 
-const rows = parentDiv.querySelectorAll('.einstein_anime'); 
+const einParentDiv = document.querySelector('.einstein_animes'); 
+const einDivs = einParentDiv.querySelectorAll('.einstein_anime'); 
 
 let currentIndex = 0;
 
 
 function showNextRow() {
-  rows.forEach((row) => {
-    row.style.display = 'none';
+  einDivs.forEach((e) => {
+    e.style.display = 'none';
   });
 
-  rows[currentIndex].style.display = 'flex';
+  einDivs[currentIndex].style.display = 'flex';
 
-  currentIndex = (currentIndex + 1) % rows.length;
+  currentIndex = (currentIndex + 1) % einDivs.length;
 }
 
 showNextRow();
