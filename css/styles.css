@@ -1,3 +1,9 @@
+/* styles.css */
+body {
+    font-family: 'Kay Pho Du';
+  }
+  
+
 .fade-out {
     animation: fadeOut 0.5s forwards;
 }
