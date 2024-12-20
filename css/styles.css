@@ -39,8 +39,7 @@ body {
     background-color: #FFA000;
 }
 
-.arrow,
-#flag {
+.arrow {
     font-size: 14px;
     margin-left: 5px;
     transition: transform 0.3s ease;
@@ -171,3 +170,6 @@ body {
   }
   
 
+#languageImage:hover{
+    cursor: pointer;
+}

@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function closeAllMenus() {
-    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+    document.querySelectorAll('.dropdown-menu1').forEach(menu => {
       menu.classList.remove('show')
     })
     document.querySelectorAll('.arrow').forEach(arrow => {
@@ -69,4 +69,23 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
+ function changeLanguage() {
+  
+  let languageName = document.getElementById('languageName');
+  let languageImage = document.getElementById("languageImage");
+    console.log("Function is working");
+  let imageSrc = languageImage.src;
+  if ( imageSrc.endsWith('russian-flag.png') ){
+    imageSrc = './images/turkmen-flag.png';
+    languageName.textContent = "TM";
+    console.log("Russian");
+  }
+  else{
+    imageSrc = './images/russian-flag.png';
+    languageName.textContent = "RU";
+    console.log("TM");
+  }
 
+  languageImage.src = imageSrc;
+  console.log("Language path is set to:", imageSrc);
+}

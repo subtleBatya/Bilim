@@ -12,7 +12,7 @@
 
 <body>
   <!-- Навигационное меню -->
-  <header class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top border-bottom border-dark" id="navbar"
+    <header class="navbar navbar-expand-lg  bg-transparent fixed-top border-bottom border-dark" id="navbar"
     style="transition: background-color 1s ease-in-out; ">
     <div class="container-fluid">
       <a class="navbar-brand text-dark fw-bold" href="#">BILIM UNIVERSITY</a>
@@ -28,9 +28,9 @@
           <li class="nav-item me-4">
             <a class="nav-link text-dark hover-effect border-rounded rounded-3" href="../pages/library.html">Library</a>
           </li>
-          <li class="nav-item dropdown me-4">
-            <a class="nav-link  text-dark" href="#" id="coursesDropdown" >Courses<span class="arrow ">▼</span></a>
-            <ul class="dropdown-menu rounded-4" id="coursesMenu" style="border: 1px solid #FFA000;">
+          <li class="nav-item dropdown me-4 ">
+            <a class="nav-link  text-dark" href="#" id="coursesDropdown">Courses<span class="arrow ">▼</span></a>
+            <ul class="dropdown-menu rounded-4 dropdown-menu1" id="coursesMenu" style="border: 1px solid #FFA000;">
               <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">HTML5</a></li>
               <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">CSS3</a></li>
               <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">JavaScript</a></li>
@@ -40,24 +40,18 @@
             <a class="nav-link  text-dark" href="#" id="profileDropdown">
               Profile <span class="arrow">▼</span>
             </a>
-            <ul class="dropdown-menu rounded-4" id="profileMenu" style="border: 1px solid #FFA000;">
+            <ul class="dropdown-menu rounded-4 dropdown-menu1" id="profileMenu" style="border: 1px solid #FFA000;">
               <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">My list</a></li>
               <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">Payment</a></li>
               <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">Suggestions and
                   complaints</a></li>
             </ul>
           </li>
-          <li class="nav-item dropdown me-4">
-            <a class="nav-link text-dark" href="#" id="languageDropdown">
-              <img src="./images/russian-flag.png" alt="russian" style="width: 30px; height: auto;">
-              <span id="flag" class="flag">🇷🇺</span>
-            </a>
-            <ul class="dropdown-menu" id="languageMenu">
-              <li><a class="dropdown-item text-dark" href="#" id="turkmenistanFlag"><img src="./images/turkmen-flag.png"
-                    alt="turkmenistan" style="width: 30px; height: auto;"></a></li>
-              <li><a class="dropdown-item text-dark" href="#" id="russiaFlag"><img src="./images/russian-flag.png"
-                    alt="russian" style="width: 30px; height: auto;"></a></li>
-            </ul>
+          <li class="nav-item me-4 p-2">
+              <div class="language-switcher" style="display: flex; align-items: center; justify-content: center; width: 80px;">
+                  <img src="../images/russian-flag.png" alt="russian" style="width: 40px; height: 20px;" id="languageImage" onclick="changeLanguage()">
+                  <span id="languageName" class="flag ms-2">🇷🇺</span>
+              </div>
           </li>
         </ul>
       </div>
