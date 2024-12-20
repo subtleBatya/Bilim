@@ -174,7 +174,12 @@ textarea {
     resize: none;
 }
 
+
+.bg-gray {
+    background: #ACACAC;
+}
 .text-small {
+    text-decoration-color: #ACACAC;
     color: #ACACAC;
 }
 
