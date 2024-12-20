@@ -11,130 +11,54 @@
   <link href="https://vjs.zencdn.net/8.5.2/video-js.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="mx-auto text-center">
   <!-- Навигационное меню -->
-  <header class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top border-bottom border-dark" id="navbar"
-    style="transition: background-color 1s ease-in-out; ">
-    <div class="container-fluid">
-      <a class="navbar-brand text-dark fw-bold" href="#">BILIM UNIVERSITY</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav fs-5">
-          <li class="nav-item me-4 ">
-            <a class="nav-link text-dark hover-effect border-rounded rounded-3" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item me-4">
-            <a class="nav-link text-dark hover-effect border-rounded rounded-3" href="../pages/library.html">Library</a>
-          </li>
-          <li class="nav-item dropdown me-4">
-            <a class="nav-link  text-dark" href="#" id="coursesDropdown" >Courses<span class="arrow ">▼</span></a>
-            <ul class="dropdown-menu rounded-4" id="coursesMenu" style="border: 1px solid #FFA000;">
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">HTML5</a></li>
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">CSS3</a></li>
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">JavaScript</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown me-4">
-            <a class="nav-link  text-dark" href="#" id="profileDropdown">
-              Profile <span class="arrow">▼</span>
-            </a>
-            <ul class="dropdown-menu rounded-4" id="profileMenu" style="border: 1px solid #FFA000;">
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">My list</a></li>
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">Payment</a></li>
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">Suggestions and
-                  complaints</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown me-4">
-            <a class="nav-link text-dark" href="#" id="languageDropdown">
-              <img src="./images/russian-flag.png" alt="russian" style="width: 30px; height: auto;">
-              <span id="flag" class="flag">🇷🇺</span>
-            </a>
-            <ul class="dropdown-menu" id="languageMenu">
-              <li><a class="dropdown-item text-dark" href="#" id="turkmenistanFlag"><img src="./images/turkmen-flag.png"
-                    alt="turkmenistan" style="width: 30px; height: auto;"></a></li>
-              <li><a class="dropdown-item text-dark" href="#" id="russiaFlag"><img src="./images/russian-flag.png"
-                    alt="russian" style="width: 30px; height: auto;"></a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </header>
+  
 
   <!-- Главная часть -->
-  <div class="d-flex align-items-center overflow-hidden " style="height: 75vh; position: relative;">
-    <div
-      style="transform: rotate(-8deg); height: 800px; width: 100%; background-color: #B2EBF2; bottom: 15%; position: absolute; transform-origin: center center; border-bottom-left-radius: 10%;">
-    </div>
-    <div
-      class="container d-flex flex-column flex-md-row justify-content-between justify-content-md-around align-items-center position-relative mb-5"
-      style="z-index: 1; height: 100%;">
-      <div class="text-center col-9  mt-5 mb-md-0">
-        <div class="d-block text-center" style="width: 80%;">
-            <div class="h1 fw-bold mb-3" style="font-size: 4vw;">
-                UI Dizayner
-             </div>
-             <h4>1-nji sapak UI Dizayner elementleri yerleshdirmek</h4>
-        </div>
-        
-      </div>
-      <div class="col-3 ">
-        <img src="../images/english-class.webp" alt="University Logo" class="img-fluid" style="width: 52vh;">
-      </div>
-    </div>
-  </div>
 
   
-</div>
+
   
 <!-- VIDEO PLAYER -->
+    <div class=" position-relative">
 
-<div class="" style="margin-top: 4rem;">
-    <div class="video-container">
-        <video
-          id="my-video"
-          class="video-js vjs-default-skin "
-          controls
-          preload="auto"
-          download="none"
-          data-setup='{}'
-        >
-          <source src="../images/Justin Timberlake - Can't Stop The Feeling (Lyrics)(640x360).mp4" type="video/mp4" />
-          <p class="vjs-no-js">
-            To view this video please enable JavaScript, and consider upgrading to a
-            web browser that
-            <a href="https://videojs.com/html5-video-support/" target="_blank">
-              supports HTML5 video
-            </a>.
-          </p>
-        </video>
-      </div>
-      
+    </div>
+    <div class=" position-absolute d-flex mx-auto justify-content-center align-items-center" style="top: 20%; left: 40%">
+        <div class=" text-center mx-auto border-2 py-4 px-4 rounded-3" style="border:  1px solid gray; width: 25vw; ">
+            <div class=" px-3 py-3 rounded-5 bg-secondary" ></div>
+            <div class="h3">Create an account</div>
+            <div class="small">Already have an account? <span class=" "><a href="" style=" color: black;">Log in</a> </span></div>
+            <div class="w-75 mx-auto mt-3  d-flex justify-content-between">
+                <div>
+                    <input type="radio" name="option" id="">Student
+                </div>
+                <div>
+                    <input type="radio" name="option" id="">Teacher
+                </div>
+            </div>
+            <div class="m-3">
+                <div class=" text-start">
+                    <div class=" small text-small">Email address</div>
+                    <input class="w-100" type="email" name="" id="">
+                </div>
+                <div class="mt-2 text-start">
+                    <div class=" small text-small">Password</div>
+                    <input class="w-100" type="password" name="" id="">
+                </div>
+                <div class="mt-2 text-start">
+                    <div class=" small text-small">Name</div>
+                    <input class="w-100" type="text" name="" id="">
+                </div>
+            </div>
+            
+            <div class="">
 
-</div>
-<div class="">
-  <div class="d-flex" style="width: 90vw;">
-    <div id="video-actions" class="d-flex justify-content-center align-items-center">
-      <button id="like-btn" class="btn  ">
-        👍 Like <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-          <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
-        </svg>
-      </button>
-      <button id="dislike-btn" class="btn btn-danger">
-        👎 Dislike <span id="dislike-count">0</span>
-      </button>
+            </div>
+        </div>
     </div>
-    <div id="view-counter" class=" mt-2">
-      Views: <span id="view-count">0</span>
-    </div>
-    
-  </div>
-</div>
-<div class="" style="margin-top: 400px;"></div>
+
+
 
 
   
