@@ -170,4 +170,7 @@ body {
     height: 60vh;
   }
   
+textarea {
+    resize: none;
+}
 
