@@ -1,8 +1,8 @@
 /* styles.css */
 body {
-    font-family: 'Kay Pho Du';
-  }
-  
+    font-family: 'Kay Pho Du' !important;
+}
+
 
 .fade-out {
     animation: fadeOut 0.5s forwards;
@@ -128,7 +128,6 @@ body {
     background-color: #B2EBF2;
     border: none;
     padding: 5px 15px;
-    border-radius: 4px;
     transition: background-color 0.3s ease;
 }
 
