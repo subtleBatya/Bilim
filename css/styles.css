@@ -169,6 +169,18 @@ body {
     height: 60vh;
   }
   
+textarea {
+    resize: none;
+}
+
+
+.bg-gray {
+    background: #ACACAC;
+}
+.text-small {
+    text-decoration-color: #ACACAC;
+    color: #ACACAC;
+}
 
 #languageImage:hover{
     cursor: pointer;

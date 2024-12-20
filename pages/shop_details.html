@@ -11,64 +11,29 @@
   </head>
 
 <body>
-    <header class="navbar navbar-expand-lg  bg-transparent fixed-top border-bottom border-dark" id="navbar"
-    style="transition: background-color 1s ease-in-out; ">
-    <div class="container-fluid">
-      <a class="navbar-brand text-dark fw-bold" href="#">BILIM UNIVERSITY</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav fs-5">
-          <li class="nav-item me-4 ">
-            <a class="nav-link text-dark hover-effect border-rounded rounded-3" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item me-4">
-            <a class="nav-link text-dark hover-effect border-rounded rounded-3" href="../pages/library.html">Library</a>
-          </li>
-          <li class="nav-item dropdown me-4 ">
-            <a class="nav-link  text-dark" href="#" id="coursesDropdown">Courses<span class="arrow ">▼</span></a>
-            <ul class="dropdown-menu rounded-4 dropdown-menu1" id="coursesMenu" style="border: 1px solid #FFA000;">
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">HTML5</a></li>
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">CSS3</a></li>
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">JavaScript</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown me-4">
-            <a class="nav-link  text-dark" href="#" id="profileDropdown">
-              Profile <span class="arrow">▼</span>
-            </a>
-            <ul class="dropdown-menu rounded-4 dropdown-menu1" id="profileMenu" style="border: 1px solid #FFA000;">
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">My list</a></li>
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">Payment</a></li>
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">Suggestions and
-                  complaints</a></li>
-            </ul>
-          </li>
-          <li class="nav-item me-4 p-2">
-              <div class="language-switcher" style="display: flex; align-items: center; justify-content: center; width: 80px;">
-                  <img src="../images/russian-flag.png" alt="russian" style="width: 40px; height: 20px;" id="languageImage" onclick="changeLanguage()">
-                  <span id="languageName" class="flag ms-2">🇷🇺</span>
-              </div>
-          </li>
-        </ul>
+ <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="row w-100" style="max-width: 1200px;">
+      <!-- Левая колонка: картинка -->
+      <div class="col-md-6">
+        <img src="../images/lorembook.webp" style="width: 30vw;" class="img-fluid" alt="Пример картинки">
       </div>
-    </div>
-  </header>
-  <!-- MIND SETTER BOOK -->
-  <div class=" ">
-    <div class="row" style="width: 90vw;">
-      <div class=" col"><img src="../images/lorembook.webp" style="width: 20vw;" alt=""></div>
-      <div class="col">
-      <div class="h3">Ux mind seter Book</div>
-     
-      </div>
-    </div>
-    
 
+      <!-- Правая колонка: заголовки и текст -->
+      <div class="col-md-6">
+        <div class="d-flex flex-column justify-content-between h-100">
+          <div >
+            <h1>Ux mind seter Book</h1> 
+            <h6 class="text-center p-3">(25 Customer reviews)</h6>
+            <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste voluptatum, autem ipsa atque, perferendis odit accusantium nostrum, magnam excepturi cumque molestiae officiis! Numquam iusto vel soluta et consequatur quo ab.Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam, earum laboriosam atque, totam excepturi accusamus vel, odit magni sapiente illum architecto magnam. Quasi obcaecati, tenetur libero nobis expedita quaerat.</p>
+          </div>
+          <div class="d-flex align-items-start row">
+            <h5 class=""><b>Category:</b> Crux Indoor Fast and Easy</h5>
+            <button>download</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
   
 
 
