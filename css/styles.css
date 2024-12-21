@@ -3,6 +3,10 @@ body {
     font-family: 'Kay Pho Du' !important;
 }
 
+.font-outfit {
+  font-family: 'Outfit' !important;
+}
+
 
 .fade-out {
     animation: fadeOut 0.5s forwards;
