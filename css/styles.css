@@ -182,6 +182,9 @@ textarea {
 
 /* Bu custom class-lar, default renkler esasy ulanylyan! */
 
+.border-gray {
+    border: #ACACAC solid 1px;
+}
 .bg-gray {
     background: #ACACAC;
 }
