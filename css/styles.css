@@ -2,13 +2,13 @@
 body {
     font-family: 'Kay Pho Du' !important;
 }
-
+/* Bu font register bilen login pagelar ucin, sebabi uytgeyan ekeni */
 .font-outfit {
   font-family: 'Outfit' !important;
 }
 
 
-.fade-out {
+/* .fade-out {
     animation: fadeOut 0.5s forwards;
 }
 
@@ -34,7 +34,7 @@ body {
     to {
         opacity: 1;
     }
-}
+} */
  /*For header*/
 .hover-effect:hover {
     transform: scale(1.1);
@@ -54,7 +54,7 @@ body {
     transform: rotate(180deg);
 }
 
-/*for index*/
+/*for index, su asakdakylar hemmesi alymlaryn animasiyasyna degisli index.html*/
 .hover-container {
     width: 22vw;
     overflow: hidden;
@@ -80,6 +80,7 @@ body {
     /* Ensures the image fits nicely inside the container */
 }
 
+/* Image-yn ustune eldende cykyan yazgy  */
 .hover-text {
     position: absolute;
     bottom: 0;
@@ -99,6 +100,7 @@ body {
 .image-wrapper:hover .hover-text {
     transform: translateY(0);
 }
+
 
 /*for library*/
 .card-img-top {
@@ -162,6 +164,8 @@ body {
     width: 300px;
 }
 
+/* for Video player */
+
 .video-container {
     justify-content: center;
     align-items: center;
@@ -176,6 +180,7 @@ textarea {
     resize: none;
 }
 
+/* Bu custom class-lar, default renkler esasy ulanylyan! */
 
 .bg-gray {
     background: #ACACAC;
@@ -184,6 +189,8 @@ textarea {
     text-decoration-color: #ACACAC;
     color: #ACACAC;
 }
+
+/* Bu asakdakyny bolsa bilemok */
 
 #languageImage:hover{
     cursor: pointer;
