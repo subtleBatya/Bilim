@@ -9,6 +9,9 @@ body {
   font-family: 'Outfit' !important;
 }
 
+.font-inter {
+    font-family: 'Inter' !important;
+  }
 
 /* .fade-out {
     animation: fadeOut 0.5s forwards;
