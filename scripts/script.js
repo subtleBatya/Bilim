@@ -1,6 +1,10 @@
 
+function initializeWebsiteLogic() {
+  console.log("All content has been fully loaded. Initializing logic...");
 
-// Меняет цвет при скролле
+  
+
+  // Меняет цвет при скролле
 const header = document.querySelector('#navbar');
 
 function changeHeaderColor() {
@@ -111,3 +115,11 @@ registration.classList.remove('d-none')
 button2.classList.add('active')
 button1.classList.remove('active')
 })
+
+  
+}
+
+
+window.addEventListener("load", initializeWebsiteLogic);
+
+
