@@ -1,11 +1,16 @@
 // FOR SCIENTISTS ANIMATION IN THE MAIN FILE
 
-
-
-function initializeWebsiteLogic() {
+// Wrap the logic inside an async function
+async function initializeWebsiteLogic() {
   console.log("All content has been fully loaded. Initializing logic...");
 
-  const einParentDiv = document.querySelector('.einstein_animes'); 
+  try {
+    // Simulate a heavy or asynchronous task
+    await performHeavyInitialization();
+
+    // Your website's logic here
+   
+    const einParentDiv = document.querySelector('.einstein_animes'); 
   const einDivs = einParentDiv.querySelectorAll('.einstein_anime'); 
   
   let currentIndex = 0;
@@ -24,10 +29,29 @@ function initializeWebsiteLogic() {
   showNextRow();
   
   setInterval(showNextRow, 4000);
+
+
+
+    console.log("Initialization complete.");
+  } catch (error) {
+    console.error("Error during initialization:", error);
+  }
 }
 
+// A mock function to simulate a heavy initialization task
+async function performHeavyInitialization() {
+  console.log("Starting heavy initialization...");
 
-window.addEventListener("load", initializeWebsiteLogic);
+  // Simulating a delay, e.g., loading data or preparing resources
+  return new Promise((resolve) => setTimeout(resolve, 2000)); // 2-second delay
+}
+
+// Attach the initialize function to the window load event
+window.addEventListener("load", async () => {
+  await initializeWebsiteLogic();
+});
+
+
 
 
 
