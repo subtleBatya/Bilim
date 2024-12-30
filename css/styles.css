@@ -65,6 +65,11 @@ body {
     overflow: hidden;
 }
 
+.shorts-container {
+    width: 8vw;
+    overflow: hidden;
+}
+
 .humanity-container {
     width: 30vw;
     overflow: hidden;
