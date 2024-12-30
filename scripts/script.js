@@ -1,5 +1,3 @@
-async function initializeWebsiteLogic() {
-  console.log("Initializing website logic...");
 
   // Меняет цвет при скролле
   const header = document.querySelector('#navbar');
@@ -111,6 +109,11 @@ async function initializeWebsiteLogic() {
     button2.classList.add('active');
     button1.classList.remove('active');
   });
+
+async function initializeWebsiteLogic() {
+  console.log("Initializing website logic...");
+
+
 }
 
 // Attach the async initialize function to the load event
