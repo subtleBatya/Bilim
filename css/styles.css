@@ -185,6 +185,11 @@ body {
     width: 90vw;
     height: 60vh;
   }
+
+  .shorts-js {
+    width: 25vw;
+    height: 80vh;
+  }
   
 textarea {
     resize: none;
