@@ -65,6 +65,11 @@ body {
     overflow: hidden;
 }
 
+.shorts-container {
+    width: 8vw;
+    overflow: hidden;
+}
+
 .humanity-container {
     width: 30vw;
     overflow: hidden;
@@ -179,6 +184,11 @@ body {
   .video-js {
     width: 90vw;
     height: 60vh;
+  }
+
+  .shorts-js {
+    width: 25vw;
+    height: 80vh;
   }
   
 textarea {
