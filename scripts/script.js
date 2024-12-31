@@ -120,7 +120,7 @@ async function initializeWebsiteLogic() {
 window.addEventListener('load', async () => {
   await initializeWebsiteLogic();
 });
-* /
+
 
 
 /*asdasd */
