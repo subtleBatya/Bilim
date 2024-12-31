@@ -1,17 +1,18 @@
 /* styles.css */
 body {
     font-family: 'Kay Pho Du' !important;
+    overflow-x: hidden;
 }
 
 
 /* Bu font register bilen login pagelar ucin, sebabi uytgeyan ekeni */
 .font-outfit {
-  font-family: 'Outfit' !important;
+    font-family: 'Outfit' !important;
 }
 
 .font-inter {
     font-family: 'Inter' !important;
-  }
+}
 
 /* .fade-out {
     animation: fadeOut 0.5s forwards;
@@ -40,7 +41,7 @@ body {
         opacity: 1;
     }
 } */
- /*For header*/
+/*For header*/
 .hover-effect:hover {
     transform: scale(1.1);
     transition: transform 0.4s ease;
@@ -126,7 +127,7 @@ body {
 
 }
 
-.card-book:hover{
+.card-book:hover {
     transform: scale(1.1);
 }
 
@@ -148,7 +149,7 @@ body {
 }
 
 .downloader:hover {
-    background-color:  #FFA000;
+    background-color: #FFA000;
     color: white;
 }
 
@@ -162,9 +163,11 @@ body {
     color: white;
     transform: scale(1.05);
 }
+
 .form-control {
     box-shadow: none !important;
 }
+
 .expand-input {
     width: 250px;
     transition: width 0.3s ease;
@@ -180,17 +183,18 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-  }
-  .video-js {
+}
+
+.video-js {
     width: 90vw;
     height: 60vh;
-  }
+}
 
-  .shorts-js {
+.shorts-js {
     width: 25vw;
     height: 80vh;
-  }
-  
+}
+
 textarea {
     resize: none;
 }
@@ -200,9 +204,11 @@ textarea {
 .border-gray {
     border: #ACACAC solid 1px;
 }
+
 .bg-gray {
     background: #ACACAC;
 }
+
 .text-small {
     text-decoration-color: #ACACAC;
     color: #ACACAC;
@@ -210,6 +216,6 @@ textarea {
 
 /* Bu asakdakyny bolsa bilemok */
 
-#languageImage:hover{
+#languageImage:hover {
     cursor: pointer;
 }
