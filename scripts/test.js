@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".section");
-
-
     let currentSection = null;
 
     const observerCallback = (entries) => {
@@ -11,8 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (entry.isIntersecting) {
                 if (currentSection !== entry.target) {
-
                     if (currentSection) {
+
+                        currentSection.classList.add("past");
                         currentSection.classList.remove("active");
                         currentSection.style.zIndex = index;
                     }
@@ -26,12 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 entry.target.classList.remove("active");
                 entry.target.style.zIndex = index;
+
+
+                if (currentSection && [...sections].indexOf(currentSection) > index) {
+                    entry.target.classList.remove("past");
+                }
             }
         });
     };
 
     const observerOptions = {
-        threshold: 0.1,
+        threshold: 0.8,
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
