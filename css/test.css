@@ -9,7 +9,7 @@ body {
     top: 0;
     transform: translateY(50px);
     z-index: 1;
-    opacity: 0.8;
+
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
@@ -38,7 +38,7 @@ body {
     filter: blur();
 } */
 
-.section::before {
+/* .section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -47,4 +47,4 @@ body {
     height: 600px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
     z-index: -1;
-}
+} */
