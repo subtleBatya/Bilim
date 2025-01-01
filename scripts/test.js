@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (entry.isIntersecting) {
                 if (currentSection !== entry.target) {
+
+                    entry.target.classList.remove("past");
+
                     if (currentSection) {
 
                         currentSection.classList.add("past");
@@ -35,7 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const observerOptions = {
-        threshold: 0.8,
+        // threshold: 0.2,
+        threshold: [0.9, 0.3, 0.5],
+
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
