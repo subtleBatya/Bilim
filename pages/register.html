@@ -30,7 +30,7 @@
 
 
 
-    <!-- VIDEO PLAYER -->
+    <!--  -->
     <div class=" position-relative">
 
     </div>
@@ -90,16 +90,16 @@
         const usernameField = document.getElementById("username");
         const registerButton = document.getElementById("registerButton");
       
-        // Function to validate the form
+       
         function validateForm() {
           const email = emailField.value.trim();
           const password = passwordField.value;
           const username = usernameField.value.trim();
       
-          // Regular expression to validate email format
+         
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       
-          // Check conditions for enabling the register button
+         
           if (
             emailRegex.test(email) &&
             password.length >= 8 &&
@@ -115,7 +115,7 @@
           }
         }
       
-        // Attach event listeners to input fields
+   
         emailField.addEventListener("input", validateForm);
         passwordField.addEventListener("input", validateForm);
         usernameField.addEventListener("input", validateForm);
