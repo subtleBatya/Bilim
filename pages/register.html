@@ -50,25 +50,30 @@
                     <input type="radio" name="option" id="">Teacher
                 </div>
             </div>
-            <div class="mb-3">
-                <div class="mt-2 text-start">
-                    <div class=" small text-small">Email address</div>
-                    <input class="w-100 p-2 form-control" required type="email" name="" id="">
-                </div>
-                <div class="mt-2 text-start">
-                    <div class=" small text-small">Password</div>
-                    <input class="w-100 p-2 form-control" required type="password" name="" id="">
-                </div>
-                <div class="mt-2 text-start">
-                    <div class=" small text-small">Name</div>
-                    <input class="w-100 p-2 form-control" required type="text" name="" id="">
-                </div>
-            </div>
 
-            <div class="bg-gray rounded-5 mb-5 p-2 text-center">
-                <button id="registerButton" class=" border-0 text-white fs-6 fw-light" style="background-color: transparent;">Create an
-                    account</button>
-            </div>
+            <form action="">
+                <div class="mb-3">
+                    <div class="mt-2 text-start">
+                        <div class=" small text-small">Email address</div>
+                        <input class="w-100 p-2 form-control" required type="email" name="" id="email">
+                    </div>
+                    <div class="mt-2 text-start">
+                        <div class=" small text-small">Password</div>
+                        <input class="w-100 p-2 form-control" required type="password" name="" id="password">
+                    </div>
+                    <div class="mt-2 text-start">
+                        <div class=" small text-small">Name</div>
+                        <input class="w-100 p-2 form-control" required type="text" name="" id="username">
+                    </div>
+                </div>
+    
+                <a href="">
+                    <div class="  mb-5  text-center">
+                      <button id="registerButton" disabled class="p-2 rounded-5 border-0 text-white fs-5 fw-light w-100" style="background-color: gray; cursor: not-allowed;">Create an account</button>
+                    </div>
+                  </a>
+            </form>
+            
 
             <div class="">
 
@@ -82,17 +87,24 @@
     <script>
         const emailField = document.getElementById("email");
         const passwordField = document.getElementById("password");
-        const usernameField = document.getElementById("password");
-
+        const usernameField = document.getElementById("username");
         const registerButton = document.getElementById("registerButton");
       
-        
+        // Function to validate the form
         function validateForm() {
-          const username = usernameField.value.trim();
+          const email = emailField.value.trim();
           const password = passwordField.value;
+          const username = usernameField.value.trim();
       
-        
-          if (username.length >= 4 && password.length >= 8) {
+          // Regular expression to validate email format
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+          // Check conditions for enabling the register button
+          if (
+            emailRegex.test(email) &&
+            password.length >= 8 &&
+            username.length >= 4
+          ) {
             registerButton.disabled = false;
             registerButton.style.backgroundColor = "#FFA000";
             registerButton.style.cursor = "pointer";
@@ -103,9 +115,10 @@
           }
         }
       
-        
-        usernameField.addEventListener("input", validateForm);
+        // Attach event listeners to input fields
+        emailField.addEventListener("input", validateForm);
         passwordField.addEventListener("input", validateForm);
+        usernameField.addEventListener("input", validateForm);
       </script>
 
 
