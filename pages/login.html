@@ -19,7 +19,7 @@
 
     .line1 {
       flex: 1;
-      height: 2px;
+      height: 3px;
       background: linear-gradient(to right, rgba(0, 0, 255, 0), blue);
       border: none;
       
@@ -27,7 +27,7 @@
 
     .line2 {
       flex: 1;
-      height: 2px;
+      height: 3px;
       background: linear-gradient(to left, rgba(0, 0, 255, 0), blue);
       border: none;
       
@@ -54,10 +54,10 @@
             <div class=" mt-5  bg-secondary"  ></div>
             <div class="fs-5 fw-medium">Login details</div>
             
-            
-            <div class="mb-3">
+           <form action="">
+              <div class="mb-3">
+                  
                 
-               
                 <div class="mt-3 text-start ">
                     <input class="w-100 p-3 small form-control" type="text" placeholder="Username, email & phone number" name="" id="">
                 </div>
@@ -66,15 +66,27 @@
                 </div>
                 
             </div>
-            <div class="bg-gray rounded-5 mb-5 p-2 text-center">
+            <a href="">
+              <div class="bg-gray rounded-5 mb-5 p-2 text-center">
                 <button class=" border-0 text-white fs-5 fw-light" style="background-color: transparent;">Login</button>
-            </div>
+              </div>
+            </a>
+           </form> 
             
-            <div class="d-flex align-items-center text-center small mb-5">
+            
+            
+            <div class="d-flex align-items-center text-center small mb-2">
               <div class="line1 col-3" ></div>
-              <div class="col-6"> Or Sign up With</div>
+              <div class="col-3 fs-6"> Sign up</div>
               <div class="line2 col-3" ></div>  
             </div>
+            
+            <a href="">
+              <div class="bg-gray rounded-5 mb-5 p-2 text-center">
+                <button class=" border-0 text-white small fw-light" style="background-color: transparent;">Sign up</button>
+            </div>
+            </a>  
+            
         </div>
     </div>
 
