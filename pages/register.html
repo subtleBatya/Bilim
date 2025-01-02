@@ -66,7 +66,7 @@
             </div>
 
             <div class="bg-gray rounded-5 mb-5 p-2 text-center">
-                <button class=" border-0 text-white fs-6 fw-light" style="background-color: transparent;">Create an
+                <button id="registerButton" class=" border-0 text-white fs-6 fw-light" style="background-color: transparent;">Create an
                     account</button>
             </div>
 
@@ -79,7 +79,34 @@
 
 
 
+    <script>
+        const emailField = document.getElementById("email");
+        const passwordField = document.getElementById("password");
+        const usernameField = document.getElementById("password");
 
+        const registerButton = document.getElementById("registerButton");
+      
+        
+        function validateForm() {
+          const username = usernameField.value.trim();
+          const password = passwordField.value;
+      
+        
+          if (username.length >= 4 && password.length >= 8) {
+            registerButton.disabled = false;
+            registerButton.style.backgroundColor = "#FFA000";
+            registerButton.style.cursor = "pointer";
+          } else {
+            registerButton.disabled = true;
+            registerButton.style.backgroundColor = "gray";
+            registerButton.style.cursor = "not-allowed";
+          }
+        }
+      
+        
+        usernameField.addEventListener("input", validateForm);
+        passwordField.addEventListener("input", validateForm);
+      </script>
 
 
 
