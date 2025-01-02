@@ -131,7 +131,7 @@
         const password = passwordField.value;
     
       
-        if (username !== "" && password.length >= 8) {
+        if (username.length >= 4 && password.length >= 8) {
           loginButton.disabled = false;
           loginButton.style.backgroundColor = "#FFA000";
           loginButton.style.cursor = "pointer";
