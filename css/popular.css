@@ -1,27 +1,46 @@
 .swiper-slide {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.5s, opacity 0.5s;
-  }
-  
-  .swiper-slide img {
-    max-width: 100%;
-    border-radius: 10px;
-  }
-  
-  .swiper-slide-active img {
-    transform: scale(1.2);
-    z-index: 10;
-  }
-  
-  .swiper-slide:not(.swiper-slide-active) img {
-    transform: scale(0.9);
-    opacity: 0.8;
-  }
-  
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s, opacity 0.5s;
 
+  transform-origin: center center;
+  z-index: 1;
+
+}
+
+.swiper-slide img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.swiper-slide-active img {
+  transform: scale(1.2);
+  z-index: 10;
+}
+
+.swiper-slide:not(.swiper-slide-active) img {
+  transform: scale(0.9);
+  opacity: 0.8;
+}
+
+/* Neighboring slides */
+.swiper-slide-next,
+.swiper-slide-prev {
+  transform: scale(0.9) translateX(-20%);
+  z-index: 5;
+  /* Behind the active slide */
+}
+
+/* Hide further slides */
+.swiper-slide-next~.swiper-slide,
+.swiper-slide-prev~.swiper-slide {
+  transform: scale(0.8);
+  z-index: 1;
+  opacity: 0.5;
+  /* Dim further slides for better effect */
+}
 
 
 

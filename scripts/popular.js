@@ -3,10 +3,10 @@
 
 console.log(typeof Swiper); // Should return "function"
 
-
+document.addEventListener('DOMContentLoaded', () => {
 const swiper = new Swiper('.swiper-container', {
     slidesPerView: 3,
-    spaceBetween: 10,
+    spaceBetween: 0,
     centeredSlides: true,
     loop: true, // Enables infinite scrolling
     grabCursor: true, // Changes the cursor to a grab icon
@@ -25,12 +25,12 @@ const swiper = new Swiper('.swiper-container', {
       if (index === swiper.activeIndex) {
         slide.querySelector('img').style.transform = 'scale(1.2) translateX(0)';
       } else {
-        slide.querySelector('img').style.transform = 'scale(0.9) translateX(20px)';
+        slide.querySelector('img').style.transform = 'scale(0.9) translateX(10px)';
       }
     });
   });
   
-
+});
 
 
 
