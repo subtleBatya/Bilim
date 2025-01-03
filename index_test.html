@@ -17,7 +17,10 @@
   
   <link rel="stylesheet" href="./css/aos.css">
 
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
 </head>
 
 <body>
@@ -93,7 +96,27 @@
     <div class="h4 text-center mb-3" style="font-size: 5vw;">Popular Courses</div>
     <div class="popular_images mx-auto" data-aos="fade-right" data-aos-duration="2000" style="width: 90vw;">
       
-      <div class="slider">
+      <div class="swiper-container">
+        
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="./images/man.webp" alt="Image 1"></div>
+          <div class="swiper-slide"><img src="./images/Books.webp" alt="Image 2"></div>
+          <div class="swiper-slide"><img src="./images/Books2.webp" alt="Image 3"></div>
+          <div class="swiper-slide"><img src="./images/man.webp" alt="Image 4"></div>
+          <div class="swiper-slide"><img src="./images/man.webp" alt="Image 5"></div>
+        </div>
+        
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+
+
+      </div>
+      
+
+      <!-- <div class="slider">
         <button class="slider-btn prev">&lt;</button>
         <div class="slider-track">
           <img src="./images/man.webp" class="slider-image">
@@ -103,7 +126,7 @@
           <img src="./images/man.webp" class="slider-image">
         </div>
         <button class="slider-btn next">&gt;</button>
-      </div>
+      </div> -->
       
       
       <!-- <div class=" row mx-auto mb-3">
@@ -356,13 +379,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
     crossorigin="anonymous"></script>
-  <script src="./scripts/script.js"></script>
+  <!-- <script src="./scripts/script.js"></script>
   <script src="./scripts/test.js"></script>
-  <script src="./scripts/science.js"></script>
+  <script src="./scripts/science.js"></script> -->
   <script src="./scripts/popular.js"></script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script src="./scripts/aos.js"></script>
   <script src="./scripts/aos_configs.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 
 </html>
