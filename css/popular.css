@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   transition: transform 0.5s, opacity 0.5s;
-
   transform-origin: center center;
   z-index: 1;
 
