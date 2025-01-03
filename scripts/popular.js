@@ -1,6 +1,12 @@
+
+
+
+console.log(typeof Swiper); // Should return "function"
+
+
 const swiper = new Swiper('.swiper-container', {
     slidesPerView: 3,
-    spaceBetween: 20,
+    spaceBetween: 10,
     centeredSlides: true,
     loop: true, // Enables infinite scrolling
     grabCursor: true, // Changes the cursor to a grab icon
