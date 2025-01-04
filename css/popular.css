@@ -27,14 +27,14 @@
 /* Neighboring slides */
 .swiper-slide-next,
 .swiper-slide-prev {
-  transform: scale(0.9) translateX(-20%);
+  transform: scale(0.9) translateX(-20);
   z-index: 5;
   /* Behind the active slide */
 }
 
 /* Hide further slides */
-.swiper-slide-next~.swiper-slide,
-.swiper-slide-prev~.swiper-slide {
+.swiper-slide-next,
+.swiper-slide-prev {
   transform: scale(0.8);
   z-index: 1;
   opacity: 0.5;
