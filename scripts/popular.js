@@ -5,12 +5,18 @@ console.log(typeof Swiper); // Should return "function"
 
 document.addEventListener('DOMContentLoaded', () => {
 const swiper = new Swiper('.swiper-container', {
-    effect: 'coverflow',
+    // effect: 'coverflow',
     slidesPerView: 3,
-    spaceBetween: 0,
     centeredSlides: true,
     loop: true, // Enables infinite scrolling
     grabCursor: true, // Changes the cursor to a grab icon
+    coverflowEffect: {
+        rotate: 0, // Angle of rotation for inactive slides
+        stretch: 40, // Spacing between slides
+        depth: 100, // Perspective depth
+        modifier: 1, // Multiplier for scale and rotation
+        // Enable shadows on slides
+      },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',

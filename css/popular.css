@@ -6,11 +6,13 @@
   transition: transform 0.5s, opacity 0.5s;
   transform-origin: center center;
   z-index: 1;
-
+  
 }
 
 .swiper-slide img {
-  max-width: 100%;
+  width: 40vw;
+  height: 70vh;
+  
   border-radius: 10px;
 }
 
@@ -20,8 +22,8 @@
 }
 
 .swiper-slide:not(.swiper-slide-active) img {
-  transform: scale(0.9);
-  opacity: 0.8;
+  transform: scale(0.2);
+  opacity: 0.9;
 }
 
 /* Neighboring slides */
