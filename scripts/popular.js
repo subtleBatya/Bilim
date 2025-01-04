@@ -5,8 +5,9 @@ console.log(typeof Swiper); // Should return "function"
 
 document.addEventListener('DOMContentLoaded', () => {
 const swiper = new Swiper('.swiper-container', {
+    effect: 'coverflow',
     slidesPerView: 3,
-    spaceBetween: -10,
+    spaceBetween: 0,
     centeredSlides: true,
     loop: true, // Enables infinite scrolling
     grabCursor: true, // Changes the cursor to a grab icon
