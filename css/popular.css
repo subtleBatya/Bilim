@@ -1,22 +1,92 @@
+.swiper-container {
+    width: 80%; /* Adjust width as needed */
+    height: 400px; /* Adjust height as needed */
+    margin: auto;
+  }
+  
+
+
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, z-index 0.3s ease;
+  }
+  
+  .swiper-slide img {
+    width: 100%; /* Make images responsive */
+    border-radius: 15px; /* Optional for rounded corners */
+    transition: transform 0.3s ease;
+  }
+  
+  .swiper-slide-active img {
+    transform: scale(1.2); /* Scale up the active image */
+    z-index: 10; /* Bring the active slide to the foreground */
+  }
+  
+  .swiper-slide-next img,
+  .swiper-slide-prev img {
+    transform:  scale(0.9); /* Move inward and scale down side images */
+    z-index: 5; /* Lower z-index for side images */
+  }
+  
+
+
+/* .swiper-container {
+    width: 80%; 
+    height: 50%; 
+    margin: auto;
+  }
+
 .swiper-slide {
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.5s, opacity 0.5s;
-  transform-origin: center center;
+  transition: transform 0.3s ease, z-index 0.3s ease;
   z-index: 1;
-  
-}
+} */
 
-.swiper-slide img {
-  width: 40vw;
-  height: 70vh;
-  
-  border-radius: 10px;
-}
 
-.swiper-slide-active img {
+/* .swiper-slide img {
+    width: 80%; 
+    height: auto;
+    object-fit: cover;
+} */
+/* 
+.swiper-slide-active {
+    transform: scale(1.2); 
+    z-index: 10; 
+  }
+  
+  .swiper-slide-next,
+  .swiper-slide-prev {
+    transform: scale(0.9);
+    z-index: 5; 
+  }
+ */
+
+/* Active slide (middle image) */
+/* .swiper-slide-active {
+    transform: scale(1.2); 
+    z-index: 10; 
+  }
+  
+  
+  .swiper-slide-next,
+  .swiper-slide-prev {
+    transform: scale(0.9); 
+    z-index: 5; 
+  }
+  
+
+  .swiper-slide-next ~ .swiper-slide,
+  .swiper-slide-prev ~ .swiper-slide {
+    z-index: 1; 
+    opacity: 0.5; 
+  } */
+
+
+/* .swiper-slide-active img {
   transform: scale(1.2);
   z-index: 10;
 }
@@ -26,22 +96,22 @@
   opacity: 0.9;
 }
 
-/* Neighboring slides */
+
 .swiper-slide-next,
 .swiper-slide-prev {
   transform: scale(0.9) translateX(-20);
   z-index: 5;
-  /* Behind the active slide */
+ 
 }
 
-/* Hide further slides */
+
 .swiper-slide-next,
 .swiper-slide-prev {
   transform: scale(0.8);
   z-index: 1;
   opacity: 0.5;
-  /* Dim further slides for better effect */
-}
+ 
+} */
 
 
 

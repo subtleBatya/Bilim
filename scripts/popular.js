@@ -1,43 +1,60 @@
 
-
-
-console.log(typeof Swiper); // Should return "function"
-
-document.addEventListener('DOMContentLoaded', () => {
-const swiper = new Swiper('.swiper-container', {
-    // effect: 'coverflow',
-    slidesPerView: 3,
+const swiper = new Swiper(".swiper-container", {
+    effect: "coverflow",
+    grabCursor: true,
     centeredSlides: true,
-    loop: true, // Enables infinite scrolling
-    grabCursor: true, // Changes the cursor to a grab icon
+    slidesPerView: "3",
     coverflowEffect: {
-        rotate: 0, // Angle of rotation for inactive slides
-        stretch: 40, // Spacing between slides
-        depth: 100, // Perspective depth
-        modifier: 1, // Multiplier for scale and rotation
-        // Enable shadows on slides
-      },
+      rotate: 0, // No rotation for slides
+      stretch: -40, // Pulls the side images inward
+      depth: 200, // Adds a 3D perspective effect
+      modifier: 2, // Multiplier for scaling and depth
+      slideShadows: false, // Disables shadow for cleaner design
+    },
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
+    loop: true, // Enable infinite scrolling
   });
+
+// console.log(typeof Swiper); // Should return "function"
+
+// document.addEventListener('DOMContentLoaded', () => {
+// const swiper = new Swiper('.swiper-container', {
+//     effect: 'coverflow',
+//     slidesPerView: 2,
+//     centeredSlides: true,
+//     loop: true, // Enables infinite scrolling
+//     grabCursor: true, // Changes the cursor to a grab icon
+//     coverflowEffect: {
+//         rotate: 0, // Angle of rotation for inactive slides
+//         stretch: 150, // Spacing between slides
+//         depth: 150, // Perspective depth
+//          // Multiplier for scale and rotation
+//         // Enable shadows on slides
+//       },
+//     navigation: {
+//       nextEl: '.swiper-button-next',
+//       prevEl: '.swiper-button-prev',
+//     },
+//     pagination: {
+//       el: '.swiper-pagination',
+//       clickable: true,
+//     },
+//   });
   
-  swiper.on('slideChange', () => {
-    document.querySelectorAll('.swiper-slide').forEach((slide, index) => {
-      if (index === swiper.activeIndex) {
-        slide.querySelector('img').style.transform = 'scale(1.2) translateX(0)';
-      } else {
-        slide.querySelector('img').style.transform = 'scale(0.9) translateX(10px)';
-      }
-    });
-  });
+//   swiper.on('slideChange', () => {
+//     document.querySelectorAll('.swiper-slide').forEach((slide, index) => {
+//       if (index === swiper.activeIndex) {
+//         slide.querySelector('img').style.transform = 'scale(1.2) translateX(0)';
+//       } else {
+//         slide.querySelector('img').style.transform = 'scale(0.9) translateX(10px)';
+//       }
+//     });
+//   });
   
-});
+// });
 
 
 
