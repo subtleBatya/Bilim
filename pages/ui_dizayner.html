@@ -88,12 +88,26 @@
   </div>
 
 
-  </div>
+  
 
   <!-- VIDEO PLAYER -->
 
   <div class="" style="margin-top: 4rem;">
+
     <div class="video-container">
+      <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" download="none" data-setup='{}'>
+        <source src="your-video.mp4" type="video/mp4" />
+        <p class="vjs-no-js">
+          To view this video please enable JavaScript, and consider upgrading to a
+          web browser that
+          <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>.
+        </p>
+      </video>
+    </div>
+    
+
+
+    <!-- <div class="video-container">
       <video id="my-video" class="video-js vjs-default-skin " controls preload="auto" download="none" data-setup='{}'>
         <source src="" type="video/mp4" />
         <p class="vjs-no-js">
@@ -104,14 +118,14 @@
           </a>.
         </p>
       </video>
-    </div>
+    </div> -->
 
 
   </div>
-  <div class="">
-    <div class="d-flex" style="width: 90vw;">
+  <div class=" mx-auto mt-3" style="width: 90vw;">
+    <div class="d-flex">
       <div id="video-actions" class="d-flex justify-content-center align-items-center">
-        <button id="like-btn" class="btn  ">
+        <button id="like-btn" class="btn btn-warning  ">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
             class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
             <path
@@ -127,7 +141,7 @@
           Dislike <span id="dislike-count">0</span>
         </button>
       </div>
-      <div id="view-counter" class=" mt-2">
+      <div id="view-counter" class=" mt-2 ms-2">
         Views: <span id="view-count">0</span>
       </div>
 
