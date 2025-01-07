@@ -1,6 +1,15 @@
-let editBtn = document.getElementById("cnt_edit_btn");
-let trashIcon = document.getElementById("trash_icon");
+const editBtn = document.getElementById("cnt_edit_btn");
+const trashIcons = document.querySelectorAll("#trash_icon");
+
 
 editBtn.addEventListener("click", () => {
-    trashIcon.classList.add('d-none');
+    const isEditing = editBtn.textContent === "Edit";
+
+    editBtn.textContent = isEditing ? "Unedit" : "Edit";
+
+    trashIcons.forEach((icon) => {
+        icon.style.display = isEditing ? "block" : "none";
+    })
+
+
 })
