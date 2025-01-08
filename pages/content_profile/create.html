@@ -157,21 +157,47 @@
     <div class="d-block mx-auto" style="width: 90vw;">
         
         <div class="d-flex align-items-center">
-            <div class="position-relative" style="width: 10vw; height: 10vw;">
-                <label class="upload-box">
+            <div class="position-relative" style="width: 15vw; height: 10vw;">
+                <!-- <label class="upload-box" >
                     <span class="upload-icon">+</span>
                     <span>Wideony yerlesdir</span>
-                    <input type="file" class="upload-input">
-                </label>
-            </div>
-            <div class=" ms-5  fs-5 fw-bold">
-                <div class="mb-3">
-                    <label for="">Wideonyn Ady:</label>
-                    <input type="text" placeholder="Su yere giriz">
+                    <input type="file" class="upload-input" id="fileInput">
+                </label> -->
+            
+                
+                <div class="">
+                  <div class="mb-3">
+                    <label for="fileUpload" class="form-label text-dark fw-bold">Upload File</label>
+                    <div class="border p-4 text-center bg-white" style="border: 2px dashed #ccc;">
+                      <p class="mb-3 fw-bold">Drag & Drop your files here or</p>
+                      <button 
+                        class="btn fw-bold border border-secondary " style="color:#000;" 
+                        onclick="document.getElementById('fileUpload').click()">Click to Add Here</button>
+                      <input 
+                        type="file" 
+                        id="fileUpload" 
+                        class="form-control d-none" 
+                        multiple 
+                        onchange="handleFileUpload(this)"
+                        accept="video/mp4, video/mov, video/wmv, video/avi, video/mkv"
+                        required>
+                    </div>
+                  </div>
+              
+                  <!-- Container for File Info and Progress Bars -->
+                  <div id="fileInfoContainer" class="mt-3" style="overflow: auto; height: 40vh"></div>
                 </div>
-                <div>
-                    <label for="">Wideonyn Kategoriyasy:</label>
-                    <input type="text" placeholder="Su yere giriz">
+            </div>
+
+            
+            <div class=" ms-5  fs-5 fw-bold">
+                <div class="mb-3 row">
+                    <label class="col" for="">Wideonyn Ady:</label>
+                    <input class="col" type="text" placeholder="Su yere giriz">
+                </div>
+                <div class=" row">
+                    <label class="col" for="">Wideonyn Kategoriyasy:</label>
+                    <input class="col" type="text" placeholder="Su yere giriz">
                 </div>
                 
             </div>
@@ -217,6 +243,7 @@
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
     crossorigin="anonymous"></script>
     <script src="https://vjs.zencdn.net/8.5.2/video.min.js"></script>
+    <script src="../../scripts/content.js"></script>
     <script src="../../scripts/script.js"></script>
     <script src="../scripts/video_player.js"></script>
 </body>
