@@ -80,5 +80,33 @@ editBtn.addEventListener("click", () => {
 
 
 
+    // TO CHECK THE DURATION OF THE VIDEO BEING UPLOADED
+
+    function handleFileUpload(input) {
+        const files = input.files;
+        const maxDuration = 20 * 60; // 20 minutes in seconds
+      
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+      
+          const video = document.createElement('video');
+          video.preload = 'metadata';
+      
+          video.onloadedmetadata = function () {
+            window.URL.revokeObjectURL(video.src); // Clean up the object URL
+      
+            if (video.duration > maxDuration) {
+              alert(`The video ${file.name} exceeds the maximum allowed duration of 20 minutes.`);
+              input.value = ""; // Clear the input
+            } else {
+              alert(`The video ${file.name} is valid and has a duration of ${Math.floor(video.duration / 60)} minutes.`);
+            }
+          };
+      
+          video.src = URL.createObjectURL(file); // Load the video to check its duration
+        }
+      }
+      
+
 
     
