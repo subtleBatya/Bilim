@@ -159,7 +159,7 @@ body {
 }
 
 .dropdown-menu .dropdown-item:hover {
-    background-color: #FFA000;
+    background-color: #8F92DD;
     color: white;
     transform: scale(1.05);
 }
