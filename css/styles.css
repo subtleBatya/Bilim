@@ -1,17 +1,18 @@
 /* styles.css */
 body {
-    font-family: 'Kay Pho Du' !important;
+    
+    overflow-x: hidden;
 }
 
 
 /* Bu font register bilen login pagelar ucin, sebabi uytgeyan ekeni */
-.font-outfit {
-  font-family: 'Outfit' !important;
+/* .font-outfit {
+    font-family: 'Outfit' !important;
 }
 
 .font-inter {
     font-family: 'Inter' !important;
-  }
+} */
 
 /* .fade-out {
     animation: fadeOut 0.5s forwards;
@@ -40,7 +41,7 @@ body {
         opacity: 1;
     }
 } */
- /*For header*/
+/*For header*/
 .hover-effect:hover {
     transform: scale(1.1);
     transition: transform 0.4s ease;
@@ -62,6 +63,11 @@ body {
 /*for index, su asakdakylar hemmesi alymlaryn animasiyasyna degisli index.html*/
 .hover-container {
     width: 22vw;
+    overflow: hidden;
+}
+
+.shorts-container {
+    width: 8vw;
     overflow: hidden;
 }
 
@@ -121,7 +127,7 @@ body {
 
 }
 
-.card-book:hover{
+.card-book:hover {
     transform: scale(1.1);
 }
 
@@ -143,7 +149,7 @@ body {
 }
 
 .downloader:hover {
-    background-color:  #FFA000;
+    background-color: #FFA000;
     color: white;
 }
 
@@ -153,13 +159,15 @@ body {
 }
 
 .dropdown-menu .dropdown-item:hover {
-    background-color: #FFA000;
+    background-color: #8F92DD;
     color: white;
     transform: scale(1.05);
 }
+
 .form-control {
     box-shadow: none !important;
 }
+
 .expand-input {
     width: 250px;
     transition: width 0.3s ease;
@@ -171,16 +179,31 @@ body {
 
 /* for Video player */
 
+/* Container Styling */
 .video-container {
+    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-  }
-  .video-js {
-    width: 90vw;
-    height: 60vh;
+    width: 90%;
+    margin: 0 auto; 
+    aspect-ratio: 16 / 9; 
+    overflow: hidden; 
   }
   
+  /* Video Styling */
+  .video-js {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    background-color: black; 
+  }
+  
+.shorts-js {
+    width: 25vw;
+    height: 80vh;
+}
+
 textarea {
     resize: none;
 }
@@ -190,9 +213,11 @@ textarea {
 .border-gray {
     border: #ACACAC solid 1px;
 }
+
 .bg-gray {
     background: #ACACAC;
 }
+
 .text-small {
     text-decoration-color: #ACACAC;
     color: #ACACAC;
@@ -200,6 +225,127 @@ textarea {
 
 /* Bu asakdakyny bolsa bilemok */
 
-#languageImage:hover{
+#languageImage:hover {
     cursor: pointer;
 }
+
+/*admin for table*/
+ table {
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
+            border-collapse: collapse; /* Чтобы границы ячеек не удваивались */
+        }
+
+        /* Границы всех ячеек */
+        th, td {
+            border: 1px solid black;
+        }
+
+        /* Стили для контейнера изображения */
+        .image-container {
+            overflow: hidden;
+            width: 100px;
+            height: 100px;
+            cursor: pointer; /* Курсор указывает, что можно кликнуть */
+            border: 1px solid black; /* Граница для контейнера изображения */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Изображение будет обрезано, но сохраняет пропорции */
+            border-radius: 50%; /* Картинка круглая */
+            transition: transform 0.3s ease;
+        }
+
+        /* Стили для увеличенной картинки */
+        .large-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;  /* Устанавливаем ширину картинки на 100% от ширины экрана */
+            height: 100vh; /* Устанавливаем высоту картинки на 100% от высоты экрана */
+            z-index: 9999; /* Картинка будет поверх всего остального */
+            background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: none; /* Скрыто по умолчанию */
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .large-image img {
+            width: 45%;  /* Ограничиваем максимальную ширину изображения */
+            height: 90%; /* Ограничиваем максимальную высоту изображения */
+            object-fit: cover; /* Изображение будет обрезано, но сохраняет пропорции */
+            border-radius: 50%; /* Картинка круглой формы */
+        }
+
+        /* Стили для иконки корзины */
+        .cart-icon {
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            color: red;
+        }
+
+        /* Custom Styles */
+        .logo {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .navbar .nav-link {
+            color: #fff !important;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-link:hover {
+            color: #ffc107 !important;
+        }
+        .hero{
+            height: 100vh;
+            background: linear-gradient(135deg, #373985, #8f95dd);
+            position: relative;
+        }
+        .username{
+            color: #fff;
+        }
+        .indexImage {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        .wave {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave svg {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }

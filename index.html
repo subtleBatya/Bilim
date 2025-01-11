@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kay+Pho+Du:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link rel="stylesheet" href="./css/aos.css">
 </head>
 
 <body>
@@ -82,9 +82,9 @@
   </div>
 
   <!-- POPULAR COURSES -->
-  <div class="">
+  <div class="" >
     <div class="h4 text-center mb-3" style="font-size: 5vw;">Popular Courses</div>
-    <div class="popular_images mx-auto" style="width: 90vw;">
+    <div class="popular_images mx-auto" data-aos="fade-right" data-aos-duration="2000" style="width: 90vw;">
       <div class=" row mx-auto mb-3">
         <a class="col-3 hover-container" href="">
           <div class=" pb-4">
@@ -169,7 +169,7 @@
   <!-- SONKY GORULENLER -->
   <div class="mt-4">
     <div class=" text-center mb-4 h4" style="font-size: 5vw;">Sonky Gorulenler</div>
-    <div class=" popular_images mx-auto" style="width: 90%;">
+    <div class=" popular_images mx-auto" style="width: 90%;" data-aos="fade-left" data-aos-duration="2000">
       <div class=" row mx-auto mb-3 text-center">
         <div class=" hover-container col-3 pb-4">
           <div class="image-wrapper">
@@ -202,7 +202,7 @@
   <!-- PLATFORMA BARADA -->
   <div class="" style="width: 95vw;">
     <!-- 1NJI SETIRI -->
-    <div class="row d-flex text-center align-items-center">
+    <div class="row d-flex text-center align-items-center" data-aos="fade-right" data-aos-duration="2000">
 
 
       <div class="platform_img1 col">
@@ -217,7 +217,7 @@
       </div>
     </div>
     <!-- 2NJI SETIRI -->
-    <div class="row d-flex text-center align-items-center">
+    <div class="row d-flex text-center align-items-center" data-aos="fade-left" data-aos-duration="2000">
 
 
 
@@ -232,7 +232,7 @@
     </div>
   </div>
   <!-- EXAMS -->
-  <div class="mx-auto " style="width: 95vw;">
+  <div class="mx-auto " style="width: 95vw;" data-aos="fade-up" data-aos-duration="2000" >
     <div class="row  rounded-3 py-5" style=" background: #E4EDFB;">
       <div class="row mx-auto " style="width: 80vw;">
         <div class="col-7">
@@ -249,7 +249,7 @@
   <!-- EINSTEIN -->
 
   <div class="einstein_animes">
-    <div class="einstein_anime row mt-5 mb-5  align-items-center mx-auto" style="width: 75vw;">
+    <div class="einstein_anime row mt-5 mb-5  align-items-center mx-auto" style="width: 75vw;" data-aos="fade-down" data-aos-duration="2000">
       <div class="col-7">
         <img class="" id="" style=" border-radius: 50%; height: 35vh; max-width: 15vw"
           src="./images/Einstein.webp" alt="">
@@ -282,8 +282,8 @@
   </div>
   
 
-  <!-- EXAMS -->
-  <div class="mx-auto " style="width: 95vw;">
+  <!-- YURISDIKSIYA -->
+  <div class="mx-auto" style="width: 95vw;" >
     <div class="row  rounded-3 py-5" style=" background: #E4EDFB;">
       <div class="row mx-auto align-items-center " style="width: 80vw;">
         <div class="col-8">
@@ -302,6 +302,8 @@
 
 
 
+
+  
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     crossorigin="anonymous"></script>
@@ -310,6 +312,9 @@
     crossorigin="anonymous"></script>
   <script src="./scripts/script.js"></script>
   <script src="./scripts/science.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="./scripts/aos.js"></script>
+  <script src="./scripts/aos_configs.js"></script>
 </body>
 
 </html>

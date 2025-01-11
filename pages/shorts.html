@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BILIM</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kay+Pho+Du:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://vjs.zencdn.net/8.5.2/video-js.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+
+    .video-container {
+      width: 25vw;
+      height: 50vh;
+      position: relative;
+      background: #000;
+    }
+    /* .video-js {
+      height: 75%;
+      width: 50%;
+    }
+    .video-controls {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    } */
+    .control-btn {
+      margin: 5px 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .control-btn:active {
+      transform: scale(0.95);
+    }
+    .like-counter {
+      font-size: 14px;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  
+  
+
+
+  
+<!-- Navbar -->
+<div class="d-flex">
+    <div class="col-2" style=" height: 100vh; background-color: gray;">
+        <div class="mx-auto text-start col-10 fw-medium">
+            <div class="mb-4 pt-2 text-center text-white">Bilim Shorts</div>
+            <div class=" text-white ">
+                <div class=" bg-gray ps-3 rounded-3 py-2"> Bas Sahypa</div>
+                <div class="pb-2 ps-3"> Kitaphana</div>
+                <div class="pb-2 ps-3"> Kurslar</div>
+                <div class="ps-3"> Profil</div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- SHORTS INFO PART STARTS HERE -->
+
+    <div class="mx-auto  my-auto ms-5 col-3" style=" height: 80vh;">
+        <div class="d-flex">
+            <div class=" p-3 py-2 px-4 fs-1 fw-semibold" style="background-color: pink; border-radius: 60%;">U</div>
+            <div class="ms-4">
+                <div class="fs-3 fw-semibold">Gayrat Serdarow</div>
+                <div class="small fw-semibold"><span class="pe-2">@User-Gayrat</span>repost 25K<span class="pe-2">video 146</span><span></span></div>
+            </div>
+        </div>
+        <div class=" col-11 text-center  ">
+            <div class=" " style="">
+                <div>UI barada oran gyzykly gorun!</div>
+                <div class=" text-center">#shorts</div>
+            </div>
+            
+        </div>
+        <div class="text-small">Short videos from this channel</div>
+        <!-- <div class="row mx-auto text-center justify-content-around ">
+            <div class="col-4 bg-gray py-4" >
+                <div class="image-wrapper">
+                    <img class="" src="../images/man.webp" alt="">
+                </div>  
+            </div>
+            <div class="col-4 bg-gray py-4" >
+                <div class="image-wrapper">
+                    <img class="img-fluid" src="../images/man.webp" alt="">
+                </div>  
+            </div>
+            <div class="col-4 bg-gray py-4" >
+                <div class="image-wrapper">
+                    <img class="img-fluid" src="../images/man.webp" alt="">
+                </div>  
+            </div>
+            <div class="col-4 bg-gray py-4" >
+                <div class="image-wrapper">
+                    <img class="img-fluid" src="../images/man.webp" alt="">
+                </div>  
+            </div>
+            <div class="col-4 bg-gray py-4" ><img class="img-fluid" src="../images/man.webp" alt=""></div>
+        </div> -->
+
+        <div class=" row mx-auto mb-3" >
+            <a class="col-4 g-1" href="">
+              <div class=" ">
+                <div class="image-wrapper py-3 bg-gray">
+                  <img class="img-fluid " src="../images/man.webp" alt="">
+                  
+                </div>
+              </div>
+            </a>
+            <a class="col-4 g-1 " href="">
+              <div class=" ">
+                <div class="image-wrapper py-3 bg-gray">
+                  <img class="img-fluid " src="../images/man.webp" alt="">
+                </div>
+              </div>
+            </a>
+            <a class="col-4 g-1 " href="">
+              <div class=" ">
+                <div class="image-wrapper py-3 bg-gray">
+                  <img class="img-fluid " src="../images/man.webp" alt="">
+                  
+                </div>
+              </div>
+            </a>
+            <a class="col-4 g-1 " href="">
+              <div class=" ">
+                <div class="image-wrapper py-3 bg-gray">
+                  <img class="img-fluid " src="../images/man.webp" alt="">
+                  
+                </div>
+              </div>
+            </a>
+            <a class="col-4 g-1 " href="">
+              <div class=" ">
+                <div class="image-wrapper py-3 bg-gray">
+                  <img class="img-fluid " src="../images/man.webp" alt="">
+                  
+                </div>
+              </div>
+            </a>
+            <a class="col-4 g-1 " href="">
+              <div class=" ">
+                <div class="image-wrapper py-3 bg-gray">
+                  <img class="img-fluid " src="../images/man.webp" alt="">
+                  
+                </div>
+              </div>
+            </a>
+            <a class="col-4 g-1 " href="">
+              <div class=" ">
+                <div class="image-wrapper py-3 bg-gray">
+                  <img class="img-fluid " src="../images/man.webp" alt="">
+                  
+                </div>
+              </div>
+            </a>
+            <a class="col-4 g-1 " href="">
+                <div class=" ">
+                  <div class="image-wrapper py-3 bg-gray">
+                    <img class="img-fluid " src="../images/man.webp" alt="">
+                    
+                  </div>
+                </div>
+              </a>
+              <a class="col-4 g-1 " href="">
+                <div class=" ">
+                  <div class="image-wrapper py-3 bg-gray">
+                    <img class="img-fluid " src="../images/man.webp" alt="">
+                    
+                  </div>
+                </div>
+              </a>                   
+        </div>
+        
+        
+    </div>
+
+    <!-- SHORTS VIDEO SECTION STARTS HERE -->
+
+    <div class="col-5 text-center m-auto rounded-2" style="height: 80vh;">
+      <div class="video-container rounded-2" style="height: 100%;">
+          <video
+              id="shorts-player"
+              class="video-js vjs-default-skin w-100 h-100 rounded-3"
+              controls
+              autoplay
+              loop
+              muted
+              preload="auto"
+              poster="your-thumbnail.jpg"
+          >
+              <source src="your-video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+          </video>
+  
+          <!-- Video Controls -->
+          <div class="video-controls d-flex flex-column align-items-end position-absolute" style="bottom: 20%; right: 5%; z-index: 10;">
+              <button id="like-btn" class="btn btn-light mb-2">👍</button>
+              <div id="like-counter" class="text-light mb-2">245K</div>
+              <button id="dislike-btn" class="btn btn-light mb-2">👎</button>
+              <button id="share-btn" class="btn btn-light">↗️</button>
+          </div>
+      </div>
+  </div>
+    
+    <!-- <div class="shorts-container col-3">
+        <div class="video-container col-7">
+            <video
+                id="shorts-player"
+                class="video-js vjs-default-skin"
+                controls
+                autoplay
+                loop
+                muted
+                preload="auto"
+                poster="your-thumbnail.jpg"
+            >
+                <source src="your-video.mp4"
+                type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+
+            Video Controls 
+            <div class="video-controls">
+                <button id="like-btn" class="control-btn">👍</button>
+                <div id="like-counter" class="like-counter">245K</div>
+                <button id="dislike-btn" class="control-btn">👎</button>
+                <button id="share-btn" class="control-btn">↗️</button>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <div class="mx-auto  my-auto ms-5" style="width: 25vw; height: 80vh;">
+        
+
+        <div class="video-container">
+            <video
+              id="my-video"
+              class="shorts-js vjs-default-skin "
+              controls
+              preload="auto"
+              download="none"
+              data-setup='{}'
+            >
+              <source src="../images/Justin Timberlake - Can't Stop The Feeling (Lyrics)(640x360).mp4" type="video/mp4" />
+              <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a
+                web browser that
+                <a href="https://videojs.com/html5-video-support/" target="_blank">
+                  supports HTML5 video
+                </a>.
+              </p>
+            </video>
+          </div>
+        
+
+        
+        
+        
+    </div> -->
+
+</div>
+
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+    <script src="https://vjs.zencdn.net/8.5.2/video.min.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/video_player.js"></script>
+</body>
+
+</html>

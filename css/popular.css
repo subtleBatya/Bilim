@@ -1,0 +1,173 @@
+.swiper-container {
+    width: 80%; /* Adjust width as needed */
+    height: 380px; /* Adjust height as needed */
+    margin: auto;
+  }
+  
+
+
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, z-index 0.3s ease;
+  }
+  
+  .swiper-slide img {
+    width: 100%; /* Make images responsive */
+    border-radius: 15px; /* Optional for rounded corners */
+    transition: transform 0.3s ease;
+  }
+  
+  .swiper-slide-active img {
+    transform: scale(1.2); /* Scale up the active image */
+    z-index: 10; /* Bring the active slide to the foreground */
+  }
+  
+  .swiper-slide-next img,
+  .swiper-slide-prev img {
+    transform:  scale(0.9); /* Move inward and scale down side images */
+    z-index: 5; /* Lower z-index for side images */
+  }
+  
+
+
+/* .swiper-container {
+    width: 80%; 
+    height: 50%; 
+    margin: auto;
+  }
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, z-index 0.3s ease;
+  z-index: 1;
+} */
+
+
+/* .swiper-slide img {
+    width: 80%; 
+    height: auto;
+    object-fit: cover;
+} */
+/* 
+.swiper-slide-active {
+    transform: scale(1.2); 
+    z-index: 10; 
+  }
+  
+  .swiper-slide-next,
+  .swiper-slide-prev {
+    transform: scale(0.9);
+    z-index: 5; 
+  }
+ */
+
+/* Active slide (middle image) */
+/* .swiper-slide-active {
+    transform: scale(1.2); 
+    z-index: 10; 
+  }
+  
+  
+  .swiper-slide-next,
+  .swiper-slide-prev {
+    transform: scale(0.9); 
+    z-index: 5; 
+  }
+  
+
+  .swiper-slide-next ~ .swiper-slide,
+  .swiper-slide-prev ~ .swiper-slide {
+    z-index: 1; 
+    opacity: 0.5; 
+  } */
+
+
+/* .swiper-slide-active img {
+  transform: scale(1.2);
+  z-index: 10;
+}
+
+.swiper-slide:not(.swiper-slide-active) img {
+  transform: scale(0.2);
+  opacity: 0.9;
+}
+
+
+.swiper-slide-next,
+.swiper-slide-prev {
+  transform: scale(0.9) translateX(-20);
+  z-index: 5;
+ 
+}
+
+
+.swiper-slide-next,
+.swiper-slide-prev {
+  transform: scale(0.8);
+  z-index: 1;
+  opacity: 0.5;
+ 
+} */
+
+
+
+
+
+
+/* .slider {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slider-image {
+    width: 20%;
+    transition: transform 0.5s, opacity 0.5s;
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+  
+  .slider-image.active {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  
+  .slider-image.left,
+  .slider-image.right {
+    transform: translateX(-10%) scale(1);
+    opacity: 0.8;
+  }
+  
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .slider-btn.prev {
+    left: 10px;
+  }
+  
+  .slider-btn.next {
+    right: 10px;
+  }
+   */
