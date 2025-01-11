@@ -22,76 +22,139 @@
   <link rel="stylesheet" href="./css/aos.css">
 
 
+  <style>
+    /* Custom Styles */
+    .logo {
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .brand-name {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .navbar .nav-link {
+        color: #fff !important;
+        transition: color 0.3s ease;
+    }
+
+    .navbar .nav-link:hover {
+        color: #ffc107 !important;
+    }
+    .hero{
+        height: 100vh;
+        background: linear-gradient(135deg, #373985, #8f95dd);
+        position: relative;
+    }
+    .username{
+        color: #fff;
+    }
+    .indexImage {
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+    .wave {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        line-height: 0;
+    }
+
+    .wave svg {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+</style>
 
 </head>
 
 <body>
   <!-- Навигационное меню -->
-  <header class="navbar navbar-expand-lg  bg-transparent fixed-top border-bottom border-dark" id="navbar"
-    style="transition: background-color 1s ease-in-out; ">
-    <div class="container-fluid">
-      <a class="navbar-brand text-dark fw-bold" href="#">BILIM UNIVERSITY</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav fs-5">
-          <li class="nav-item me-4 ">
-            <a class="nav-link text-dark hover-effect border-rounded rounded-3" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item me-4">
-            <a class="nav-link text-dark hover-effect border-rounded rounded-3" href="../pages/library.html">Library</a>
-          </li>
-          <li class="nav-item dropdown me-4 ">
-            <a class="nav-link  text-dark" href="#" id="coursesDropdown">Courses<span class="arrow ">▼</span></a>
-            <ul class="dropdown-menu rounded-4 dropdown-menu1" id="coursesMenu" style="border: 1px solid #FFA000;">
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">HTML5</a></li>
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">CSS3</a></li>
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">JavaScript</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown me-4">
-            <a class="nav-link  text-dark" href="#" id="profileDropdown">
-              Profile <span class="arrow">▼</span>
-            </a>
-            <ul class="dropdown-menu rounded-4 dropdown-menu1" id="profileMenu" style="border: 1px solid #FFA000;">
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">My list</a></li>
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">Payment</a></li>
-              <li><a class="dropdown-item text-dark hover-effect border-rounded rounded-2" href="#">Suggestions and
-                  complaints</a></li>
-            </ul>
-          </li>
-          <li class="nav-item me-4 p-2">
-            <div class="language-switcher"
-              style="display: flex; align-items: center; justify-content: center; width: 80px;">
-              <img src="./images/russian-flag.png" alt="russian" style="width: 40px; height: 20px;" id="languageImage"
-                onclick="changeLanguage()">
-              <span id="languageName" class="flag ms-2">🇷🇺</span>
+  <div class="hero">
+    <nav class="navbar navbar-expand-lg bg-transparent">
+        <div class="container-fluid">
+            <!-- Left Section: Logo and Brand Name -->
+            <div class="navbar-brand d-flex align-items-center" data-aos="slide-right" data-aos-duration="1500">
+                <img src="images/english-class.webp" alt="Logo" class="logo">
+                <span class="brand-name">BILIM</span>
             </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </header>
 
-  <!-- Главная часть -->
-  <div class="d-flex align-items-center overflow-hidden " style="height: 75vh; position: relative;">
-    <div
-      style="transform: rotate(-8deg); height: 800px; width: 100%; background-color: #B2EBF2; bottom: 15%; position: absolute; transform-origin: center center; border-bottom-left-radius: 10%;">
+            <!-- Hamburger Button for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Center Section: Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mx-auto" data-aos="slide-down" data-aos-duration="1500">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Library</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Courses
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
+                            <li><a class="dropdown-item hover-effect" href="#">Gumanitar kurslar</a></li>
+                            <li><a class="dropdown-item hover-effect" href="#">Tehniki kurslar</a></li>
+                            <li><a class="dropdown-item hover-effect" href="#">Hakyky kurslar</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Profile
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
+                            <li><a class="dropdown-item hover-effect" href="#">My Profil</a></li>
+                            <li><a class="dropdown-item hover-effect" href="#">Payment</a></li>
+                            <li><a class="dropdown-item hover-effect" href="#">Teklipler we arzalar</a></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+
+                <!-- Right Section: Avatar and Username -->
+                <div class="d-flex align-items-center" data-aos="slide-left" data-aos-duration="1500">
+                    <span class="username me-2">Bayramow Ramazan</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="row m-5" data-aos="slide-up" data-aos-duration="2500">
+        <div class="col-7">
+            <h1 class="display-3 fw-bold" style="color: #fff;">Bilim University Platformasy</h1>
+            <div class="row">
+                <h5 class="display-6" style="color: #fff">Hemme ucin elyeterli</h5>
+            </div>
+        </div>
+        <div class="col-3">
+            <img src="./images/graduation-hat.png" alt="" class="indexImage">
+        </div>
     </div>
-    <div
-      class="container d-flex flex-column flex-md-row justify-content- justify-content-md-around align-items-center position-relative mb-5"
-      style="z-index: 1; height: 100%;">
-      <div class="text-center mt-5 mb-md-0">
-        <h1 class="fw-bold fs-1">BILIM UNIVERSITY</h1>
-        <h3 class="mt-4 fs-3">Discover Knowledge and Opportunities</h3>
-      </div>
-      <div>
-        <img src="./images/graduation-hat.png" alt="University Logo" class="img-fluid" style="width: 50vh;">
-      </div>
+    <div class="wave">
+        <svg viewBox="1 0 1200 320" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#fff" fill-opacity="1" d="M0,160L40,144C80,128,160,96,240,96C320,96,400,128,480,160C560,192,640,224,720,224C800,224,880,192,960,181.3C1040,171,1120,181,1200,192C1280,203,1360,213,1400,218.7L1440,224L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>
+        </svg>
     </div>
-  </div>
+</div>
 
   <!-- POPULAR COURSES -->
   <div class="">
