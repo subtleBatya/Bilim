@@ -1,7 +1,8 @@
 /* styles.css */
 body {
-    
+    scroll-behavior: smooth;
     overflow-x: hidden;
+    color:white;
 }
 
 /*For header*/
@@ -319,3 +320,5 @@ textarea {
             background-color:#141414;
             border-radius:20px;
         }
+
+

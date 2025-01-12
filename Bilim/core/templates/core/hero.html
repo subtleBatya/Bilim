@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <!-- Left Section: Logo and Brand Name -->
                 <div class="navbar-brand d-flex align-items-center" data-aos="slide-right" data-aos-duration="1500">
-                    <img src="{% static 'core/images/english-class.webp'%}" alt="Logo" class="logo">
+                    <img src="{% static 'core/images/course.webp'%}" alt="Logo" class="logo">
                     <span class="brand-name">BILIM</span>
                 </div>
     
@@ -27,9 +27,9 @@
                                 Courses
                             </a>
                             <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
-                                <li><a class="dropdown-item hover-effect" href="#">Gumanitar kurslar</a></li>
-                                <li><a class="dropdown-item hover-effect" href="#">Tehniki kurslar</a></li>
-                                <li><a class="dropdown-item hover-effect" href="#">Hakyky kurslar</a></li>
+                                <li><a class="dropdown-item hover-effect" href="{% url 'videos:courses'%}">Gumanitar kurslar</a></li>
+                                <li><a class="dropdown-item hover-effect" href="{% url 'videos:courses'%}">Tehniki kurslar</a></li>
+                                <li><a class="dropdown-item hover-effect" href="{% url 'videos:courses'%}">Hakyky kurslar</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -38,7 +38,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
                                 <li><a class="dropdown-item hover-effect" href="#">My Profil</a></li>
-                                <li><a class="dropdown-item hover-effect" href="#">Payment</a></li>
+                                <li><a class="dropdown-item hover-effect" href="{% url 'auth:payment'%}">Payment</a></li>
                                 <li><a class="dropdown-item hover-effect" href="#">Teklipler we arzalar</a></li>
                             </ul>
                         </li>

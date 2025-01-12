@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Library</title>
+  <title>Bilim Library</title>
  {% include "core/static_files/links.html"%}
 </head>
 <body>
@@ -46,10 +46,10 @@
 
     <!--Books-->
   <div class="container py-4">
-  <h1 class="text-center mb-4">Most Popular Books</h1>
+  <h1 class="text-center mb-4" style='color:black;'>Most Popular Books</h1>
   <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-5 ">
     <div class="col" data-aos="zoom-in" data-aos-duration='2000' >
-      <a href="../pages/book_details.html" class="book-details" style="text-decoration: none; color: black;">
+      <a href="{% url "library:book_details"%}" class="book-details" style="text-decoration: none; color: black;">
         <div class="card-book">
           <img src="{% static 'core/images/book-library.png'%}" class="card-img-top" alt="book">
           <div class="card-body d-flex flex-column justify-content-between">
@@ -64,7 +64,7 @@
       </a>     
     </div>
     <div class="col" data-aos="zoom-in" data-aos-duration='2000'>
-      <a href="#" class="book-details" style="text-decoration: none; color: black;">
+      <a href="{% url "library:book_details"%}" class="book-details" style="text-decoration: none; color: black;">
         <div class="card-book">
           <img src="{% static 'core/images/book-library.png'%}" class="card-img-top" alt="book">
           <div class="card-body d-flex flex-column justify-content-between">
@@ -79,7 +79,7 @@
       </a>     
     </div>
     <div class="col" data-aos="zoom-in" data-aos-duration='2000'>
-      <a href="#" class="book-details" style="text-decoration: none; color: black;">
+      <a href="{% url "library:book_details"%}" class="book-details" style="text-decoration: none; color: black;">
         <div class="card-book">
           <img src="{% static 'core/images/book-library.png'%}" class="card-img-top" alt="book">
           <div class="card-body d-flex flex-column justify-content-between">
@@ -94,7 +94,7 @@
       </a>     
     </div>
     <div class="col" data-aos="zoom-in" data-aos-duration='2000'>
-      <a href="#" class="book-details" style="text-decoration: none; color: black;">
+      <a href="{% url "library:book_details"%}" class="book-details" style="text-decoration: none; color: black;">
         <div class="card-book">
           <img src="{% static 'core/images/book-library.png'%}" class="card-img-top" alt="book">
           <div class="card-body d-flex flex-column justify-content-between">
