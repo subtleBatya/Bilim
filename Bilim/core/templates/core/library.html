@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library</title>
+ {% include "core/static_files/links.html"%}
+</head>
+<body>
+ {% include "core/hero.html" with content="Huge Library of Bilim" image_path="core/images/library.png"%}
+        <!--Poisk-->
+    <div class="container-fluid">
+    <div class="d-flex flex-column flex-lg-row justify-content-end align-items-start align-items-lg-center py-2 px-3 shadow-sm">
+        <!-- Поле поиска -->
+        <div class="position-relative me-0 mb-3 mb-lg-0 me-lg-3">
+            <input type="text" class="form-control pe-5 rounded-4 expand-input fs-4" placeholder="Search..." style="border: 1px solid #FFA000;">
+            <span class="position-absolute top-50 translate-middle-y end-0 me-2" style="color: #FFA000;"></span>
+        </div>
+        <!-- Dropdown Category -->
+        <div class="dropdown me-3 mb-3 mb-lg-0">
+            <button class="btn btn-secondary border-0 dropdown-toggle rounded-4 fs-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #FFA000; color: white; width: 150px;">
+                Category
+            </button>
+            <ul class="dropdown-menu rounded-4" aria-labelledby="dropdownMenuButton1" style="border: 1px solid #FFA000;">
+                <li><a class="dropdown-item rounded-2" href="#">A-z</a></li>
+                <li><a class="dropdown-item rounded-2" href="#">z-a</a></li>
+                <li><a class="dropdown-item rounded-2" href="#">Aktiw</a></li>
+                <li><a class="dropdown-item rounded-2" href="#">Aktiw dal</a></li>
+            </ul>
+        </div>
+        <!-- Dropdown Filter -->
+        <div class="dropdown ">
+            <button class="btn btn-secondary border-0 dropdown-toggle rounded-4 fs-4 " type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #FFA000; color: white; width: 100px;">
+                Filter
+            </button>
+            <ul class="dropdown-menu rounded-4" aria-labelledby="dropdownMenuButton2" style="border: 1px solid #FFA000;">
+                <li><a class="dropdown-item rounded-2" href="#">A-z</a></li>
+                <li><a class="dropdown-item rounded-2" href="#">z-a</a></li>
+                <li><a class="dropdown-item rounded-2" href="#">Aktiw</a></li>
+                <li><a class="dropdown-item rounded-2" href="#">Aktiw dal</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!--Books-->
+  <div class="container py-4">
+  <h1 class="text-center mb-4">Most Popular Books</h1>
+  <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-5 ">
+    <div class="col" data-aos="zoom-in" data-aos-duration='2000' >
+      <a href="../pages/book_details.html" class="book-details" style="text-decoration: none; color: black;">
+        <div class="card-book">
+          <img src="{% static 'core/images/book-library.png'%}" class="card-img-top" alt="book">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title text-center mt-3">Pride and Prejudice</h5>
+            <div class="d-flex align-items-center mt-2 ms-3">
+              <span class="star">★</span>
+              <span>5</span>
+            </div>
+            <a href="" class="btn downloader mt-2 mx-auto rounded-2">Download</a>
+          </div>
+        </div>
+      </a>     
+    </div>
+    <div class="col" data-aos="zoom-in" data-aos-duration='2000'>
+      <a href="#" class="book-details" style="text-decoration: none; color: black;">
+        <div class="card-book">
+          <img src="{% static 'core/images/book-library.png'%}" class="card-img-top" alt="book">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title text-center mt-3">Pride and Prejudice</h5>
+            <div class="d-flex align-items-center mt-2 ms-3">
+              <span class="star">★</span>
+              <span>5</span>
+            </div>
+            <a href="" class="btn downloader mt-2 mx-auto rounded-2">Download</a>
+          </div>
+        </div>
+      </a>     
+    </div>
+    <div class="col" data-aos="zoom-in" data-aos-duration='2000'>
+      <a href="#" class="book-details" style="text-decoration: none; color: black;">
+        <div class="card-book">
+          <img src="{% static 'core/images/book-library.png'%}" class="card-img-top" alt="book">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title text-center mt-3">Pride and Prejudice</h5>
+            <div class="d-flex align-items-center mt-2 ms-3">
+              <span class="star">★</span>
+              <span>5</span>
+            </div>
+            <a href="" class="btn downloader mt-2 mx-auto rounded-2">Download</a>
+          </div>
+        </div>
+      </a>     
+    </div>
+    <div class="col" data-aos="zoom-in" data-aos-duration='2000'>
+      <a href="#" class="book-details" style="text-decoration: none; color: black;">
+        <div class="card-book">
+          <img src="{% static 'core/images/book-library.png'%}" class="card-img-top" alt="book">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title text-center mt-3">Pride and Prejudice</h5>
+            <div class="d-flex align-items-center mt-2 ms-3">
+              <span class="star">★</span>
+              <span>5</span>
+            </div>
+            <a href="" class="btn downloader mt-2 mx-auto rounded-2">Download</a>
+          </div>
+        </div>
+      </a>     
+    </div>
+    
+  </div>
+
+
+ {% include "core/static_files/scripts.html"%}
+</body>
+</html>

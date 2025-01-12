@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BILIM</title>
+  <link rel="stylesheet" href="{% static 'core/css/login.css'%}">
+  {% include "core/static_files/links.html"%}
+</head>
+<body class="mx-auto text-center font-outfit">
+<!--  -->
+    <div class=" position-relative">
+      <div class="flag m-3"><img src="{% static 'core/images/turkmen-flag.png'%}" style="width: 40px; height: 20px;" alt=""></div>
+      <!-- IKI SANY "a" TAG d-none BERILEN -->
+      <div class="d-none">
+        <a href=""></a>
+        <a href=""></a>
+      </div>
+    </div>
+    <div class=" position-absolute d-flex mx-auto justify-content-center align-items-center" style="top: 15%; left: 15%">
+     
+        <div class="  text-center mx-auto border-2 py-4 px-4 rounded-3 justify-content-between bg-white d-flex" style="border:  1px solid rgb(128, 128, 128, 0.1); width: 70vw; z-index: 11;">
+          <div class="col-md-9 col-lg-5 col-12 col-sm-9 mx-auto">
+              <div class="logo pt-3"><img src="{% static 'core/images/english-class.webp'%}" style="width: 40px; height: 20px;" alt=""></div>
+              <div class="d-md-none h3">Bilim University</div>
+              <div class="fs-5 fw-medium text-center">Welcome Back! Login to your account</div>
+              
+            <form action="">
+                <div class="mb-3">
+                  <div class="mt-3 text-start ">
+                      <input class="w-100 p-3 small form-control" type="text" placeholder="Username, email & phone number" name="" id="username">
+                  </div>
+                  <div class="mt-3 text-start">
+                      <input class="w-100 p-3 small form-control" type="password" placeholder="Password" name="" id="password">
+                  </div>
+              </div>
+              <a href="">
+                <div class="  mb-5  text-center">
+                  <button id="loginButton" disabled class="p-2 rounded-5 border-0 text-white fs-5 fw-light w-100" style="background-color: gray; cursor: not-allowed;">Login</button>
+                </div>
+              </a>
+            </form>              
+              <div class="text-center small mb-2">
+                <p class="text text-center">Don't have an account? </p>
+              </div>
+              <a href="{% url 'auth:sign_up'%}">
+                <div class="  mb-5  text-center">
+                  <button class="sign_up rounded-5 border-0 text-white small p-2 w-100 fw-light" >Sign up</button>
+                </div>
+              </a>  
+          </div>  
+            
+          <div class="d-flex d-none d-lg-flex align-items-center">
+            <div class="d-block align-items-center">
+                <div class="d-flex  align-items-center">
+                    <div><img style="width: 7vw; " src="{% static 'core/images/logo_2.webp'%}" alt=""></div>
+                    <div><img style="width: 11vw; " src="{% static 'core/images/logo_3.webp'%}" alt=""></div>
+                    <div><img style="width: 9vw; " src="{% static 'core/images/logo_1.webp'%}" alt=""></div>
+                </div>
+                <div class="h2 fw-bold mt-3">Bilim University</div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <script>
+      const usernameField = document.getElementById("username");
+      const passwordField = document.getElementById("password");
+      const loginButton = document.getElementById("loginButton");
+      function validateForm() {
+        const username = usernameField.value.trim();
+        const password = passwordField.value;
+    
+      
+        if (username.length >= 4 && password.length >= 8) {
+          loginButton.disabled = false;
+          loginButton.style.backgroundColor = "#FFA000";
+          loginButton.style.cursor = "pointer";
+        } else {
+          loginButton.disabled = true;
+          loginButton.style.backgroundColor = "#C4C4C4";
+          loginButton.style.cursor = "not-allowed";
+        }
+      }  
+      usernameField.addEventListener("input", validateForm);
+      passwordField.addEventListener("input", validateForm);
+    </script>
+  
+{% include "core/static_files/scripts.html"%}
+</body>
+
+</html>
