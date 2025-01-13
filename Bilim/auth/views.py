@@ -11,3 +11,9 @@ def sign_up(request):
 
 def payment(request):
     return render(request, "core/payment.html")
+
+
+
+
+def teacher_profile(request):
+    return render(request, "core/teacher_profile.html")
