@@ -25,7 +25,8 @@ urlpatterns = [
     path("applications/", include("applications.urls")),
     path("auth/", include("auth.urls")),
     path("library/", include("library.urls")),
-    path("videos/", include("videos.urls"))
+    path("videos/", include("videos.urls")),
+    path("users/", include("users.urls"))
 ]
 
 

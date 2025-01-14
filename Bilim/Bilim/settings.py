@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'core',
     'auth.apps.AuthConfig',
     'library',
+    "users"
 
 ]
 
