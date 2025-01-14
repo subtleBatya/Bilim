@@ -370,3 +370,9 @@ textarea {
             color: #007bff;
             margin-bottom: 10px;
         }
+
+
+        .container-fluid{
+            position: relative;
+            z-index: 1000;
+        }
