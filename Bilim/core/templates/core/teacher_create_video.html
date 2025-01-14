@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BILIM</title>
+  {% include "core/static_files/links.html" %}
+  
+  <style>
+   
+        
+  </style>
+</head>
+
+<body>
+ {% include "core/hero.html" with content="Upload your videos" image_path="core/images/graduation-hat.png"%}
+  
+<!-- Textarea -->
+
+<div class="d-flex align-items-end mx-auto justify-content-between" style="width: 25vw;">
+    <div class="">
+        <img src="{% static 'core/images/Books.webp'%}" alt="" style="width: 10vw ;">
+    </div>
+    <div>
+        <img src="{% static 'core/images/Books.webp'%}" alt="" style="width: 10vw ;">
+    </div>
+</div>
+<div class=" text-center mx-auto" style="width: 90vw;">
+    <hr class="p-3">
+</div>
+
+<div class="mx-auto d-flex  align-items-start" >
+    <div class="d-block mx-auto" style="width: 90vw;">
+        
+        <div class="d-flex align-items-center">
+            <div class="position-relative" style="width: 15vw; height: 10vw;">
+                <!-- <label class="upload-box" >
+                    <span class="upload-icon">+</span>
+                    <span>Wideony yerlesdir</span>
+                    <input type="file" class="upload-input" id="fileInput">
+                </label> -->
+            
+                
+                <div class="">
+                  <div class="mb-3">
+                    <label for="fileUpload" class="form-label text-dark fw-bold">Upload File</label>
+                    <div class="border p-4 text-center bg-white" style="border: 2px dashed #ccc;">
+                      <p class="mb-3 fw-bold">Drag & Drop your files here or</p>
+                      <button 
+                        class="btn fw-bold border border-secondary " style="color:#000;" 
+                        onclick="document.getElementById('fileUpload').click()">Click to Add Here</button>
+                      <input 
+                        type="file" 
+                        id="fileUpload" 
+                        class="form-control d-none" 
+                        multiple 
+                        onchange="handleFileUpload(this)"
+                        accept="video/mp4, video/mov, video/wmv, video/avi, video/mkv"
+                        required>
+                    </div>
+                  </div>
+              
+                  <!-- Container for File Info and Progress Bars -->
+                  <div id="fileInfoContainer" class="mt-3" style="overflow: auto; height: 40vh"></div>
+                </div>
+            </div>
+
+            
+            <div class=" ms-5  fs-5 fw-bold">
+                <div class="mb-3 row">
+                    <label class="col" for="">Wideonyn Ady:</label>
+                    <input class="col" type="text" placeholder="Su yere giriz">
+                </div>
+                <div class=" row">
+                    <label class="col" for="">Wideonyn Kategoriyasy:</label>
+                    <input class="col" type="text" placeholder="Su yere giriz">
+                </div>
+                
+            </div>
+        </div>
+        <div class="text-end">
+            <div>
+                <button class=" bg-warning text-white px-4 py-1 rounded-3 fw-medium" style="border: none;">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Bootstrap JS and Popper.js -->
+{% include "core/static_files/scripts.html" %}
+</body>
+
+</html>
