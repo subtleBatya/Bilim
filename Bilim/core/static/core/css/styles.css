@@ -376,3 +376,15 @@ textarea {
             position: relative;
             z-index: 1000;
         }
+
+        /* POPULARA SLIDES INDEX PAGEDAKY */
+
+        .swiper-slide {
+            
+        }
+
+        .swiper-slide > img {
+            object-fit: cover;
+            width: 30vw;
+            height: 48vh;
+        }
