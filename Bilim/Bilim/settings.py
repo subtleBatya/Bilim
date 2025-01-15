@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     "users",
     "applications",
     "teachers",
-    "videos"
-
+    "videos",
 ]
 
 MIDDLEWARE = [
