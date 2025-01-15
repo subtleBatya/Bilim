@@ -8,3 +8,9 @@ def courses(request):
 
 def video_of_course(request):
     return render(request, "core/video_page.html")
+
+
+
+
+def shorts(request):
+    return render(request, "core/shorts.html")

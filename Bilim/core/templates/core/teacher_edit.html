@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BILIM Teacher Edit</title>
+  {% include "core/static_files/links.html"%}
+</head>
+<body>
+  {% include "core/hero.html" with content="Update your profile Teacher" image_path="core/images/course.webp"%}
+
+<div class="d-flex align-items-end mx-auto justify-content-between" style="width: 25vw;">
+    <div class="">
+        <img src="../../images/image 9.webp" alt="" style="width: 10vw ;">
+    </div>
+    <div>
+        <img src="../../images/utub.webp" alt="" style="width: 10vw ;">
+    </div>
+</div>
+<div class=" text-center mx-auto" style="width: 90vw;">
+    <hr class="p-3">
+</div>
+
+<div class="mx-auto d-flex  " style="width: 90vw;">
+    <div class="mt-2 d-flex align-items-center">
+        <div class="">
+            <img src="../../images/man.webp" alt="" style="width: 15vw;">
+        </div>
+        <div class="d-block ms-4">
+            <!-- <div class=" d-flex align-items-center pb-3">
+                <div class="h5 fw-semibold">Ady Familiyasy:</div>
+                <div class="h6 text-small ms-1"><input class="border-gray rounded-1" type="text" placeholder="Ady familiyasy"></div>
+            </div> -->
+
+            <div class=" row align-items-center pb-3">
+              <div class="h5 col fw-semibold">Ady Familiyasy:</div>
+              <div class="h6 col text-small ms-1"><input class="border-gray rounded-1" type="text" placeholder="Ady familiyasy"></div>
+            </div>
+
+            <div class=" row align-items-center pb-3">
+              <div class="h5 col fw-semibold">Hunari:</div>
+              <div class="h6 col text-small ms-1"><input class="border-gray rounded-1" type="text" placeholder="UI dizayner"></div>
+            </div>
+
+            <div class=" row align-items-center pb-3">
+                <div class="h5 col fw-semibold">Derejesi:</div>
+                <div class="h6 col text-small ms-1"><input class="border-gray rounded-1" type="text" placeholder="Derejesi"></div>
+            </div>
+            <div class=" row align-items-center ">
+                <div class="h5 col fw-semibold">Tel nomeri:</div>
+                <div class="h6 col text-small ms-1"><input class="border-gray rounded-1" type="text" placeholder="Tel nomeri"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class=" justify-content-end mx-auto text-end" style="width: 90vw;">
+    <button class=" bg-warning text-white px-4 py-1 rounded-3 fw-semibold" style="border: none;">Save</button>
+</div>
+<!-- Bootstrap JS and Popper.js -->
+{% include "core/static_files/scripts.html"%}
+</body>
+
+</html>

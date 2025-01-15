@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BILIM Teachers content</title>
+  {% include "core/static_files/links.html" %}
+</head>
+
+<body>
+    {% include "core/hero.html" with content="View your content teacher" image_path="core/images/report.webp"%}
+  
+<!-- Textarea -->
+
+<div class="d-flex align-items-end mx-auto justify-content-between" style="width: 25vw;">
+    <div class="">
+        <img src="{% static 'core/images/mindBook.webp'%}" alt="" style="width: 10vw ;">
+    </div>
+    <div>
+        <img src="{% static 'core/images/mindBook.webp'%}" alt="" style="width: 10vw ;">
+    </div>
+</div>
+<div class=" text-center mx-auto" style="width: 90vw;">
+    <hr class="p-1">
+</div>
+
+<div class="mx-auto d-flex  align-items-start" >
+    <div class="d-block" style="width: 90vw;">
+        
+        <div class="text-end">
+            <button id="cnt_edit_btn" class=" bg-warning text-white px-4 py-1 rounded-3 fw-semibold" style="border: none;">Edit</button>
+        </div>
+        <div class="mt-1 d-flex mx-auto align-items-center justify-content-between">
+            <div class=" d-flex col-6">
+                <div class=" bg-black mx-auto text-center rounded-2" style="width: 15vw;">
+                    <img class="pt-3 " src="{% static 'core/images/mindBook.webp'%}" alt="" style="width: 12vw;">
+                    <div class="py-2 text-white  fw-medium align-items-start text-center ">What is webflow?</div>
+                </div>
+                <div class="d-block ms-5">
+                    <div class=" d-flex align-items-center pb-1">
+                        <div class="h5 fw-semibold">Wideonyn ady:</div>
+                        <div class="h6 fw-bold text-small ms-1">UI dizayner dusunjesi</div>
+                    </div>
+                    <div class=" d-flex align-items-center pb-1">
+                        <div class="h5 fw-semibold">Wagty:</div>
+                        <div class="h6 fw-bold text-small ms-1">12:00</div>
+                    </div>
+                    <div class=" d-flex align-items-center pb-1">
+                        <div class="h5 fw-semibold">Goylan senesi:</div>
+                        <div class="h6 fw-bold text-small ms-1">23.12.2024</div>
+                    </div>
+                    <div class=" d-flex align-items-center pb-1">
+                        <div class="h5 fw-semibold">Awtory:</div>
+                        <div class="h6 fw-bold text-small ms-1">Gayrat Serdarow</div>
+                    </div>
+                    <div class=" d-flex align-items-center mb-1">
+                        <div class=" ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill text-warning" viewBox="0 0 16 16">
+                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                            </svg>
+                        </div>
+                        <div class="h5   ms-2">Access to 50k+ community </div>
+                    </div>
+                    <div class=" d-flex align-items-center">
+                        <div class=" ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hand-thumbs-up-fill text-warning" viewBox="0 0 16 16">
+                                <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+                            </svg>
+                        </div>
+                        <div class="h5   ms-2"> 2K+ community </div>
+                    </div>
+                </div>
+            </div>
+            <div >
+                <svg id="trash_icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-trash3-fill text-primary" viewBox="0 0 16 16">
+                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+                </svg>
+            </div>
+            
+            
+        </div>
+
+        <div class="mt-5 d-flex mx-auto align-items-center justify-content-between" >
+            <div class=" d-flex col-6">
+                <div class=" bg-black mx-auto text-center rounded-2" style="width: 15vw;">
+                    <img class="pt-3 " src="{% static 'core/images/mindBook.webp'%}" alt="" style="width: 12vw;">
+                    <div class="py-2 text-white  fw-medium align-items-start text-center ">What is webflow?</div>
+                </div>
+                <div class="d-block ms-5">
+                    <div class=" d-flex align-items-center pb-1">
+                        <div class="h5 fw-semibold">Wideonyn ady:</div>
+                        <div class="h6 fw-bold text-small ms-1">UI dizayner dusunjesi</div>
+                    </div>
+                    <div class=" d-flex align-items-center pb-1">
+                        <div class="h5 fw-semibold">Wagty:</div>
+                        <div class="h6 fw-bold text-small ms-1">12:00</div>
+                    </div>
+                    <div class=" d-flex align-items-center pb-1">
+                        <div class="h5 fw-semibold">Goylan senesi:</div>
+                        <div class="h6 fw-bold text-small ms-1">23.12.2024</div>
+                    </div>
+                    <div class=" d-flex align-items-center pb-1">
+                        <div class="h5 fw-semibold">Awtory:</div>
+                        <div class="h6 fw-bold text-small ms-1">Gayrat Serdarow</div>
+                    </div>
+                    <div class=" d-flex align-items-center mb-1">
+                        <div class=" ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill text-warning" viewBox="0 0 16 16">
+                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                            </svg>
+                        </div>
+                        <div class="h5   ms-2">Access to 50k+ community </div>
+                    </div>
+                    <div class=" d-flex align-items-center">
+                        <div class=" ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hand-thumbs-up-fill text-warning" viewBox="0 0 16 16">
+                                <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+                            </svg>
+                        </div>
+                        <div class="h5   ms-2"> 2K+ community </div>
+                    </div>
+                </div>
+            </div>
+            <div >
+                <svg id="trash_icon" style="display: none" xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-trash3-fill text-primary" viewBox="0 0 16 16">
+                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+                </svg>
+            </div>
+            
+            
+        </div>
+
+
+        <div class="mt-5 d-flex mx-auto align-items-center justify-content-between" >
+            <div class=" d-flex col-6">
+                <div class=" bg-black mx-auto text-center rounded-2" style="width: 15vw;">
+                    <img class="pt-3 " src="{% static 'core/images/mindBook.webp'%}" alt="" style="width: 12vw;">
+                    <div class="py-2 text-white  fw-medium align-items-start text-center ">What is webflow?</div>
+                </div>
+                <div class="d-block ms-5">
+                    <div class=" d-flex align-items-center pb-1">
+                        <div class="h5 fw-semibold">Wideonyn ady:</div>
+                        <div class="h6 fw-bold text-small ms-1">UI dizayner dusunjesi</div>
+                    </div>
+                    <div class=" d-flex align-items-center pb-1">
+                        <div class="h5 fw-semibold">Wagty:</div>
+                        <div class="h6 fw-bold text-small ms-1">12:00</div>
+                    </div>
+                    <div class=" d-flex align-items-center pb-1">
+                        <div class="h5 fw-semibold">Goylan senesi:</div>
+                        <div class="h6 fw-bold text-small ms-1">23.12.2024</div>
+                    </div>
+                    <div class=" d-flex align-items-center pb-1">
+                        <div class="h5 fw-semibold">Awtory:</div>
+                        <div class="h6 fw-bold text-small ms-1">Gayrat Serdarow</div>
+                    </div>
+                    <div class=" d-flex align-items-center mb-1">
+                        <div class=" ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill text-warning" viewBox="0 0 16 16">
+                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                            </svg>
+                        </div>
+                        <div class="h5   ms-2">Access to 50k+ community </div>
+                    </div>
+                    <div class=" d-flex align-items-center">
+                        <div class=" ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hand-thumbs-up-fill text-warning" viewBox="0 0 16 16">
+                                <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+                            </svg>
+                        </div>
+                        <div class="h5   ms-2"> 2K+ community </div>
+                    </div>
+                </div>
+            </div>
+            <div >
+                <svg id="trash_icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-trash3-fill text-primary" viewBox="0 0 16 16">
+                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+                </svg>
+            </div>
+            
+            
+        </div>
+
+
+        <div class="text-end">
+            <div>
+                <button class=" bg-warning text-white px-4 py-1 rounded-3 fw-medium" style="border: none;">Taze Kurs Gosmak</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+ <!-- Bootstrap JS and Popper.js -->
+{% include "core/static_files/scripts.html"%}
+<script src="{% static "core/js/content.js" %}"></script>
+</body>
+
+</html>

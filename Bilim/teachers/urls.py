@@ -6,5 +6,7 @@ app_name = "teacher"
 
 urlpatterns = [
     path("", teacher_profile, name="teacher_profile"),
-    path("create_video/", teacher_video_create, name="teacher_video_create")
+    path("content/", teacher_content, name="teacher_profile"),
+    path("create/", teacher_video_create, name="teacher_video_create"),
+    path("edit/", teacher_edit, name="teacher_edit")
 ]

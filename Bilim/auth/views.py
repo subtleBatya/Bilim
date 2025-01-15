@@ -13,3 +13,6 @@ def payment(request):
     return render(request, "core/payment.html")
 
 
+
+def admin_page(request):
+    return render(request, "core/admin.html")
