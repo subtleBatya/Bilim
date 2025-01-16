@@ -1,6 +1,5 @@
 from django.db import models
-from auth.models import Teacher
-
+from authentication.models import Teacher
 
 class VideoCourse(models.Model):
     title = models.CharField(max_length=255)
