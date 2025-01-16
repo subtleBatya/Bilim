@@ -26,13 +26,14 @@
               <div class="d-md-none h3">Bilim University</div>
               <div class="fs-5 fw-medium text-center"  style="color:black;">Welcome Back! Login to your account</div>
               
-            <form action="">
+            <form action="{% url 'auth:login'%}" method="post">
+              {% csrf_token %}
                 <div class="mb-3">
                   <div class="mt-3 text-start ">
-                      <input class="w-100 p-3 small form-control" type="text" placeholder="Username, email & phone number" name="" id="username">
+                      <input class="w-100 p-3 small form-control" type="text" placeholder="Username" name="username" id="username">
                   </div>
                   <div class="mt-3 text-start">
-                      <input class="w-100 p-3 small form-control" type="password" placeholder="Password" name="" id="password">
+                      <input class="w-100 p-3 small form-control" type="password" placeholder="Password" name="password" id="password">
                   </div>
               </div>
               <a href="">
