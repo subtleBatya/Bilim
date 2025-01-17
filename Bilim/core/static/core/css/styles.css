@@ -5,11 +5,14 @@ body {
 }
 
 /*For header*/
+.hover-effect {
+    transition: transform 0.5s ease-in-out; /* Ensure scaling transition is smooth */
+}
+
 .hover-effect:hover {
     transform: scale(1.1);
-    transition: transform 0.4s ease;
-    color: white !important;
     background-color: #FFA000;
+    color: white !important;
 }
 
 .arrow {
@@ -108,13 +111,14 @@ body {
     background-color: #8f92dd;
     border: none;
     padding: 5px 15px;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .downloader:hover {
     background-color: #FFA000;
     color: white;
 }
+
 
 /*Poisk*/
 .dropdown-menu .dropdown-item {
