@@ -45,3 +45,8 @@ def payment(request):
 
 def admin_page(request):
     return render(request, "core/admin.html")
+
+
+def logout_user(request):
+    logout(request)
+    return redirect("auth:login")

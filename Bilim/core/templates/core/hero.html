@@ -9,7 +9,7 @@
                 </div>
     
                 <!-- Hamburger Button for Mobile -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
     
@@ -39,7 +39,8 @@
                             <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
                                 <li><a class="dropdown-item hover-effect" href="#">My Profil</a></li>
                                 <li><a class="dropdown-item hover-effect" href="{% url 'auth:payment'%}">Payment</a></li>
-                                <li><a class="dropdown-item hover-effect" href="#">Teklipler we arzalar</a></li>
+                                <li><a class="dropdown-item hover-effect" href="{% url 'applications:application'%}">Teklipler we arzalar</a></li>
+                                <li><a class="dropdown-item hover-effect" href="{% url 'auth:logout'%}">Logout</a></li>
                             </ul>
                         </li>
                         
@@ -59,7 +60,7 @@
                     <h5 class="display-6" style="color: #fff">{{content}}</h5>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-5">
                 <img src="{% static image_path %}" alt="" class="indexImage">
             </div>
         </div>
@@ -69,3 +70,25 @@
             </svg>
         </div>
     </div>
+
+
+    <script>
+        // Function to toggle the navbar visibility
+        function toggleNavbar() {
+            const navbar = document.querySelector('.navbar-collapse');
+            const isCollapsed = navbar.classList.contains('show');
+    
+            if (isCollapsed) {
+                // Hide the navbar
+                navbar.classList.remove('show');
+            } else {
+                // Show the navbar
+                navbar.classList.add('show');
+            }
+        }
+    
+        // Add event listener to the hamburger button
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        navbarToggler.addEventListener('click', toggleNavbar);
+    </script>
+    
