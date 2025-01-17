@@ -169,6 +169,12 @@ body {
 
 textarea {
     resize: none;
+    
+}
+
+textarea:focus {
+    
+    outline-color: #253977;
 }
 
 /* Bu custom class-lar, default renkler esasy ulanylyan! */
