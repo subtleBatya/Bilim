@@ -1,8 +1,28 @@
-.swiper-container {
-    width: 80%; /* Adjust width as needed */
-    height: 380px; /* Adjust height as needed */
+/* .swiper-container {
+    width: 80%; 
+    height: 380px;
+    margin: auto;
+  } */
+
+
+  .swiper-container {
+    width: 80%; /* Shrinks slightly for smaller devices */
+    height: 30%; /* Dynamically adjust height */
     margin: auto;
   }
+  
+  @media (max-width: 768px) {
+    .swiper-container {
+      height: 300px; /* Smaller height for mobile */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .swiper-container {
+      height: 250px; /* Even smaller for very small devices */
+    }
+  }
+  
   
 
 
@@ -20,7 +40,7 @@
   }
   
   .swiper-slide-active img {
-    transform: scale(1.2); /* Scale up the active image */
+    transform: scale(1.1); /* Scale up the active image */
     z-index: 10; /* Bring the active slide to the foreground */
   }
   

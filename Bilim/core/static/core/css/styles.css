@@ -377,6 +377,13 @@ textarea:focus {
             height: 48vh;
         }
 
+        @media (max-width: 480px) {
+            .indexImage {
+                width: 30vw;
+                height: 40vh;
+            }
+        }
+
 
 
         .custom-image {

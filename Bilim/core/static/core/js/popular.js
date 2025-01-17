@@ -1,22 +1,70 @@
-
 const swiper = new Swiper(".swiper-container", {
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: "3",
-    coverflowEffect: {
-      rotate: 0, // No rotation for slides
-      stretch: -40, // Pulls the side images inward
-      depth: 200, // Adds a 3D perspective effect
-      modifier: 2, // Multiplier for scaling and depth
-      slideShadows: false, // Disables shadow for cleaner design
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: 3, // Default for larger screens
+  coverflowEffect: {
+    rotate: 0, 
+    stretch: -40, 
+    depth: 200, 
+    modifier: 2, 
+    slideShadows: false,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  loop: true,
+  breakpoints: {
+    // Small devices (mobile)
+    0: {
+      slidesPerView: 1,
+      coverflowEffect: {
+        stretch: -30, 
+        depth: 180, 
+      },
     },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+    // Medium devices (tablets)
+    768: {
+      slidesPerView: 2,
+      coverflowEffect: {
+        stretch: -30, 
+        depth: 150, 
+      },
     },
-    loop: true, // Enable infinite scrolling
-  });
+    // Large devices (desktops)
+    1024: {
+      slidesPerView: 3,
+      coverflowEffect: {
+        stretch: -40, 
+        depth: 300, 
+      },
+    },
+  },
+});
+
+
+
+
+
+// const swiper = new Swiper(".swiper-container", {
+//     effect: "coverflow",
+//     grabCursor: true,
+//     centeredSlides: true,
+//     slidesPerView: "3",
+//     coverflowEffect: {
+//       rotate: 0, // No rotation for slides
+//       stretch: -40, // Pulls the side images inward
+//       depth: 200, // Adds a 3D perspective effect
+//       modifier: 2, // Multiplier for scaling and depth
+//       slideShadows: false, // Disables shadow for cleaner design
+//     },
+//     navigation: {
+//       nextEl: ".swiper-button-next",
+//       prevEl: ".swiper-button-prev",
+//     },
+//     loop: true, // Enable infinite scrolling
+//   });
 
 // console.log(typeof Swiper); // Should return "function"
 

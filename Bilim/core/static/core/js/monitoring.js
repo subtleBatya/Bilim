@@ -1,11 +1,7 @@
 
 // FOR SCIENTISTS ANIMATION IN THE MAIN FILE
 
-
-
-
-async function initializeTabLogic() {
-    console.log("Initializing tab switching logic...");
+   
   
     // Get button elements
     const gen_btn = document.getElementById("gen_btn");
@@ -62,7 +58,7 @@ async function initializeTabLogic() {
         gen_block.classList.add('d-none');
       }
     });
-  }
+  
   
   // Attach the async initialize function to the load event
   window.addEventListener('load', async () => {
