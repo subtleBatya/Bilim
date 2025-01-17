@@ -108,7 +108,7 @@ body {
     background-color: #8f92dd;
     border: none;
     padding: 5px 15px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .downloader:hover {
