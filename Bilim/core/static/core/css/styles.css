@@ -42,7 +42,7 @@ body {
     overflow: hidden;
 }
 
-.image-wrapper {
+/* .image-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
@@ -54,8 +54,7 @@ body {
     height: 100%;
     object-fit: cover;
 
-    /* Ensures the image fits nicely inside the container */
-}
+} */
 
 /* Image-yn ustune eldende cykyan yazgy  */
 .hover-text {
@@ -373,30 +372,31 @@ textarea:focus {
        
         
 
-        /* @media (min-width: 480px) {
+         @media (width: 480px) {
             .swiper-slide > img {
-                object-fit: cover;
-                width: 20vw;
-                height: 20vh;
+                
+                width: 200px;
+                height: 200px;
             }
+            
         }
 
-        @media (min-width: 768px) {
+        @media (max-width: 768px) {
             .swiper-slide > img {
-                object-fit: cover;
+                
                 width: 20vw;
                 height: 30vh;
             }
         }
 
-        @media (min-width: 1000px) {
+        @media (max-width: 1000px) {
             .swiper-slide > img {
-                object-fit: cover;
+                
                 width: 30vw;
                 height: 48vh;
             }
         }
-         */
+         
 
 
         .custom-image {
