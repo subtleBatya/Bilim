@@ -71,14 +71,20 @@
                 </div>
                 <div class=" row">
                     <label class="col" for="">Wideonyn Kategoriyasy:</label>
-                    <input class="col" type="text" placeholder="Su yere giriz">
+                    <select class="col" id="category" name="category">
+                        <option value="" disabled selected>Su yere giriz</option> <!-- Placeholder for dropdown -->
+                        <option value="education">Bilim</option>
+                        <option value="entertainment">Guymenje</option>
+                        <option value="technology">Tehnologiya</option>
+                        <option value="sports">Sport</option>
+                    </select>
                 </div>
                 
             </div>
         </div>
         <div class="text-end">
             <div>
-                <button class=" bg-warning text-white px-4 py-1 rounded-3 fw-medium" style="border: none;">Save</button>
+                <button class=" bg-warning downloader text-white px-4 py-1 rounded-3 fw-medium" style="border: none;">Save</button>
             </div>
         </div>
     </div>
