@@ -11,7 +11,7 @@
     margin: 0 auto;
 }
 select.form-select {
-    border: 2px solid #FFA000;
+    border: 1px solid #373985;
 }
 
 .form-check-label {
@@ -30,6 +30,6 @@ background-color: #FFA000;
 border-color: #FFA000;
 }
 .form-control{
-      border-color: #FFA000;
+      border-color: #373985;
 }
 
