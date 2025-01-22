@@ -23,7 +23,7 @@
       height: 300px; /* Smaller height for mobile */
     }
     .pop_header {
-      font-size: 10vw;
+      font-size: 4vw;
     }
   }
   
@@ -39,7 +39,7 @@
 
   @media (min-width: 250px) {
     .pop_header {
-      font-size: 20vw;
+      font-size: 8vw;
     }
   }
   
