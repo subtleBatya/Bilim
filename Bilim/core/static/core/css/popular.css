@@ -9,6 +9,7 @@
     width: 80%; /* Shrinks slightly for smaller devices */
     height: 30%; /* Dynamically adjust height */
     margin: auto;
+    overflow: hidden;
   }
   
   @media (min-width: 1080px) {
@@ -39,7 +40,7 @@
 
   @media (min-width: 250px) {
     .pop_header {
-      font-size: 8vw;
+      font-size: 5vw;
     }
   }
   
