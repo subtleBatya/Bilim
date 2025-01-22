@@ -19,7 +19,7 @@
   
   @media (max-width: 480px) {
     .swiper-container {
-      height: 250px; /* Even smaller for very small devices */
+      height: 30%; /* Even smaller for very small devices */
     }
   }
   
@@ -40,7 +40,7 @@
   }
   
   .swiper-slide-active img {
-    transform: scale(1.1); /* Scale up the active image */
+    transform: scale(1.05); /* Scale up the active image */
     z-index: 10; /* Bring the active slide to the foreground */
   }
   
