@@ -426,3 +426,37 @@ textarea:focus {
 }
 
 
+.courses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 auto;
+}
+
+
+@media(max-width: 768px){
+    .courses{
+        display: grid;
+        margin: 0 auto;
+        grid-template-columns: repeat(2, 1fr);
+        width: 90vw;
+    }
+}
+
+@media(max-width: 468px){
+    .courses{
+        display: grid;
+        margin: 0 auto;
+        /* grid-template-columns: repeat(1, 1fr); */
+
+    }
+}
+
+@media(max-width: 250px){
+    .courses{
+        display: grid;
+        margin: 0 auto;
+        /* grid-template-columns: repeat(1, 1fr); */
+        width: 200px;
+            
+    }
+}
