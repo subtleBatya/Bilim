@@ -11,15 +11,35 @@
     margin: auto;
   }
   
+  @media (max-width: 1080px) {
+    
+    .pop_header {
+      font-size: 4vw;
+    }
+  }
+
   @media (max-width: 768px) {
     .swiper-container {
       height: 300px; /* Smaller height for mobile */
+    }
+    .pop_header {
+      font-size: 10vw;
     }
   }
   
   @media (max-width: 480px) {
     .swiper-container {
       height: 30%; /* Even smaller for very small devices */
+    }
+
+    .pop_header {
+      font-size: 4vw;
+    }
+  }
+
+  @media (max-width: 250px) {
+    .pop_header {
+      font-size: 20vw;
     }
   }
   

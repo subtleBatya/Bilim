@@ -39,9 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const observerOptions = {
         // threshold: 0.2,
-        rootMargin: "0px 0px -50% 0px",
-        threshold: [0.1, 0.5, 0.9],
-        // threshold: [0.9, 0.3, 0.5],
+        // rootMargin: "0px 0px -50% 0px",
+        // threshold: [0.1, 0.5, 0.9],
+        threshold: [0.9, 0.3, 0.5],
 
     };
 
