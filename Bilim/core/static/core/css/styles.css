@@ -37,10 +37,7 @@ body {
     overflow: hidden;
 }
 
-.humanity-container {
-    width: 30vw;
-    overflow: hidden;
-}
+
 
 .image-wrapper {
     position: relative;
@@ -429,6 +426,48 @@ textarea:focus {
 .courses {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 1rem; /* Adds spacing between grid items */
+    justify-content: center; /* Centers items horizontally */
+    align-items: center; /* Centers items vertically */
+    margin: 0 auto;
+    max-width: 1200px; /* Ensures the grid doesn’t stretch unnecessarily */
+}
+
+@media (max-width: 768px) {
+    .courses {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        width: 90%; /* Ensures the grid fits well within the viewport */
+    }
+}
+
+@media (max-width: 468px) {
+    .courses {
+        grid-template-columns: 1fr; /* Single column for small devices */
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 250px) {
+    .courses {
+        grid-template-columns: 1fr; /* Single column for very small devices */
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        width: 80%; /* Keeps it compact */
+        margin: 0 auto;
+    }
+}
+
+
+/* .courses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     margin: 0 auto;
 }
 
@@ -446,7 +485,7 @@ textarea:focus {
     .courses{
         display: grid;
         margin: 0 auto;
-        /* grid-template-columns: repeat(1, 1fr); */
+       
 
     }
 }
@@ -455,8 +494,8 @@ textarea:focus {
     .courses{
         display: grid;
         margin: 0 auto;
-        /* grid-template-columns: repeat(1, 1fr); */
+        
         width: 200px;
             
     }
-}
+} */
