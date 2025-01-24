@@ -30,7 +30,7 @@
     <div class="d-block" style="width: 90vw;">
         
         <div class="text-end">
-            <button id="cnt_edit_btn" class=" bg-warning text-white px-4 py-1 rounded-3 fw-semibold" style="border: none;">Edit</button>
+            <button id="cnt_edit_btn" class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">Edit</button>
         </div>
         <div class="mt-1 d-flex mx-auto align-items-center justify-content-between">
             <div class=" d-flex col-6">
@@ -186,12 +186,13 @@
 
         <div class="text-end">
             <div>
-                <button class=" bg-warning text-white px-4 py-1 rounded-3 fw-medium" style="border: none;">Taze Kurs Gosmak</button>
+                <a href="{% url "teacher:teacher_video_create"%}"><button class="text-white px-4 py-1 rounded-3 fw-medium downloader" style="border: none;">Taze Kurs Gosmak</button></a>
             </div>
         </div>
 
     </div>
 </div>
+{% include "core/footer.html" %}
  <!-- Bootstrap JS and Popper.js -->
 {% include "core/static_files/scripts.html"%}
 <script src="{% static "core/js/content.js" %}"></script>

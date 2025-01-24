@@ -51,9 +51,12 @@
         </div>
     </div>
     <div>
-      <button class=" bg-warning text-white px-4 py-1 rounded-3 fw-semibold" style="border: none;">Edit</button>
+      <a href='{% url 'teacher:teacher_edit'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">Edit</button></a>
+      <a href='{% url 'teacher:teacher_video_create'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">Add video</button></a>
+      <a href='{% url 'teacher:teacher_content'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">My videos</button></a>
     </div>
 </div>
+{% include "core/footer.html"%}
 {% include "core/static_files/scripts.html"%}
 </body>
 

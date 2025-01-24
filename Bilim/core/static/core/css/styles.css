@@ -502,6 +502,7 @@ textarea:focus {
   .footer-link,.icon{
     color: inherit; /* Наследуем начальный цвет */
     transition: color 0.5s, transform 0.5s;
+    text-decoration: none;
   }
 
   .footer-link:hover {

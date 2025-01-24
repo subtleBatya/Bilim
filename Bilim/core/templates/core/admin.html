@@ -11,7 +11,7 @@
   {% include "core/hero.html" with content="Custom admin" image_path="core/images/report.webp"%}
         <!--Poisk-->
     <div class="container-fluid">
-    <div class="d-flex flex-column flex-lg-row justify-content-end align-items-start align-items-lg-center py-2 px-3 shadow-sm">
+    <div class="d-flex flex-column flex-lg-row justify-content-end align-items-start align-items-lg-center py-2 px-3">
         <!-- Поле поиска -->
         <div class="position-relative me-0 mb-3 mb-lg-0 me-lg-3">
             <input type="text" class="form-control pe-5 rounded-4 expand-input fs-4" placeholder="Search..." style="border: 1px solid #FFA000;">
@@ -76,7 +76,7 @@
 <div id="imageModal" class="large-image">
     <img id="modalImage" src="" alt="Увеличенная картинка">
 </div>
-
+{% include "core/footer.html"%}
 {% include "core/static_files/scripts.html"%}
 
 <script>
