@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey with Pagination</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Таймер */
+        #timer {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            background: rgba(240, 240, 240, 0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Кастомные радиокнопки */
+        .custom-radio-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .custom-radio-btn input[type="radio"] {
+            display: none;
+        }
+
+        .custom-radio-btn .custom-radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .custom-radio-btn .custom-radio::after {
+            content: "";
+            width: 0;
+            height: 100%;
+            background-color: #0d6efd;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: width 0.4s ease;
+        }
+
+        .custom-radio-btn input[type="radio"]:checked + .custom-radio {
+            border-color: #0d6efd;
+        }
+
+        .custom-radio-btn input[type="radio"]:checked + .custom-radio::after {
+            width: 100%;
+        }
+
+        .custom-radio-btn:hover .custom-radio {
+            border-color: #0d6efd;
+        }
+
+        /* Отступы между вопросами */
+        .question-block {
+            margin-bottom: 2rem;
+        }
+
+        /* Уменьшение размера контейнера */
+        .custom-container {
+            max-width: 700px; /* Задаём максимальную ширину */
+            margin: 0 auto; /* Центрируем контейнер */
+        }
+    </style>
+</head>
+<body>
+    <div class="container custom-container py-5">
+        <!-- Таймер -->
+        <div class="text-center mb-4">
+            <div id="timer"></div>
+        </div>
+
+        <!-- Вопросы -->
+        <div id="questions-container" class="p-4 border rounded shadow-sm">
+            <div class="page" data-page="1">
+                <div class="question-block">
+                    <h5>1-nji sorag: Programmirlirmekde köp ulanylýan diller haýsylar?</h5>
+                    <div class="d-flex flex-column gap-3">
+                        <label class="custom-radio-btn">
+                            <input type="radio" name="question1">
+                            <span class="custom-radio"></span>
+                            Python
+                        </label>
+                        <label class="custom-radio-btn">
+                            <input type="radio" name="question1">
+                            <span class="custom-radio"></span>
+                            Java
+                        </label>
+                        <label class="custom-radio-btn">
+                            <input type="radio" name="question1">
+                            <span class="custom-radio"></span>
+                            C++
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <h5>2-nji sorag: Programmirlirmekde näme möhüm?</h5>
+                    <div class="d-flex flex-column gap-3">
+                        <label class="custom-radio-btn">
+                            <input type="radio" name="question2">
+                            <span class="custom-radio"></span>
+                            Algoritmler
+                        </label>
+                        <label class="custom-radio-btn">
+                            <input type="radio" name="question2">
+                            <span class="custom-radio"></span>
+                            Logika
+                        </label>
+                        <label class="custom-radio-btn">
+                            <input type="radio" name="question2">
+                            <span class="custom-radio"></span>
+                            Kodlaşdyrmak
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page d-none" data-page="2">
+                <div class="question-block">
+                    <h5>3-nji sorag: Python näme üçin ulanylýar?</h5>
+                    <div class="d-flex flex-column gap-3">
+                        <label class="custom-radio-btn">
+                            <input type="radio" name="question3">
+                            <span class="custom-radio"></span>
+                            Data Science
+                        </label>
+                        <label class="custom-radio-btn">
+                            <input type="radio" name="question3">
+                            <span class="custom-radio"></span>
+                            Web Development
+                        </label>
+                        <label class="custom-radio-btn">
+                            <input type="radio" name="question3">
+                            <span class="custom-radio"></span>
+                            Mobile Apps
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <h5>4-nji sorag: Java näme üçin ulanylýar?</h5>
+                    <div class="d-flex flex-column gap-3">
+                        <label class="custom-radio-btn">
+                            <input type="radio" name="question4">
+                            <span class="custom-radio"></span>
+                            Enterprise Applications
+                        </label>
+                        <label class="custom-radio-btn">
+                            <input type="radio" name="question4">
+                            <span class="custom-radio"></span>
+                            Mobile Development
+                        </label>
+                        <label class="custom-radio-btn">
+                            <input type="radio" name="question4">
+                            <span class="custom-radio"></span>
+                            Games
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кнопки переключения страниц -->
+        <div class="d-flex justify-content-between mt-4">
+            <button class="btn btn-secondary" id="prev-button" disabled>Назад</button>
+            <button class="btn btn-primary" id="next-button">Вперед</button>
+            <button class="btn btn-success d-none" id="finish-button">Финиш</button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const pages = document.querySelectorAll('.page');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+        const finishButton = document.getElementById('finish-button');
+        let currentPage = 1;
+
+        function updatePagination() {
+            pages.forEach(page => {
+                page.classList.add('d-none');
+                if (parseInt(page.getAttribute('data-page')) === currentPage) {
+                    page.classList.remove('d-none');
+                }
+            });
+
+            prevButton.disabled = currentPage === 1;
+            nextButton.classList.toggle('d-none', currentPage === pages.length); // скрыть кнопку "Вперед" на последней странице
+            finishButton.classList.toggle('d-none', currentPage !== pages.length); // показать кнопку "Финиш" на последней странице
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                updatePagination();
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentPage < pages.length) {
+                currentPage++;
+                updatePagination();
+            }
+        });
+
+        finishButton.addEventListener('click', () => {
+            alert("Survey completed!");
+        });
+
+        updatePagination();
+
+        // Таймер
+        let totalTime = 900; // 15 минут в секундах
+        const timerElement = document.getElementById('timer');
+
+        function updateTimer() {
+            const minutes = Math.floor(totalTime / 60);
+            const seconds = totalTime % 60;
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            if (totalTime > 0) {
+                totalTime--;
+            } else {
+                alert("Time's up!");
+            }
+        }
+
+        setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>

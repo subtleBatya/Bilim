@@ -426,3 +426,23 @@ textarea:focus {
 }
 
 
+  /* Общий стиль для иконок */
+  .footer-link,.icon{
+    color: inherit; /* Наследуем начальный цвет */
+    transition: color 0.5s, transform 0.5s;
+  }
+
+  .footer-link:hover {
+    transform: scale(1.1); /* Увеличение при наведении */
+  }
+
+  /* Цвета для каждой платформы */
+  .social-icons .instagram:hover {
+    color: #E4405F; /* Цвет Instagram */
+    
+  }
+
+  .social-icons .telegram:hover {
+    color: #0088cc; /* Цвет Telegram */
+  }
+  
