@@ -17,19 +17,7 @@
 <body>
  {% include "core/hero.html" with content="Upload your videos" image_path="core/images/graduation-hat.png"%}
   
-<!-- Textarea -->
 
-<div class="d-flex align-items-end mx-auto justify-content-between" style="width: 25vw;">
-    <div class="">
-        <img src="{% static 'core/images/Books.webp'%}" alt="" style="width: 10vw ;">
-    </div>
-    <div>
-        <img src="{% static 'core/images/Books.webp'%}" alt="" style="width: 10vw ;">
-    </div>
-</div>
-<div class=" text-center mx-auto" style="width: 90vw;">
-    <hr class="p-3">
-</div>
 
 <div class="mx-auto d-flex  align-items-start" >
     <div class="d-block mx-auto" style="width: 90vw;">
@@ -41,8 +29,8 @@
                 
                 <div class="">
                   <div class="mb-3" style="border: 1px solid #8f95dd;">
-                        <label for="fileUpload" class="form-label text-dark fw-bold">Upload File</label>
-                        <div class="border p-4 text-center bg-white" style="border: 2px dashed #ccc;">
+                        <label for="fileUpload" class="form-label text-dark fw-bold mt-3">Upload File</label>
+                        <div class=" p-4 text-center bg-white">
                             <p class="mb-3 fw-bold">Drag & Drop your files here or</p>
                             <button 
                                 class="btn fw-bold border border-secondary downloader text-white" style="color:#000;" 
@@ -63,7 +51,7 @@
                 </div>
             </div>
 
-            <div class="col-md-1" style="margin-top: 20vh;"></div>
+            <div class="col-md-1 d-md-none" style="margin-top: 20vh;"></div>
             
             <div class=" text-start fs-5 fw-bold col-11 col-md-5" >
                 <div class="mb-3 row">
@@ -71,7 +59,7 @@
                     <input class="col" type="text" placeholder="Su yere giriz">
                 </div>
                 <div class=" row">
-                    <label class="col" for="">Wideonyn Kategoriyasy:</label>
+                    <label class="col-6" for="">Wideonyn Kategoriyasy:</label>
                     <select class="col" style="height: 5vh;" id="category" name="category">
                         <option value=""  class="text-secondary" disabled selected> Su yere giriz</option> <!-- Placeholder for dropdown -->
                         <option value="education">Bilim</option>
