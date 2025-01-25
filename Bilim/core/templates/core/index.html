@@ -16,7 +16,7 @@
     <div class="text-center pop_header mb-5" style=" color:black;">Popular Courses</div>
     <div class="popular_images mx-auto mb-5" data-aos="fade-right" data-aos-duration="2000">
 
-      <div class="swiper-container">
+      <div class="swiper-container col-10 rounded-4">
 
          <div class="swiper-wrapper d-flex align-items-center ">
           <div class="swiper-slide"><img  src="{% static 'core/images/pop_course1.webp'%}" alt="Image 1"></div>
@@ -33,7 +33,7 @@
   </div>
   <!-- SONKY GORULENLER -->
   <div class="mt-4">
-    <div class=" text-center mb-4 " style=" color:black;">Sonky Gorulenler</div>
+    <div class=" text-center mb-4 pop_header" style=" color:black;">Sonky Gorulenler</div>
     <div class="  mx-auto" style="width: 90%;" data-aos="fade-left" data-aos-duration="2000">
       <!-- <div class=" row mx-auto mb-3 " >
         <div class=" hover-container col-6  pb-4">
@@ -120,10 +120,10 @@
     <!-- 1NJI SETIRI -->
     <div class="section mx-auto row rounded-2 d-flex text-center align-items-center "
       style="height: 75vh; background: linear-gradient(135deg, #373985, #8f95dd);">
-      <div class="platform_img1 col">
-        <img style="width: 30vw;" src="{% static 'core/images/online-study.webp'%}" alt="">
+      <div class="platform_img1 col-md-6 col-12">
+        <img class="col-9" src="{% static 'core/images/online-study.webp'%}" alt="">
       </div>
-      <div class="col text-start" style="color: white;">
+      <div class="col-md-6 col-12 text-sm-center" style="color: white;">
         <div class="h3" >Platforma barada</div>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maxime, incidunt cumque aut dolorum sapiente!
         </p>
@@ -134,27 +134,29 @@
     <!-- 2NJI SETIRI -->
     <div class="section mx-auto row rounded-2 py-4 d-flex text-center align-items-center"
       style="height: 75vh; background-color: #FFA000;">
-      <div class="col mx-auto">
+      <div class="platform_img1 col-md-6 col-12">
+        <img class="col-9" src="{% static 'core/images/online-study2.webp'%}" alt="">
+      </div>
+      <div class="col-md-6 col-12 mx-auto">
         <div class="h3 font-bolder" style="color:white;">Bize Gosul!</div>
         <div style="color:white">Bu gun siz ucin ajayyp gun Sebabi siz bize <br> gosuldynyz! :) </div>
         <button class="btn btn-warning rounded-4  px-3 py-2 mt-3 downloader">Sign up</button>
       </div>
-      <div class="platform_img1 col">
-        <img style="width: 40vw;" src="{% static 'core/images/online-study2.webp'%}" alt="">
-      </div>
+      
     </div>
 
     <!-- EXAMS -->
 
     <div class="section mx-auto row rounded-2 py-4 d-flex text-center align-items-center"
       style="height: 75vh; background: linear-gradient(135deg, #373985, #8f95dd);">
-      <div class="col mx-auto">
+      <div class="platform_img1 col-md-6 col-12">
+        <img class="col-9" src="{% static 'core/images/Books.webp'%}" alt="">
+      </div>
+      <div class="col-md-6 col-12 mx-auto">
         <div class="h3 font-bolder" style="font-size: 6vw; color:white;">Exams</div>
         <div class="p" style="color: white;">Bu gun siz ucin ajayyp gun Sebabi siz bize <br> gosuldynyz! :) </div>
       </div>
-      <div class="platform_img1 col">
-        <img style="width: 30vw;" src="{% static 'core/images/Books.webp'%}" alt="">
-      </div>
+      
 
     </div>
   </div>

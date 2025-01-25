@@ -6,9 +6,9 @@
 
 
   .swiper-container {
-    width: 80%; /* Shrinks slightly for smaller devices */
-    height: 30%; /* Dynamically adjust height */
-    margin: auto;
+     /* Shrinks slightly for smaller devices */
+     /* Dynamically adjust height */
+    margin: 0 auto;
     overflow: hidden;
   }
   
@@ -30,17 +30,20 @@
   
   @media (min-width: 480px) {
     .swiper-container {
-      height: 30%; /* Even smaller for very small devices */
+      height: 80%; /* Even smaller for very small devices */
     }
-
+    
     .pop_header {
       font-size: 4vw;
     }
   }
 
   @media (min-width: 250px) {
+    .swiper-container {
+      height: 80%; /* Even smaller for very small devices */
+    }
     .pop_header {
-      font-size: 5vw;
+      font-size: 8vw;
     }
   }
   
