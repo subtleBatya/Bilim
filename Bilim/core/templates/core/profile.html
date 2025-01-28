@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My profile</title>
+  {% include "core/static_files/links.html"%}
+</head>
+<body>
+{% include "core/hero.html" with content="Your profile" image_path="core/images/Books.webp"%}
+  <div class="container my-4">
+
+    <div class="row">
+      <!-- Первый столбец -->
+      <div class="col-md-4 text-center text-md-start">
+        {% if request.user.user_avatar %}
+        <img src="{{ request.user.user_avatar.url }}" alt="User Photo" class="img-fluid" style="border-radius: 50%; width: 300px; height: 300px; object-fit: cover;">
+        {% else %}
+        <img src="" alt="User Photo" class="img-fluid" style="border-radius: 50%; width: 300px; height: 300px; object-fit: cover;">
+        {% endif %}
+        <h1 class="my-2">{{request.user.username}} </h1>
+        {% if request.user.is_teacher %}
+        <h2 style="color: #F24B86;">Teacher</h2>
+        {% elif request.user.is_student %}
+        <h2 style="color: #F24B86;">Student</h2>
+        {% endif %}
+        <h3 class="my-3">About me</h3>
+        
+        <!-- Контейнер с иконками -->
+        <div class="d-flex ">
+            <!-- Первый столбец с 3 иконками -->
+            <div class="icon-column d-flex flex-column align-items-start">
+                <div class="icon-container d-flex align-items-center">
+                    <img src="Rectangle 72.png" alt="star" class="icon rounded-5" style="width: 30px;height: 30px;margin-right: 10px;"><span>27</span>
+                </div>
+            </div>
+            
+            <!-- Второй столбец с 2 иконками -->
+          
+        </div>
+      </div>
+
+      <!-- Второй столбец -->
+       
+      <div class="col-md-4">
+        <div class="mb-3">
+          <h1>About me</h1>
+          <p>{% if request.user.about_me %} {{ request.user.about_me }} {% else %} There is nothing about you! Edit your page {% endif %} </p>
+        </div>
+        <div class="mb-3">
+          <h1>About my goals</h1>
+          <p> {% if request.user.about_my_goals %} {{ request.user.about_my_goals}} {% else %} There is nothing about your goals. Please edit in edit page! {% endif %} </p>
+        </div>
+      </div>
+
+      <!-- Третий столбец -->
+      <div class="col-md-4">
+        <h1>Your exams</h1>
+        <div class="container mt-3">
+          <h5>Ui dizayner</h5>
+          <div class="progress">
+              <div class="progress-bar" role="progressbar" style="--progress-width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+
+          <br>
+          
+          <h5>Programming</h5>
+          <div class="progress">
+              <div class="progress-bar" role="progressbar" style="--progress-width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <br>
+          
+          <h5>Matematika</h5>
+          <div class="progress">
+              <div class="progress-bar" role="progressbar" style="--progress-width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <br>
+          
+          <h5>Dil</h5>
+          <div class="progress">
+              <div class="progress-bar" role="progressbar" style="--progress-width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <br>
+          
+          <h5>Owrenjiligi</h5>
+          <div class="progress">
+              <div class="progress-bar" role="progressbar" style="--progress-width: 55%;" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+      </div>
+      <div class="container my-4">
+        <h1 class="mb-2">Tehniki basarnyklar</h1>
+        <div>
+          <h5 class="mb-0">Internet</h5>
+          <div class="rating d-flex">
+            <div class="circle filled"></div>
+            <div class="circle filled"></div>
+            <div class="circle filled"></div>
+            <div class="circle filled"></div>
+            <div class="circle filled"></div>
+            <div class="circle empty"></div>
+            <div class="circle empty"></div>
+            <div class="circle empty"></div>
+            <div class="circle empty"></div>
+            <div class="circle empty"></div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <a href="{% url "auth:edit_profile"%}"><button class="btn btn-primary downloader">Edit your profile</button></a>
+      </div>
+
+
+    </div>
+  </div>
+  {% include "core/footer.html"%}
+{% include "core/static_files/scripts.html"%}
+</body>
+</html>

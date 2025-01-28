@@ -519,3 +519,54 @@ textarea:focus {
     color: #0088cc; /* Цвет Telegram */
   }
   
+
+  .icon-container {
+    margin-bottom: 10px; 
+}
+.icon-container span:last-child {
+    font-size: 20px; 
+}
+
+.progress {
+    height: 10px;
+    background-color: white; /* Белый фон для прогресс-бара */
+    border-radius: 10px;
+    border: 2px solid #ccc; /* Легкая рамка */
+}
+
+.progress-bar {
+    background-color: #F24B86; /* Цвет индикатора */
+    border-radius: 10px 0 0 10px; /* Скругление только с левой стороны */
+    width: 0%; /* Начальный размер */
+    animation: progress-animation 2s ease-out forwards; /* Анимация */
+}
+
+/* Ключевые кадры для анимации */
+@keyframes progress-animation {
+    from { 
+        width: 0%;
+    }
+    to {
+        width: var(--progress-width);
+    }
+}
+.circle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 7px;
+  display: inline-block;
+}
+
+/* Цвета кружочков */
+.filled {
+  background-color: #FFD52F; /* Заполненный кружок */
+}
+
+.empty {
+  background-color: #ccc; /* Пустой кружок */
+}
+
+.form-control{
+    border-color: #373985;
+}

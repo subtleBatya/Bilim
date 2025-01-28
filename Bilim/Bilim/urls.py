@@ -28,7 +28,8 @@ urlpatterns = [
     path("library/", include("library.urls")),
     path("videos/", include("videos.urls")),
     path("users/", include("users.urls")),
-    path('teacher/', include("teachers.urls"))
+    path('teacher/', include("teachers.urls")),
+    path("exams/", include("exams.urls"))
 ]
 
 

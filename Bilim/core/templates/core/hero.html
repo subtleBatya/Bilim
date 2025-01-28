@@ -37,7 +37,7 @@
                                 Profile
                             </a>
                             <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
-                                <li><a class="dropdown-item hover-effect" href="#">My Profil</a></li>
+                                <li><a class="dropdown-item hover-effect" href="{% url "auth:profile"%}">My Profil</a></li>
                                 <li><a class="dropdown-item hover-effect" href="{% url 'auth:payment'%}">Payment</a></li>
                                 <li><a class="dropdown-item hover-effect" href="{% url 'applications:application'%}">Teklipler we arzalar</a></li>
                                 <li><a class="dropdown-item hover-effect" href="{% url 'auth:logout'%}">Logout</a></li>

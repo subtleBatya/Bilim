@@ -8,6 +8,9 @@ class User(AbstractUser):
     #recent_seen_video = models.ManyToManyField()
     is_student = models.BooleanField(default=False, blank=True)
     is_teacher = models.BooleanField(default=False, blank=True)
+    about_me = models.TextField(blank=True, null=True)
+    about_my_goals = models.TextField(blank=True, null=True)
+    about_me_shorter = models.ManyToManyField("About_user")
 
     def __str__(self):
         return self.username
@@ -24,3 +27,11 @@ class subscription(models.Model):
     
     def __str__(self):
         return self.username
+    
+
+class About_user(models.Model):
+    icon = models.ImageField(upload_to="icons/about_me/")
+    text = models.CharField(max_length=30)
+
+    def __str__(self):
+        return f"{self.text}"

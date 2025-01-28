@@ -50,3 +50,17 @@ def admin_page(request):
 def logout_user(request):
     logout(request)
     return redirect("auth:login")
+
+
+
+def profile(request):
+    if request.method == "GET":
+        return render(request, "core/profile.html")
+
+
+
+def edit_profile(request):
+    if request.method == "GET":
+        return render(request, "core/profile_edit.html")
+    if request.method == 'POST':
+        pass
