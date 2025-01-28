@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login, logout, authenticate
 from django.contrib.auth.hashers import make_password
-from .models import User
+from .models import User, User_abilities, About_user
 def login(request):
     if request.method == "GET":
         return render(request, "core/login.html")
@@ -61,6 +61,10 @@ def profile(request):
 
 def edit_profile(request):
     if request.method == "GET":
-        return render(request, "core/profile_edit.html")
+        abilities = User_abilities.objects.all()
+        context = {
+            "abilities": abilities
+        }
+        return render(request, "core/profile_edit.html", context)
     if request.method == 'POST':
         pass
