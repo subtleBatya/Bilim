@@ -324,7 +324,7 @@ textarea:focus {
 
         .scientists{
             height: 35vh; 
-            
+            object-fit: cover;
             background-color:#141414;
             border-radius:20px;
         }
