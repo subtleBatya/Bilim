@@ -570,3 +570,43 @@ textarea:focus {
 .form-control{
     border-color: #373985;
 }
+
+.choose-fields {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1rem;
+    flex-direction: row;
+}
+.field-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.field-card.active {
+    border-color: #ffc107;
+    background-color: #fff8e1;
+}
+.field-card:hover {
+    transform: scale(1.05);
+}
+.field-icon {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+#photoPreview:hover {
+    transform: scale(1.1);
+}
+.save-button {
+    margin-top: 1rem;
+}
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+}

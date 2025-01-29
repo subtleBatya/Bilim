@@ -10,6 +10,7 @@ class User(AbstractUser):
     is_teacher = models.BooleanField(default=False, blank=True)
     about_me = models.TextField(blank=True, null=True)
     about_my_goals = models.TextField(blank=True, null=True)
+    job = models.CharField(max_length=255, blank=True, null=True)
     about_me_shorter = models.ManyToManyField("About_user", blank=True)
     user_abilities = models.ManyToManyField("User_abilities", blank=True)
 
@@ -32,7 +33,7 @@ class subscription(models.Model):
     
 
 class About_user(models.Model):
-    icon = models.ImageField(upload_to="icons/about_me/")
+    icon = models.CharField(max_length=30)
     text = models.CharField(max_length=30)
 
     class Meta:

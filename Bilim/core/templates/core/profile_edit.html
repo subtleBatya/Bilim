@@ -27,45 +27,7 @@
         .form-container {
             position: relative;
         }
-        .choose-fields {
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 1rem;
-            flex-direction: row;
-        }
-        .field-card {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100px;
-            height: 100px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .field-card.active {
-            border-color: #ffc107;
-            background-color: #fff8e1;
-        }
-        .field-card:hover {
-            transform: scale(1.05);
-        }
-        .field-icon {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-        #photoPreview:hover {
-            transform: scale(1.1);
-        }
-        .save-button {
-            margin-top: 1rem;
-        }
-        .btn-container {
-            display: flex;
-            justify-content: flex-end;
-        }
+        
     </style>
 </head>
 <body>
@@ -95,20 +57,20 @@
                 <h3 class="mb-3">General Information</h3>
                 <form>
                     <div class="mb-4 form-group">
-                        <label for="fullname" class="form-label">Ady we familiýasy:</label>
-                        <input type="text" class="form-control" id="fullname" placeholder="Ady we damiliyasy">
+                        <label for="fullname" class="form-label">Nickname:</label>
+                        <input type="text" class="form-control" id="fullname" placeholder="Nickname">
                     </div>
                     <div class="mb-4 form-group">
-                        <label for="profession" class="form-label">Hünäri:</label>
-                        <input type="text" class="form-control" id="profession" placeholder="Hunari">
+                        <label for="profession" class="form-label">Job:</label>
+                        <input type="text" class="form-control" id="profession" placeholder="Job">
                     </div>
                     <div class="mb-4 form-group">
-                        <label for="motivation" class="form-label">Motivasiýa:</label>
-                        <textarea class="form-control" id="motivation" placeholder="Motiwasiya giriz"></textarea>
+                        <label for="motivation" class="form-label">Motivation:</label>
+                        <textarea class="form-control" id="motivation" placeholder="Motivation"></textarea>
                     </div>
                     <div class="mb-4 form-group">
-                        <label for="goals" class="form-label">Maksatlar:</label>
-                        <textarea class="form-control" id="goals" placeholder="Maksatlar giriz"></textarea>
+                        <label for="goals" class="form-label">Goals:</label>
+                        <textarea class="form-control" id="goals" placeholder="Goals"></textarea>
                     </div>
                 </form>
             </div>
@@ -153,8 +115,6 @@
                     alert("You can select a maximum of 5 fields.");
                 }
             }
-
-            document.querySelector('.save-button').disabled = selectedFields < 3;
         }
 
         function updatePhotoPreview(event) {

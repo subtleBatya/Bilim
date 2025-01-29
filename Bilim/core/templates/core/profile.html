@@ -24,19 +24,19 @@
         {% elif request.user.is_student %}
         <h2 style="color: #F24B86;">Student</h2>
         {% endif %}
+        {% if request.user.job %}
+        <h2 style="color: #F24B86;">{{request.user.job}}</h2>
+        {% endif %}
         <h3 class="my-3">About me</h3>
         
         <!-- Контейнер с иконками -->
-        <div class="d-flex ">
+        <div class="d-flex">
             <!-- Первый столбец с 3 иконками -->
             <div class="icon-column d-flex flex-column align-items-start">
                 <div class="icon-container d-flex align-items-center">
                     <img src="Rectangle 72.png" alt="star" class="icon rounded-5" style="width: 30px;height: 30px;margin-right: 10px;"><span>27</span>
                 </div>
             </div>
-            
-            <!-- Второй столбец с 2 иконками -->
-          
         </div>
       </div>
 
