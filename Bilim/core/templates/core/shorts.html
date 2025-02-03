@@ -87,6 +87,14 @@
       } 
     } 
 
+    @media (max-width: 1000px) { 
+      .footer-nav { 
+ 
+ 
+        display: none;
+      } 
+    } 
+
     .footer-nav {
         position: fixed;
         bottom: 0;
@@ -120,7 +128,7 @@
 
   <!-- Footer -->
 
-  <nav class="footer-nav">
+  <!-- <nav class="footer-nav d-lg-none">
     <div class="nav-item active" data-label="Home">
         <i data-lucide="home"></i>
     </div>
@@ -134,7 +142,7 @@
     <div class="nav-item" data-label="Library">
         <i data-lucide="library"></i>
     </div>
-  </nav>
+  </nav> -->
 
   <!-- Navbar --> 
   <div class="d-flex" style="background-color: rgb(12, 18, 18); height: 100vh;"> 
@@ -154,7 +162,7 @@
  
     <!-- SHORTS INFO PART STARTS HERE --> 
  
-    <div class="mx-auto mt-3 mt-md-3 my-md-auto ms-5 col-md-10 col-9 text-md-start"> 
+    <div class="mx-auto mt-3 mt-md-3 my-md-auto ms-5 col-md-10 col-lg-4 col-9 text-md-start"> 
       <div class="d-flex text-white"> 
         <div class=" p-5  py-md-4 px-md-4 fw-semibold text-center justify-content-center align-items-center" 
           style="background: linear-gradient(135deg, #373985, #8f95dd); border-radius: 100%; font-size: 3vh;"> 
@@ -292,7 +300,7 @@
  
     <!-- SHORTS VIDEO SECTION STARTS HERE --> 
  
-    <div class="col-md-5 d-none d-lg-block text-center m-auto rounded-2" style="height: 80vh;"> 
+    <div class="col-md-5 d-none d-lg-block text-center m-auto rounded-2" style="height: 70vh;"> 
       <div class="video-container rounded-2" style="height: 100%;"> 
         <video id="shorts-player" class="video-js vjs-default-skin w-100 h-100 rounded-3" controls autoplay loop muted 
           preload="auto" poster="your-thumbnail.jpg"> 
