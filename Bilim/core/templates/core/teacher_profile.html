@@ -26,12 +26,17 @@
     <hr class="p-3">
 </div>
 
-<div class="mx-auto d-flex justify-content-between align-items-start" style="width: 90vw;">
-    <div class="mt-2 d-flex align-items-center">
-        <div class="">
-            <img src="{% static "core/images/mindBook.webp"%}" alt="" style="width: 15vw;">
+<div class="mx-auto  justify-content-between align-items-start" style="width: 90vw;">
+      <div class="col-12 mx-auto text-start text-lg-end">
+        <a href='{% url 'teacher:teacher_edit'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">Edit</button></a>
+        <a href='{% url 'teacher:teacher_video_create'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">Add video</button></a>
+        <a href='{% url 'teacher:teacher_content'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">My videos</button></a>
+      </div>
+    <div class="mt-2 row d-flex ">
+        <div class="col-8 col-lg-3 text-center justify-content-center mx-auto text-lg-start align-items-lg-start justify-content-lg-start ">
+            <img class="col-9 text-lg-start align-items-lg-start" src="{% static "core/images/mindBook.webp"%}" alt="" style="object-fit: cover">
         </div>
-        <div class="d-block ms-4">
+        <div class="d-block col-lg-8 ms-4 text-lg-center justify-content-center align-items-lg-center col-9">
             <div class=" d-flex align-items-center pb-3">
                 <div class="h5 fw-semibold">Ady Familiyasy:</div>
                 <div class="h6 text-small ms-1">Gayrat Serdarow</div>
@@ -50,11 +55,7 @@
             </div>
         </div>
     </div>
-    <div>
-      <a href='{% url 'teacher:teacher_edit'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">Edit</button></a>
-      <a href='{% url 'teacher:teacher_video_create'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">Add video</button></a>
-      <a href='{% url 'teacher:teacher_content'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">My videos</button></a>
-    </div>
+    
 </div>
 {% include "core/footer.html"%}
 {% include "core/static_files/scripts.html"%}

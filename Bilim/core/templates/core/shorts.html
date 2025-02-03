@@ -56,6 +56,8 @@
       color: white; 
       text-align: center; 
     } 
+
+   
  
     @media (width: 250px) { 
       .shorts_info { 
@@ -63,7 +65,7 @@
       } 
  
     } 
- 
+    
     @media (width: 480px) { 
       .shorts_info { 
         height: 90vh; 
@@ -86,14 +88,14 @@
         height: 48vh; 
       } 
     } 
-
+/* 
     @media (max-width: 1000px) { 
       .footer-nav { 
  
  
-        display: none;
+       
       } 
-    } 
+    }  */
 
     .footer-nav {
         position: fixed;
@@ -102,8 +104,8 @@
         width: 100%;
         display: flex;
         justify-content: space-around;
-        background: white;
-        padding: 10px 0;
+        background: black;
+        padding: 20px 0;
         box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
         border-top: 1px solid #ddd;
     }
@@ -116,7 +118,7 @@
         font-size: 24px;
     }
     .nav-item.active {
-        color: red;
+        color: #373985;
     }
     .nav-item.center {
         transform: scale(1.2);
@@ -128,7 +130,7 @@
 
   <!-- Footer -->
 
-  <!-- <nav class="footer-nav d-lg-none">
+  <nav class="footer-nav d-lg-none">
     <div class="nav-item active" data-label="Home">
         <i data-lucide="home"></i>
     </div>
@@ -142,7 +144,7 @@
     <div class="nav-item" data-label="Library">
         <i data-lucide="library"></i>
     </div>
-  </nav> -->
+  </nav>
 
   <!-- Navbar --> 
   <div class="d-flex" style="background-color: rgb(12, 18, 18); height: 100vh;"> 
@@ -178,8 +180,7 @@
         <div class=" "> 
           <div>UI barada oran gyzykly gorun!</div> 
           <div class=" text-center">#shorts</div> 
-        </div> 
- 
+        </div>
       </div> 
       <div class="text-small">Short videos from this channel</div> 
  
@@ -258,7 +259,7 @@
  
       <!-- SHORTS VIDEO SECTION STARTS HERE FOR MOBILE --> 
  
-      <div class="col-md-10 d-lg-none text-center m-auto rounded-2 mt-md-5" style="height: 47vh;"> 
+      <div class="col-md-10 video_main_container d-lg-none text-center m-auto rounded-2 mt-md-5" style="height: 47vh;"> 
         <div class="video-container col-12 rounded-2" style="height: 100%;"> 
           <video id="shorts-player" class="video-js vjs-default-skin w-100 h-100 rounded-3" controls autoplay loop muted 
             preload="auto" poster="your-thumbnail.jpg"> 
@@ -300,7 +301,7 @@
  
     <!-- SHORTS VIDEO SECTION STARTS HERE --> 
  
-    <div class="col-md-5 d-none d-lg-block text-center m-auto rounded-2" style="height: 70vh;"> 
+    <div class="col-lg-4 d-none d-lg-block text-center m-auto rounded-2" style="height: 70vh;"> 
       <div class="video-container rounded-2" style="height: 100%;"> 
         <video id="shorts-player" class="video-js vjs-default-skin w-100 h-100 rounded-3" controls autoplay loop muted 
           preload="auto" poster="your-thumbnail.jpg"> 
