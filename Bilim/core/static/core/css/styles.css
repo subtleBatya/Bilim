@@ -141,28 +141,27 @@ body {
     width: 300px;
 }
 
-/* for Video player */
-
-/* Container Styling */
-.video-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 90%;
+/* for Video player */ 
+ 
+/* Container Styling */ 
+.video-container { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    width: 100%; 
     margin: 0 auto; 
     aspect-ratio: 16 / 9; 
     overflow: hidden; 
-  }
-  
-  /* Video Styling */
-  .video-js {
+} 
+ 
+/* Video Styling */ 
+.video-js { 
     width: 100%; 
     height: 100%; 
     object-fit: cover; 
     background-color: black; 
-  }
-  
+} 
 .shorts-js {
     width: 25vw;
     height: 80vh;
