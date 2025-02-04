@@ -4,55 +4,122 @@
 // FOR SCIENTISTS ANIMATION IN THE MAIN FILE
 
 // Wrap the logic inside an async function
-async function initializeWebsiteLogic() {
-  console.log("All content has been fully loaded. Initializing logic...");
+// async function initializeWebsiteLogic() {
+//   console.log("All content has been fully loaded. Initializing logic...");
 
-  try {
-    // Simulate a heavy or asynchronous task
-    await performHeavyInitialization();
+//   try {
+//       // Simulate a heavy or asynchronous task
+//       await performHeavyInitialization();
 
-    // Your website's logic here
+//       // Ensure the parent container exists
+//       const einParentDiv = document.querySelector(".einstein_animes");
+//       if (!einParentDiv) {
+//           console.error("Error: '.einstein_animes' element not found.");
+//           return;
+//       }
+
+//       const einDivs = einParentDiv.querySelectorAll(".einstein_anime");
+//       if (einDivs.length === 0) {
+//           console.warn("No '.einstein_anime' elements found.");
+//           return;
+//       }
+
+//       let currentIndex = 0;
+
+//       function showNextRow() {
+//           einDivs.forEach((e) => {
+//               e.style.display = "none";
+//           });
+
+//           einDivs[currentIndex].style.display = "flex";
+//           currentIndex = (currentIndex + 1) % einDivs.length;
+//       }
+
+//       // Only start animation if elements exist
+//       showNextRow();
+//       setInterval(showNextRow, 4000);
+
+//       console.log("Initialization complete.");
+//   } catch (error) {
+//       console.error("Error during initialization:", error);
+//   }
+// }
+
+// // A mock function to simulate a heavy initialization task
+// async function performHeavyInitialization() {
+//   console.log("Starting heavy initialization...");
+
+//   // Simulating a delay, e.g., loading data or preparing resources
+//   return new Promise((resolve) => setTimeout(resolve, 2000)); // 2-second delay
+// }
+
+// // Attach the initialize function to the window load event
+// window.addEventListener("load", initializeWebsiteLogic);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Wrap the logic inside an async function
+// async function initializeWebsiteLogic() {
+//   console.log("All content has been fully loaded. Initializing logic...");
+
+//   try {
+//     // Simulate a heavy or asynchronous task
+//     await performHeavyInitialization();
+
+//     // Your website's logic here
    
-    const einParentDiv = document.querySelector('.einstein_animes'); 
-  const einDivs = einParentDiv.querySelectorAll('.einstein_anime'); 
+//     const einParentDiv = document.querySelector('.einstein_animes'); 
+//   const einDivs = einParentDiv.querySelectorAll('.einstein_anime'); 
   
-  let currentIndex = 0;
+//   let currentIndex = 0;
   
   
-  function showNextRow() {
-    einDivs.forEach((e) => {
-      e.style.display = 'none';
-    });
+//   function showNextRow() {
+//     einDivs.forEach((e) => {
+//       e.style.display = 'none';
+//     });
   
-    einDivs[currentIndex].style.display = 'flex';
+//     einDivs[currentIndex].style.display = 'flex';
   
-    currentIndex = (currentIndex + 1) % einDivs.length;
-  }
+//     currentIndex = (currentIndex + 1) % einDivs.length;
+//   }
   
-  showNextRow();
+//   showNextRow();
   
-  setInterval(showNextRow, 4000);
+//   setInterval(showNextRow, 4000);
 
 
 
-    console.log("Initialization complete.");
-  } catch (error) {
-    console.error("Error during initialization:", error);
-  }
-}
+//     console.log("Initialization complete.");
+//   } catch (error) {
+//     console.error("Error during initialization:", error);
+//   }
+// }
 
-// A mock function to simulate a heavy initialization task
-async function performHeavyInitialization() {
-  console.log("Starting heavy initialization...");
+// // A mock function to simulate a heavy initialization task
+// async function performHeavyInitialization() {
+//   console.log("Starting heavy initialization...");
 
-  // Simulating a delay, e.g., loading data or preparing resources
-  return new Promise((resolve) => setTimeout(resolve, 2000)); // 2-second delay
-}
+//   // Simulating a delay, e.g., loading data or preparing resources
+//   return new Promise((resolve) => setTimeout(resolve, 2000)); // 2-second delay
+// }
 
-// Attach the initialize function to the window load event
-window.addEventListener("load", async () => {
-  await initializeWebsiteLogic();
-});
+// // Attach the initialize function to the window load event
+// window.addEventListener("load", async () => {
+//   await initializeWebsiteLogic();
+// });
 
 
 
