@@ -53,11 +53,11 @@
             <div class=" text-start fs-5 fw-bold col-11 col-md-5" >
                 <div class="mb-3 row">
                     <label class="col" for="">Wideonyn Ady:</label>
-                    <input class="col" type="text" placeholder="Su yere giriz">
+                    <input class="col form-control text-secondary" type="text" placeholder="Su yere giriz">
                 </div>
-                <div class=" row">
+                <div class=" row mb-2">
                     <label class="col-6" for="">Wideonyn Kategoriyasy:</label>
-                    <select class="col" style="height: 5vh;" id="category" name="category">
+                    <select class="col form-control form-select text-secondary" style="height: 5vh;" id="category" name="category">
                         <option value=""  class="text-secondary" disabled selected> Su yere giriz</option> <!-- Placeholder for dropdown -->
                         <option value="education">Bilim</option>
                         <option value="entertainment">Guymenje</option>
@@ -65,12 +65,25 @@
                         <option value="sports">Sport</option>
                     </select>
                 </div>
+
+                <div class=" row">
+                    <label class="col-6" for="">Kursyn Kategoriyasy:</label>
+                    <select class="col form-control form-select text-secondary" style="height: 5vh;" id="category" name="category">
+                        <option value=""  class="text-secondary" disabled selected> Su yere giriz</option> <!-- Placeholder for dropdown -->
+                        <option value="education">Bilim</option>
+                        <option value="entertainment">Guymenje</option>
+                        <option value="technology">Tehnologiya</option>
+                        <option value="sports">Sport</option>
+                    </select>
+                </div>
+
+                
                 
             </div>
         </div>
-        <div class="text-end">
+        <div class="text-center mt-4">
             <div>
-               <a href=""> <button class="downloader text-white px-4 py-1 rounded-3 fw-medium" style="border: none;">Save</button></a>
+               <a href=""> <button class="downloader text-center text-white px-4 py-1 rounded-3 fw-medium" style="border: none;">Save</button></a>
             </div>
         </div>
     </div>

@@ -153,7 +153,7 @@ function handleFileUpload(input) {
 
         // Create progress bar
         const progressBarContainer = document.createElement("div");
-        progressBarContainer.className = "progress mb-2";
+        progressBarContainer.className = "progress mb-2 h-100";
         const progressBar = document.createElement("div");
         progressBar.className = "progress-bar";
         progressBar.style.width = "0%";
@@ -202,12 +202,12 @@ function handleFileUpload(input) {
     video.src = URL.createObjectURL(file); // Load the video to check its duration
 }
 
-// function removeFile(fileContainer, input) {
-//     if (fileContainer) {
-//         fileContainer.remove(); // Remove the file container
-//     }
-//     input.value = ""; // Clear the file input field
-// }
+function removeFile(fileContainer, input) {
+    if (fileContainer) {
+        fileContainer.remove(); // Remove the file container
+    }
+    input.value = ""; // Clear the file input field
+}
 
 
 
