@@ -6,6 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BILIM Courses</title>
   {% include 'core/static_files/links.html'%}
+
+  <style>
+    * {
+      outline: 4px solid lightgreen !important;
+    }
+  </style>
 </head>
 <body>
 {% include "core/hero.html" with content="Find your own course" image_path="core/images/course.webp"%}
@@ -54,9 +60,9 @@
     </div>
 </div>
   
-  <div class="">
+  <div class="" >
     <div class="h4 text-center mb-3" style="font-size: 4vw;" data-aos="fade-left" data-aos-duration="1500" >UI Dizayner Kurslary</div>
-    <div class="popular_images mx-auto" style="width: 95vw;">
+    <div class="popular_images mx-auto" style="width: 90vw;">
       <div class=" row mx-auto mb-3 courses">
         <a class="" href="{% url 'videos:video_of_course'%}" data-aos="zoom-out" data-aos-duration='2000'>
           <div class=" pb-4 mx-auto">
