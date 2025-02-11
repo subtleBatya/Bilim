@@ -37,7 +37,8 @@
             <!-- Profile Picture Section -->
             <div class="col-md-3">
                 <h3 class="mb-3 text-center">Your Picture</h3>
-                <form action="" method="post">
+                <form action="{% url "auth:edit_profile"%}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <div class="mb-4 text-center text-md-start">
                         <label for="photoUpload" style="cursor: pointer; display: inline-block; border: 2px dashed #ccc; border-radius: 50%; width: 300px; height: 300px; display: flex; align-items: center; justify-content: center; background-color: #f8f9fa;">
                             {% if request.user.user_avatar %}
@@ -47,32 +48,32 @@
                             <img src="" alt="Photo" id="photoPreview" class="img-fluid" style="border-radius: 50%; width: 300px; height: 300px; object-fit: cover; display: none; transition: transform 0.3s;">
                             {% endif %}
                         </label>
-                        <input type="file" id="photoUpload" style="display: none;" accept="image/*" onchange="updatePhotoPreview(event)">
+                        <input type="file" id="photoUpload" style="display: none;" accept="image/*" onchange="updatePhotoPreview(event)" name="profile_image">
                     </div>
-                </form>
+               
             </div>
 
             <!-- General Information Section -->
             <div class="col-md-4">
                 <h3 class="mb-3">General Information</h3>
-                <form>
+               
                     <div class="mb-4 form-group">
                         <label for="fullname" class="form-label">Nickname:</label>
-                        <input type="text" class="form-control" id="fullname" placeholder="Nickname">
+                        <input name='username' type="text" class="form-control" id="fullname" placeholder="Nickname" value="{{request.user.username}}">
                     </div>
                     <div class="mb-4 form-group">
                         <label for="profession" class="form-label">Job:</label>
-                        <input type="text" class="form-control" id="profession" placeholder="Job">
+                        <input name="job" type="text" class="form-control" id="profession" placeholder="Job" value="{% if request.user.job %} {{request.user.job}} {% else %}{% endif %} ">
                     </div>
                     <div class="mb-4 form-group">
-                        <label for="motivation" class="form-label">Motivation:</label>
-                        <textarea class="form-control" id="motivation" placeholder="Motivation"></textarea>
+                        <label for="motivation" class="form-label">About me:</label>
+                        <textarea name="about_me" class="form-control" id="motivation" placeholder="Write about yourself" maxlength="200" rows=4>{{request.user.about_me}}</textarea>
                     </div>
                     <div class="mb-4 form-group">
                         <label for="goals" class="form-label">Goals:</label>
-                        <textarea class="form-control" id="goals" placeholder="Goals"></textarea>
+                        <textarea name="goals" class="form-control" id="goals" placeholder="Write about goals" maxlength="200" rows=4>{{request.user.about_my_goals}}</textarea>
                     </div>
-                </form>
+              
             </div>
 
             <!-- Information About Yourself Section -->
@@ -80,42 +81,68 @@
                 <h3 class="mb-3 text-center">Information About Yourself</h3>
                 <div class="choose-fields d-flex">
                     {% for ability in abilities %}
-                    <div class="field-card" id="{{ ability.name|slugify }}Card" onclick="toggleField('{{ ability.name|slugify }}')">
-                        <div>
-                            <i class="{{ ability.ability_icon }} text-warning field-icon"></i>
-                            <p>{{ ability.name }}</p>
+                        {% if ability in request.user.user_abilities.all %}
+                        <div class="field-card active" id="{{ ability.name|slugify }}Card" 
+                             onclick="toggleField('{{ ability.name|slugify }}')">
+                            <div>
+                                <i class="{{ ability.ability_icon }} text-warning field-icon"></i>
+                                <p>{{ ability.name }}</p>
+                            </div>
                         </div>
-                    </div>
+                        {% else %}
+                        <div class="field-card" id="{{ ability.name|slugify }}Card" 
+                             onclick="toggleField('{{ ability.name|slugify }}')">
+                            <div>
+                                <i class="{{ ability.ability_icon }} text-warning field-icon"></i>
+                                <p>{{ ability.name }}</p>
+                            </div>
+                        </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
+                <input type="hidden" id="selectedAbilities" name="selected_abilities">
                 <div class="btn-container">
                     <button type="submit" class="btn save-button downloader fs-5">Save</button>
                 </div>
             </div>
-            
+       
         </div>
     </div>
-
+</form>
     {% include "core/footer.html" %}
     <script>
-        let selectedFields = 0;
+    // Initialize selectedAbilities dynamically based on elements with "active" class
+function initializeSelectedAbilities() {
+    selectedAbilities = Array.from(document.getElementsByClassName("active")).map(
+        element => element.id.replace("Card", "") // Extract actual field name
+    );
+    document.getElementById("selectedAbilities").value = selectedAbilities.join(",");
+}
 
-        function toggleField(fieldId) {
-            const field = document.getElementById(fieldId);
-            const card = document.getElementById(`${fieldId}Card`);
+function toggleField(fieldId) {
+    const card = document.getElementById(fieldId + "Card");
 
-            if (card.classList.contains('active')) {
-                card.classList.remove('active');
-                selectedFields--;
-            } else {
-                if (selectedFields < 5) {
-                    card.classList.add('active');
-                    selectedFields++;
-                } else {
-                    alert("You can select a maximum of 5 fields.");
-                }
-            }
+    if (selectedAbilities.includes(fieldId)) {
+        // Remove ability from selection
+        selectedAbilities = selectedAbilities.filter(item => item !== fieldId);
+        card.classList.remove('active');
+    } else {
+        if (selectedAbilities.length < 3) {
+            // Add ability to selection
+            selectedAbilities.push(fieldId);
+            card.classList.add('active');
+        } else {
+            alert("You can select a maximum of 3 fields.");
         }
+    }
+
+    // Update hidden input field
+    document.getElementById("selectedAbilities").value = selectedAbilities.join(",");
+}
+
+// Run initialization when the page loads
+document.addEventListener("DOMContentLoaded", initializeSelectedAbilities);
+
 
         function updatePhotoPreview(event) {
             const file = event.target.files[0];
