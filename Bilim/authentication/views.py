@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login, logout, authenticate
 from django.contrib.auth.hashers import make_password
-from .models import User, User_abilities, About_user
+from .models import User, User_abilities
 #ready function
 def login(request):
     if request.method == "GET":
