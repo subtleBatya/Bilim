@@ -1,0 +1,22 @@
+select.form-select {
+    border: 1px solid #373985;
+}
+
+.form-check-label {
+    font-weight: bold;
+}
+.text-muted {
+    font-size: 0.85rem;
+}
+    .form-check-input:checked + .form-check-label {
+color: #FFA000;
+}
+
+/* Дополнительно можно изменить цвет фона радиокнопки */
+.form-check-input:checked {
+background-color: #FFA000;
+border-color: #FFA000;
+}
+.form-control{
+      border-color: #373985;
+}
