@@ -23,7 +23,7 @@ def teacher_edit(request):
         username = request.POST.get("username")
         job = request.POST.get("job")
         phone_number = request.POST.get("phone_number")
-        image = request.FILES.get("image")
+        image = request.FILES.get("profile_image")
         teacher = User.objects.get(username=request.user.username)
         if not (image == None):
             teacher.user_avatar = image

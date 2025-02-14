@@ -7,67 +7,6 @@
   <title>BILIM Teacher Edit</title>
   {% include "core/static_files/links.html"%}
   <link rel="stylesheet" href="{% static "core/css/teacher_edit.css"%}">
-
-  <style>
-    .photo-container {
-        position: relative;
-        cursor: pointer;
-        display: inline-block;
-        border-radius: 50%;
-        width: 300px;
-        height: 300px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #f8f9fa;
-        overflow: hidden;
-    }
-
-    .photo-wrapper {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .photo-container img {
-        border-radius: 50%;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .photo-icon {
-        font-size: 3rem;
-        color: #aaa;
-    }
-
-    .photo-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, 0.6);
-        opacity: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    .plus-sign {
-        font-size: 4rem;
-        color: rgba(2, 2, 31, 0.6);
-        font-weight: bold;
-    }
-
-    .photo-container:hover .photo-overlay {
-        opacity: 1;
-    }
-</style>
 </head>
 <body>
   {% include "core/hero.html" with content="Update your profile Teacher" image_path="core/images/course.webp"%}
@@ -78,13 +17,25 @@
 <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="mx-auto d-flex" style="width: 90vw;">
-    <div class="mt-2 d-flex align-items-center">
-        <div class="">
-            <img src="{% if request.user.user_avatar %} {{ request.user.user_avatar }} {% else %} {% static "core/images/default_profile_image.png"%} {% endif %}" alt="" style="width: 15vw;">
-            <div class="container mt-4">
-                    <input type="file" class="form-control" id="image" name="image" accept="image/*">
+        <div class="col-md-3">
+            <form action="{% url "auth:edit_profile"%}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-4 text-center text-md-start">
+                    <label for="photoUpload" class="photo-container">
+                        <div class="photo-wrapper">
+                            {% if request.user.user_avatar %}
+                            <img src="{{ request.user.user_avatar.url }}" alt="Photo" id="photoPreview" class="img-fluid">
+                            {% else %}
+                            <span id="photoIcon" class="photo-icon">+</span>
+                            <img src="" alt="Photo" id="photoPreview" class="img-fluid" style="display: none;">
+                            {% endif %}
+                        </div>
+                        <div class="photo-overlay">
+                            <span class="plus-sign">+</span>
+                        </div>
+                    </label>
+                    <input type="file" id="photoUpload" style="display: none;" accept="image/*" onchange="updatePhotoPreview(event)" name="profile_image">
                 </div>
-            </div>
         </div>
         <div class="d-block ms-4 w-50">
     
@@ -108,10 +59,10 @@
                 <label class="h5 col fw-semibold form-check-label">
                     <i class="bi bi-telephone-fill me-2 text-danger"></i>Phone number:</label>
                 <div class="h6 col text-small ms-1">
-                    <input name="phone_number" class="form-control rounded-1" type="text" placeholder="Phone number" pattern="^\+993[0-9]{8}$" id="tel_number" value="{% if request.user.telephone_number %} {{request.user.telephone_number }} {% else %}{% endif %}">
+                    <input name="phone_number" class="form-control rounded-1" type="text" placeholder="Phone number" pattern="^\+993[0-9]{8}$" id="tel_number" value="{% if request.user.telephone_number %}{{request.user.telephone_number }}{% else %}{% endif %}">
                 </div>
             </div>
-        
+            
         </div>
         
     </div>
@@ -154,26 +105,6 @@ function toggleField(fieldId) {
     // Update hidden input field
     document.getElementById("selectedAbilities").value = selectedAbilities.join(",");
 }
-
-// // Run initialization when the page loads
-// document.addEventListener("DOMContentLoaded", initializeSelectedAbilities);
-
-
-//         function updatePhotoPreview(event) {
-//             const file = event.target.files[0];
-//             if (file) {
-//                 const reader = new FileReader();
-//                 reader.onload = function (e) {
-//                     const photoPreview = document.getElementById('photoPreview');
-//                     const photoIcon = document.getElementById('photoIcon');
-
-//                     photoPreview.src = e.target.result;
-//                     photoPreview.style.display = 'block';
-//                     photoIcon.style.display = 'none';
-//                 };
-//                 reader.readAsDataURL(file);
-//             }
-//         }
 
     // Ensure the script runs when the page loads
 document.addEventListener("DOMContentLoaded", function () {
