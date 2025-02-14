@@ -37,7 +37,11 @@
                                 Profile
                             </a>
                             <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
+                                {% if request.user.is_student %}
                                 <li><a class="dropdown-item hover-effect" href="{% url "auth:profile"%}">My Profil</a></li>
+                                {% elif requst.user.is_teacher %}
+                                <li><a class="dropdown-item hover-effect" href="{% url "teacher:teacher_profile"%}">My Profile</a></li>
+                                {% endif %}
                                 <li><a class="dropdown-item hover-effect" href="{% url 'auth:payment'%}">Payment</a></li>
                                 <li><a class="dropdown-item hover-effect" href="{% url 'applications:application'%}">Teklipler we arzalar</a></li>
                                 <li><a class="dropdown-item hover-effect" href="{% url 'auth:logout'%}">Logout</a></li>
@@ -48,7 +52,7 @@
     
                     <!-- Right Section: Avatar and Username -->
                     <div class="d-flex align-items-center" data-aos="slide-left" data-aos-duration="1500">
-                        <span class="username me-2">Bayramow Ramazan</span>
+                        <span class="username me-2">{{ request.user.username }} </span>
                     </div>
                 </div>
             </div>

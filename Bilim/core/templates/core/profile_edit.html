@@ -63,15 +63,15 @@
                     </div>
                     <div class="mb-4 form-group">
                         <label for="profession" class="form-label">Job:</label>
-                        <input name="job" type="text" class="form-control" id="profession" placeholder="Job" value="{% if request.user.job %} {{request.user.job}} {% else %}{% endif %} ">
+                        <input name="job" type="text" class="form-control" id="profession" placeholder="Write your Job" value="{% if request.user.job %}{{request.user.job}}{% else %}{% endif %}">
                     </div>
                     <div class="mb-4 form-group">
                         <label for="motivation" class="form-label">About me:</label>
-                        <textarea name="about_me" class="form-control" id="motivation" placeholder="Write about yourself" maxlength="200" rows=4>{% request.user.about_me %}{{request.user.about_me}}{% endif %}</textarea>
+                        <textarea name="about_me" class="form-control" id="motivation" placeholder="Write about yourself" maxlength="200" rows=4>{% if request.user.about_me %}{{request.user.about_me}}{% endif %}</textarea>
                     </div>
                     <div class="mb-4 form-group">
                         <label for="goals" class="form-label">Goals:</label>
-                        <textarea name="goals" class="form-control" id="goals" placeholder="Write about goals" maxlength="200" rows=4>{{request.user.about_my_goals}}</textarea>
+                        <textarea name="goals" class="form-control" id="goals" placeholder="Write about goals" maxlength="200" rows=4>{% if request.user.about_my_goals%}{{request.user.about_my_goals}}{% endif %}</textarea>
                     </div>
               
             </div>
