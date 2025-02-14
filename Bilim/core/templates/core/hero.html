@@ -1,5 +1,5 @@
 {% load static %}
-<div class="hero">
+<div class="hero w-100">
         <nav class="navbar navbar-expand-lg bg-transparent">
             <div class="container-fluid">
                 <!-- Left Section: Logo and Brand Name -->
@@ -39,7 +39,7 @@
                             <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
                                 {% if request.user.is_student %}
                                 <li><a class="dropdown-item hover-effect" href="{% url "auth:profile"%}">My Profil</a></li>
-                                {% elif requst.user.is_teacher %}
+                                {% elif request.user.is_teacher %}
                                 <li><a class="dropdown-item hover-effect" href="{% url "teacher:teacher_profile"%}">My Profile</a></li>
                                 {% endif %}
                                 <li><a class="dropdown-item hover-effect" href="{% url 'auth:payment'%}">Payment</a></li>

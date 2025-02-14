@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from authentication.models import User
+from videos.models import Video_course, Video_category, VideoCourse as VideoLesson
 
 # Create your views here.
 def teacher_profile(request):
@@ -7,13 +8,50 @@ def teacher_profile(request):
 
 
 def teacher_content(request):
-    return render(request, "core/teacher_content.html")
+    if request.method == "GET":
+        if request.user.is_teacher:
+            teacher_lessons = VideoLesson.objects.all()
+            context = {
+                "lessons": teacher_lessons,
+            }
+            return render(request, "core/teacher_content.html", context)
 
 
 
 def teacher_video_create(request):
-    return render(request, "core/teacher_create_video.html")
-
+    if request.method == "GET":
+        if request.user.is_teacher:
+            main_category = Video_category.objects.all()
+            course_category = Video_course.objects.all()
+            context = {
+                "main_category":main_category,
+                "course_category":course_category
+            }
+            return render(request, "core/teacher_create_video.html", context)
+    if request.method == "POST":
+        if request.user.is_teacher:
+            video = request.POST.get("video")
+            video_title = request.POST.get("video_title")
+            main_category = Video_category.objects.get(category_name=request.POST.get("main_cat"))
+            course_category = Video_course.objects.get(course_name=request.POST.get("course_cat"))
+            video_description = request.POST.get("video_description")
+            poster = request.FILES.get("poster")
+            
+            lesson = VideoLesson(
+                video=video,
+                title=video_title,
+                category=main_category,
+                course=course_category,
+                description=video_description,
+                poster=poster,
+                author=request.user
+            )
+            try:
+                lesson.save()
+                return redirect("core:success")
+            except Exception as e:
+                print(f"Error: {e}")
+                return redirect("core:error")
 
 def teacher_edit(request):
     if request.method == "GET":

@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
+from videos.models import VideoCourse
 # Create your models here.
 class User(AbstractUser):
     telephone_number = models.CharField(max_length=255, blank=True, null=True)
     user_avatar = models.ImageField(upload_to="user/images/", blank=True, null=True)
-    #recent_seen_video = models.ManyToManyField()
+    recent_seen_video = models.ManyToManyField(VideoCourse, related_name="User_last_seen_videos", blank=True)
     is_student = models.BooleanField(default=False, blank=True)
     is_teacher = models.BooleanField(default=False, blank=True)
     about_me = models.TextField(blank=True, null=True)

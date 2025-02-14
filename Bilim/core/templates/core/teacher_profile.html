@@ -12,11 +12,9 @@
 <body>
   {% include "core/hero.html" with content="View your profile teacher" image_path="core/images/report.webp"%}
 <!-- Textarea -->
-<div class=" text-center mx-auto" style="width: 90vw;">
-    <hr class="p-1">
-</div>
+
 <div class="mx-auto  justify-content-between align-items-start" style="width: 90vw;">
-      <div class="col-12 mx-auto text-start text-lg-end">
+      <div class="col-12 mx-auto text-start text-lg-end mt-3">
         <a href='{% url 'teacher:teacher_edit'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">Edit</button></a>
         <a href='{% url 'teacher:teacher_video_create'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">Add video</button></a>
         <a href='{% url 'teacher:teacher_content'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">My videos</button></a>
