@@ -15,6 +15,19 @@ def teacher_content(request):
                 "lessons": teacher_lessons,
             }
             return render(request, "core/teacher_content.html", context)
+        
+        
+def teacher_content_delete(request, id):
+    if request.method == "GET":
+        if request.user.is_teacher:
+            video = VideoLesson.objects.get(author=request.user, id=id)
+            try:
+                video.delete()
+                return redirect("teacher:teacher_content")
+            except Exception as e:
+                print(f"Error: {e}")
+                return redirect("core:error")
+            
 
 
 
