@@ -26,21 +26,19 @@
         {% endif %}
         {% for lesson in lessons %}
         <div class="mt-5 d-flex col-11 mx-auto  align-items-center" >
-            <div class=" d-block d-lg-flex col-10 mx-auto justify-content-between align-items-lg-stretch">
-                <div class="  mx-auto text-center rounded-2 col-12 col-lg-4 d-flex flex-column" style="height: 100%;">
-                    
-                        <!-- <img class=" w-100 h-100 object-fit-cover" src="{{lesson.poster.url}}"  alt=""> -->
+            <div class=" d-block d-lg-flex col-12 mx-auto justify-content-between align-items-lg-stretch">
+                <div class="mx-auto text-center rounded-2 col-12 col-lg-5 d-flex flex-column" style="height: 30vh;">
                         
                             <div>
-                                <div class="photo-wrapper">
-                                    <img class="w-100 h-100 object-fit-cover" src="{{lesson.poster.url}}" alt="Lesson Image">
+                                <div class="photo-wrapper" style="height: 30vh;">
+                                    <img class="" src="{{lesson.poster.url}}" alt="Lesson Image">
                                     <div class="photo-overlay">
                                         <div class="play-button"></div>
                                     </div>
                                 </div>
                             </div>
                 </div>
-                <div class="d-block text-start  mt-2 col-12 col-lg-5">
+                <div class="d-block text-start  mt-2 col-12 col-lg-7">
                     <div class=" d-flex align-items-center pb-1">
                         <div class="fs-md-4 fw-semibold fs-4">Video title:</div>
                         <div class="p fw-bold text-small ms-1 fs-4 ">{{lesson.title}} </div>
