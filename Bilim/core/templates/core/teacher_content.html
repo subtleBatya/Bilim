@@ -33,7 +33,7 @@
                                 <div class="photo-wrapper">
                                     <img class="" src="{{lesson.poster.url}}" alt="Lesson Image">
                                     <div class="photo-overlay">
-                                        <div class="play-button"></div>
+                                        <a href="{% url "teacher:teacher_video" lesson.id %}"><div class="play-button"></div></a>
                                     </div>
                                 </div>
                             </div>

@@ -4,7 +4,8 @@ from videos.models import Video_course, Video_category, VideoCourse as VideoLess
 
 # Create your views here.
 def teacher_profile(request):
-    return render(request, "core/teacher_profile.html")
+    if request.user.is_teacher:
+        return render(request, "core/teacher_profile.html")
 
 
 def teacher_content(request):
@@ -90,3 +91,12 @@ def teacher_edit(request):
         except Exception as e:
             print(f"Error: {e}")
             return redirect("core:error")
+        
+
+
+def see_own_video(request, id):
+    my_video = VideoLesson.objects.get(author=request.user, id=id)
+    context = {
+        'video': my_video
+    }
+    return render(request, "core/video_page_for_teachers.html", context)
