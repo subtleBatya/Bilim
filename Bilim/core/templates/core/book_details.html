@@ -14,7 +14,7 @@
       <!-- Левая колонка: картинка -->
       <div class="col-md-6">
         <img 
-    src="{% static 'core/images/lorembook.webp' %}" 
+    src="{{book.book_poster.url}}" 
     class="custom-image" 
     alt="Пример картинки">
 
@@ -23,13 +23,13 @@
       <div class="col-md-6">
         <div class="d-flex flex-column justify-content-between h-100">
           <div>
-            <h1 class='text-center'>Ux mind seter Book</h1> 
-            <h6 class="text-center p-3">(25 Customer reviews)</h6>
-            <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste voluptatum, autem ipsa atque, perferendis odit accusantium nostrum, magnam excepturi cumque molestiae officiis! Numquam iusto vel soluta et consequatur quo ab.Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam, earum laboriosam atque, totam excepturi accusamus vel, odit magni sapiente illum architecto magnam. Quasi obcaecati, tenetur libero nobis expedita quaerat.</p>
+            <h1 class='text-center'>{{book.name}} </h1> 
+            <h6 class="text-center p-3">({{book.views}} Customer reviews)</h6>
+            <p style="text-align: justify;">{{book.description}} </p>
           </div>
           <div>
-            <h5 class="mb-5"><b>Category:</b> Crux Indoor Fast and Easy</h5>
-            <a class="btn downloader mt-2 mx-auto rounded-2">Download</a>
+            <h5 class="mb-5"><b>Category:</b>{{book.category}} </h5>
+            <a href="{{book.book_file.url}}" class="btn downloader mt-2 mx-auto rounded-2">Download</a>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Book
+from .models import Book, BookCategory
 
 
 class BookAdmin(admin.ModelAdmin):
@@ -7,3 +7,4 @@ class BookAdmin(admin.ModelAdmin):
     list_filter = ("name", "category", "views", "added_date")
 
 admin.site.register(Book, BookAdmin)
+admin.site.register(BookCategory)

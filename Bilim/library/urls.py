@@ -5,5 +5,5 @@ app_name = 'library'
 
 urlpatterns = [
     path("", library, name="library"),
-    path("details/", book_details, name="book_details")
+    path("details/<int:id>", book_details, name="book_details")
 ]

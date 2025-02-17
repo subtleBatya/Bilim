@@ -95,6 +95,12 @@ body {
     transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
 
 }
+@media(max-width:478px){
+
+.card-book {
+    height: 550px;
+}
+}
 
 .card-book:hover {
     transform: scale(1.1);
@@ -113,7 +119,6 @@ body {
 .downloader {
     background-color: #8f92dd;
     border: none;
-    padding: 5px 15px;
     transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out;
     color:white;
 }
@@ -145,7 +150,7 @@ body {
 }
 
 .expand-input:focus {
-    width: 300px;
+    width: 270px;
 }
 
 /* for Video player */ 
