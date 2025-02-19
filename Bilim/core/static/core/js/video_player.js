@@ -1,14 +1,3 @@
-// VIDEO player
-
-
-// FOR SCIENTISTS ANIMATION IN THE MAIN FILE
-
-
-
-// function initializeWebsiteLogic() {
-console.log("All content has been fully loaded. Initializing logic...");
-
-
 document.addEventListener("contextmenu", (event) => {
   if (event.target.tagName === "VIDEO") {
     event.preventDefault();
@@ -47,39 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
     player.play();
   });
 });
-
-// LIKES COUNT
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  let likeCount = 0;
-  let dislikeCount = 0;
-
-  const likeBtn = document.getElementById("like-btn");
-  const dislikeBtn = document.getElementById("dislike-btn");
-  const likeCountSpan = document.getElementById("like-count");
-  const dislikeCountSpan = document.getElementById("dislike-count");
-
-  likeBtn.addEventListener("click", () => {
-    likeCount++;
-    likeCountSpan.textContent = likeCount;
-  });
-
-  dislikeBtn.addEventListener("click", () => {
-    dislikeCount++;
-    dislikeCountSpan.textContent = dislikeCount;
-  });
-});
-
-
-//VIEW's COUNT
-
-
-// }
-
-
-// window.addEventListener("load", initializeWebsiteLogic);
-
 
 
 

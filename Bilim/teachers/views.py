@@ -12,7 +12,7 @@ def teacher_profile(request):
 def teacher_content(request):
     if request.method == "GET":
         if request.user.is_teacher:
-            teacher_lessons = VideoLesson.objects.all()
+            teacher_lessons = VideoLesson.objects.filter(author=request.user)
             context = {
                 "lessons": teacher_lessons,
             }

@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from .models import VideoCourse, Video_course as category_courses
 from django.contrib.auth.decorators import login_required
+
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+
 # Create your views here.
 @login_required
 def technical_courses(request):
@@ -77,6 +81,21 @@ def video_of_course(request, id):
         }
         return render(request, "core/video_page.html", context)
 
+
+
+@login_required
+def like_video(request, video_id):
+    video = get_object_or_404(VideoCourse, id=video_id)
+    user = request.user
+
+    if user in video.likes.all():
+        video.likes.remove(user)  # Unlike
+        liked = False
+    else:
+        video.likes.add(user)  # Like
+        liked = True
+
+    return JsonResponse({"liked": liked, "like_count": video.likes.count()})
 
 
 
