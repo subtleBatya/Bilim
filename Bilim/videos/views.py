@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def technical_courses(request):
     if request.method == "GET":
-        category_course = category_courses.objects.all()
+        category_course = category_courses.objects.filter(related_category__category_name="Technical")
         course_category = request.GET.get("category")
         video_name = request.GET.get("video_name")
         all_videos = VideoCourse.objects.filter(accepted=True, category__category_name="Technical")
@@ -26,7 +26,7 @@ def technical_courses(request):
 @login_required
 def natural_courses(request):
     if request.method == "GET":
-        category_course = category_courses.objects.all()
+        category_course = category_courses.objects.filter(related_category__category_name="Natural")
         course_category = request.GET.get("category")
         video_name = request.GET.get("video_name")
         all_videos = VideoCourse.objects.filter(accepted=True, category__category_name="Natural" )
@@ -48,7 +48,7 @@ def natural_courses(request):
 @login_required
 def humanitar_courses(request):
     if request.method == "GET":
-        category_course = category_courses.objects.all()
+        category_course = category_courses.objects.filter(related_category__category_name="Humanitar")
         course_category = request.GET.get("category")
         video_name = request.GET.get("video_name")
         all_videos = VideoCourse.objects.filter(accepted=True, category__category_name="Humanitar" )

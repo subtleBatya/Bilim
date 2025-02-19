@@ -16,7 +16,7 @@ class Video_category(models.Model):
 
 class Video_course(models.Model):
     course_name = models.CharField(max_length=255)
-
+    related_category = models.ForeignKey(Video_category, on_delete=models.CASCADE)
     class Meta:
         verbose_name = 'Course category'
         verbose_name_plural = 'Course categories'
