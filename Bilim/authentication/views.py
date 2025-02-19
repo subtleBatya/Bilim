@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login, logout, authenticate
 from django.contrib.auth.hashers import make_password
 from .models import User, User_abilities
+from django.contrib.auth.decorators import login_required
 #ready function
 def login(request):
     if request.method == "GET":
@@ -38,22 +39,24 @@ def sign_up(request):
         except Exception as e:
             return redirect("core:error")
 
-
+@login_required
 def payment(request):
     return render(request, "core/payment.html")
 
 
-
+@login_required
 def admin_page(request):
     return render(request, "core/admin.html")
 
 #ready function
+@login_required
 def logout_user(request):
     logout(request)
     return redirect("auth:login")
 
 
 #ready function
+@login_required
 def profile(request):
     if request.method == "GET":
         if request.user.is_student:
@@ -61,6 +64,7 @@ def profile(request):
 
 
 #ready function
+@login_required
 def edit_profile(request):
     if request.method == "GET":
         abilities = User_abilities.objects.all()

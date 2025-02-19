@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from authentication.models import User
 from videos.models import Video_course, Video_category, VideoCourse as VideoLesson
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+@login_required
 def teacher_profile(request):
     if request.user.is_teacher:
         return render(request, "core/teacher_profile.html")
 
-
+@login_required
 def teacher_content(request):
     if request.method == "GET":
         if request.user.is_teacher:
@@ -17,7 +18,7 @@ def teacher_content(request):
             }
             return render(request, "core/teacher_content.html", context)
         
-        
+@login_required   
 def teacher_content_delete(request, id):
     if request.method == "GET":
         if request.user.is_teacher:
@@ -31,7 +32,7 @@ def teacher_content_delete(request, id):
             
 
 
-
+@login_required
 def teacher_video_create(request):
     if request.method == "GET":
         if request.user.is_teacher:
@@ -67,6 +68,8 @@ def teacher_video_create(request):
                 print(f"Error: {e}")
                 return redirect("core:error")
 
+
+@login_required
 def teacher_edit(request):
     if request.method == "GET":
         if request.user.is_teacher:
@@ -93,7 +96,7 @@ def teacher_edit(request):
             return redirect("core:error")
         
 
-
+@login_required
 def see_own_video(request, id):
     my_video = VideoLesson.objects.get(author=request.user, id=id)
     context = {
