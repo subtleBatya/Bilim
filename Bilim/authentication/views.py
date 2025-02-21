@@ -3,6 +3,10 @@ from django.contrib.auth import login as auth_login, logout, authenticate
 from django.contrib.auth.hashers import make_password
 from .models import User, User_abilities
 from django.contrib.auth.decorators import login_required
+from videos.models import VideoCourse
+from django.core.mail import send_mail
+from django.conf import settings
+
 #ready function
 def login(request):
     if request.method == "GET":
@@ -46,7 +50,12 @@ def payment(request):
 
 @login_required
 def admin_page(request):
-    return render(request, "core/admin.html")
+    if request.method == 'GET':
+        videos = VideoCourse.objects.filter(accepted=False)
+        context = {
+            "all_videos": videos
+        }
+        return render(request, "core/admin.html", context)
 
 #ready function
 @login_required
@@ -102,3 +111,43 @@ def edit_profile(request):
         except Exception as e:
             print("Error: {e}")
             return render(request, "core/error.html")
+
+
+
+def admin_video(request, id):
+    if request.method == "GET":
+        video = VideoCourse.objects.get(id=id)
+        context = {
+            "video": video
+        }
+        return render(request, "core/video_page_for_admin.html", context)
+    
+
+def accept_video(request, id):
+    if request.method == "GET":
+        video = VideoCourse.objects.get(id=id)
+        videos = VideoCourse.objects.filter(accepted=False)
+        try:
+            send_custom_email(video.author.email,"BILIM EDUCATION", "Ваше видео успешно принято!\nС уважением команда Bilim!\nSiziň goýan wideoňyz kabul edildi!\nHormatlamak bilen Bilim komandasy!")
+            video.accepted = True
+            video.save()
+            return redirect("auth:admin_page")
+        except Exception as e:
+            print("Failed to save")
+            return redirect("auth:admin_page")
+    
+
+
+
+def send_custom_email(toemail, subject, message):
+    try:
+        send_mail(
+            subject, 
+            message, 
+            settings.EMAIL_HOST_USER,   
+            [toemail],
+            fail_silently=True
+        )
+        print("Successfully send")
+    except Exception as e:
+        print(f"Failed to send email: {e}")

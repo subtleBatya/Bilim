@@ -1,117 +1,47 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
-    {% include "core/static_files/links.html"%}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BILIM Courses</title>
+  {% include 'core/static_files/links.html'%}
+
+  
 </head>
 <body>
-  {% include "core/hero.html" with content="Custom admin" image_path="core/images/report.webp"%}
-        <!--Poisk-->
-    <div class="container-fluid">
-    <div class="d-flex flex-column flex-lg-row justify-content-end align-items-start align-items-lg-center py-2 px-3">
-        <!-- Поле поиска -->
-        <div class="position-relative me-0 mb-3 mb-lg-0 me-lg-3">
-            <input type="text" class="form-control pe-5 rounded-4 expand-input fs-4" placeholder="Search..." style="border: 1px solid #FFA000;">
-            <span class="position-absolute top-50 translate-middle-y end-0 me-2" style="color: #FFA000;"></span>
-        </div>
-        <!-- Dropdown Category -->
-        <div class="dropdown me-3 mb-3 mb-lg-0">
-            <button class="btn btn-secondary border-0 dropdown-toggle rounded-4 fs-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #FFA000; color: white; width: 150px;">
-                Category
-            </button>
-            <ul class="dropdown-menu rounded-4" aria-labelledby="dropdownMenuButton1" style="border: 1px solid #FFA000;">
-                <li><a class="dropdown-item rounded-2" href="#">A-z</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">z-a</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">Aktiw</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">Aktiw dal</a></li>
-            </ul>
-        </div>
-        <!-- Dropdown Filter -->
-        <div class="dropdown ">
-            <button class="btn btn-secondary border-0 dropdown-toggle rounded-4 fs-4 " type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #FFA000; color: white; width: 100px;">
-                Filter
-            </button>
-            <ul class="dropdown-menu rounded-4" aria-labelledby="dropdownMenuButton2" style="border: 1px solid #FFA000;">
-                <li><a class="dropdown-item rounded-2" href="#">A-z</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">z-a</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">Aktiw</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">Aktiw dal</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="container-table my-4">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">№</th>
-                <th scope="col">Photo</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Podpiska</th>
-                <th scope="col">Korzina</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td class="image-container">
-                    <img src="{% static 'core/images/book-library.png'%}" alt="Фото товара" class="image">
-                </td>
-                <td>Guga</td>
-                <td>gugagarahanow@gmail.com</td>
-                <td><h3 style="background-color: green; color: white; border-radius: 30px; width: 50%; margin: 0 auto; padding: 5px;">Aktiw</h3></td>
-                <td>
-                    <span class="cart-icon"><i class="fas fa-trash"></i></span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+{% include "core/hero.html" with content="Find your own course" image_path="core/images/course.webp"%}
+  
+<div class="">
+  <div class="h4 text-center mb-3 fs-4" data-aos="fade-left" data-aos-duration="1500">
+      Pending videos to add
+  </div>
+  <div class="popular_images mx-auto" style="width: 80%;">
+      <div class="row mx-auto mb-3 courses">
+          {% for video in all_videos %}
+              <a class="" href="{% url "auth:admin_video" video.id %}" data-aos="zoom-out" data-aos-duration="2000">
+                  <div class="pb-4 mx-auto">
+                      <div class="image-wrapper">
+                          <img class="img-fluid hover-img" src="{{ video.poster.url }}" alt="">
+                          <div class="hover-text">
+                              <p>{{ video.title }}</p>
+                              <p class="p-1">{{ video.description|truncatewords:20 }}</p>
+                          </div>
+                      </div>
+                  </div>
+              </a>
+          {% empty %}
+              <!-- Message when there are no videos -->
+              <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                  <h1 class="text-danger text-center">There are no videos pending to add</h1>
+              </div>
+          {% endfor %}
+      </div>
+  </div>
 </div>
 
-<!-- Модальное окно для увеличенной картинки -->
-<div id="imageModal" class="large-image">
-    <img id="modalImage" src="" alt="Увеличенная картинка">
-</div>
-{% include "core/footer.html"%}
-{% include "core/static_files/scripts.html"%}
-
-<script>
-    // Получаем все изображения с классом 'image'
-    const images = document.querySelectorAll('.image');
-
-    // Получаем элементы для отображения увеличенной картинки
-    const modal = document.getElementById('imageModal');
-    const modalImage = document.getElementById('modalImage');
-
-    // Функция для отображения увеличенной картинки
-    images.forEach(image => {
-        image.addEventListener('click', (event) => {
-            // Устанавливаем источник картинки в модальном окне
-            modalImage.src = image.src;
-            // Показываем модальное окно
-            modal.style.display = 'flex';  // Используем 'flex' для центрирования изображения
-            // Останавливаем всплытие события, чтобы не закрыть модальное окно
-            event.stopPropagation();
-        });
-    });
-
-    // Закрытие модального окна при клике вне картинки
-    modal.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    // Закрытие модального окна при клике в любом месте страницы
-    document.body.addEventListener('click', (event) => {
-        // Проверяем, не был ли клик на модальном окне (картинка)
-        if (!modal.contains(event.target)) {
-            modal.style.display = 'none';
-        }
-    });
-</script>
-
+  {% include "core/footer.html"%}
+  {% include "core/static_files/scripts.html"%}
 </body>
+
 </html>

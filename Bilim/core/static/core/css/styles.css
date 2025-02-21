@@ -164,7 +164,7 @@ body {
     width: 90%; 
     margin: 0 auto; 
     aspect-ratio: 16 / 9; 
-    overflow: hidden; 
+    /* overflow: hidden;  */
 } 
  
 /* Video Styling */ 
