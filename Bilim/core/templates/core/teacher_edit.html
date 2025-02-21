@@ -16,13 +16,13 @@
 </div>
 <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <div class="mx-auto d-flex" style="width: 90vw;">
-        <div class="col-md-3">
+    <div class="mx-auto d-md-flex align-items-md-center" style="width: 90vw;">
+        <div class="col-11 col-md-5 me-md-2 me-lg-0">
             <form action="{% url "auth:edit_profile"%}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="mb-4 text-center text-md-start">
-                    <label for="photoUpload" class="photo-container">
-                        <div class="photo-wrapper">
+                <div class="mb-4 mx-auto text-center text-md-start">
+                    <label for="photoUpload" class="photo-container mx-auto text-center">
+                        <div class="photo-wrapper mx-auto text-center">
                             {% if request.user.user_avatar %}
                             <img src="{{ request.user.user_avatar.url }}" alt="Photo" id="photoPreview" class="img-fluid">
                             {% else %}
@@ -37,27 +37,30 @@
                     <input type="file" id="photoUpload" style="display: none;" accept="image/*" onchange="updatePhotoPreview(event)" name="profile_image">
                 </div>
         </div>
-        <div class="d-block ms-4 w-50">
+        <div class="d-block ms-4 col-10 col-md-6 ">
     
             <div class="row align-items-center pb-3">
-                <label class="h5 col fw-semibold form-check-label">
-                    <i class="bi bi-person-fill me-2 text-primary"></i>Nickname:</label>
+                <label class="h5 align-items-center col fw-semibold form-check-label">
+                    <i class="bi bi-person-fill me-2 text-primary"></i>Nickname:
+                </label>
                 <div class="h6 col text-small ms-1">
                     <input name="username" class="form-control rounded-1" type="text" placeholder="Nickname" value="{{request.user.username}}">
                 </div>
             </div>
         
             <div class="row align-items-center pb-3">
-                <label class="h5 col fw-semibold form-check-label">
-                    <i class="bi bi-briefcase-fill me-2 text-success"></i>Job:</label>
+                <label class="h5 col align-items-center fw-semibold form-check-label">
+                    <i class="bi bi-briefcase-fill me-2 text-success"></i>Job:
+                </label>
                 <div class="h6 col text-small ms-1">
                     <input name="job" class="form-control rounded-1" type="text" placeholder="Job" value="{% if request.user.job %}{{request.user.job}}{% else %}{% endif %}">
                 </div>
             </div>
         
             <div class="row align-items-center">
-                <label class="h5 col fw-semibold form-check-label">
-                    <i class="bi bi-telephone-fill me-2 text-danger"></i>Phone number:</label>
+                <label class="h5 col align-items-center fw-semibold form-check-label">
+                    <i class="bi bi-telephone-fill me-2 text-danger"></i>Phone number:
+                </label>
                 <div class="h6 col text-small ms-1">
                     <input name="phone_number" class="form-control rounded-1" type="text" placeholder="Phone number" pattern="^\+993[0-9]{8}$" id="tel_number" value="{% if request.user.telephone_number %}{{request.user.telephone_number }}{% else %}{% endif %}">
                 </div>

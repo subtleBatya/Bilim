@@ -19,28 +19,28 @@
         <a href='{% url 'teacher:teacher_video_create'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader m-1" style="border: none;">Add video</button></a>
         <a href='{% url 'teacher:teacher_content'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader m-1" style="border: none;">My videos</button></a>
       </div>
-    <div class="mt-2 row d-flex ">
-        <div class="col-8 col-lg-3 text-center justify-content-center mx-auto text-lg-start align-items-lg-start justify-content-lg-start ">
+    <div class="mt-2 row d-block d-md-flex ">
+        <div class="col-12 col-md-5 col-lg-5 text-center justify-content-center mx-auto text-lg-start align-items-lg-start justify-content-lg-start ">
             {% if request.user.user_avatar %}
                 <img src="{{ request.user.user_avatar.url }}" alt="User Photo" class="img-fluid" style="border-radius: 50px; width: 300px; height: 300px; object-fit: cover;">
             {% else %}
                 <img src="" alt="User Photo" class="img-fluid" style="border-radius: 50%; width: 300px; height: 300px; object-fit: cover;">
             {% endif %}
         </div>
-        <div class="d-flex col-lg-8 ms-4 text-lg-center justify-content-center align-items-lg-center col-9">
-            <div class="d-flex col w-75 justify-content-center align-items-center">
+        <div class="d-flex ms-4 text-lg-center justify-content-center align-items-lg-center col-9 col-md-5 col-lg-5">
+            <div class="d-flex  justify-content-center align-items-center mt-3 mt-md-0">
                 <div class="row">
                     <div class="d-flex align-items-center pb-3">
-                        <div class="h5 fw-semibold"><i class="bi bi-person-fill me-2 text-primary"></i>Nickname:</div>
+                        <div class="h5 fw-semibold align-items-center"><i class="bi bi-person-fill me-2 text-primary"></i>Nickname: <span class="ms-1">{{request.user.username}}</span> </div>
                     </div>
                     <div class="d-flex align-items-center pb-3">
-                        <i class="bi bi-briefcase-fill me-2 text-success"></i><div class="h5 fw-semibold">Job:</div>
+                        <div class="h5 fw-semibold align-items-center"><i class="bi bi-briefcase-fill me-2 text-success"></i>Job: <span class="ms-1">{% if request.user.job %} {{request.user.job}} {% else %} Edit your job... {% endif %} </span> </div>
                     </div>
                     <div class="d-flex align-items-center pb-3">
-                        <i class="bi bi-telephone-fill me-2 text-danger"></i><div class="h5 fw-semibold">Phone number:</div>
+                        <div class="h5 fw-semibold align-items-center"><i class="bi bi-telephone-fill me-2 text-danger"></i>Phone number: <span class="ms-1">{% if request.user.telephone_number %} {{request.user.telephone_number}} {% else %} Edit your number... {% endif %} </span></div>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class=" d-flex align-items-center pb-3 ">
                         <div class="h5 text ms-1">{{request.user.username}}</div>
                     </div>
@@ -50,7 +50,7 @@
                     <div class=" d-flex align-items-center pb-3  ">
                         <div class="h5 text ms-1">{% if request.user.telephone_number %} {{request.user.telephone_number}} {% else %} Edit your number... {% endif %} </div>
                     </div>
-                </div>
+                </div> -->
                
                
                
