@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from .models import VideoCourse, Video_course as category_courses
 from django.contrib.auth.decorators import login_required
-
+from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from authentication.models import User
 
 # Create your views here.
 @login_required
@@ -100,4 +101,14 @@ def like_video(request, video_id):
 
 
 def shorts(request):
-    return render(request, "core/shorts.html")
+    user = User.objects.get(username=request.user.username)
+    videos = VideoCourse.objects.all().exclude(author=user)
+    paginator = Paginator(videos, 5)  # Adjust the number of items per page
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'core/shorts/shorts.html', {
+        'page_obj': page_obj,
+        'has_next': page_obj.has_next(),  # Check if more pages are available
+        'next_page_number': page_obj.next_page_number() if page_obj.has_next() else None,
+    })
