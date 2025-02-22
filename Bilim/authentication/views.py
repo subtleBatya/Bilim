@@ -113,7 +113,7 @@ def edit_profile(request):
             return render(request, "core/error.html")
 
 
-
+@login_required
 def admin_video(request, id):
     if request.method == "GET":
         video = VideoCourse.objects.get(id=id)
@@ -126,7 +126,6 @@ def admin_video(request, id):
 def accept_video(request, id):
     if request.method == "GET":
         video = VideoCourse.objects.get(id=id)
-        videos = VideoCourse.objects.filter(accepted=False)
         try:
             send_custom_email(video.author.email,"BILIM EDUCATION", "Ваше видео успешно принято!\nС уважением команда Bilim!\nSiziň goýan wideoňyz kabul edildi!\nHormatlamak bilen Bilim komandasy!")
             video.accepted = True
@@ -135,7 +134,20 @@ def accept_video(request, id):
         except Exception as e:
             print("Failed to save")
             return redirect("auth:admin_page")
+        
+
     
+def decline_video(request, id):
+    if request.method == "GET":
+        video = VideoCourse.objects.get(id=id)
+        try:
+            send_custom_email(video.author.email,"BILIM EDUCATION", "К сожалению ваше видео не принято! Попробуйте указать заданные поля правильные значения!\nС уважением команда Bilim!\nSiziň goýan wideoňyz kabul edilmedi! Görkezilen öýjüklere dogry maglumat girizmegiňi haýyş edýäris!\nHormatlamak bilen Bilim komandasy!")
+            video.delete()
+            return redirect("auth:admin_page")
+        except Exception as e:
+            print("Failed to delete")
+            return redirect("auth:admin_page")
+
 
 
 
@@ -143,7 +155,7 @@ def send_custom_email(toemail, subject, message):
     try:
         send_mail(
             subject, 
-            message, 
+            message,
             settings.EMAIL_HOST_USER,   
             [toemail],
             fail_silently=True

@@ -64,7 +64,8 @@
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>  Accepted: </b> <a href="{% url "auth:accept_video" video.id %}"> <button class="btn btn-primary downloader">Accept video</button> </a>
+        <b>  Accepted: </b> <a href="{% url "auth:accept_video" video.id %}"> <button class="btn btn-primary">Accept video</button> </a>
+        <a href="{% url "auth:decline_video" video.id %}"> <button class="btn btn-danger">Decline video</button> </a>
       </div>
 
      

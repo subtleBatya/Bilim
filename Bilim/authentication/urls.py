@@ -12,5 +12,6 @@ urlpatterns = [
     path("edit_profile/", edit_profile, name="edit_profile"),
     path("custom_admin/", admin_page, name="admin_page"),
     path("video_admin/<int:id>", admin_video, name="admin_video"),
-    path("accept_video/<int:id>", accept_video, name="accept_video")
+    path("accept_video/<int:id>", accept_video, name="accept_video"),
+    path("decline_video/<int:id>", decline_video, name="decline_video")
 ]
