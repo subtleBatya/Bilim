@@ -127,7 +127,7 @@ a{
 .front,
   .back{
     background-size: cover;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.25);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,1);
     border-radius: 10px;
       background-position: center;
       -webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
@@ -183,7 +183,7 @@ a{
       content: '';
       display: block;
       opacity: .6;
-      background-color: #000;
+      background-color : rgba(0, 0, 0, 0.4);
       -webkit-backface-visibility: hidden;
               backface-visibility: hidden;
       border-radius: 10px;
@@ -341,7 +341,8 @@ a{
 /*for library*/
 .card-img-top {
     height: 70%;
-    object-fit: cover;
+    width: 100%;
+    object-fit:fill;
 }
 
 .card-book {

@@ -41,34 +41,40 @@
     </div>
 </div>  
 </form>
-  
-<div class="">
-  <div class="h4 text-center mb-3 fs-4" data-aos="fade-left" data-aos-duration="1500">
-      Technical courses
-  </div>
-  <div class="popular_images mx-auto" style="width: 80%;">
-      <div class="row mx-auto mb-3 courses">
+   
+<section id="popular-courses" style="width: 100vw;">
+  <div class="wrapper-card">
+      <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >Technical courses</h1>
+      <div class="cols-card">
           {% for video in all_videos %}
-              <a class="" href="{% url 'videos:video_of_course' video.id %}" data-aos="zoom-out" data-aos-duration="2000">
-                  <div class="pb-4 mx-auto">
-                      <div class="image-wrapper">
-                          <img class="img-fluid hover-img" src="{{ video.poster.url }}" alt="">
-                          <div class="hover-text">
-                              <p>{{ video.title }}</p>
-                              <p class="p-1">{{ video.description|truncatewords:20 }}</p>
+          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
+              <a href="{% url "videos:video_of_course" video.id %}">
+                  <div class="container-card">
+                      <div class="front">
+                          <img src="{{ video.poster.url }}" alt="Python Course">
+                          <div class="inner">
+                              <p class="fs-5">{{video.title}}</p>
+                          </div>
+                      </div>
+                      <div class="back">
+                          <div class="inner">
+                              <p class="fs-5">{{video.description|truncatewords:25}}</p>
                           </div>
                       </div>
                   </div>
               </a>
-          {% empty %}
-              <!-- Message when there are no videos -->
+              {% empty %}
               <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
                   <h1 class="text-danger text-center">There are no courses available</h1>
               </div>
+              
+          </div>
           {% endfor %}
-      </div>
-  </div>
-</div>
+         
+          </div>
+     </div>
+  </section>
+
 
   {% include "core/footer.html"%}
   {% include "core/static_files/scripts.html"%}
