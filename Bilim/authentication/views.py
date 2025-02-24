@@ -3,7 +3,7 @@ from django.contrib.auth import login as auth_login, logout, authenticate
 from django.contrib.auth.hashers import make_password
 from .models import User, User_abilities
 from django.contrib.auth.decorators import login_required
-from videos.models import VideoCourse
+from videos.models import VideoCourse, Video_category
 from django.core.mail import send_mail
 from django.conf import settings
 
@@ -45,15 +45,22 @@ def sign_up(request):
 
 @login_required
 def payment(request):
-    return render(request, "core/payment.html")
+    if request.method == "GET":
+        courses = Video_category.objects.all()
+        context = {
+            "courses":courses
+        }
+        return render(request, "core/payment.html", context)
 
 
 @login_required
 def admin_page(request):
     if request.method == 'GET':
         videos = VideoCourse.objects.filter(accepted=False)
+        courses = Video_category.objects.all()
         context = {
-            "all_videos": videos
+            "all_videos": videos,
+            "courses":courses
         }
         return render(request, "core/admin.html", context)
 
@@ -69,7 +76,11 @@ def logout_user(request):
 def profile(request):
     if request.method == "GET":
         if request.user.is_student:
-            return render(request, "core/profile.html")
+            courses = Video_category.objects.all()
+            context = {
+                "courses":courses
+            }
+            return render(request, "core/profile.html", context)
 
 
 #ready function
@@ -77,8 +88,10 @@ def profile(request):
 def edit_profile(request):
     if request.method == "GET":
         abilities = User_abilities.objects.all()
+        courses = VideoCourse.objects.all()
         context = {
-            "abilities": abilities
+            "abilities": abilities,
+            "courses":courses
         }
         return render(request, "core/profile_edit.html", context)
     if request.method == 'POST':
@@ -116,9 +129,11 @@ def edit_profile(request):
 @login_required
 def admin_video(request, id):
     if request.method == "GET":
+        courses = Video_category.objects.all()
         video = VideoCourse.objects.get(id=id)
         context = {
-            "video": video
+            "video": video,
+            "courses":courses
         }
         return render(request, "core/video_page_for_admin.html", context)
     

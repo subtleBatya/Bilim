@@ -12,7 +12,7 @@
 <body>
 {% include "core/hero.html" with content="Find your own course" image_path="core/images/course.webp"%}
   <!--Poisk-->
-<form action="{% url "videos:technical_courses"%}" method="get">
+<form action="" method="get">
   <div class="container-fluid" data-aos="fade-left" data-aos-duration="1500">
     <div class="d-flex flex-column flex-lg-row justify-content-end align-items-start align-items-lg-center py-2 px-3 ">
         <!-- Поле поиска -->
@@ -41,10 +41,10 @@
     </div>
 </div>  
 </form>
-  
+   
 <section id="popular-courses" style="width: 100vw;">
   <div class="wrapper-card">
-      <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >Natural courses</h1>
+      <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" > {{main_cat_name}}</h1>
       <div class="cols-card">
           {% for video in all_videos %}
           <div class="col-card" ontouchstart="this.classList.toggle('hover');">
@@ -74,6 +74,7 @@
           </div>
      </div>
   </section>
+
 
   {% include "core/footer.html"%}
   {% include "core/static_files/scripts.html"%}

@@ -28,16 +28,18 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'videos:shorts'%}">#Shorts</a>
                         </li>
+                        {% if courses %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="coursesDropadmin_pagedown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Courses
                             </a>
                             <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
-                                <li><a class="dropdown-item hover-effect" href="{% url "videos:natural_courses"%}">Hakyky kurslar</a></li>
-                                <li><a class="dropdown-item hover-effect" href="{% url 'videos:technical_courses'%}">Tehniki kurslar</a></li>
-                                <li><a class="dropdown-item hover-effect" href="{% url 'videos:humanitar_courses'%}">Gumanitar kurslar</a></li>
+                                {% for course in courses %}
+                                <li><a class="dropdown-item hover-effect" href="{% url "videos:all_courses" course.id %}">{{course.category_name}}</a></li>
+                                {% endfor %}
                             </ul>
                         </li>
+                        {% endif %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Profile

@@ -12,9 +12,11 @@ def teacher_profile(request):
 def teacher_content(request):
     if request.method == "GET":
         if request.user.is_teacher:
+            courses = Video_category.objects.all()
             teacher_lessons = VideoLesson.objects.filter(author=request.user)
             context = {
                 "lessons": teacher_lessons,
+                "courses":courses
             }
             return render(request, "core/teacher_content.html", context)
         
@@ -38,9 +40,11 @@ def teacher_video_create(request):
         if request.user.is_teacher:
             main_category = Video_category.objects.all()
             course_category = Video_course.objects.all()
+            courses = Video_category.objects.all()
             context = {
                 "main_category":main_category,
-                "course_category":course_category
+                "course_category":course_category,
+                "courses":courses
             }
             return render(request, "core/teacher_create_video.html", context)
     if request.method == "POST":
@@ -73,7 +77,11 @@ def teacher_video_create(request):
 def teacher_edit(request):
     if request.method == "GET":
         if request.user.is_teacher:
-            return render(request, "core/teacher_edit.html")
+            courses = Video_category.objects.all()
+            context ={
+                "courses":courses
+            }
+            return render(request, "core/teacher_edit.html", context)
     if request.method == "POST":
         username = request.POST.get("username")
         job = request.POST.get("job")
@@ -99,7 +107,9 @@ def teacher_edit(request):
 @login_required
 def see_own_video(request, id):
     my_video = VideoLesson.objects.get(author=request.user, id=id)
+    courses = Video_category.objects.all()
     context = {
-        'video': my_video
+        'video': my_video,
+        "courses":courses
     }
     return render(request, "core/video_page_for_teachers.html", context)

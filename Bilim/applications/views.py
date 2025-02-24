@@ -1,11 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Application
+from videos.models import Video_category
 # Create your views here.
 @login_required
 def application(request):
     if request.method == "GET":
-        return render(request, "core/application.html")
+        courses = Video_category.objects.all()
+        context = {
+            "courses":courses
+        }
+        return render(request, "core/application.html", context)
     if request.method == "POST":
         application = request.POST.get("application")
         user = request.user

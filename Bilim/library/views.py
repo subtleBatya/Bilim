@@ -2,12 +2,13 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Book, BookCategory
 from django.shortcuts import get_object_or_404
+from videos.models import Video_category
 @login_required
 def library(request):
     if request.method == "GET":
         book_name = request.GET.get("book_name")
         category_name = request.GET.get("category")
-        
+        courses = Video_category.objects.all()
         books = Book.objects.all()
         categories = BookCategory.objects.all()
     
@@ -22,7 +23,8 @@ def library(request):
                 "books": books,
                 "categories": categories,
                 "book_name":book_name,
-                "category_name": category_name
+                "category_name": category_name,
+                "courses":courses
             }
         print(categories)
         return render(request, "core/library.html", context)
@@ -31,10 +33,13 @@ def library(request):
 
 @login_required
 def book_details(request, id):
-    books = Book.objects.get(id=id)
-    books.views += 1
-    books.save()
-    context = {
-        "book": books
-    }
-    return render(request, "core/book_details.html", context)
+    if request.method == "GET":
+        books = Book.objects.get(id=id)
+        courses = Video_category.objects.all()
+        books.views += 1
+        books.save()
+        context = {
+            "book": books,
+            "courses": courses
+        }
+        return render(request, "core/book_details.html", context)
