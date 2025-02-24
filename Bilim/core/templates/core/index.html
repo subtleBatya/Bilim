@@ -1,189 +1,274 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BILIM</title>
   {% include "core/static_files/links.html" %}
-  
 </head>
+
 <body>
   {% include "core/hero.html" with content="For everyone" image_path="core/images/graduation-hat.png"%}
+  <section id="recently-seen">
+    <h1 class="text-center my-4">Recently Seen</h1>
+    <div class="container">
+        <div class="scroll-container">
+            <div class="scroll-content">
+                <!-- Card 1 -->
+                <div class="scroll-item">
+                    <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?auto=format&fit=crop&w=1534&q=80" class="img-fluid">
+                    <h4>Python</h4>
+                    <p>Learn Python with 23 videos covering basics to advanced.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="scroll-item">
+                    <img src="https://images.unsplash.com/photo-1516961642265-531546e84af2?auto=format&fit=crop&w=500&q=60" class="img-fluid">
+                    <h4>Django</h4>
+                    <p>Master Django framework with step-by-step tutorials.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="scroll-item">
+                    <img src="https://images.unsplash.com/photo-1532086853747-99450c17fa2e?auto=format&fit=crop&w=500&q=60" class="img-fluid">
+                    <h4>UI Design</h4>
+                    <p>Enhance your UI/UX design skills with real-world projects.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="scroll-item">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=500&q=60" class="img-fluid">
+                    <h4>React</h4>
+                    <p>Build interactive web applications using React.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="scroll-item">
+                    <img src="https://images.unsplash.com/photo-1527256677501-3bdfb4a39a4b?auto=format&fit=crop&w=500&q=60" class="img-fluid">
+                    <h4>JavaScript</h4>
+                    <p>Deep dive into JavaScript and modern frontend development.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="scroll-item">
+                    <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=500&q=60" class="img-fluid">
+                    <h4>Machine Learning</h4>
+                    <p>Explore AI and ML with hands-on coding projects.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-  {% include 'core/popular.html'%}
-  <!-- POPULAR COURSES -->
-  <!-- <div class="" style="overflow-x: clip; width: 90%;">
-    <div class="text-center pop_header mb-5" style=" color:black;">Popular Courses</div>
-    <div class="popular_images mx-auto mb-5" data-aos="fade-right" data-aos-duration="2000" style="overflow-x: clip; max-width: 90%;">
 
-      <div class="swiper-container col-10 rounded-4">
 
-         <div class="swiper-wrapper d-flex align-items-center ">
-          <div class="swiper-slide"><img  src="{% static 'core/images/pop_course1.webp'%}" alt="Image 1"></div>
-          <div class="swiper-slide"><img  src="{% static 'core/images/pop_course1.webp'%}" alt="Image 2"></div>
-          <div class="swiper-slide"><img  src="{% static 'core/images/pop_course1.webp'%}" alt="Image 3"></div>
-          <div class="swiper-slide"><img  src="{% static 'core/images/pop_course1.webp'%}" alt="Image 4"></div>
-          <div class="swiper-slide"><img  src="{% static 'core/images/pop_course1.webp'%}" alt="Image 5"></div>
+
+
+<section id="popular-courses" style="width: 100vw;">
+  <div class="wrapper-card">
+      <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >Popular videos</h1>
+      <div class="cols-card">
+          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
+              <a href="#">
+                  <div class="container-card">
+                      <div class="front">
+                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
+                          <div class="inner">
+                              <p>Python</p>
+                              <span>25 videos</span>
+                          </div>
+                      </div>
+                      <div class="back">
+                          <div class="inner">
+                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+                          </div>
+                      </div>
+                  </div>
+              </a>
+          </div>
           
-          
-        </div> 
+          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
+              <a href="#">
+                  <div class="container-card">
+                      <div class="front">
+                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
+                          <div class="inner">
+                              <p>Python</p>
+                              <span>25 videos</span>
+                          </div>
+                      </div>
+                      <div class="back">
+                          <div class="inner">
+                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+                          </div>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
+              <a href="#">
+                  <div class="container-card">
+                      <div class="front">
+                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
+                          <div class="inner">
+                              <p>Python</p>
+                              <span>25 videos</span>
+                          </div>
+                      </div>
+                      <div class="back">
+                          <div class="inner">
+                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+                          </div>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
+              <a href="#">
+                  <div class="container-card">
+                      <div class="front">
+                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
+                          <div class="inner">
+                              <p>Python</p>
+                              <span>25 videos</span>
+                          </div>
+                      </div>
+                      <div class="back">
+                          <div class="inner">
+                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+                          </div>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
+              <a href="#">
+                  <div class="container-card">
+                      <div class="front">
+                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
+                          <div class="inner">
+                              <p>Python</p>
+                              <span>25 videos</span>
+                          </div>
+                      </div>
+                      <div class="back">
+                          <div class="inner">
+                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+                          </div>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
+              <a href="#">
+                  <div class="container-card">
+                      <div class="front">
+                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
+                          <div class="inner">
+                              <p>Python</p>
+                              <span>25 videos</span>
+                          </div>
+                      </div>
+                      <div class="back">
+                          <div class="inner">
+                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+                          </div>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
+              <a href="#">
+                  <div class="container-card">
+                      <div class="front">
+                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
+                          <div class="inner">
+                              <p>Python</p>
+                              <span>25 videos</span>
+                          </div>
+                      </div>
+                      <div class="back">
+                          <div class="inner">
+                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+                          </div>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
+              <a href="#">
+                  <div class="container-card">
+                      <div class="front">
+                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
+                          <div class="inner">
+                              <p>Python</p>
+                              <span>25 videos</span>
+                          </div>
+                      </div>
+                      <div class="back">
+                          <div class="inner">
+                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+                          </div>
+                      </div>
+                  </div>
+              </a>
+          </div>  
+                
+            </div>
+     </div>
+  </section>
 
+  <section class="container mt-5" style="text-align: justify; width: 95vw;">
+    <!-- First row: one block spanning the entire width -->
+    <div class="row align-items-center mb-4 block block-color-1 text-white" style="border-radius: 30px; padding: 20px;">
+      <div class="col-md-6 text-center">
+          <img src="{% static "core/images/about_platform.png"%}" alt="Platform Image" class="img-fluid" style="height: 230px; width: 80%; object-fit: cover; border-radius: 15px;">
       </div>
-    </div> 
-  </div> -->
-  <!-- SONKY GORULENLER -->
-  <div class="mt-4">
-    <div class="fs-1 text-center mb-4 pop_header" style=" color:black;">Sonky Gorulenler</div>
-    <div class="  mx-auto" style="width: 90%;" data-aos="fade-left" data-aos-duration="2000">
-      <!-- <div class=" row mx-auto mb-3 " >
-        <div class=" hover-container col-6  pb-4">
-            <div class="image-wrapper">
-              <img class="img-fluid hover-img" src="{% static 'core/images/pop_course1.webp'%}" alt="">
-            <div class="hover-text">Python</div>
-          </div>
-        </div>
-        <div class=" hover-container col-6  pb-4">
-          <div class="image-wrapper">
-            <img class="img-fluid hover-img" src="{% static 'core/images/pop_course1.webp'%}" alt="">
-            <div class="hover-text">Python</div>
-          </div>
-        </div>
-         <div class=" hover-containe col-6 pb-4">
-          <div class="image-wrapper">
-            <img class="img-fluid hover-img" src="{% static 'core/images/pop_course1.webp'%}" alt="">
-            <div class="hover-text">Python</div>
-          </div>
-        </div>
-        <div class=" hover-container col-6 pb-4">
-          <div class="image-wrapper">
-            <img class="img-fluid hover-img" src="{% static 'core/images/pop_course1.webp'%}" alt="">
-            <div class="hover-text">Python</div>
-          </div>
-        </div> 
-      </div> -->
-
-      <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3 mb-3">
-        <!-- Hover Container 1 -->
-        <div class="col  " >
-          <div class="image-wrapper ">
-            <img class="img-fluid hover-img" style="object-fit: cover;" src="{% static 'core/images/pop_course1.webp' %}" alt="">
-            <div class="hover-text">Python</div>
-          </div>
-        </div>
-      
-        <!-- Hover Container 2 -->
-        <div class="col  ">
-          <div class="image-wrapper">
-            <img class="img-fluid hover-img" style="object-fit: cover;" src="{% static 'core/images/pop_course1.webp' %}" alt="">
-            <div class="hover-text">Python</div>
-          </div>
-        </div>
-      
-        <!-- Hover Container 3 -->
-        <div class="col">
-          <div class="image-wrapper">
-            <img class="img-fluid hover-img" style="object-fit: cover;" src="{% static 'core/images/pop_course1.webp' %}" alt="">
-            <div class="hover-text">Python</div>
-          </div>
-        </div>
-      
-        <!-- Hover Container 4 -->
-        <div class="col">
-          <div class="image-wrapper">
-            <img class="img-fluid hover-img" style="object-fit: cover;" src="{% static 'core/images/pop_course1.webp' %}" alt="">
-            <div class="hover-text">Python</div>
-          </div>
-        </div>
-
-        <!-- Hover Container 5 -->
-        <div class="col">
-          <div class="image-wrapper">
-            <img class="img-fluid hover-img" style="object-fit: cover;" src="{% static 'core/images/pop_course1.webp' %}" alt="">
-            <div class="hover-text">Python</div>
-          </div>
-        </div>
-
-        <!-- Hover Container 6 -->
-        <div class="col">
-          <div class="image-wrapper">
-            <img class="img-fluid hover-img" style="object-fit: cover;" src="{% static 'core/images/pop_course1.webp' %}" alt="">
-            <div class="hover-text">Python</div>
-          </div>
-        </div>
+      <div class="col-md-6">
+          <h1 class="fw-bold text-center">Добро пожаловать на платформу BILIM!</h1>      
+          <p class="fs-5">
+            На нашей платформе каждый найдет то, что поможет раскрыть потенциал. Мы предлагаем лучшие образовательные курсы, вдохновляющие материалы и уникальные возможности для личностного роста. В "Билим" обучение превращается в увлекательное путешествие, где каждый шаг приближает вас к вашей цели.
+          </p>
+          <ul class="fs-5 fw-semibold">
+              <li>📚 Экспертные курсы</li>
+              <li>🎓 Интерактивное обучение</li>
+              <li>🌐 Доступность в любое время</li>
+              <li>🚀 Персонализированный подход</li>
+          </ul>
       </div>
-      
     </div>
-  </div>
+           
+    <!-- Second row: two blocks each with 50% width -->
+    <div class="d-flex mb-4 justify-content-between" id="about">
+        <!-- First block -->
+        <div class="d-block align-items-center block block-color-2 about2 text-white">
+          <div class="d-flex w-100 card2">
+            <div class="card-element">
+              <h1 class="fs-4 fw-bold text-center">Присоединяйтесь к нам в BILIM!</h1>
+              <p class="fs-5">Станьте частью нашей образовательной семьи и откройте для себя новые горизонты знаний! Мы приглашаем всех — будь то начинающие студенты, опытные профессионалы или просто любители учёбы — присоединиться к нам. Вместе мы создадим пространство, где каждый сможет развиваться, учиться и достигать новых вершин.</p>
+            </div>
+            <div class="d-flex align-items-center justify-content-center text-center card-element mx-auto">
+              <img src="{% static "core/images/join_us.png"%}" alt="Фото" class="img-fluid rounded-5" style="width: 80%; height: 75%; object-fit: cover;">
+            </div>
+          </div>
+        </div>
+        <!-- Second block -->
+        <div class="d-block align-items-center block block-color-3 about2 text-white">
+          <div class="d-flex w-100 card2">
+            <div class="card-element">
+              <h1 class="text-center fs-4 fw-bold">Экзамены на платформе BILIM</h1>
+              <p class="fs-5">Наши экзамены — это не просто тесты, а важный шаг на пути к успеху. Мы предлагаем вам уникальную возможность проверить свои знания и подготовиться к реальным испытаниям с помощью наших интерактивных и практичных экзаменов. Каждый экзамен создан с учётом современных стандартов и актуальных требований, чтобы вы могли продемонстрировать свои достижения и знания в лучшем свете.</p>
+            </div>
+            <div class="d-flex align-items-center justify-content-center text-center card-element">
+              <img src="{% static "core/images/exams.png"%}" alt="Фото" class="img-fluid rounded-5" style="width: 80%; height: 75%; object-fit: cover;">
+            </div>
+          </div>
+        </div>
+    </div>      
+  </section>
+  
 
-  <!-- PLATFORMA BARADA -->
-  <div class="mx-auto" style="width: 95vw; margin-bottom: 10vh;">
-    <!-- 1NJI SETIRI -->
-    <div class="section mx-auto row rounded-2 d-flex text-center align-items-center "
-      style="height: 70vh; background: linear-gradient(135deg, #373985, #8f95dd);">
-      <div class="platform_img1 col-md-6 col-12">
-        <img class="col-9" style="object-fit: cover;" src="{% static 'core/images/online-study.webp'%}" alt="">
-      </div>
-      <div class="col-md-6 col-12 text-sm-center" style="color: white;">
-        <div class="h3" >Platforma barada</div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maxime, incidunt cumque aut dolorum sapiente!
-        </p>
-        <p class="d-none d-md-block ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maxime, incidunt cumque aut dolorum sapiente!
-        </p>
-      </div>
-    </div>
-    <!-- 2NJI SETIRI -->
-    <div class="section mx-auto row rounded-2 py-4 d-flex text-center align-items-center"
-      style="height: 70vh; background-color: #FFA000;">
-      <div class="platform_img1 col-md-6 col-12">
-        <img class="col-9" style="object-fit: cover;" src="{% static 'core/images/online-study2.webp'%}" alt="">
-      </div>
-      <div class="col-md-6 col-12 mx-auto">
-        <div class="h3 font-bolder" style="color:white;">Bize Gosul!</div>
-        <div style="color:white">Bu gun siz ucin ajayyp gun Sebabi siz bize <br> gosuldynyz! :) </div>
-        <button class="btn btn-warning rounded-4  px-3 py-2 mt-3 downloader">Sign up</button>
-      </div>
-      
-    </div>
-
-    <!-- EXAMS -->
-
-    <div class="section mx-auto row rounded-2 py-4 d-flex text-center align-items-center"
-      style="height: 70vh; background: linear-gradient(135deg, #373985, #8f95dd);">
-      <div class="platform_img1 col-md-6 col-12">
-        <img class="col-9" style="object-fit: cover;" src="{% static 'core/images/Books.webp'%}" alt="">
-      </div>
-      <div class="col-md-6 col-12 mx-auto">
-        <div class="h3 font-bolder" style="font-size: 6vw; color:white;">Exams</div>
-        <div class="p" style="color: white;">Bu gun siz ucin ajayyp gun Sebabi siz bize <br> gosuldynyz! :) </div>
-      </div>
-      
-
-    </div>
-  </div>
 
 
 {% include 'core/scientists.html'%}
-  <!-- YURISDIKSIYA -->
-  <div class="mx-auto" style="width: 90%;">
-    <div class="row  rounded-3" style="height: 40vh; background: linear-gradient(135deg, #373985, #8f95dd);">
-      <div class="row mx-auto align-items-center ">
-        <div class="col-7 col-md-8 col-lg-9">
-          <div class="h2" style="color: white;">Platforma barada duzgunnama!</div>
-          <div class="mt-3"><button class="btn btn-warning rounded-4  px-3 py-2 downloader">Download</button></div>
-        </div>
-        <div class="col-5 col-md-4  col-lg-3">
-          <svg class="text-danger" xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor"
-            class="bi bi-exclamation-lg" viewBox="0 0 16 16">
-            <path d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0zM7 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0" />
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
 
-
+  
 {% include 'core/footer.html'%}
 {% include "core/static_files/scripts.html" %}
 
