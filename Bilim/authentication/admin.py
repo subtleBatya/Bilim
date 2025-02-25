@@ -15,3 +15,4 @@ admin.site.register(subscription, SubscriptionAdmin)
 
 admin.site.register(About_user)
 admin.site.register(User_abilities)
+admin.site.register(UserRecentVideo)

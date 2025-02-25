@@ -45,7 +45,7 @@ def video_of_course(request, id):
         UserRecentVideo.objects.create(user=user, video=video)
         recent_videos = UserRecentVideo.objects.filter(user=user).order_by("-timestamp")
         if recent_videos.count() > 20:
-            to_delete = recent_videos[5:]
+            to_delete = recent_videos[20:]
             UserRecentVideo.objects.filter(id__in=[rv.id for rv in to_delete]).delete()
 
         video.views += 1

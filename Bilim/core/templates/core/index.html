@@ -11,12 +11,12 @@
 <body>
   {% include "core/hero.html" with content="For everyone" image_path="core/images/graduation-hat.png"%}
 <section id="recently-seen">
-    <h1 class="text-center my-4">{% if request.user.recent_seen_video.all %}Recently Seen{% else %}All courses{% endif %}</h1>
+    <h1 class="text-center my-4">{% if request.user.recent_seen_video.count > 0 %}Recently Seen{% else %}All courses{% endif %}</h1>
     <div class="container">
         <div class="scroll-container">
             <div class="scroll-content">
                 <!-- Card 1 -->
-                {% for rec_video in request.user.recent_seen_video.all %}
+                {% for rec_video in request.user.recent_seen_video.all|slice:"::-1" %}
                 <a href="{% url "videos:video_of_course" rec_video.id %}" style="color:black;"><div class="scroll-item">
                     <img src="{{rec_video.poster.url}}" class="img-fluid">
                     <h4>{{rec_video.title}}</h4>
