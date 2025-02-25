@@ -6,126 +6,129 @@
     <title>Payment Successful</title>
     <style>
         /* Global styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    background-color: #141414; /* Netflix's black background */
-    color: #fff;
-    font-family: 'Helvetica Neue', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+        body {
+            background: linear-gradient(-45deg, #373985, #4CAF50, #8f95dd, #2e7d32);
+            background-size: 400% 400%;
+            animation: gradientAnimation 8s ease infinite;
+            color: #fff;
+            font-family: 'Helvetica Neue', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-.success-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    text-align: center;
-}
+        .success-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
 
-.success-box {
-    background-color: rgba(20, 20, 20, 0.9); /* Dark translucent box */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    width: 400px;
-    animation: bounceIn 1s ease-in-out; /* Animation on load */
-}
+        /* Updated success box */
+        .success-box {
+            background-color: rgba(30, 60, 30, 0.9); /* Slightly green success box */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            animation: bounceIn 1s ease-in-out;
+        }
 
-.success-box h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #E50914; /* Netflix red */
-}
+        .success-box h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
 
-.success-box p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    color: #b3b3b3;
-}
+        .success-box p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #c8e6c9; /* Light green */
+        }
 
-.btn-back-home {
-    background-color: #E50914;
-    color: #fff;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
+        .btn-back-home {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
 
-.btn-back-home:hover {
-    background-color: #f40612;
-}
+        .btn-back-home:hover {
+            background-color: #388E3C;
+            transform: scale(1.05);
+        }
 
-/* Keyframe for bounce-in effect */
-@keyframes bounceIn {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.05);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1);
-    }
-}
+        /* Keyframe for bounce-in effect */
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
 
-/* Checkmark animation */
-.checkmark-circle {
-    margin: 0 auto 30px auto;
-    width: 80px;
-    height: 80px;
-    position: relative;
-}
+        /* Background gradient animation */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-.checkmark-circle-background {
-    stroke: #E50914; /* Red stroke */
-    stroke-width: 2;
-    stroke-dasharray: 166;
-    stroke-dashoffset: 166;
-    stroke-linecap: round;
-    animation: circleAnimation 1s ease-in-out forwards;
-}
+        /* Checkmark animation */
+        .checkmark-circle {
+            margin: 0 auto 30px auto;
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
 
-.checkmark {
-    stroke: #fff;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 48;
-    stroke-dashoffset: 48;
-    animation: checkmarkAnimation 1s ease-in-out 0.5s forwards;
-}
+        .checkmark-circle-background {
+            stroke: #4CAF50; /* Green stroke */
+            stroke-width: 2;
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-linecap: round;
+            animation: circleAnimation 1s ease-in-out forwards;
+        }
 
-@keyframes circleAnimation {
-    0% {
-        stroke-dashoffset: 166;
-    }
-    100% {
-        stroke-dashoffset: 0;
-    }
-}
+        .checkmark {
+            stroke: #fff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: checkmarkAnimation 1s ease-in-out 0.5s forwards;
+        }
 
-@keyframes checkmarkAnimation {
-    0% {
-        stroke-dashoffset: 48;
-    }
-    100% {
-        stroke-dashoffset: 0;
-    }
-}
+        @keyframes circleAnimation {
+            0% { stroke-dashoffset: 166; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        @keyframes checkmarkAnimation {
+            0% { stroke-dashoffset: 48; }
+            100% { stroke-dashoffset: 0; }
+        }
 
     </style>
 </head>
@@ -138,9 +141,9 @@ body {
                     <path class="checkmark" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
                 </svg>
             </div>
-            <h1>Operation successfull!</h1>
-            <p>Thank you for using our platform!</p>
-            <a href="{% url "core:index"%}" class="btn-back-home">Back to Home</a>
+            <h1>Операция успешно!</h1>
+            <p>Спасибо что используете нашу платформу!</p>
+            <a href="{% url 'core:index' %}" class="btn-back-home">Домой</a>
         </div>
     </div>
 </body>

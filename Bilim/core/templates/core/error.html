@@ -6,86 +6,96 @@
     <title>Invalid Credentials</title>
     <style>
         /* Global styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    background-color: #141414; /* Netflix's black background */
-    color: #fff;
-    font-family: 'Helvetica Neue', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+        body {
+            background: linear-gradient(-45deg, #373985, #8f95dd, #373985, #8f95dd);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+            color: #fff;
+            font-family: 'Helvetica Neue', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    text-align: center;
-}
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
 
-.error-box {
-    background-color: rgba(20, 20, 20, 0.9); /* Dark translucent box */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    animation: fadeIn 1s ease-in-out; /* Animation on load */
-}
+        /* Updated error box with slightly red error tone */
+        .error-box {
+            background-color: rgba(195, 60, 60, 0.9); /* Soft red error tone */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in-out;
+        }
 
-.error-box h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #E50914; /* Netflix red */
-}
+        .error-box h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fff; /* White */
+        }
 
-.error-box p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    color: #b3b3b3; /* Netflix light gray */
-}
+        .error-box p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ffdede; /* Light error tone text */
+        }
 
-.btn {
-    background-color: #E50914;
-    color: #fff;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
+        .btn {
+            background-color: #8f95dd;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
 
-.btn:hover {
-    background-color: #f40612;
-}
+        .btn:hover {
+            background-color: #6b72c5;
+            transform: scale(1.05);
+        }
 
-/* Keyframe for fade-in effect */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
+        /* Keyframe for fade-in effect */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
 
+        /* Background gradient animation */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="error-box">
-            <h1>Invalid Credentials!</h1>
-            <p>Something went wrong please try again!</p>
-            <a href="{% url "core:index"%}" class="btn">Back</a>
+            <h1>Что-то пошло не так!</h1>
+            <p>Попробуйте по поезже!</p>
+            <a href="{% url 'core:index' %}" class="btn">Домой</a>
         </div>
     </div>
 </body>
