@@ -14,36 +14,33 @@
    
 <section id="popular-courses" style="width: 100vw;">
     <div class="wrapper-card">
-        <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >Pending to add courses</h1>
+        <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >Videos pending to accept or decline</h1>
         <div class="cols-card">
             {% for video in all_videos %}
             <div class="col-card" ontouchstart="this.classList.toggle('hover');">
-                <a href="{% url "auth:admin_video" video.id %}">
                     <div class="container-card">
                         <div class="front">
-                            <img src="{{ video.poster.url }}" alt="Python Course">
+                            <img src="{{video.poster.url}}" alt="Python Course">
                             <div class="inner">
-                                <p class="fs-5">{{video.title}}</p>
+                                <p>{{video.title}}</p>
                             </div>
                         </div>
                         <div class="back">
                             <div class="inner">
-                                <p class="fs-5">{{video.description|truncatewords:25}}</p>
+                                <p>{{video.description|truncatewords:10}}</p>
+                                <a href="{% url "auth:admin_video" video.id %}"><button class="btn downloader rounded-3">View Course</button></a>
                             </div>
                         </div>
                     </div>
-                </a>
-                {% empty %}
-                <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
-                    <h1 class="text-danger text-center">There are no course pending to accept or decline</h1>
-                </div>
-                
-            </div>
-            {% endfor %}
-           
-            </div>
-       </div>
-    </section>
+              </div>
+              {% empty %}
+              <div class='w-100 text-center text'>
+                <h3 class='text-danger'>No courses are pending </h3>
+              </div>
+              {% endfor %}
+          </div>
+      </div>
+  </section>
   {% include "core/footer.html"%}
   {% include "core/static_files/scripts.html"%}
 </body>

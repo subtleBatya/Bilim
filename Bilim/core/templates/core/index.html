@@ -10,47 +10,27 @@
 
 <body>
   {% include "core/hero.html" with content="For everyone" image_path="core/images/graduation-hat.png"%}
-  <section id="recently-seen">
-    <h1 class="text-center my-4">Recently Seen</h1>
+<section id="recently-seen">
+    <h1 class="text-center my-4">{% if request.user.recent_seen_video.all %}Recently Seen{% else %}All courses{% endif %}</h1>
     <div class="container">
         <div class="scroll-container">
             <div class="scroll-content">
                 <!-- Card 1 -->
+                {% for rec_video in request.user.recent_seen_video.all %}
+                <a href="{% url "videos:video_of_course" rec_video.id %}" style="color:black;"><div class="scroll-item">
+                    <img src="{{rec_video.poster.url}}" class="img-fluid">
+                    <h4>{{rec_video.title}}</h4>
+                    <p>{{rec_video.description|truncatewords:10}}</p>
+                </div></a>
+                {% empty %}
+                    {% for course in courses %}
                 <div class="scroll-item">
-                    <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?auto=format&fit=crop&w=1534&q=80" class="img-fluid">
-                    <h4>Python</h4>
-                    <p>Learn Python with 23 videos covering basics to advanced.</p>
+                    <img src="{{course.image.url}}" class="img-fluid">
+                    <h4 class="m-2">{{course.category_name}}</h4>
+                    <a href="{% url "videos:all_courses" course.id %}" class="btn downloader mb-3">View a course</a>
                 </div>
-                <!-- Card 2 -->
-                <div class="scroll-item">
-                    <img src="https://images.unsplash.com/photo-1516961642265-531546e84af2?auto=format&fit=crop&w=500&q=60" class="img-fluid">
-                    <h4>Django</h4>
-                    <p>Master Django framework with step-by-step tutorials.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="scroll-item">
-                    <img src="https://images.unsplash.com/photo-1532086853747-99450c17fa2e?auto=format&fit=crop&w=500&q=60" class="img-fluid">
-                    <h4>UI Design</h4>
-                    <p>Enhance your UI/UX design skills with real-world projects.</p>
-                </div>
-                <!-- Card 4 -->
-                <div class="scroll-item">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=500&q=60" class="img-fluid">
-                    <h4>React</h4>
-                    <p>Build interactive web applications using React.</p>
-                </div>
-                <!-- Card 5 -->
-                <div class="scroll-item">
-                    <img src="https://images.unsplash.com/photo-1527256677501-3bdfb4a39a4b?auto=format&fit=crop&w=500&q=60" class="img-fluid">
-                    <h4>JavaScript</h4>
-                    <p>Deep dive into JavaScript and modern frontend development.</p>
-                </div>
-                <!-- Card 6 -->
-                <div class="scroll-item">
-                    <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=500&q=60" class="img-fluid">
-                    <h4>Machine Learning</h4>
-                    <p>Explore AI and ML with hands-on coding projects.</p>
-                </div>
+                    {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -65,10 +45,9 @@
       <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >Popular videos</h1>
       <div class="cols-card">
           <div class="col-card" ontouchstart="this.classList.toggle('hover');">
-              <a href="#">
                   <div class="container-card">
                       <div class="front">
-                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
+                          <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?auto=format&fit=crop&w=1534&q=80" alt="Python Course">
                           <div class="inner">
                               <p>Python</p>
                               <span>25 videos</span>
@@ -77,142 +56,14 @@
                       <div class="back">
                           <div class="inner">
                               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+                              <button class="btn downloader rounded-3">View Course</button>
                           </div>
                       </div>
                   </div>
-              </a>
-          </div>
-          
-          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
-              <a href="#">
-                  <div class="container-card">
-                      <div class="front">
-                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
-                          <div class="inner">
-                              <p>Python</p>
-                              <span>25 videos</span>
-                          </div>
-                      </div>
-                      <div class="back">
-                          <div class="inner">
-                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-                          </div>
-                      </div>
-                  </div>
-              </a>
-          </div>
-          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
-              <a href="#">
-                  <div class="container-card">
-                      <div class="front">
-                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
-                          <div class="inner">
-                              <p>Python</p>
-                              <span>25 videos</span>
-                          </div>
-                      </div>
-                      <div class="back">
-                          <div class="inner">
-                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-                          </div>
-                      </div>
-                  </div>
-              </a>
-          </div>
-          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
-              <a href="#">
-                  <div class="container-card">
-                      <div class="front">
-                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
-                          <div class="inner">
-                              <p>Python</p>
-                              <span>25 videos</span>
-                          </div>
-                      </div>
-                      <div class="back">
-                          <div class="inner">
-                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-                          </div>
-                      </div>
-                  </div>
-              </a>
-          </div>
-          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
-              <a href="#">
-                  <div class="container-card">
-                      <div class="front">
-                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
-                          <div class="inner">
-                              <p>Python</p>
-                              <span>25 videos</span>
-                          </div>
-                      </div>
-                      <div class="back">
-                          <div class="inner">
-                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-                          </div>
-                      </div>
-                  </div>
-              </a>
-          </div>
-          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
-              <a href="#">
-                  <div class="container-card">
-                      <div class="front">
-                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
-                          <div class="inner">
-                              <p>Python</p>
-                              <span>25 videos</span>
-                          </div>
-                      </div>
-                      <div class="back">
-                          <div class="inner">
-                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-                          </div>
-                      </div>
-                  </div>
-              </a>
-          </div>
-          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
-              <a href="#">
-                  <div class="container-card">
-                      <div class="front">
-                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
-                          <div class="inner">
-                              <p>Python</p>
-                              <span>25 videos</span>
-                          </div>
-                      </div>
-                      <div class="back">
-                          <div class="inner">
-                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-                          </div>
-                      </div>
-                  </div>
-              </a>
-          </div>
-          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
-              <a href="#">
-                  <div class="container-card">
-                      <div class="front">
-                          <img src="image/vidi-cherniy.jpg" alt="Python Course">
-                          <div class="inner">
-                              <p>Python</p>
-                              <span>25 videos</span>
-                          </div>
-                      </div>
-                      <div class="back">
-                          <div class="inner">
-                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-                          </div>
-                      </div>
-                  </div>
-              </a>
-          </div>  
-                
             </div>
-     </div>
-  </section>
+        </div>
+    </div>
+</section>
 
   <section class="container mt-5" style="text-align: justify; width: 95vw;">
     <!-- First row: one block spanning the entire width -->
@@ -220,12 +71,12 @@
       <div class="col-md-6 text-center">
           <img src="{% static "core/images/about_platform.png"%}" alt="Platform Image" class="img-fluid" style="height: 230px; width: 80%; object-fit: cover; border-radius: 15px;">
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 text-section">
           <h1 class="fw-bold text-center">Добро пожаловать на платформу BILIM!</h1>      
-          <p class="fs-5">
+          <p class="text">
             На нашей платформе каждый найдет то, что поможет раскрыть потенциал. Мы предлагаем лучшие образовательные курсы, вдохновляющие материалы и уникальные возможности для личностного роста. В "Билим" обучение превращается в увлекательное путешествие, где каждый шаг приближает вас к вашей цели.
           </p>
-          <ul class="fs-5 fw-semibold">
+          <ul class="text fw-semibold" style="text-align:left;">
               <li>📚 Экспертные курсы</li>
               <li>🎓 Интерактивное обучение</li>
               <li>🌐 Доступность в любое время</li>
@@ -239,9 +90,9 @@
         <!-- First block -->
         <div class="d-block align-items-center block block-color-2 about2 text-white">
           <div class="d-flex w-100 card2">
-            <div class="card-element">
-              <h1 class="fs-4 fw-bold text-center">Присоединяйтесь к нам в BILIM!</h1>
-              <p class="fs-5">Станьте частью нашей образовательной семьи и откройте для себя новые горизонты знаний! Мы приглашаем всех — будь то начинающие студенты, опытные профессионалы или просто любители учёбы — присоединиться к нам. Вместе мы создадим пространство, где каждый сможет развиваться, учиться и достигать новых вершин.</p>
+            <div class="card-element text-section">
+              <h1 class="fw-bold text-center">Присоединяйтесь к нам в BILIM!</h1>
+              <p class="text">Станьте частью нашей образовательной семьи и откройте для себя новые горизонты знаний! Мы приглашаем всех — будь то начинающие студенты, опытные профессионалы или просто любители учёбы — присоединиться к нам. Вместе мы создадим пространство, где каждый сможет развиваться, учиться и достигать новых вершин.</p>
             </div>
             <div class="d-flex align-items-center justify-content-center text-center card-element mx-auto">
               <img src="{% static "core/images/join_us.png"%}" alt="Фото" class="img-fluid rounded-5" style="width: 80%; height: 75%; object-fit: cover;">
@@ -251,9 +102,9 @@
         <!-- Second block -->
         <div class="d-block align-items-center block block-color-3 about2 text-white">
           <div class="d-flex w-100 card2">
-            <div class="card-element">
-              <h1 class="text-center fs-4 fw-bold">Экзамены на платформе BILIM</h1>
-              <p class="fs-5">Наши экзамены — это не просто тесты, а важный шаг на пути к успеху. Мы предлагаем вам уникальную возможность проверить свои знания и подготовиться к реальным испытаниям с помощью наших интерактивных и практичных экзаменов. Каждый экзамен создан с учётом современных стандартов и актуальных требований, чтобы вы могли продемонстрировать свои достижения и знания в лучшем свете.</p>
+            <div class="card-element text-section">
+              <h1 class="text-center fw-bold">Экзамены на платформе BILIM</h1>
+              <p class="text">Наши экзамены — это не просто тесты, а важный шаг на пути к успеху. Мы предлагаем вам уникальную возможность проверить свои знания и подготовиться к реальным испытаниям с помощью наших интерактивных и практичных экзаменов. Каждый экзамен создан с учётом современных стандартов и актуальных требований, чтобы вы могли продемонстрировать свои достижения и знания в лучшем свете.</p>
             </div>
             <div class="d-flex align-items-center justify-content-center text-center card-element">
               <img src="{% static "core/images/exams.png"%}" alt="Фото" class="img-fluid rounded-5" style="width: 80%; height: 75%; object-fit: cover;">

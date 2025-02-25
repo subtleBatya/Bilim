@@ -1,10 +1,8 @@
 from django.db import models
 
-
-
-
 class Video_category(models.Model):
     category_name = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='courses/images/', blank=True)
 
     class Meta:
         verbose_name = 'Main video category'

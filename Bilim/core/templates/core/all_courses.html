@@ -6,14 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BILIM Courses</title>
   {% include 'core/static_files/links.html'%}
-
-  
 </head>
 <body>
 {% include "core/hero.html" with content="Find your own course" image_path="core/images/course.webp"%}
   <!--Poisk-->
 <form action="" method="get">
-  <div class="container-fluid" data-aos="fade-left" data-aos-duration="1500">
+  <div class="container-fluid" >
     <div class="d-flex flex-column flex-lg-row justify-content-end align-items-start align-items-lg-center py-2 px-3 ">
         <!-- Поле поиска -->
         <div class="position-relative me-0 mb-3 mb-lg-0 me-lg-3">
@@ -44,36 +42,33 @@
    
 <section id="popular-courses" style="width: 100vw;">
   <div class="wrapper-card">
-      <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" > {{main_cat_name}}</h1>
+      <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >{{main_cat_name}}</h1>
       <div class="cols-card">
           {% for video in all_videos %}
           <div class="col-card" ontouchstart="this.classList.toggle('hover');">
-              <a href="{% url "videos:video_of_course" video.id %}">
                   <div class="container-card">
                       <div class="front">
-                          <img src="{{ video.poster.url }}" alt="Python Course">
+                          <img src="{{video.poster.url}}" alt="Python Course">
                           <div class="inner">
-                              <p class="fs-5">{{video.title}}</p>
+                              <p>{{video.title}}</p>
                           </div>
                       </div>
                       <div class="back">
                           <div class="inner">
-                              <p class="fs-5">{{video.description|truncatewords:25}}</p>
+                              <p>{{video.description|truncatewords:10}}</p>
+                              <a href="{% url "videos:video_of_course" video.id %}"><button class="btn downloader rounded-3">View Course</button></a>
                           </div>
                       </div>
                   </div>
-              </a>
-              {% empty %}
-              <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
-                  <h1 class="text-danger text-center">There are no courses available</h1>
-              </div>
-              
-          </div>
-          {% endfor %}
-         
-          </div>
-     </div>
-  </section>
+            </div>
+            {% empty %}
+            <div class='w-100 text-center text'>
+              <h3 class='text-danger'>No courses are pending </h3>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
 
   {% include "core/footer.html"%}

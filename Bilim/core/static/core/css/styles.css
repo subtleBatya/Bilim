@@ -53,9 +53,23 @@ a{
     gap: 20px;
     text-wrap: wrap;
 }
-
+.scroll-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media(max-width:800px){
+    .scroll-container{
+        display: block;
+        justify-content:left;
+        align-items:normal;
+    }
+    .scroll-item{
+        width: 500px;
+    }
+}
 .scroll-item {
-    min-width: 250px;
+    width: 250px;
     background: #fff;
     padding: 15px;
     border-radius: 10px;
@@ -71,7 +85,7 @@ a{
 .scroll-item img {
     width: 100%;
     height: 150px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 10px;
 }
 
@@ -101,6 +115,11 @@ a{
 
 /* It is for popular courses */
 
+#popular-courses{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .wrapper-card{
     width: 90%;
@@ -310,6 +329,10 @@ a{
     width: 50%;
 }
 
+.text{
+    font-size: 1.1rem;
+}
+
 @media(max-width:768px){
   #about{
     justify-content: center;
@@ -326,6 +349,12 @@ a{
   .card-element{
     width: 100%;
     align-items: center;
+  }
+  .text-section{
+    text-align: justify;
+  }
+  .text-section > .fs-5{
+    font-size: 10px;
   }
 }
 
