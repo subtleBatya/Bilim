@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from authentication.models import User
 from videos.models import Video_course, Video_category, VideoCourse as VideoLesson
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 # Create your views here.
 @login_required
 def teacher_profile(request):
@@ -32,7 +33,7 @@ def teacher_content_delete(request, id):
                 print(f"Error: {e}")
                 return redirect("core:error")
             
-
+from django.http import JsonResponse
 
 @login_required
 def teacher_video_create(request):
@@ -40,22 +41,30 @@ def teacher_video_create(request):
         if request.user.is_teacher:
             main_category = Video_category.objects.all()
             course_category = Video_course.objects.all()
-            courses = Video_category.objects.all()
             context = {
-                "main_category":main_category,
-                "course_category":course_category,
-                "courses":courses
+                "main_category": main_category,
+                "course_category": course_category,
             }
             return render(request, "core/teacher_create_video.html", context)
-    if request.method == "POST":
+
+    elif request.method == "POST":
         if request.user.is_teacher:
             video = request.FILES.get("video")
             video_title = request.POST.get("video_title")
-            main_category = Video_category.objects.get(category_name=request.POST.get("main_cat"))
-            course_category = Video_course.objects.get(course_name=request.POST.get("course_cat"))
+            main_category_name = request.POST.get("main_cat")
+            course_category_name = request.POST.get("course_cat")
             video_description = request.POST.get("video_description")
             poster = request.FILES.get("poster")
-            
+
+            # Validate categories
+            try:
+                main_category = Video_category.objects.get(category_name=main_category_name)
+                course_category = Video_course.objects.get(course_name=course_category_name)
+            except Video_category.DoesNotExist:
+                return JsonResponse({"error": "Invalid main category"}, status=400)
+            except Video_course.DoesNotExist:
+                return JsonResponse({"error": "Invalid course category"}, status=400)
+
             lesson = VideoLesson(
                 video=video,
                 title=video_title,
@@ -67,10 +76,11 @@ def teacher_video_create(request):
             )
             try:
                 lesson.save()
-                return redirect("core:success")
+                return JsonResponse({"message": "Video uploaded successfully!"}, status=200)
             except Exception as e:
-                print(f"Error: {e}")
-                return redirect("core:error")
+                return JsonResponse({"error": f"Error saving video: {str(e)}"}, status=500)
+
+    return JsonResponse({"error": "Invalid request method"}, status=405)
 
 
 @login_required

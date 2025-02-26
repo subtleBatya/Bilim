@@ -16,7 +16,6 @@ def index(request):
             if len(scientists) == 3:
                 break
             scientists.append(scientist)
-    print(scientists)
     context = {
         "courses":courses,
         "popular_videos": videos,

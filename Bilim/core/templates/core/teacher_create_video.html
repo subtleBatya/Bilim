@@ -18,7 +18,7 @@
     <hr class="p-1">
 </div>
 
-<form action="{% url "teacher:teacher_video_create"%}" method="post" enctype="multipart/form-data">
+<form action="{% url "teacher:teacher_video_create"%}" method="post" enctype="multipart/form-data" id="videoUploadForm">
     {% csrf_token %}
     <div class="mx-auto d-flex  align-items-start" style="margin-bottom: 20vh;" >
         <div class="d-block mx-auto" style="width: 90vw;">
@@ -95,13 +95,86 @@
             </div>
             <div class="text-center mt-4">
                 <div>
-                <button type="submit" class="downloader text-center text-white px-4 py-1 rounded-3 fw-medium" style="border: none;">Save</button>
+                    <!-- Progress Bar Container -->
+                    <div id="progressContainer" style="display: none; width: 100%; margin-top: 10px;">
+                        <div id="progressBar" style="width: 0%; height: 20px; background-color: green;"></div>
+                        <p id="progressText">0%</p>
+                    </div>
+
+                    <button type="submit" 
+                    id="submitBtn" 
+                    class="downloader text-center text-white px-4 py-1 rounded-3 fw-medium"
+                    style="border: none;">
+                    Save
+                    </button>
+            
                 </div>
             </div>
         </div>
     </div>
 </form>
 {% include "core/footer.html"%}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("videoUploadForm");
+        const fileInput = document.getElementById("fileUpload");
+        const submitButton = document.getElementById("submitBtn");
+        const progressContainer = document.getElementById("progressContainer");
+        const progressBar = document.getElementById("progressBar");
+        const progressText = document.getElementById("progressText");
+    
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent default form submission
+    
+            let formData = new FormData(form);
+    
+            // Show the progress bar
+            progressContainer.style.display = "block";
+            progressBar.style.width = "0%";
+            progressText.innerText = "0%";
+    
+            submitButton.disabled = true;
+            submitButton.innerText = "Uploading...";
+    
+            // Create an XMLHttpRequest to track upload progress
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "{% url 'teacher:teacher_video_create' %}", true);
+            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+    
+            // Track upload progress
+            xhr.upload.onprogress = function (event) {
+                if (event.lengthComputable) {
+                    let percentComplete = Math.round((event.loaded / event.total) * 100);
+                    progressBar.style.width = percentComplete + "%";
+                    progressText.innerText = percentComplete + "%";
+                }
+            };
+    
+            // Handle successful upload
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    alert("Video uploaded successfully!");
+                    form.reset();
+                } else {
+                    alert("Upload failed. Try again.");
+                }
+                submitButton.disabled = false;
+                submitButton.innerText = "Save";
+            };
+    
+            // Handle errors
+            xhr.onerror = function () {
+                alert("Upload error. Check your internet connection.");
+                submitButton.disabled = false;
+                submitButton.innerText = "Save";
+            };
+    
+            // Send the request
+            xhr.send(formData);
+        });
+    });
+    
+</script>
  <!-- Bootstrap JS and Popper.js -->
 {% include "core/static_files/scripts.html" %} 
 <script src="{% static 'core/js/content.js' %}"></script>

@@ -159,6 +159,25 @@ document.addEventListener("DOMContentLoaded", initializeSelectedAbilities);
                 reader.readAsDataURL(file);
             }
         }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let tel_field = document.getElementById("tel_number");
+            let old_value = tel_field.value;
+        
+            tel_field.addEventListener("focus", () => {
+                if (!tel_field.value.startsWith("+993")) {
+                    old_value = tel_field.value; // Save old value
+                    tel_field.value = "+993"; // Pre-fill the field with +993
+                }
+            });
+        
+            tel_field.addEventListener("blur", () => {
+                if (tel_field.value === "+993") {
+                    tel_field.value = old_value; // Restore old value if only "+993" is entered
+                }
+            });
+        });
+        
     </script>
     {% include "core/static_files/scripts.html" %}
 </body>
