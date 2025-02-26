@@ -22,9 +22,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'library:library'%}">Library</a>
                         </li>
+                        {% if request.user.is_staff %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'auth:admin_page'%}">Admin</a>
                         </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'videos:shorts'%}">#Shorts</a>
                         </li>

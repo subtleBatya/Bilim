@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from authentication.models import User, UserRecentVideo
-
+import random
 # Create your views here.
 @login_required
 def all_courses(request, id):
@@ -34,7 +34,6 @@ def all_courses(request, id):
 
 @login_required
 def video_of_course(request, id):
-    pass
     if request.method == "GET":
         courses = Video_category.objects.all()
         video = VideoCourse.objects.get(id=id)
@@ -75,14 +74,16 @@ def like_video(request, video_id):
 
 
 def shorts(request):
-    user = User.objects.get(username=request.user.username)
-    videos = VideoCourse.objects.all().exclude(author=user)
-    paginator = Paginator(videos, 5)  # Adjust the number of items per page
-    page_number = request.GET.get('page', 1)
-    page_obj = paginator.get_page(page_number)
+    if request.method == "GET":
+        user = User.objects.get(username=request.user.username)
+        videos = VideoCourse.objects.all().exclude(author=user)
+        random.shuffle(list(videos))
+        paginator = Paginator(videos, 10) 
+        page_number = request.GET.get('page', 1)
+        page_obj = paginator.get_page(page_number)
 
-    return render(request, 'core/shorts/shorts.html', {
-        'page_obj': page_obj,
-        'has_next': page_obj.has_next(),  # Check if more pages are available
-        'next_page_number': page_obj.next_page_number() if page_obj.has_next() else None,
-    })
+        return render(request, 'core/shorts/shorts.html', {
+            'page_obj': page_obj,
+            'has_next': page_obj.has_next(),  # Check if more pages are available
+            'next_page_number': page_obj.next_page_number() if page_obj.has_next() else None,
+        })

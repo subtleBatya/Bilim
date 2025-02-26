@@ -17,7 +17,8 @@
             <div class="scroll-content">
                 <!-- Card 1 -->
                 {% for rec_video in request.user.recent_seen_video.all|slice:"::-1" %}
-                <a href="{% url "videos:video_of_course" rec_video.id %}" style="color:black;"><div class="scroll-item">
+                <a href="{% url "videos:video_of_course" rec_video.id %}" style="color:black;">
+                  <div class="scroll-item">
                     <img src="{{rec_video.poster.url}}" class="img-fluid">
                     <h4>{{rec_video.title}}</h4>
                     <p>{{rec_video.description|truncatewords:10}}</p>
@@ -44,23 +45,24 @@
   <div class="wrapper-card">
       <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >Popular videos</h1>
       <div class="cols-card">
+        {% for popular_video in popular_videos %}
           <div class="col-card" ontouchstart="this.classList.toggle('hover');">
                   <div class="container-card">
                       <div class="front">
-                          <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?auto=format&fit=crop&w=1534&q=80" alt="Python Course">
+                          <img src="{{popular_video.poster.url}}" alt="Python Course">
                           <div class="inner">
-                              <p>Python</p>
-                              <span>25 videos</span>
+                              <p>{{popular_video.title}}</p>
                           </div>
                       </div>
                       <div class="back">
                           <div class="inner">
-                              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-                              <button class="btn downloader rounded-3">View Course</button>
+                              <p>{{popular_video.description|truncatewords:15}}</p>
+                              <a href="{% url "videos:video_of_course" popular_video.id %}" class="btn downloader rounded-3">View Video</a>
                           </div>
                       </div>
                   </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </section>
