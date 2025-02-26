@@ -2,12 +2,12 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from videos.models import Video_category, VideoCourse as Videos
 from .models import Scientist
-import random
+from django.db.models import Count
 # Create your views here.
 @login_required
 def index(request):
     courses = Video_category.objects.all()
-    videos = Videos.objects.all().order_by("-likes")[:12]
+    videos = Videos.objects.annotate(likes_count=Count("likes")).order_by("-likes_count", "-views")[:12]
     scientists = []
     for scientist in Scientist.objects.all().order_by("?"):
         if scientist in scientists:
