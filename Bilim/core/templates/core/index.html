@@ -20,7 +20,7 @@
                 <a href="{% url "videos:video_of_course" rec_video.id %}" style="color:black;">
                   <div class="scroll-item">
                     <img src="{{rec_video.poster.url}}" class="img-fluid">
-                    <h4>{{rec_video.title}}</h4>
+                    <h6>{{rec_video.title|truncatewords:4}}</h6>
                     <p>{{rec_video.description|truncatewords:10}}</p>
                 </div></a>
                 {% empty %}
@@ -51,7 +51,7 @@
                       <div class="front">
                           <img src="{{popular_video.poster.url}}" alt="Python Course">
                           <div class="inner">
-                              <p>{{popular_video.title}}</p>
+                              <p>{{popular_video.title|truncatewords:6}}</p>
                           </div>
                       </div>
                       <div class="back">

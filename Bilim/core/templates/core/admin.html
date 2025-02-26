@@ -6,11 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BILIM Courses</title>
   {% include 'core/static_files/links.html'%}
-
-  
 </head>
 <body>
-{% include "core/hero.html" with content="Find your own course" image_path="core/images/course.webp"%}
+{% include "core/hero.html" with content="Accept or decline courses" image_path="core/images/course.webp"%}
    
 <section id="popular-courses" style="width: 100vw;">
     <div class="wrapper-card">
@@ -22,7 +20,7 @@
                         <div class="front">
                             <img src="{{video.poster.url}}" alt="Python Course">
                             <div class="inner">
-                                <p>{{video.title}}</p>
+                                <p>{{video.title|truncatewords:6}}</p>
                             </div>
                         </div>
                         <div class="back">

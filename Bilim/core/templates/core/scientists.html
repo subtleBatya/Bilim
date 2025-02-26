@@ -2,41 +2,34 @@
 <div id="heroCarousel" class="carousel slide mx-auto text-center mb-4 rounded-5 shadow-lg block-color-4" data-bs-ride="carousel" style="width: 90vw; max-width: 100vw;">
     <div class="carousel-inner mx-auto col-sm-10">
         <!-- Slide 1 -->
+         {% for scientist in scientists|slice:"0:1" %}
         <div class="carousel-item active">
             <div class="row mt-5 mb-5 align-items-center mx-auto text-center" style="width: 85vw; max-width: 1100px;">
                 <div class="col-md-6 col-12">
-                    <img class="scientists img-fluid rounded-3 bg-transparent" style="max-height: 350px; object-fit: cover;" src="{% static 'core/images/Einstein.webp' %}" alt="Albert Einstein">
+                    <img class="scientists img-fluid rounded-3 bg-transparent" style="max-height: 350px; object-fit: cover;" src="{{scientist.scientist_image.url}}" alt="Albert Einstein">
                 </div>
                 <div class="col-md-6 col-12 text-white px-4">
-                    <h2 class="fw-bold">Albert Einstein</h2>
-                    <p class="fs-5 fst-italic">"Bilim Geljegiň Açarydyr"</p>
+                    <h2 class="fw-bold">{{scientist.scientist_name}}</h2>
+                    <p class="fs-5 fst-italic">{{scientist.scientist_text}}</p>
                 </div>
             </div>
         </div>
+        {% endfor %}
         <!-- Slide 2 -->
+         {% for scientist in scientists|slice:"1::" %}
         <div class="carousel-item">
             <div class="row mt-5 mb-5 align-items-center mx-auto text-center" style="width: 85vw; max-width: 1100px;">
                 <div class="col-md-6 col-12">
-                    <img class="scientists img-fluid rounded-3 shadow" style="max-height: 350px; object-fit: cover;" src="{% static 'core/images/MarieCurie.webp' %}" alt="Marie Curie">
+                    <img class="scientists img-fluid rounded-3 shadow" style="max-height: 350px; object-fit: cover;" src="{{scientist.scientist_image.url}}" alt="Marie Curie">
                 </div>
                 <div class="col-md-6 col-12 text-white px-4">
-                    <h2 class="fw-bold">Marie Curie</h2>
-                    <p class="fs-5 fst-italic">"Bilim Geljegiň Açarydyr"</p>
+                    <h2 class="fw-bold">{{scientist.scientist_name}}</h2>
+                    <p class="fs-5 fst-italic">{{scientist.scientist_text}}</p>
                 </div>
             </div>
         </div>
+        {% endfor %}
         <!-- Slide 3 -->
-        <div class="carousel-item">
-            <div class="row mt-5 mb-5 align-items-center mx-auto text-center" style="width: 85vw; max-width: 1100px;">
-                <div class="col-md-6 col-12">
-                    <img class="scientists img-fluid rounded-3 shadow" style="max-height: 350px; object-fit: cover;" src="{% static 'core/images/Newton.webp' %}" alt="Isaac Newton">
-                </div>
-                <div class="col-md-6 col-12 text-white px-4">
-                    <h2 class="fw-bold">Isaac Newton</h2>
-                    <p class="fs-5 fst-italic">"Bilim Geljegiň Açarydyr"</p>
-                </div>
-            </div>
-        </div>
     </div>
     
     <!-- Navigation Buttons -->
@@ -52,5 +45,7 @@
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        
+        
     </div>
 </div>
