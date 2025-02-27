@@ -3,7 +3,7 @@ from django.contrib.auth import login as auth_login, logout, authenticate
 from django.contrib.auth.hashers import make_password
 from .models import User, User_abilities
 from django.contrib.auth.decorators import login_required
-from videos.models import VideoCourse, Video_category
+from videos.models import VideoCourse, Video_category, Short_video
 from django.core.mail import send_mail
 from django.conf import settings
 from django.utils.html import format_html
@@ -57,10 +57,12 @@ def payment(request):
 def admin_page(request):
     if request.method == 'GET':
         videos = VideoCourse.objects.filter(accepted=False)
+        shorts = Short_video.objects.filter(shorts_accepted=False)
         courses = Video_category.objects.all()
         context = {
             "all_videos": videos,
-            "courses":courses
+            "courses":courses,
+            "shorts":shorts
         }
         return render(request, "core/admin.html", context)
 
@@ -139,6 +141,18 @@ def admin_video(request, id):
         }
         return render(request, "core/video_page_for_admin.html", context)
     
+
+@login_required
+def admin_video_shorts(request, id):
+    if request.method == "GET":
+        courses = Video_category.objects.all()
+        video = Short_video.objects.get(id=id)
+        context = {
+            "video": video,
+            "courses":courses
+        }
+        return render(request, "core/video_page_for_admin_shorts.html", context)
+    
 def accept_video(request, id):
     if request.method == "GET":
         video = VideoCourse.objects.get(id=id)
@@ -169,6 +183,36 @@ def accept_video(request, id):
         except Exception as e:
             print("Failed to send email:", e)
             return redirect("auth:admin_page")
+        
+
+   
+def accept_video_shorts(request, id):
+    if request.method == "GET":
+        video = Short_video.objects.get(id=id)
+        try:
+            html_message = format_html(f"""
+                <div style="text-align: center; font-family: Arial, sans-serif; padding: 20px;">
+                    <img src="https://yourwebsite.com/static/images/tick.png" alt="Accepted" style="width: 100px;">
+                    <h2 style="color: #4CAF50;">Ваше видео успешно принято!</h2>
+                    <h2 style="color: #4CAF50;">Siziň widoeňyz üstünlikli goýuldy!</h2>
+                    <p style="font-size: 16px; color: #333;">С уважением, команда <strong>Bilim!</strong></p>
+                    <p style="font-size: 16px; color: #333;">Hormatlamak bilen <strong>Bilim</strong> komandasy!</p>
+                    <hr style="margin: 20px 0;">
+                    <h3>📹 Видео: <strong>{video.shorts_title}</strong></h3>
+                    <h3>📹 Wideo: <strong>{video.shorts_title}</strong></h3>
+                    <p>✨ Теперь ваше видео доступно для студентов!</p>
+                    <p>✨ Indi siziň wideoňyz talyplar üçin elýeterdir!</p>
+                </div>
+            """)
+
+            send_custom_email(video.shorts_author.email, "BILIM EDUCATION", html_message)
+            video.shorts_accepted = True
+            video.save()
+            return redirect("auth:admin_page")
+        except Exception as e:
+            print("Failed to send email:", e)
+            return redirect("auth:admin_page")
+
 
 
 def decline_video(request, id):
@@ -203,6 +247,36 @@ def decline_video(request, id):
             print("Failed to send email:", e)
             return redirect("auth:admin_page")
 
+
+
+
+def decline_video_shorts(request, id):
+    if request.method == "GET":
+        video = Short_video.objects.get(id=id)
+        try:
+            html_message = format_html(f"""
+                <div style="text-align: center; font-family: Arial, sans-serif; padding: 20px;">
+                    <img src="https://yourwebsite.com/static/images/error.png" alt="Rejected" style="width: 100px;">
+                    <h2 style="color: #E53935;">К сожалению, ваше видео не принято!</h2>
+                    <h2 style="color: #E53935;">Gynansakda siziň wideoňyz kabul edilmedi!</h2>
+                    <p style="font-size: 16px; color: #333;">Пожалуйста, проверьте правильность введенных данных.</p>
+                    <p style="font-size: 16px; color: #333;">Haýyş, girizen maglumatlaryňyzy dogry giriziň!</p>
+                    <hr style="margin: 20px 0;">
+                    <h3>📹 Видео: <strong>{video.shorts_title}</strong></h3>
+                    <h3>📹 Wideo: <strong>{video.shorts_title}</strong></h3>
+                    <p>❌ Попробуйте снова загрузить видео с исправленными данными.</p>
+                    <p>❌ Wideony gaýtaldan dogry maglumatlar bilen ýüklemegiňizi haýyş edýaris!.</p>
+                    <p>С уважением, команда <strong>Bilim!</strong></p>
+                    <p>Hormatlamak bilen <strong>Bilim</strong> komandasy!</p>
+                </div>
+            """)
+
+            send_custom_email(video.shorts_author.email, "BILIM EDUCATION", html_message)
+            video.delete()
+            return redirect("auth:admin_page")
+        except Exception as e:
+            print("Failed to send email:", e)
+            return redirect("auth:admin_page")
 
 def send_custom_email(toemail, subject, html_message):
     try:

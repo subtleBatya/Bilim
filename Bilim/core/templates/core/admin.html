@@ -39,6 +39,39 @@
           </div>
       </div>
   </section>
+
+
+
+
+  <section id="popular-courses" style="width: 100vw;">
+    <div class="wrapper-card">
+        <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >Shorts pending to accept or decline</h1>
+        <div class="cols-card">
+            {% for video in shorts %}
+            <div class="col-card" ontouchstart="this.classList.toggle('hover');">
+                    <div class="container-card">
+                        <div class="front">
+                            <img src="{{video.shorts_poster.url}}" alt="Python Course">
+                            <div class="inner">
+                                <p>{{video.shorts_title|truncatewords:6}}</p>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div class="inner">
+                                <p>{{video.shorts_description|truncatewords:10}}</p>
+                                <a href="{% url "auth:admin_video_shorts" video.id %}"><button class="btn downloader rounded-3">View Course</button></a>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+              {% empty %}
+              <div class='w-100 text-center text'>
+                <h3 class='text-danger'>No courses are pending </h3>
+              </div>
+              {% endfor %}
+          </div>
+      </div>
+  </section>
   {% include "core/footer.html"%}
   {% include "core/static_files/scripts.html"%}
 </body>

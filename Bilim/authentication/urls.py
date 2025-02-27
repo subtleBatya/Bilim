@@ -12,6 +12,9 @@ urlpatterns = [
     path("edit_profile/", edit_profile, name="edit_profile"),
     path("custom_admin/", admin_page, name="admin_page"),
     path("video_admin/<int:id>", admin_video, name="admin_video"),
+    path("video_admin_shorts/<int:id>", admin_video_shorts, name="admin_video_shorts"),
     path("accept_video/<int:id>", accept_video, name="accept_video"),
-    path("decline_video/<int:id>", decline_video, name="decline_video")
+    path("decline_video/<int:id>", decline_video, name="decline_video"),
+    path("accept_video_shorts/<int:id>", accept_video_shorts, name="accept_video_shorts"),
+    path("decline_video_shorts/<int:id>", decline_video_shorts, name="decline_video_shorts")
 ]

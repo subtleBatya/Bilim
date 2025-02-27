@@ -60,7 +60,11 @@ def video_of_course(request, id):
 @login_required
 def create_shorts(request):
     if request.method == "GET":
-        return render(request, "core/create_shorts.html")
+        courses = Video_category.objects.all()
+        context = {
+            "courses":courses
+        }
+        return render(request, "core/create_shorts.html", context)
     if request.method == "POST":
         video = request.FILES.get("video")
         video_title = request.POST.get("video_title")
@@ -101,7 +105,7 @@ def like_video(request, video_id):
 def shorts(request):
     if request.method == "GET":
         user = User.objects.get(username=request.user.username)
-        videos = VideoCourse.objects.filter(accepted=True).order_by("?")   
+        videos = Short_video.objects.filter(shorts_accepted=True).order_by("?")  
         paginator = Paginator(videos, 10) 
         page_number = request.GET.get('page', 1)
         page_obj = paginator.get_page(page_number)
