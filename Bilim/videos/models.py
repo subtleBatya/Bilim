@@ -44,3 +44,16 @@ class VideoCourse(models.Model):
     def __str__(self):
         return self.title
 
+class Short_video(models.Model):
+    shorts_title = models.CharField(max_length=255)
+    shorts_description = models.TextField()
+    shorts_poster = models.ImageField(upload_to="posters/")
+    shorts_video = models.FileField(upload_to='videos/')
+    shorts_views = models.PositiveIntegerField(default=0)
+    shorts_author = models.ForeignKey("authentication.User", on_delete=models.CASCADE, related_name="Author_of_shorts", blank=True)
+    shorts_added_date = models.DateTimeField(auto_now_add=True, blank=True)
+    shorts_accepted = models.BooleanField(default=False)
+
+
+    def __str__(self):
+        return self.shorts_title

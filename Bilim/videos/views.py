@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import VideoCourse, Video_course as category_courses, Video_category
+from .models import VideoCourse, Video_course as category_courses, Video_category, Short_video
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import JsonResponse
@@ -57,7 +57,30 @@ def video_of_course(request, id):
         }
         return render(request, "core/video_page.html", context)
 
+@login_required
+def create_shorts(request):
+    if request.method == "GET":
+        return render(request, "core/create_shorts.html")
+    if request.method == "POST":
+        video = request.FILES.get("video")
+        video_title = request.POST.get("video_title")
+        video_description = request.POST.get("video_description")
+        poster = request.FILES.get("poster")
 
+        lesson = Short_video(
+                shorts_video=video,
+                shorts_title=video_title,
+                shorts_description=video_description,
+                shorts_poster=poster,
+                shorts_author=request.user
+            )
+        try:
+            lesson.save()
+            return JsonResponse({"message": "Video uploaded successfully!"}, status=200)
+        except Exception as e:
+            return JsonResponse({"error": f"Error saving video: {str(e)}"}, status=500)
+
+    return JsonResponse({"error": "Invalid request method"}, status=405)
 
 @login_required
 def like_video(request, video_id):

@@ -18,30 +18,11 @@
         {% else %}
         <img src="" alt="User Photo" class="img-fluid" style="border-radius: 50%; width: 300px; height: 300px; object-fit: cover;">
         {% endif %}
-        <h1 class="my-2">{{request.user.username}} </h1>
+        <h1 class="my-2"><span style="color: black;">Name:</span>{{request.user.username}} </h1>
         {% if request.user.job %}
-        <h2 style="color: #F24B86;">{{request.user.job}}</h2>
+        <h2 style="color: #F24B86;"><span style="color: black;">Job:</span>{{request.user.job}}</h2>
         {% endif %}
-        <h3 class="my-3">About me</h3>
-        
-        <!-- Контейнер с иконками -->
-        <div class="d-flex flex-wrap justify-content-start">
-          <!-- Display abilities if the user has any -->
-          {% for user_abilities in request.user.user_abilities.all %}
-              <div class="icon-column d-flex flex-column align-items-center m-2 p-3 border rounded shadow-sm" style="width:35%;">
-                  <div class="icon-container d-flex align-items-center justify-content-center mb-2">
-                      <i class="{{ user_abilities.ability_icon }} text-primary" style="font-size: 2rem;"></i>
-                  </div>
-                  <p class="text-center">{{ user_abilities.name }}</p>
-              </div>
-          {% empty %}
-              <!-- Display message if no abilities -->
-              <div class="w-100 text-center">
-                  <h5>No abilities... Edit your abilities</h5>
-              </div>
-          {% endfor %}
-      </div>
-      
+              
       </div>
 
       <!-- Второй столбец -->
@@ -58,20 +39,61 @@
       </div>
 
       <!-- Третий столбец -->
-      <div class="col-md-4">
-        <h1>Your exams</h1>
-        <div class="container mt-3">
-          <h5>Ui dizayner</h5>
-          <div class="progress">
-              <div class="progress-bar" role="progressbar" style="--progress-width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-
+      <div class="col-md-4" >
+        <h1 style="font-weight: normal; text-align: center;" >My abilities</h1>
+        <div class="d-flex flex-wrap justify-content-start">
+          <!-- Display abilities if the user has any -->
+          {% for user_abilities in request.user.user_abilities.all %}
+              <div class="icon-column d-flex flex-column align-items-center m-2 p-3 border rounded shadow-sm" style="width:35%;">
+                  <div class="icon-container d-flex align-items-center justify-content-center mb-2">
+                      <i class="{{ user_abilities.ability_icon }} text-primary" style="font-size: 2rem;"></i>
+                  </div>
+                  <p class="text-center">{{ user_abilities.name }}</p>
+              </div>
+          {% empty %}
+              <!-- Display message if no abilities -->
+              <div class="w-100 text-center">
+                  <h5>No abilities... Edit your abilities</h5>
+              </div>
+          {% endfor %}
+      </div>
       </div>
       </div>
       <div class="d-flex justify-content-end mt-5">
         <a href="{% url "auth:edit_profile"%}"><button class="btn btn-primary downloader">Edit your profile</button></a>
       </div>
-
+  
+      <section id="popular-courses" style="width: 90vw;">
+        <div class="wrapper-card">
+            <h1 style=" font-weight: normal; text-align: center; margin: 2rem 0;" >My shorts</h1>
+            <div class="cols-card">
+              {% for popular_video in popular_videos %}
+                <div class="col-card" ontouchstart="this.classList.toggle('hover');">
+                        <div class="container-card">
+                            <div class="front">
+                                <img src="{{popular_video.poster.url}}" alt="Python Course">
+                                <div class="inner">
+                                    <p>{{popular_video.title|truncatewords:6}}</p>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="inner">
+                                    <p>{{popular_video.description|truncatewords:15}}</p>
+                                    <a href="{% url "videos:video_of_course" popular_video.id %}" class="btn downloader rounded-3">View Video</a>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+                  {% empty %}
+                  <div class="w-100 text-center">
+                    <h5>No videos</h5>
+                  </div>
+                  {% endfor %}
+                  <a href="{% url "videos:create_shorts"%}" class="btn downloader w-50">Add a video</a>
+              </div>
+          </div>
+      </section>
+      
 
     </div>
   </div>

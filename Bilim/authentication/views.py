@@ -77,8 +77,10 @@ def profile(request):
     if request.method == "GET":
         if request.user.is_student:
             courses = Video_category.objects.all()
+            popular_videos = VideoCourse.objects.filter(author=request.user)
             context = {
-                "courses":courses
+                "courses":courses,
+                "popular_videos": popular_videos
             }
             return render(request, "core/profile.html", context)
 
