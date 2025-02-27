@@ -56,14 +56,14 @@
 <div class="video-container">
     <div class="video-player">
         <video id="video-player" width="100%" height="700px" controls>
-            <source id="video-source" src="{{ page_obj.object_list.0.video.url }}" type="video/mp4">
+            <source id="video-source" src="{{ page_obj.object_list.0.video.shorts_video.url }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 
     <div id="video-thumbnails" class="video-thumbnails">
         {% for video in page_obj.object_list %}
-        <div class="thumbnail" data-video="{{ video.video.url }}" style="background-image: url('{{ video.video_poster.url }}')">
+        <div class="thumbnail" data-video="{{ video.shorts_video.url }}" style="background-image: url('{{ video.shorts_poster.url }}')">
             <div class="video-info">
                 <h3>{{ video.video_name }}</h3>
                 <p>{{ video.video_description }}</p>
