@@ -18,7 +18,7 @@ class User(AbstractUser):
     job = models.CharField(max_length=255, blank=True, null=True)
     about_me_shorter = models.ManyToManyField("About_user", blank=True)
     user_abilities = models.ManyToManyField("User_abilities", blank=True)
-
+    followers = models.ManyToManyField("self", symmetrical=False, related_name="following", blank=True)
     
     
 

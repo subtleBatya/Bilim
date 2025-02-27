@@ -9,7 +9,7 @@
   {% comment %} <link href="https://vjs.zencdn.net/8.5.2/video-js.css" rel="stylesheet"> {% endcomment %}
 </head>
 <body>
- {% include "core/hero.html" with content="Bilim Video Courses" image_path="core/images/course.webp"%}
+ {% comment %} {% include "core/hero.html" with content="Bilim Video Courses" image_path="core/images/course.webp"%} {% endcomment %}
  <div class="video-container">
   <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" download="none" data-setup='{}'>
     <source src="{{video.video.url}}" type="video/mp4" />

@@ -49,9 +49,11 @@ def video_of_course(request, id):
 
         video.views += 1
         video.save()
+        popular_videos = VideoCourse.objects.all().exclude(author=request.user).order_by("?")[:20]
         context = {
             "video": video,
-            "courses":courses
+            "courses":courses,
+            "popular_videos":popular_videos
         }
         return render(request, "core/video_page.html", context)
 
