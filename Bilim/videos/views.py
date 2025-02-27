@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
-from authentication.models import User, UserRecentVideo
+from authentication.models import User #, UserRecentVideo
 import random
 # Create your views here.
 @login_required
@@ -35,9 +35,10 @@ def all_courses(request, id):
 @login_required
 def video_of_course(request, id):
     if request.method == "GET":
-        courses = Video_category.objects.all()
-        video = VideoCourse.objects.get(id=id)
-        user = User.objects.get(username=request.user.username)
+        pass
+        #courses = Video_category.objects.all()
+        #video = VideoCourse.objects.get(id=id)
+        #user = User.objects.get(username=request.user.username)
         
         UserRecentVideo.objects.filter(user=user, video=video).delete()
 

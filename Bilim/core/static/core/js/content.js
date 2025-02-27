@@ -52,14 +52,71 @@ function handleFileUpload(input) {
         fileNameDisplay.textContent = `Selected File: ${fileName}`;
         fileNameDisplay.className = "fw-bold text-dark mb-1";
 
+        const form = document.getElementById("videoUploadForm");
+        const fileInput = document.getElementById("fileUpload");
+        const submitButton = document.getElementById("submitBtn");
+        const progressContainer = document.getElementById("progressContainer");
+        const progressBar = document.getElementById("progressBar");
+        const progressText = document.getElementById("progressText");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            let formData = new FormData(form);
+
+            // Show the progress bar
+            progressContainer.style.display = "block";
+            progressBar.style.width = "0%";
+            progressText.innerText = "0%";
+
+            submitButton.disabled = true;
+            submitButton.innerText = "Uploading...";
+
+            // Create an XMLHttpRequest to track upload progress
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "{% url 'teacher:teacher_video_create' %}", true);
+            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+
+            // Track upload progress
+            xhr.upload.onprogress = function (event) {
+                if (event.lengthComputable) {
+                    let percentComplete = Math.round((event.loaded / event.total) * 100);
+                    progressBar.style.width = percentComplete + "%";
+                    progressText.innerText = percentComplete + "%";
+                }
+            };
+
+            // Handle successful upload
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    alert("Video uploaded successfully!");
+                    form.reset();
+                } else {
+                    alert("Upload failed. Try again.");
+                }
+                submitButton.disabled = false;
+                submitButton.innerText = "Save";
+            };
+
+            // Handle errors
+            xhr.onerror = function () {
+                alert("Upload error. Check your internet connection.");
+                submitButton.disabled = false;
+                submitButton.innerText = "Save";
+            };
+
+            // Send the request
+            xhr.send(formData);
+        });
+
         // Create progress bar
-        const progressBarContainer = document.createElement("div");
-        progressBarContainer.className = "progress mb-2 h-100";
-        const progressBar = document.createElement("div");
-        progressBar.className = "progress-bar";
-        progressBar.style.width = "0%";
-        progressBar.textContent = "0%";
-        progressBarContainer.appendChild(progressBar);
+        // const progressBarContainer = document.createElement("div");
+        // progressBarContainer.className = "progress mb-2 h-100";
+        // const progressBar = document.createElement("div");
+        // progressBar.className = "progress-bar";
+        // progressBar.style.width = "0%";
+        // progressBar.textContent = "0%";
+        // progressBarContainer.appendChild(progressBar);
 
         // Create Remove button
         const removeButton = document.createElement("button");
@@ -69,35 +126,35 @@ function handleFileUpload(input) {
 
         // Append file name, progress bar, and remove button to the file container
         fileContainer.appendChild(fileNameDisplay);
-        fileContainer.appendChild(progressBarContainer);
+        // fileContainer.appendChild(progressBarContainer);
         fileContainer.appendChild(removeButton);
         fileInfoContainer.appendChild(fileContainer);
 
         // Debugging: Check if progressBar exists
-        console.log("Progress Bar:", progressBar);
+        // console.log("Progress Bar:", progressBar);
 
         // Ensure Progress Bar is in DOM before updating
-        setTimeout(() => {
-            let progress = 0;
-            function updateProgress() {
-                if (progress >= 100) {
-                    
-                    progressBar.textContent = "100%";
-                    progressBar.style.backgroundColor = "#28a745";
-                    console.log("Progress complete!");
-                    return;
-                }
-                progress += 10;
-                progressBar.style.setProperty("width", progress + "%", "important");
-                progressBar.textContent = `${progress}%`;   
-                console.log(`Progress updated: ${progress}%`);
+        // setTimeout(() => {
+        //     let progress = 0;
+        //     function updateProgress() {
+        //         if (progress >= 100) {
 
-                // Use requestAnimationFrame for smoother updates
-                setTimeout(updateProgress, 300);
-            }
+        //             progressBar.textContent = "100%";
+        //             progressBar.style.backgroundColor = "#28a745";
+        //             console.log("Progress complete!");
+        //             return;
+        //         }
+        //         progress += 10;
+        //         progressBar.style.setProperty("width", progress + "%", "important");
+        //         progressBar.textContent = `${progress}%`;
+        //         console.log(`Progress updated: ${progress}%`);
 
-            updateProgress();
-        }, 200);
+        //         // Use requestAnimationFrame for smoother updates
+        //         setTimeout(updateProgress, 300);
+        //     }
+
+        //     updateProgress();
+        // }, 200);
     };
 
     video.src = URL.createObjectURL(file); // Load the video to check its duration
