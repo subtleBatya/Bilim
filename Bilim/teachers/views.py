@@ -7,7 +7,11 @@ from django.contrib import messages
 @login_required
 def teacher_profile(request):
     if request.user.is_teacher:
-        return render(request, "core/teacher_profile.html")
+        courses = Video_category.objects.all()
+        context = {
+            "courses":courses
+        }
+        return render(request, "core/teacher_profile.html", context)
 
 @login_required
 def teacher_content(request):
@@ -41,9 +45,11 @@ def teacher_video_create(request):
         if request.user.is_teacher:
             main_category = Video_category.objects.all()
             course_category = Video_course.objects.all()
+            courses = Video_category.objects.all()
             context = {
                 "main_category": main_category,
                 "course_category": course_category,
+                "courses":courses
             }
             return render(request, "core/teacher_create_video.html", context)
 
@@ -117,9 +123,7 @@ def teacher_edit(request):
 @login_required
 def see_own_video(request, id):
     my_video = VideoLesson.objects.get(author=request.user, id=id)
-    courses = Video_category.objects.all()
     context = {
         'video': my_video,
-        "courses":courses
     }
     return render(request, "core/video_page_for_teachers.html", context)
