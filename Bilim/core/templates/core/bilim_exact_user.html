@@ -43,9 +43,9 @@
         </div>
 
         <div id="button_blocks" class="d-flex gap-4 mt-5 mx-auto m-1 p-2 " style="flex-direction: row; justify-content: space-between; ">
-            <button id="gen_btn" style="cursor: pointer;" class="btn btn-primary">General</button>
-            <button id="exam_btn" style="cursor: pointer;" class="btn btn-primary">Videos</button>
-            <button id="class_btn" style="cursor: pointer;" class="btn btn-primary">Full information</button>
+            <button id="gen_btn" style="cursor: pointer;" class="btn downloader">General</button>
+            <button id="exam_btn" style="cursor: pointer;" class="btn downloader">Videos</button>
+            <button id="class_btn" style="cursor: pointer;" class="btn downloader">Full information</button>
         </div>
 
         <div class=" mt-5 ">
@@ -54,11 +54,11 @@
             <!-- GENERAL BLOCK -->
                 <div class="col-md-4">
                     <div class="mb-3">
-                      <h1>About user</h1>
+                      <h4>About user</h4>
                       <p>{% if user.about_me %} {{ user.about_me }} {% else %} There is nothing about this user! {% endif %} </p>
                     </div>
                     <div class="mb-3">
-                      <h1>About this user goals</h1>
+                      <h4>About this user goals</h4>
                       <p> {% if user.about_my_goals %} {{ user.about_my_goals}} {% else %} There is nothing about this user's goals! {% endif %} </p>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
             
 <section id="exams_block" style="width: 100vw;">
     <div class="wrapper-card">
-        <h4 style="font-size: 2rem; font-weight: normal; text-align: center; margin: 2rem 0;" >User videos</h4>
+        <h4 style="font-weight: normal; text-align: center; margin: 2rem 0;" >User videos</h4>
         <div class="cols-card">
           {% for popular_video in user_videos %}
             <div class="col-card" ontouchstart="this.classList.toggle('hover');">
@@ -97,6 +97,10 @@
                         </div>
                     </div>
               </div>
+              {% empty%}
+              <div class="w-100 text-center">
+                <h5>No videos added yet </h5>
+            </div>
               {% endfor %}
           </div>
       </div>
@@ -105,7 +109,7 @@
             <!-- CLASSES BLOCK -->
 
             <div id="class_block" class="mx-auto d-none " style="width: 90vw;">
-                <center><h5>User abilities</h5></center>
+                <center><h4>User abilities</h4></center>
                 <div class="d-flex flex-wrap justify-content-start"> 
                     <!-- Display abilities if the user has any -->
                     {% for abilities in user.user_abilities.all %}
