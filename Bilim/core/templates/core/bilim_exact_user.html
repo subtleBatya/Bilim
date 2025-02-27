@@ -19,7 +19,7 @@
 
         <div class=" d-flex text-center fs-1 mb-3 mx-auto" style="width: 90vw;">
             
-            <div>Bilim user profile</div>
+            <div>{% if request.user != user %}Bilim user profile{% else %}Your Profile {% endif %} </div>
         </div>
 
 
@@ -36,8 +36,8 @@
                     <div>Username: <span class="text-primary">{{user.username}} </span> </div>
                     <div>Who:<span class="text-primary">{% if user.is_student %} Student{% elif user.is_teacher %}Teacher {% endif %}</span></div>
                     <div>Job:{% if user.job%} <span class="text-primary"> {{user.job}}</span> {% else %}<span class="text-primary"> Not edited </span>{% endif %} </span></div>
-                     <div>Subscribers:<span class="text-primary">0</span></div>
-                    <a class="btn downloader">Subscribe</a>
+                     <div>Subscribers:<span class="text-primary">{{user.followers.count}} </span></div>
+                     {% if request.user != user %} <a href="{% url "users:follow" user.id %}" class="btn downloader" id="subscribeBtn">{% if request.user in user.followers.all %}Subscribed{% else %}Subscribe{% endif %} </a>{% endif %}
                 </div>
             </div>
         </div>

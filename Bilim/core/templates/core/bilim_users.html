@@ -11,44 +11,6 @@
 
 <body>
   {% include "core/hero.html" with content="All users of Bilim" image_path="core/images/users_image.png"%}
-
-<div class="" style="width: 95vw;">
-    <!--Poisk-->
-  <div class="container-fluid">
-    <div class="d-flex flex-column flex-md-row justify-content-end align-items-start align-items-lg-center py-2 px-3 ">
-        <!-- Поле поиска -->
-        <div class="position-relative me-0 mb-3 mb-lg-0 me-0 me-md-3 me-lg-3">
-            <input type="text" class="form-control pe-5 rounded-4 expand-input fs-4" placeholder="Search..." style="border: 1px solid #8F92DD;">
-            <span class="position-absolute top-50 translate-middle-y end-0 me-2" style="color: #8F92DD;"></span>
-        </div>
-        <!-- Dropdown Category -->
-        <div class="dropdown me-3 mb-3 mb-lg-0">
-            <button class="btn btn-secondary border-0 dropdown-toggle rounded-4 fs-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8F92DD; color: white; width: 150px;">
-                Category
-            </button>
-            <ul class="dropdown-menu rounded-4" aria-labelledby="dropdownMenuButton1" style="border: 1px solid #8F92DD;">
-                <li><a class="dropdown-item rounded-2" href="#">A-z</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">z-a</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">Aktiw</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">Aktiw dal</a></li>
-            </ul>
-        </div>
-        <!-- Dropdown Filter -->
-        <div class="dropdown ">
-            <button class="btn btn-secondary border-0 dropdown-toggle rounded-4 fs-4 " type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8F92DD; color: white; width: 100px;">
-                Filter
-            </button>
-            <ul class="dropdown-menu rounded-4" aria-labelledby="dropdownMenuButton2" style="border: 1px solid #8F92DD;">
-                <li><a class="dropdown-item rounded-2" href="#">A-z</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">z-a</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">Aktiw</a></li>
-                <li><a class="dropdown-item rounded-2" href="#">Aktiw dal</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-</div>
-
 <div class="mx-auto text-center fs-1 mb-3">
     Users of Bilim
 </div>
@@ -68,14 +30,14 @@
                         {% if user.is_student %}Student{% elif user.is_teacher %}Teacher{% endif %}: {{ user.username }}
                     </div>
                     
-                    <div class="pb-4 text-small fw-medium">
+                    <div class="pb-4 fw-medium">
                         {% if user.about_me %}{{ user.about_me }}{% else %}Nothing yet!{% endif %}
                     </div>
 
                     <!-- Centered Button -->
                     <div class="d-flex justify-content-between align-items-center">
                         <a href={% url "users:exact_user" user.id %} class="btn downloader">View Profile</a>
-                        <a class="btn downloader">Subscribe</a>
+                       {% if request.user != user %} <a href="{% url "users:follow" user.id %}" class="btn downloader" id="subscribeBtn">{% if request.user in user.followers.all %}Subscribed{% else %}Subscribe{% endif %} </a>{% endif %}
                     </div>
                    
                 </div>

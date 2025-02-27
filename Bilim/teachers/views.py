@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from authentication.models import User
 from videos.models import Video_course, Video_category, VideoCourse as VideoLesson
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
 # Create your views here.
 @login_required
 def teacher_profile(request):

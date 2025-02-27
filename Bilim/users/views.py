@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from authentication.models import User
 from django.contrib.auth.decorators import login_required
 from videos.models import VideoCourse, Video_category
@@ -29,3 +29,17 @@ def exact_user(request, id):
                 "courses":courses
             }
             return render(request, "core/bilim_exact_user.html", context)
+        
+
+@login_required
+def follow(request, id):
+    user = User.objects.get(id=id)
+    following_user = request.user
+    if following_user in user.followers.all():
+        user.followers.remove(following_user)
+        followed = False
+    else:
+        user.followers.add(following_user)
+        followed = True
+        
+    return redirect("users:all_users")
