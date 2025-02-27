@@ -10,7 +10,7 @@
  
 </head>
 <body>
-  {% include "core/hero.html" with content="View your profile teacher" image_path="core/images/report.webp"%}
+  {% include "core/hero.html" with content="View your profile teacher" image_path="core/images/profile_teacher_image.png"%}
 <!-- Textarea -->
 
 <div class="mx-auto  justify-content-between align-items-start" style="width: 90vw;">
@@ -40,17 +40,6 @@
                         <div class="h5 fw-semibold align-items-center"><i class="bi bi-telephone-fill me-2 text-danger"></i>Phone number: <span class="ms-1">{% if request.user.telephone_number %} {{request.user.telephone_number}} {% else %} Edit your number... {% endif %} </span></div>
                     </div>
                 </div>
-                <!-- <div class="row">
-                    <div class=" d-flex align-items-center pb-3 ">
-                        <div class="h5 text ms-1">{{request.user.username}}</div>
-                    </div>
-                    <div class=" d-flex align-items-center pb-3  ">
-                        <div class="h5 text ms-1">{% if request.user.job %} {{request.user.job}} {% else %} Edit your job... {% endif %} </div>
-                    </div>
-                    <div class=" d-flex align-items-center pb-3  ">
-                        <div class="h5 text ms-1">{% if request.user.telephone_number %} {{request.user.telephone_number}} {% else %} Edit your number... {% endif %} </div>
-                    </div>
-                </div> -->
                
                
                

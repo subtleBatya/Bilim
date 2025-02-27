@@ -52,7 +52,8 @@
                                 {% elif request.user.is_teacher %}
                                 <li><a class="dropdown-item hover-effect" href="{% url "teacher:teacher_profile"%}">My Profile</a></li>
                                 {% endif %}
-                                <li><a class="dropdown-item hover-effect" href="{% url 'auth:payment'%}">Payment</a></li>
+                                {% comment %} <li><a class="dropdown-item hover-effect" href="{% url 'auth:payment'%}">Payment</a></li> {% endcomment %}
+                                <li><a class="dropdown-item hover-effect" href="{% url 'users:all_users'%}">All users</a></li>
                                 <li><a class="dropdown-item hover-effect" href="{% url 'applications:application'%}">Teklipler we arzalar</a></li>
                                 <li><a class="dropdown-item hover-effect" href="{% url 'auth:logout'%}">Logout</a></li>
                             </ul>

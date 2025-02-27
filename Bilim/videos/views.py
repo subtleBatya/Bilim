@@ -76,8 +76,7 @@ def like_video(request, video_id):
 def shorts(request):
     if request.method == "GET":
         user = User.objects.get(username=request.user.username)
-        videos = VideoCourse.objects.all().exclude(author=user)
-        random.shuffle(list(videos))
+        videos = VideoCourse.objects.filter(accepted=True).order_by("?")   
         paginator = Paginator(videos, 10) 
         page_number = request.GET.get('page', 1)
         page_obj = paginator.get_page(page_number)

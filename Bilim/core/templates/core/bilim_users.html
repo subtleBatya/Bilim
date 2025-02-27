@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  {% include "core/hero.html" with content="All users of Bilim" image_path="core/images/lorembook.webp"%}
+  {% include "core/hero.html" with content="All users of Bilim" image_path="core/images/users_image.png"%}
 
 <div class="" style="width: 95vw;">
     <!--Poisk-->
@@ -50,104 +50,39 @@
 </div>
 
 <div class="mx-auto text-center fs-1 mb-3">
-    Users  
+    Users of Bilim
 </div>
 
 <div class="popular_images mx-auto" style="width: 95vw;">
-    <div class=" row mx-auto mb-3 courses">
-            <div class=" pb-4 mx-auto">
-                <div class="  image-wrapper  shadow" >
-                    <img class=" img-fluid hover-img" src="{% static 'core/images/lorembook.webp'%}" alt="" >
-                    <div class=" h5  pt-2 fw-medium align-items-start text-center " style="color: #1C59A1;">Student: Gayrat Serdarow</div>
-                    <div class=" pb-4 text-small  fw-medium align-items-start text-center ">UI dizayner hunarini owrenyar</div>
-                </div>
-            </div>
-            <div class=" pb-4 mx-auto">
-                <div class="  image-wrapper  shadow" >
-                    <img class=" img-fluid hover-img" src="{% static 'core/images/lorembook.webp'%}" alt="" >
-                    <div class=" h5  pt-2 fw-medium align-items-start text-center " style="color: #1C59A1;">Student: Gayrat Serdarow</div>
-                    <div class=" pb-4 text-small  fw-medium align-items-start text-center ">UI dizayner hunarini owrenyar</div>
-                </div>
-            </div>
-            <div class=" pb-4 mx-auto">
-                <div class="  image-wrapper  shadow" >
-                    <img class=" img-fluid hover-img" src="{% static 'core/images/lorembook.webp'%}" alt="" >
-                    <div class=" h5  pt-2 fw-medium align-items-start text-center " style="color: #1C59A1;">Student: Gayrat Serdarow</div>
-                    <div class=" pb-4 text-small  fw-medium align-items-start text-center ">UI dizayner hunarini owrenyar</div>
-                </div>
-            </div>
-            <div class=" pb-4 mx-auto">
-                <div class="  image-wrapper  shadow" >
-                    <img class=" img-fluid hover-img" src="{% static 'core/images/lorembook.webp'%}" alt="" >
-                    <div class=" h5  pt-2 fw-medium align-items-start text-center " style="color: #1C59A1;">Student: Gayrat Serdarow</div>
-                    <div class=" pb-4 text-small  fw-medium align-items-start text-center ">UI dizayner hunarini owrenyar</div>
-                </div>
-            </div>
-            <div class=" pb-4 mx-auto">
-                <div class="  image-wrapper  shadow" >
-                    <img class=" img-fluid hover-img" src="{% static 'core/images/lorembook.webp'%}" alt="" >
-                    <div class=" h5  pt-2 fw-medium align-items-start text-center " style="color: #1C59A1;">Student: Gayrat Serdarow</div>
-                    <div class=" pb-4 text-small  fw-medium align-items-start text-center ">UI dizayner hunarini owrenyar</div>
-                </div>
-            </div>
-            <div class=" pb-4 mx-auto">
-                <div class="  image-wrapper  shadow" >
-                    <img class=" img-fluid hover-img" src="{% static 'core/images/lorembook.webp'%}" alt="" >
-                    <div class=" h5  pt-2 fw-medium align-items-start text-center " style="color: #1C59A1;">Student: Gayrat Serdarow</div>
-                    <div class=" pb-4 text-small  fw-medium align-items-start text-center ">UI dizayner hunarini owrenyar</div>
-                </div>
-            </div>
-            <div class=" pb-4 mx-auto">
-                <div class="  image-wrapper  shadow" >
-                    <img class=" img-fluid hover-img" src="{% static 'core/images/lorembook.webp'%}" alt="" >
-                    <div class=" h5  pt-2 fw-medium align-items-start text-center " style="color: #1C59A1;">Student: Gayrat Serdarow</div>
-                    <div class=" pb-4 text-small  fw-medium align-items-start text-center ">UI dizayner hunarini owrenyar</div>
-                </div>
-            </div>
+    <div class="row mx-auto mb-3 courses">
+        {% for user in users %}
+            <div class="pb-4 mx-auto">
+                <div class="image-wrapper shadow rounded-5 text-center p-3">
+                    {% if user.user_avatar %}
+                        <img class="img-fluid hover-img rounded-5" style="height:350px;" src="{{ user.user_avatar.url }}" alt="">
+                    {% else %}
+                        <img class="img-fluid hover-img rounded-5" style="height:350px; object-fit:cover;" src="{% static 'core/images/default_profile_image.png' %}" alt="">
+                    {% endif %}
+                    
+                    <div class="h5 pt-2 fw-medium" style="color: #1C59A1;">
+                        {% if user.is_student %}Student{% elif user.is_teacher %}Teacher{% endif %}: {{ user.username }}
+                    </div>
+                    
+                    <div class="pb-4 text-small fw-medium">
+                        {% if user.about_me %}{{ user.about_me }}{% else %}Nothing yet!{% endif %}
+                    </div>
 
-            <div class=" pb-4 mx-auto">
-                <div class="  image-wrapper  shadow" >
-                    <img class=" img-fluid hover-img" src="{% static 'core/images/lorembook.webp'%}" alt="" >
-                    <div class=" h5  pt-2 fw-medium align-items-start text-center " style="color: #1C59A1;">Student: Gayrat Serdarow</div>
-                    <div class=" pb-4 text-small  fw-medium align-items-start text-center ">UI dizayner hunarini owrenyar</div>
+                    <!-- Centered Button -->
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href={% url "users:exact_user" user.id %} class="btn downloader">View Profile</a>
+                        <a class="btn downloader">Subscribe</a>
+                    </div>
+                   
                 </div>
             </div>
-        
-            <div class=" pb-4 mx-auto">
-                <div class="  image-wrapper  shadow" >
-                    <img class=" img-fluid hover-img" src="{% static 'core/images/lorembook.webp'%}" alt="" >
-                    <div class=" h5  pt-2 fw-medium align-items-start text-center " style="color: #1C59A1;">Student: Gayrat Serdarow</div>
-                    <div class=" pb-4 text-small  fw-medium align-items-start text-center ">UI dizayner hunarini owrenyar</div>
-                </div>
-            </div>
-      
-            <div class=" pb-4 mx-auto">
-                <div class="  image-wrapper  shadow" >
-                    <img class=" img-fluid hover-img" src="{% static 'core/images/lorembook.webp'%}" alt="" >
-                    <div class=" h5  pt-2 fw-medium align-items-start text-center " style="color: #1C59A1;">Student: Gayrat Serdarow</div>
-                    <div class=" pb-4 text-small  fw-medium align-items-start text-center ">UI dizayner hunarini owrenyar</div>
-                </div>
-            </div>
-
-            <div class=" pb-4 mx-auto">
-                <div class="  image-wrapper  shadow" >
-                    <img class=" img-fluid hover-img" src="{% static 'core/images/lorembook.webp'%}" alt="" >
-                    <div class=" h5  pt-2 fw-medium align-items-start text-center " style="color: #1C59A1;">Student: Gayrat Serdarow</div>
-                    <div class=" pb-4 text-small  fw-medium align-items-start text-center ">UI dizayner hunarini owrenyar</div>
-                </div>
-            </div>
-            
-            <div class=" pb-4 mx-auto">
-                <div class="  image-wrapper  shadow" >
-                    <img class=" img-fluid hover-img" src="{% static 'core/images/lorembook.webp'%}" alt="" >
-                    <div class=" h5  pt-2 fw-medium align-items-start text-center " style="color: #1C59A1;">Student: Gayrat Serdarow</div>
-                    <div class=" pb-4 text-small  fw-medium align-items-start text-center ">UI dizayner hunarini owrenyar</div>
-                </div>
-            </div>
-        
+        {% endfor %}
     </div>
-
-  </div>
+</div>
 
 
     {% include "core/footer.html"%}

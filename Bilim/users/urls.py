@@ -6,5 +6,5 @@ app_name = "users"
 
 urlpatterns = [
     path("all/", all_users, name="all_users"),
-    path("exact/", exact_user, name="exact_user")
+    path("exact/<int:id>", exact_user, name="exact_user")
 ]
