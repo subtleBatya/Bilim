@@ -52,6 +52,8 @@ function handleFileUpload(input) {
         fileNameDisplay.textContent = `Selected File: ${fileName}`;
         fileNameDisplay.className = "fw-bold text-dark mb-1";
 
+        // New JS
+
         const form = document.getElementById("videoUploadForm");
         const fileInput = document.getElementById("fileUpload");
         const submitButton = document.getElementById("submitBtn");
@@ -122,7 +124,7 @@ function handleFileUpload(input) {
         const removeButton = document.createElement("button");
         removeButton.className = "btn btn-danger btn-sm";
         removeButton.textContent = "Remove";
-        removeButton.onclick = () => removeFile(fileContainer, input);
+        removeButton.onclick = () => removeFile(fileContainer, progressContainer, input);
 
         // Append file name, progress bar, and remove button to the file container
         fileContainer.appendChild(fileNameDisplay);
@@ -160,9 +162,10 @@ function handleFileUpload(input) {
     video.src = URL.createObjectURL(file); // Load the video to check its duration
 }
 
-function removeFile(fileContainer, input) {
-    if (fileContainer) {
+function removeFile(fileContainer, progressContainer, input) {
+    if (fileContainer && progressContainer) {
         fileContainer.remove(); // Remove the file container
+        progressContainer.remove();
     }
     input.value = ""; // Clear the file input field
 }

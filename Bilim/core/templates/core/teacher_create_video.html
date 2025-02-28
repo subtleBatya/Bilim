@@ -1,11 +1,12 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BILIM Teachers create</title>
+<title>{% translate 'BILIM Teachers create'%}</title>
   {% include "core/static_files/links.html" %}
   
 
@@ -48,22 +49,24 @@
                     <!-- Container for File Info and Progress Bars -->
                     <div id="fileInfoContainer" class="mt-3" style="overflow: auto; height: 40vh">
                         <div class="text-center mt-4">
-                            
+                            <div id="progressContainer" style="display: none; width: 100%; margin-top: 10px;">
+                                <div id="progressBar" style="width: 0%; height: 20px; background-color: green;"></div>
+                                <p id="progressText">0%</p>
+                            </div>
                         </div>
                     </div>
                     </div>  
                 </div>
 
-                <div class="col-md-1 d-md-none" style="margin-top: 30vh;"><div>
-                    <!-- Progress Bar Container -->
-                    <div id="progressContainer" style="display: none; width: 100%; margin-top: 10px;">
-                        <div id="progressBar" style="width: 0%; height: 20px; background-color: green;"></div>
-                        <p id="progressText">0%</p>
+                <div class="col-md-1" style="margin-top: 22vh;">
+                    <div>
+                        <!-- Progress Bar Container -->
+                        <div id="progressContainer" style="display: none; width: 100%; margin-top: 10px;">
+                            <div id="progressBar" style="width: 0%; height: 20px; background-color: green;"></div>
+                            <p id="progressText">0%</p>
+                        </div>
                     </div>
-
-                   
-            
-                </div></div>
+                </div>
                 
                 <div class=" text-start fs-5 fw-bold col-11 col-md-5 align-items-md-center" >
                     <div class="mb-3 row">
