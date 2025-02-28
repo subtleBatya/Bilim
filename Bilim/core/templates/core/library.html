@@ -9,7 +9,7 @@
   {% include "core/static_files/links.html" %}
 </head>
 <body>
-  {% include "core/hero.html" with content="{% translate 'Huge Library of Bilim' %}" image_path="core/images/library.png" %}
+  {% include "core/hero.html" with content="Huge Library of Bilim" image_path="core/images/library.png" %}
 
   <!--Poisk-->
   <form action="{% url 'library:library' %}" method="get">
