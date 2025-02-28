@@ -1,12 +1,13 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bilim Book-details</title>
+  <title>{% translate 'Bilim Book-details' %}</title>
   {% include 'core/static_files/links.html'%}
-  </head>
+</head>
 <body>
   {% include 'core/hero.html' with content="Book details" image_path="core/images/library.png"%}
  <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
@@ -16,20 +17,19 @@
         <img 
     src="{{book.book_poster.url}}" 
     class="custom-image" 
-    alt="Пример картинки">
-
+    alt="{% translate 'Book poster' %}">
       </div>
       <!-- Правая колонка: заголовки и текст -->
       <div class="col-md-6">
         <div class="d-flex flex-column justify-content-between h-100">
           <div>
             <h1 class='text-center'>{{book.name}} </h1> 
-            <h6 class="text-center p-3">({{book.views}} Customer reviews)</h6>
+            <h6 class="text-center p-3">({{book.views}} {% translate 'Customer reviews' %})</h6>
             <p style="text-align: justify;">{{book.description}} </p>
           </div>
           <div>
-            <h5 class="mb-5"><b>Category:</b>{{book.category}} </h5>
-            <a href="{{book.book_file.url}}" download class="btn btn-primary downloader mt-0 rounded-3">Download</a>
+            <h5 class="mb-5"><b>{% translate 'Category' %}:</b>{{book.category}} </h5>
+            <a href="{{book.book_file.url}}" download class="btn btn-primary downloader mt-0 rounded-3">{% translate 'Download' %}</a>
           </div>
         </div>
       </div>

@@ -1,93 +1,96 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BILIM Videos</title>
-  {% include "core/static_files/links.html"%}
+  <title>{% translate 'BILIM Videos' %}</title>
+  {% include "core/static_files/links.html" %}
   
   <style>
-
     .video-container {
+      text-align: center;
+      margin: auto;
+      position: relative;
+      width: 100%;
+      max-width: 800px; 
+    }
+    @media(max-width:460px){
+      .video-container {
         text-align: center;
         margin: auto;
         position: relative;
         width: 100%;
-        max-width: 800px; 
-    }
-    @media(max-width:460px){
-        .video-container {
-            text-align: center;
-            margin: auto;
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-        }
-        video{
-            max-height: 600px;
-            padding:0px;
-        }
+        max-width: 800px;
+      }
+      video{
+        max-height: 600px;
+        padding:0px;
+      }
     }
   </style>
 </head>
-<body>
- {% comment %} {% include "core/hero.html" with content="Bilim Video Courses" image_path="core/images/course.webp"%} {% endcomment %}
-    
 
- <div class="video-player">
-  <video id="video-player" width="100%" height="700px" controls>
+<body>
+  {% comment %} {% include "core/hero.html" with content="{% translate 'Bilim Video Courses' %}" image_path="core/images/course.webp" %} {% endcomment %}
+  
+  <div class="video-player">
+    <video id="video-player" width="100%" height="700px" controls>
       <source id="video-source" src="{{video.video.url }}" type="video/mp4">
-      Your browser does not support the video tag.
-  </video>
-</div>
-    
+      {% translate 'Your browser does not support the video tag.' %}
+    </video>
   </div>
-  <div class=" mx-auto mt-3" style="width: 90vw;">
+
+  <div class="mx-auto mt-3" style="width: 90vw;">
     <div class="d-flex">
       <div id="video-actions" class="d-flex justify-content-center align-items-center">
         <button id="like-btn" class="btn {% if request.user in video.likes.all %} btn-success {% else %} btn-primary {% endif %}" 
-    data-video-id="{{ video.id }}">👍 Like <span id="like-count">{{ video.likes.count }}</span>
+            data-video-id="{{ video.id }}">
+            👍 {% translate 'Like' %}
+            <span id="like-count">{{ video.likes.count }}</span>
         </button>
-
-        
       </div>
-      <div id="view-counter" class=" mt-2 ms-2">
-        Views: <span id="view-count">{{video.views}} </span>
+      <div id="view-counter" class="mt-2 ms-2">
+        <b>{% translate 'Views:' %}</b> <span id="view-count">{{ video.views }}</span>
       </div>
-
     </div>
   </div>
-  
-<section id="popular-courses" style="width: 100vw;">
-  <div class="wrapper-card">
-      <h1 style=" font-weight: normal; text-align: center; margin: 2rem 0;" >Related videos</h1>
+
+  <section id="popular-courses" style="width: 100vw;">
+    <div class="wrapper-card">
+      <h1 style="font-weight: normal; text-align: center; margin: 2rem 0;">
+        {% translate 'Related videos' %}
+      </h1>
       <div class="cols-card">
         {% for popular_video in popular_videos %}
           <div class="col-card" ontouchstart="this.classList.toggle('hover');">
-                  <div class="container-card">
-                      <div class="front">
-                          <img src="{{popular_video.poster.url}}" alt="Python Course">
-                          <div class="inner">
-                              <p>{{popular_video.title|truncatewords:6}}</p>
-                          </div>
-                      </div>
-                      <div class="back">
-                          <div class="inner">
-                              <p>{{popular_video.description|truncatewords:15}}</p>
-                              <a href="{% url "videos:video_of_course" popular_video.id %}" class="btn downloader rounded-3">View Video</a>
-                          </div>
-                      </div>
-                  </div>
+            <div class="container-card">
+              <div class="front">
+                <img src="{{ popular_video.poster.url }}" alt="{% translate 'Python Course' %}">
+                <div class="inner">
+                  <p>{{ popular_video.title|truncatewords:6 }}</p>
+                </div>
+              </div>
+              <div class="back">
+                <div class="inner">
+                  <p>{{ popular_video.description|truncatewords:15 }}</p>
+                  <a href="{% url 'videos:video_of_course' popular_video.id %}" class="btn downloader rounded-3">
+                    {% translate 'View Video' %}
+                  </a>
+                </div>
+              </div>
             </div>
-            {% endfor %}
-        </div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
-</section>
+  </section>
 
-  {% include "core/footer.html"%}
-{% include "core/static_files/scripts.html"%}
-  <script src="{% static 'core/js/video_player.js'%}"></script>
+  {% include "core/footer.html" %}
+  {% include "core/static_files/scripts.html" %}
+  <script src="{% static 'core/js/video_player.js' %}"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const likeBtn = document.getElementById("like-btn");
@@ -118,7 +121,7 @@
           });
       }
   });
-  
+
   // Function to get CSRF token from cookies
   function getCookie(name) {
       let cookieValue = null;
@@ -134,7 +137,7 @@
       }
       return cookieValue;
   }
-  
+
   </script>
 </body>
 

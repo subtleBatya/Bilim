@@ -1,92 +1,78 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BILIM Sign Up</title>
+    <title>{% translate 'BILIM Sign Up' %}</title>
     {% include "core/static_files/links.html"%}
     <link rel="stylesheet" href="{% static 'core/css/login.css'%}">
-    </style>
 </head>
 
 <body class="mx-auto text-center font-outfit">
-    <div class=" position-relative ">
+    <div class="position-relative">
         <a href="">
-            <div class="flag m-3" style=""><img src="{% static 'core/images/turkmen-flag.png'%}" alt=""></div>
+            <div class="flag m-3"><img src="{% static 'core/images/turkmen-flag.png'%}" alt="{% translate 'Turkmen Flag' %}"></div>
         </a>
         <a href="">
-            <div class="flag_2 m-3" style=""><img src="{% static 'core/images/turkmen-flag.png'%}" alt=""></div>
+            <div class="flag_2 m-3"><img src="{% static 'core/images/turkmen-flag.png'%}" alt="{% translate 'Turkmen Flag' %}"></div>
         </a>
-        
-        <!-- IKI SANY "a" TAG d-none BERILEN -->
-      
-      </div>
-    <div class="  d-flex mx-auto  justify-content-center align-items-center"
-        >
+    </div>
+    
+    <div class="d-flex mx-auto justify-content-center align-items-center">
         <div class="col-md-8 col-lg-8 col-11 col-sm-9 position-absolute text-center mx-auto border-2 py-4 px-4 rounded-3 justify-content-between bg-white d-flex"
-            style="border:  1px solid rgb(128, 128, 128, 0.1); z-index: 11; top: 15%;">
+            style="border: 1px solid rgb(128, 128, 128, 0.1); z-index: 11; top: 15%;">
             <div class="col-md-7 col-lg-5 col-12 col-sm-9 mx-auto">
-                <div class=" mt-5  bg-secondary"></div>
-                <div class="logo pt-3"><img src="{% static 'core/images/turkmen-flag.png'%}" alt=""></div>
-                <div class="d-md-none h3" >Bilim University</div>
-                <div class="h3 col-sm-12" >Create an account</div>
-                <div class="small" >Already have an account? <span class=" "><a href="{% url 'auth:login'%}">Log in</a>
-                    </span></div>
-               
+                <div class="mt-5 bg-secondary"></div>
+                <div class="logo pt-3"><img src="{% static 'core/images/turkmen-flag.png'%}" alt="{% translate 'Turkmen Flag' %}"></div>
+                <div class="d-md-none h3">{% translate 'Bilim University' %}</div>
+                <div class="h3 col-sm-12">{% translate 'Create an account' %}</div>
+                <div class="small">{% translate 'Already have an account?' %} <span class=" "><a href="{% url 'auth:login'%}">{% translate 'Log in' %}</a></span></div>
 
                 <form action="{% url "auth:sign_up"%}" method="post">
                     {% csrf_token %}
-                    <div class="w-100 mx-auto mt-3  d-flex justify-content-between"  style="color:black;">
+                    <div class="w-100 mx-auto mt-3 d-flex justify-content-between" style="color:black;">
                         <div>
-                            <input type="radio" required name="option" id="" value="student">Student
+                            <input type="radio" required name="option" id="" value="student">{% translate 'Student' %}
                         </div>
                         <div>
-                            <input type="radio" required name="option" id="" value="teacher">Teacher
+                            <input type="radio" required name="option" id="" value="teacher">{% translate 'Teacher' %}
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="mt-2 text-start">
-                            <div class=" small text-small">Email address</div>
+                            <div class="small text-small">{% translate 'Email address' %}</div>
                             <input class="w-100 p-2 form-control" required type="email" name="email" id="email">
                         </div>
                         <div class="mt-2 text-start">
-                            <div class=" small text-small">Password</div>
+                            <div class="small text-small">{% translate 'Password' %}</div>
                             <input class="w-100 p-2 form-control" required type="password" name="password" id="password">
                         </div>
                         <div class="mt-2 text-start">
-                            <div class=" small text-small">Name</div>
+                            <div class="small text-small">{% translate 'Name' %}</div>
                             <input class="w-100 p-2 form-control" required type="text" name="username" id="username">
                         </div>
                     </div>
-                        <div class="  mb-5  text-center">
-                        <button id="registerButton" disabled class="p-2 rounded-5 border-0 text-white fs-5 fw-light w-100" style="background-color: gray; cursor: not-allowed;">Create an account</button>
-                        </div>
+                    <div class="mb-5 text-center">
+                        <button id="registerButton" disabled class="p-2 rounded-5 border-0 text-white fs-5 fw-light w-100" style="background-color: gray; cursor: not-allowed;">{% translate 'Create an account' %}</button>
+                    </div>
                 </form>
             </div>
-           
+
             <div class="d-flex d-none d-md-flex align-items-center">
                 <div class="d-block align-items-center">
-                    <div class="d-flex  align-items-center">
-                        <div><img style="width: 7vw; " src="{% static 'core/images/logo_2.webp'%}" alt=""></div>
-                        <div><img style="width: 11vw; " src="{% static 'core/images/logo_3.webp'%}" alt=""></div>
-                        <div><img style="width: 9vw; " src="{% static 'core/images/logo_1.webp'%}" alt=""></div>
+                    <div class="d-flex align-items-center">
+                        <div><img style="width: 7vw;" src="{% static 'core/images/logo_2.webp'%}" alt="{% translate 'Logo 2' %}"></div>
+                        <div><img style="width: 11vw;" src="{% static 'core/images/logo_3.webp'%}" alt="{% translate 'Logo 3' %}"></div>
+                        <div><img style="width: 9vw;" src="{% static 'core/images/logo_1.webp'%}" alt="{% translate 'Logo 1' %}"></div>
                     </div>
-                    <div class="h2 fw-bold mt-3" >Bilim University</div>
+                    <div class="h2 fw-bold mt-3">{% translate 'Bilim University' %}</div>
                 </div>
             </div>
-            
-
-            
-    
         </div>
-
-       
     </div>
-
-
-
 
     <script>
         const emailField = document.getElementById("email");
@@ -100,16 +86,14 @@
           const password = passwordField.value;
           const username = usernameField.value.trim();
       
-         
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      
-
           let isRadioSelected = false;
-            radioButtons.forEach((radio) => {
+          
+          radioButtons.forEach((radio) => {
             if (radio.checked) {
                 isRadioSelected = true;
             }
-            });
+          });
          
           if (
             emailRegex.test(email) &&
@@ -127,16 +111,15 @@
           }
         }
       
-   
         emailField.addEventListener("input", validateForm);
         passwordField.addEventListener("input", validateForm);
         usernameField.addEventListener("input", validateForm);
         radioButtons.forEach((radio) => {
             radio.addEventListener("change", validateForm); 
         });
-      </script>
+    </script>
 
-{% include "core/static_files/scripts.html"%}
+    {% include "core/static_files/scripts.html"%}
 </body>
 
 </html>

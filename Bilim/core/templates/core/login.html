@@ -1,67 +1,67 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BILIM Login</title>
-  <link rel="stylesheet" href="{% static 'core/css/login.css'%}">
-  {% include "core/static_files/links.html"%}
+  <title>{% translate 'BILIM Login' %}</title>
+  <link rel="stylesheet" href="{% static 'core/css/login.css' %}">
+  {% include "core/static_files/links.html" %}
 </head>
 <body class="mx-auto text-center font-outfit">
-<!--  -->
-    <div class=" position-relative">
+<!-- Flags -->
+    <div class="position-relative">
       <a href="">
-        <div class="flag m-3"><img src="{% static 'core/images/turkmen-flag.png'%}" alt=""></div>
+        <div class="flag m-3"><img src="{% static 'core/images/turkmen-flag.png' %}" alt=""></div>
       </a>
       
       <a href="">
-        <div class="flag_2 m-3" style=""><img src="{% static 'core/images/turkmen-flag.png'%}" alt=""></div>
+        <div class="flag_2 m-3" style=""><img src="{% static 'core/images/turkmen-flag.png' %}" alt=""></div>
       </a>
     </div>
-    <div class=" d-flex mx-auto justify-content-center align-items-center">
-     
-        <div class=" col-md-8 col-lg-8 col-11 col-sm-9 position-absolute  text-center mx-auto border-2 py-4 px-4 rounded-3 justify-content-between bg-white d-flex" style="border:  1px solid rgb(128, 128, 128, 0.1); top: 15%; z-index: 11;">
+    <div class="d-flex mx-auto justify-content-center align-items-center">
+        <div class="col-md-8 col-lg-8 col-11 col-sm-9 position-absolute text-center mx-auto border-2 py-4 px-4 rounded-3 justify-content-between bg-white d-flex" style="border: 1px solid rgb(128, 128, 128, 0.1); top: 15%; z-index: 11;">
           <div class="col-md-9 col-lg-5 col-12 col-sm-9 mx-auto">
-              <div class=" mt-5  bg-secondary"></div>
-              <div class="logo pt-3"><img src="{% static 'core/images/course.webp'%}" alt=""></div>
-              <div class="d-md-none h3">Bilim University</div>
-              <div class="fs-5 fw-medium text-center"  style="color:black;">Welcome Back! Login to your account</div>
+              <div class="mt-5 bg-secondary"></div>
+              <div class="logo pt-3"><img src="{% static 'core/images/course.webp' %}" alt=""></div>
+              <div class="d-md-none h3">{% translate 'Bilim University' %}</div>
+              <div class="fs-5 fw-medium text-center" style="color:black;">{% translate 'Welcome Back! Login to your account' %}</div>
               
-            <form action="{% url 'auth:login'%}" method="post">
+            <form action="{% url 'auth:login' %}" method="post">
               {% csrf_token %}
                 <div class="mb-3">
                   <div class="mt-3 text-start ">
-                      <input class="w-100 p-3 small form-control" type="text" placeholder="Username" name="username" id="username">
+                      <input class="w-100 p-3 small form-control" type="text" placeholder="{% translate 'Username' %}" name="username" id="username">
                   </div>
                   <div class="mt-3 text-start">
-                      <input class="w-100 p-3 small form-control" type="password" placeholder="Password" name="password" id="password">
+                      <input class="w-100 p-3 small form-control" type="password" placeholder="{% translate 'Password' %}" name="password" id="password">
                   </div>
               </div>
               <a href="">
-                <div class="  mb-5  text-center">
-                  <button id="loginButton" disabled class="p-2 rounded-5 border-0 text-white fs-5 fw-light w-100" style="background-color: gray; cursor: not-allowed;">Login</button>
+                <div class="mb-5 text-center">
+                  <button id="loginButton" disabled class="p-2 rounded-5 border-0 text-white fs-5 fw-light w-100" style="background-color: gray; cursor: not-allowed;">{% translate 'Login' %}</button>
                 </div>
               </a>
             </form>              
               <div class="text-center small mb-2">
-                <p class="text text-center">Don't have an account? </p>
+                <p class="text text-center">{% translate "Don't have an account?" %}</p>
               </div>
-              <a href="{% url 'auth:sign_up'%}">
-                <div class="  mb-5  text-center">
-                  <button class="sign_up rounded-5 border-0 text-white small p-2 w-100 fw-light" >Sign up</button>
+              <a href="{% url 'auth:sign_up' %}">
+                <div class="mb-5 text-center">
+                  <button class="sign_up rounded-5 border-0 text-white small p-2 w-100 fw-light" >{% translate 'Sign up' %}</button>
                 </div>
               </a>  
           </div>  
             
           <div class="d-flex d-none d-lg-flex align-items-center">
             <div class="d-block align-items-center">
-                <div class="d-flex  align-items-center">
-                    <div><img style="width: 7vw; " src="{% static 'core/images/logo_2.webp'%}" alt=""></div>
-                    <div><img style="width: 11vw; " src="{% static 'core/images/logo_3.webp'%}" alt=""></div>
-                    <div><img style="width: 9vw; " src="{% static 'core/images/logo_1.webp'%}" alt=""></div>
+                <div class="d-flex align-items-center">
+                    <div><img style="width: 7vw;" src="{% static 'core/images/logo_2.webp' %}" alt=""></div>
+                    <div><img style="width: 11vw;" src="{% static 'core/images/logo_3.webp' %}" alt=""></div>
+                    <div><img style="width: 9vw;" src="{% static 'core/images/logo_1.webp' %}" alt=""></div>
                 </div>
-                <div class="h2 fw-bold mt-3">Bilim University</div>
+                <div class="h2 fw-bold mt-3">{% translate 'Bilim University' %}</div>
             </div>
           </div>
         </div>
@@ -89,7 +89,7 @@
       passwordField.addEventListener("input", validateForm);
     </script>
   
-{% include "core/static_files/scripts.html"%}
+{% include "core/static_files/scripts.html" %}
 </body>
 
 </html>

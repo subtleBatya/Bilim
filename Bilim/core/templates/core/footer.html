@@ -1,50 +1,51 @@
 {% load static %}
-  <!-- Footer -->
-  <footer class="text-white py-4 fs-5 mt-5">
-    <div class="container">
-      <div class="row">
-        <!-- Column 1: About Us -->
-        <div class="col-md-4 text-dark">
-          <h5 class='fw-bold'>О нас</h5>
-          <p>Мы предоставляем лучшие услуги для наших клиентов.</p>
-          <!-- Icons -->
-          <div class="social-icons mt-3">
-            <a href="#" class="instagram me-3 icon">
-              <i class="bi bi-instagram fs-4"></i>
-            </a>
-            <a href="#" class="telegram me-3 icon">
-              <i class="bi bi-telegram fs-4"></i>
-            </a>
-            <a href="#" class="tiktok icon">
-              <i class="bi bi-tiktok fs-4"></i>
-            </a>
-          </div>
-        </div>
-  
-        <!-- Column 2: Links -->
-        <div class="col-md-3 text-dark">
-          <h5 class='fw-bold'>Полезные ссылки</h5>
-          <ul class="list-unstyled">
-            <li class="footer-link"><a href="#" class="text-dark text-decoration-none">Главная</a></li>
-            <li class="footer-link"><a href="{% url "videos:shorts"%}" class="text-dark text-decoration-none">#shorts</a></li>
-            <li class="footer-link"><a href="{% url "library:library"%}" class="text-dark text-decoration-none">Библиотека</a></li>
-            <li class="footer-link"><a href="{% url "applications:application"%}" class="text-dark text-decoration-none">Жалобы и предложения</a></li>
-          </ul>
-        </div>
-  
-        <!-- Column 3: Contact -->
-        <div class="col-md-4 text-dark">
-          <h5 class='fw-bold'>Контакты</h5>
-          <ul class="list-unstyled">
-            <li class="footer-link"><a href="tel:484550" class="text-dark text-decoration-none">Телефон: 48 45 50</a></li>
-            <li class="footer-link"><a href="mailto:kepilliyollar54@gmail.com" class="text-dark text-decoration-none">Email: kepilliyollar54@gmail.com</a></li>
-          </ul>
+{% load i18n %}
+<!-- Footer -->
+<footer class="text-white py-4 fs-5 mt-5">
+  <div class="container">
+    <div class="row">
+      <!-- Column 1: About Us -->
+      <div class="col-md-4 text-dark">
+        <h5 class='fw-bold'>{% translate 'О нас' %}</h5>
+        <p>{% translate 'Мы предоставляем лучшие услуги для наших клиентов.' %}</p>
+        <!-- Icons -->
+        <div class="social-icons mt-3">
+          <a href="#" class="instagram me-3 icon">
+            <i class="bi bi-instagram fs-4"></i>
+          </a>
+          <a href="#" class="telegram me-3 icon">
+            <i class="bi bi-telegram fs-4"></i>
+          </a>
+          <a href="#" class="tiktok icon">
+            <i class="bi bi-tiktok fs-4"></i>
+          </a>
         </div>
       </div>
+
+      <!-- Column 2: Links -->
+      <div class="col-md-3 text-dark">
+        <h5 class='fw-bold'>{% translate 'Полезные ссылки' %}</h5>
+        <ul class="list-unstyled">
+          <li class="footer-link"><a href="#" class="text-dark text-decoration-none">{% translate 'Главная' %}</a></li>
+          <li class="footer-link"><a href="{% url 'videos:shorts' %}" class="text-dark text-decoration-none">{% translate '#shorts' %}</a></li>
+          <li class="footer-link"><a href="{% url 'library:library' %}" class="text-dark text-decoration-none">{% translate 'Библиотека' %}</a></li>
+          <li class="footer-link"><a href="{% url 'applications:application' %}" class="text-dark text-decoration-none">{% translate 'Жалобы и предложения' %}</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Contact -->
+      <div class="col-md-4 text-dark">
+        <h5 class='fw-bold'>{% translate 'Контакты' %}</h5>
+        <ul class="list-unstyled">
+          <li class="footer-link"><a href="tel:484550" class="text-dark text-decoration-none">{% translate 'Телефон: 48 45 50' %}</a></li>
+          <li class="footer-link"><a href="mailto:kepilliyollar54@gmail.com" class="text-dark text-decoration-none">{% translate 'Email: kepilliyollar54@gmail.com' %}</a></li>
+        </ul>
+      </div>
     </div>
-  
-    <!-- Bottom line -->
-    <div class="text-center py-3 text-dark">
-      <small>&copy; 2025 BILIM EDUCATION. All rights reserved.</small>
-    </div>
-  </footer>
+  </div>
+
+  <!-- Bottom line -->
+  <div class="text-center py-3 text-dark">
+    <small>&copy; 2025 BILIM EDUCATION. {% translate 'All rights reserved.' %}</small>
+  </div>
+</footer>

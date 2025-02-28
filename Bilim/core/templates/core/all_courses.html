@@ -1,21 +1,22 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BILIM Courses</title>
+  <title>{% translate 'BILIM Courses' %}</title>
   {% include 'core/static_files/links.html'%}
 </head>
 <body>
 {% include "core/hero.html" with content="Find your own course" image_path="core/images/course.webp"%}
   <!--Poisk-->
 <form action="" method="get">
-  <div class="container-fluid" >
-    <div class="d-flex flex-column flex-lg-row justify-content-end align-items-start align-items-lg-center py-2 px-3 ">
+  <div class="container-fluid">
+    <div class="d-flex flex-column flex-lg-row justify-content-end align-items-start align-items-lg-center py-2 px-3">
         <!-- Поле поиска -->
         <div class="position-relative me-0 mb-3 mb-lg-0 me-lg-3">
-            <input name="video_name" type="text" class="form-control pe-5 rounded-4 expand-input fs-4" placeholder="Search..." style="border: 1px solid #8F92DD;" {% if video_name %} value={{video_name}} {% endif%}>
+            <input name="video_name" type="text" class="form-control pe-5 rounded-4 expand-input fs-4" placeholder="{% translate 'Search...' %}" style="border: 1px solid #8F92DD;" {% if video_name %} value={{video_name}} {% endif%}>
             <span class="position-absolute top-50 translate-middle-y end-0 me-2" style="color: #8F92DD;"></span>
         </div>
 
@@ -23,17 +24,17 @@
           <!-- Category Select -->
           <div class="mb-3 mb-lg-0">
             <select name="category" class="form-select rounded-4 fs-4" style="border: 1px solid #8F92DD; background-color: #8F92DD; color: white; width: 10rem;">
-              <option value="">All</option>
+              <option value="">{% translate 'All' %}</option>
               {% for category in category_courses %}
               <option value="{{category.course_name}}" {% if course_name == category.course_name %} selected {% endif %}>{{category.course_name}}</option>
               {% empty %}
-              <option value="">No category</option>
+              <option value="">{% translate 'No category' %}</option>
               {% endfor %}
             </select>
           </div>
           
         <!-- Sort Button -->
-        <button type="submit" class="btn btn-secondary downloader rounded-4 fs-5 text-center" style="margin-left: 10px; height:50px;">Sort</button>
+        <button type="submit" class="btn btn-secondary downloader rounded-4 fs-5 text-center" style="margin-left: 10px; height:50px;">{% translate 'Sort' %}</button>
         </div>
        
     </div>
@@ -42,34 +43,33 @@
    
 <section id="popular-courses" style="width: 100vw;">
   <div class="wrapper-card">
-      <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >{{main_cat_name}}</h1>
+      <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >{% translate main_cat_name %}</h1>
       <div class="cols-card">
           {% for video in all_videos %}
           <div class="col-card" ontouchstart="this.classList.toggle('hover');">
                   <div class="container-card">
                       <div class="front">
-                          <img src="{{video.poster.url}}" alt="Python Course">
+                          <img src="{{video.poster.url}}" alt="{% translate 'Python Course' %}">
                           <div class="inner">
-                              <p>{{video.title|truncatewords:5}}</p>
+                              <p>{% translate video.title|truncatewords:5 %}</p>
                           </div>
                       </div>
                       <div class="back">
                           <div class="inner">
-                              <p>{{video.description|truncatewords:10}}</p>
-                              <a href="{% url "videos:video_of_course" video.id %}"><button class="btn downloader rounded-3">View Course</button></a>
+                              <p>{% translate video.description|truncatewords:10 %}</p>
+                              <a href="{% url 'videos:video_of_course' video.id %}"><button class="btn downloader rounded-3">{% translate 'View Course' %}</button></a>
                           </div>
                       </div>
                   </div>
             </div>
             {% empty %}
             <div class='w-100 text-center text'>
-              <h3 class='text-danger'>No courses are pending </h3>
+              <h3 class='text-danger'>{% translate 'No courses are pending' %}</h3>
             </div>
             {% endfor %}
         </div>
     </div>
 </section>
-
 
   {% include "core/footer.html"%}
   {% include "core/static_files/scripts.html"%}

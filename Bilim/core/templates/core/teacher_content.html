@@ -1,119 +1,110 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BILIM Teachers content</title>
-  {% include "core/static_files/links.html" %}
-  <link rel="stylesheet" href="{% static "core/css/teacher_content.css"%}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% translate 'BILIM Teachers Content' %}</title>
+    {% include "core/static_files/links.html" %}
+    <link rel="stylesheet" href="{% static 'core/css/teacher_content.css' %}">
 </head>
 
 <body>
-    {% include "core/hero.html" with content="View your content teacher" image_path="core/images/profile_teacher_image.png"%}
-  
-<div class=" text-center mx-auto" style="width: 90vw;">
-    <hr class="p-1">
-</div>
+    {% include "core/hero.html" with content='View_your_content_teacher' image_path='core/images/profile_teacher_image.png' %}
 
-<div class=" " style="width: 90vw; overflow-x: hidden;" >
-    <div class="d-block " style="width: 100%;">
-        {% if lessons %}
-        <div class="text-end">
-            <button id="cnt_edit_btn" class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">Edit</button>
-        </div>
-        {% endif %}
-        {% for lesson in lessons %}
-        <div class="mt-5 d-flex col-12   align-items-center" >
-            <div class=" d-block d-lg-flex col-10 mx-md-auto text-md-center justify-content-between align-items-lg-center">
-                <div class="text-start text-md-center text-lg-start rounded-2 col-10 col-lg-5 ">
-                        
+    <div class="text-center mx-auto" style="width: 90vw;">
+        <hr class="p-1">
+    </div>
+
+    <div class="" style="width: 90vw; overflow-x: hidden;">
+        <div class="d-block" style="width: 100%;">
+            {% if lessons %}
+                <div class="text-end">
+                    <button id="cnt_edit_btn" class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">
+                        {% translate 'Edit' %}
+                    </button>
+                </div>
+            {% endif %}
+            {% for lesson in lessons %}
+                <div class="mt-5 d-flex col-12 align-items-center">
+                    <div class="d-block d-lg-flex col-10 mx-md-auto text-md-center justify-content-between align-items-lg-center">
+                        <div class="text-start text-md-center text-lg-start rounded-2 col-10 col-lg-5">
                             <div class="photo-container">
                                 <div class="photo-wrapper">
-                                    <img class="" src="{{lesson.poster.url}}" alt="Lesson Image">
+                                    <img class="" src="{{lesson.poster.url}}" alt="{% translate 'Lesson Image' %}">
                                     <div class="photo-overlay">
-                                        <a href="{% url "teacher:teacher_video" lesson.id %}"><div class="play-button"></div></a>
+                                        <a href="{% url 'teacher:teacher_video' lesson.id %}">
+                                            <div class="play-button"></div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                </div>
-                <div class="d-block text-start  mt-2 col-10 col-lg-5">
-                    <div class=" d-flex align-items-center pb-1">
-                        <div class="fs-md-4 fw-semibold fs-4">Video title:</div>
-                        <div class="p fw-bold text-small ms-1 fs-4 ">{{lesson.title}} </div>
-                    </div>
-                    <div class=" d-flex align-items-center pb-1">
-                        <div class="fs-md-4 fw-semibold fs-4">Video category</div>
-                        <div class="p fw-bold text-small ms-1 fs-4">{{lesson.category}} </div>
-                    </div>
-                    <div class=" d-flex align-items-center pb-1">
-                        <div class="fs-md-4 fw-semibold fs-4">Video course:</div>
-                        <div class="p fw-bold text-small ms-1 fs-4">{{lesson.course}} </div>
-                    </div>
-                    <div class=" d-flex align-items-center pb-1">
-                        <div class="fs-md-4 fw-semibold fs-4">Added date: </div>
-                        <div class="p fw-bold text-small ms-1 fs-4">{{lesson.added_date}} </div>
-                    </div>
-                    <div class=" d-flex align-items-center pb-1">
-                        <div class="fs-md-4 fw-semibold fs-4">Accepted: </div>
-                        <div class="p fw-bold text-small ms-1 fs-4"> {% if lesson.accepted %} <span class="bg-success text-white">Accepted</span> {% else %} <span class="bg-danger text-white">Unaccepted</span> {% endif %} </div>
-                    </div>
-                   
-                    <div class=" d-flex align-items-center mb-1 col-lg-2">
-                        <div class=" ">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill text-warning" viewBox="0 0 16 16">
-                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
-                            </svg>
                         </div>
-                        <div class=" fs-4 fs-md-4   ms-2">Views: {{lesson.views}} </div>
-                    </div>
-                    <div class=" d-flex align-items-center">
-                        <div class=" ">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hand-thumbs-up-fill text-warning" viewBox="0 0 16 16">
-                                <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
-                            </svg>
-                        </div>
-                        <div class="fs-4   ms-2"> Likes: {% if lesson.likes.all %}
-                            {{ lesson.likes.count }}
-                        {% else %}
-                            0
-                        {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="{% url "teacher:teacher_content_delete" lesson.id %}">
-            <div class="col-2 col-lg-1  ">
-                <svg id="" style="display: none; object-fit: cover;" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-trash3-fill text-primary trash_icon"  viewBox="0 0 16 16">
-                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
-                </svg>
-            </div>
-            </a>
-            
-            
-        </div>
-        {% empty%}
-        <div class="text-center" >
-            <div class="">
-                <a href="{% url "teacher:teacher_video_create"%}"><button class="text-white px-4 py-1 rounded-3 fw-medium downloader fs-1" style="border: none;">Taze Kurs Gosmak</button></a>
-            </div>
-        </div>
-        {% endfor %}
-        {% if lessons %}
-        <div class="text-end">
-            <div>
-                <a href="{% url "teacher:teacher_video_create"%}"><button class="text-white px-4 py-1 rounded-3 fw-medium downloader" style="border: none;">Taze Kurs Gosmak</button></a>
-            </div>
-        </div>
-        {% endif %}
+                        <div class="d-block text-start mt-2 col-10 col-lg-5">
+                            <div class="d-flex align-items-center pb-1">
+                                <div class="fs-md-4 fw-semibold fs-4">{% translate 'Video Title' %}:</div>
+                                <div class="p fw-bold text-small ms-1 fs-4">{{ lesson.title }}</div>
+                            </div>
+                            <div class="d-flex align-items-center pb-1">
+                                <div class="fs-md-4 fw-semibold fs-4">{% translate 'Video Category' %}:</div>
+                                <div class="p fw-bold text-small ms-1 fs-4">{{ lesson.category }}</div>
+                            </div>
+                            <div class="d-flex align-items-center pb-1">
+                                <div class="fs-md-4 fw-semibold fs-4">{% translate 'Video Course' %}:</div>
+                                <div class="p fw-bold text-small ms-1 fs-4">{{ lesson.course }}</div>
+                            </div>
+                            <div class="d-flex align-items-center pb-1">
+                                <div class="fs-md-4 fw-semibold fs-4">{% translate 'Added Date' %}:</div>
+                                <div class="p fw-bold text-small ms-1 fs-4">{{ lesson.added_date }}</div>
+                            </div>
+                            <div class="d-flex align-items-center pb-1">
+                                <div class="fs-md-4 fw-semibold fs-4">{% translate 'Accepted' %}:</div>
+                                <div class="p fw-bold text-small ms-1 fs-4">
+                                    {% if lesson.accepted %}
+                                        <span class="bg-success text-white">{% translate 'Accepted' %}</span>
+                                    {% else %}
+                                        <span class="bg-danger text-white">{% translate 'Unaccepted' %}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
 
+                            <div class="d-flex align-items-center mb-1 col-lg-2">
+                                <div class="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill text-warning" viewBox="0 0 16 16">
+                                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                                    </svg>
+                                </div>
+                                <div class="fs-4 fs-md-4 ms-2">{% translate 'Views' %}: {{ lesson.views }}</div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hand-thumbs-up-fill text-warning" viewBox="0 0 16 16">
+                                        <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+                                    </svg>
+                                </div>
+                                <div class="fs-4 ms-2">{% translate 'Likes' %}: {% if lesson.likes.all %} {{ lesson.likes.count }} {% else %} 0 {% endif %}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{% url 'teacher:teacher_content_delete' lesson.id %}">
+                        <div class="col-2 col-lg-1">
+                            <svg id="" style="display: none; object-fit: cover;" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-trash3-fill text-primary trash_icon" viewBox="0 0 16 16">
+                                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 1 0 .998.06l.5-8.5a.5.5 0 0 0-.47-.53z"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
-{% include "core/footer.html" %}
- <!-- Bootstrap JS and Popper.js -->
-{% include "core/static_files/scripts.html"%}
-<script src="{% static "core/js/content.js" %}"></script>
+
+    <script>
+        // Custom JS if needed
+    </script>
+
+    {% include "core/static_files/scripts.html" %}
 </body>
 
 </html>

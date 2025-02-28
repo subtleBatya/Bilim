@@ -1,9 +1,11 @@
+{% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit User Profile</title>
+    <title>{% translate 'Edit User Profile' %}</title>
     {% include "core/static_files/links.html" %}
     <style>
         label {
@@ -27,17 +29,16 @@
         .form-container {
             position: relative;
         }
-        
     </style>
 </head>
 <body>
-    {% include "core/hero.html" with content="Edit your profile" image_path="core/images/course.webp" %}
+    {% include "core/hero.html" with content="{% translate 'Edit your profile' %}" image_path="core/images/course.webp" %}
     <div class="container mt-5 form-container">
         <div class="row">
             <!-- Profile Picture Section -->
             <div class="col-md-3">
-                <h3 class="mb-3 text-center">Your Picture</h3>
-                <form action="{% url "auth:edit_profile"%}" method="post" enctype="multipart/form-data">
+                <h3 class="mb-3 text-center">{% translate 'Your Picture' %}</h3>
+                <form action="{% url 'auth:edit_profile' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-4 text-center text-md-start">
                         <label for="photoUpload" style="cursor: pointer; display: inline-block; border: 2px dashed #ccc; border-radius: 50%; width: 300px; height: 300px; display: flex; align-items: center; justify-content: center; background-color: #f8f9fa;">
@@ -50,48 +51,44 @@
                         </label>
                         <input type="file" id="photoUpload" style="display: none;" accept="image/*" onchange="updatePhotoPreview(event)" name="profile_image">
                     </div>
-               
+                </form>
             </div>
 
             <!-- General Information Section -->
             <div class="col-md-4">
-                <h3 class="mb-3">General Information</h3>
-               
-                    <div class="mb-4 form-group">
-                        <label for="fullname" class="form-label">Nickname:</label>
-                        <input name='username' type="text" class="form-control" id="fullname" placeholder="Nickname" value="{{request.user.username}}">
-                    </div>
-                    <div class="mb-4 form-group">
-                        <label for="profession" class="form-label">Job:</label>
-                        <input name="job" type="text" class="form-control" id="profession" placeholder="Write your Job" value="{% if request.user.job %}{{request.user.job}}{% else %}{% endif %}">
-                    </div>
-                    <div class="mb-4 form-group">
-                        <label for="motivation" class="form-label">About me:</label>
-                        <textarea name="about_me" class="form-control" id="motivation" placeholder="Write about yourself" maxlength="200" rows=4>{% if request.user.about_me %}{{request.user.about_me}}{% endif %}</textarea>
-                    </div>
-                    <div class="mb-4 form-group">
-                        <label for="goals" class="form-label">Goals:</label>
-                        <textarea name="goals" class="form-control" id="goals" placeholder="Write about goals" maxlength="200" rows=4>{% if request.user.about_my_goals%}{{request.user.about_my_goals}}{% endif %}</textarea>
-                    </div>
-              
+                <h3 class="mb-3">{% translate 'General Information' %}</h3>
+                <div class="mb-4 form-group">
+                    <label for="fullname" class="form-label">{% translate 'Nickname' %}:</label>
+                    <input name='username' type="text" class="form-control" id="fullname" placeholder="{% translate 'Nickname' %}" value="{{request.user.username}}">
+                </div>
+                <div class="mb-4 form-group">
+                    <label for="profession" class="form-label">{% translate 'Job' %}:</label>
+                    <input name="job" type="text" class="form-control" id="profession" placeholder="{% translate 'Write your Job' %}" value="{% if request.user.job %}{{request.user.job}}{% else %}{% endif %}">
+                </div>
+                <div class="mb-4 form-group">
+                    <label for="motivation" class="form-label">{% translate 'About me' %}:</label>
+                    <textarea name="about_me" class="form-control" id="motivation" placeholder="{% translate 'Write about yourself' %}" maxlength="200" rows=4>{% if request.user.about_me %}{{request.user.about_me}}{% endif %}</textarea>
+                </div>
+                <div class="mb-4 form-group">
+                    <label for="goals" class="form-label">{% translate 'Goals' %}:</label>
+                    <textarea name="goals" class="form-control" id="goals" placeholder="{% translate 'Write about goals' %}" maxlength="200" rows=4>{% if request.user.about_my_goals%}{{request.user.about_my_goals}}{% endif %}</textarea>
+                </div>
             </div>
 
             <!-- Information About Yourself Section -->
             <div class="col-md-5">
-                <h3 class="mb-3 text-center">Information About Yourself</h3>
+                <h3 class="mb-3 text-center">{% translate 'Information About Yourself' %}</h3>
                 <div class="choose-fields d-flex">
                     {% for ability in abilities %}
                         {% if ability in request.user.user_abilities.all %}
-                        <div class="field-card active" id="{{ ability.name|slugify }}Card" 
-                             onclick="toggleField('{{ ability.name|slugify }}')">
+                        <div class="field-card active" id="{{ ability.name|slugify }}Card" onclick="toggleField('{{ ability.name|slugify }}')">
                             <div>
                                 <i class="{{ ability.ability_icon }} text-warning field-icon"></i>
                                 <p>{{ ability.name }}</p>
                             </div>
                         </div>
                         {% else %}
-                        <div class="field-card" id="{{ ability.name|slugify }}Card" 
-                             onclick="toggleField('{{ ability.name|slugify }}')">
+                        <div class="field-card" id="{{ ability.name|slugify }}Card" onclick="toggleField('{{ ability.name|slugify }}')">
                             <div>
                                 <i class="{{ ability.ability_icon }} text-warning field-icon"></i>
                                 <p>{{ ability.name }}</p>
@@ -102,10 +99,9 @@
                 </div>
                 <input type="hidden" id="selectedAbilities" name="selected_abilities">
                 <div class="btn-container">
-                    <button type="submit" class="btn save-button downloader fs-5">Save</button>
+                    <button type="submit" class="btn save-button downloader fs-5">{% translate 'Save' %}</button>
                 </div>
             </div>
-       
         </div>
     </div>
 </form>
@@ -132,7 +128,7 @@ function toggleField(fieldId) {
             selectedAbilities.push(fieldId);
             card.classList.add('active');
         } else {
-            alert("You can select a maximum of 3 fields.");
+            alert("{% translate 'You can select a maximum of 3 fields.' %}");
         }
     }
 

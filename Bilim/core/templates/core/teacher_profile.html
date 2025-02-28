@@ -1,56 +1,81 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BILIM Teachers profile</title>
-  {% include "core/static_files/links.html"%}
- 
+  <title>{% translate 'BILIM Teachers profile' %}</title>
+  {% include "core/static_files/links.html" %}
 </head>
-<body>
-  {% include "core/hero.html" with content="View your profile teacher" image_path="core/images/profile_teacher_image.png"%}
-<!-- Textarea -->
 
-<div class="mx-auto  justify-content-between align-items-start" style="width: 90vw;">
-      <div class="col-12 mx-auto text-start text-lg-end mt-3">
-        <a href='{% url 'teacher:teacher_edit'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader m-1" style="border: none;">Edit</button></a>
-        <a href='{% url 'teacher:teacher_video_create'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader m-1" style="border: none;">Add video</button></a>
-        <a href='{% url 'teacher:teacher_content'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader m-1" style="border: none;">My videos</button></a>
-        <a href='{% url 'videos:create_shorts'%}'><button class="text-white px-4 py-1 rounded-3 fw-semibold downloader m-1" style="border: none;">Add shorts</button></a>
-      </div>
-    <div class="mt-2 row d-block d-md-flex ">
-        <div class="col-12 col-md-5 col-lg-5 text-center justify-content-center mx-auto text-lg-start align-items-lg-start justify-content-lg-start ">
-            {% if request.user.user_avatar %}
-                <img src="{{ request.user.user_avatar.url }}" alt="User Photo" class="img-fluid" style="border-radius: 50px; width: 300px; height: 300px; object-fit: cover;">
-            {% else %}
-                <img src="" alt="User Photo" class="img-fluid" style="border-radius: 50%; width: 300px; height: 300px; object-fit: cover;">
-            {% endif %}
-        </div>
-        <div class="d-flex ms-4 text-lg-center justify-content-center align-items-lg-center col-9 col-md-5 col-lg-5">
-            <div class="d-flex  justify-content-center align-items-center mt-3 mt-md-0">
-                <div class="row">
-                    <div class="d-flex align-items-center pb-3">
-                        <div class="h5 fw-semibold align-items-center"><i class="bi bi-person-fill me-2 text-primary"></i>Nickname: <span class="ms-1">{{request.user.username}}</span> </div>
-                    </div>
-                    <div class="d-flex align-items-center pb-3">
-                        <div class="h5 fw-semibold align-items-center"><i class="bi bi-briefcase-fill me-2 text-success"></i>Job: <span class="ms-1">{% if request.user.job %} {{request.user.job}} {% else %} Edit your job... {% endif %} </span> </div>
-                    </div>
-                    <div class="d-flex align-items-center pb-3">
-                        <div class="h5 fw-semibold align-items-center"><i class="bi bi-telephone-fill me-2 text-danger"></i>Phone number: <span class="ms-1">{% if request.user.telephone_number %} {{request.user.telephone_number}} {% else %} Edit your number... {% endif %} </span></div>
-                    </div>
-                </div>
-               
-               
-               
-            </div>
-        </div>
+<body>
+  {% include "core/hero.html" with content="{% translate 'View your profile teacher' %}" image_path="core/images/profile_teacher_image.png" %}
+  
+  <!-- Textarea -->
+  <div class="mx-auto justify-content-between align-items-start" style="width: 90vw;">
+    <div class="col-12 mx-auto text-start text-lg-end mt-3">
+      <a href='{% url "teacher:teacher_edit" %}'>
+        <button class="text-white px-4 py-1 rounded-3 fw-semibold downloader m-1" style="border: none;">
+          {% translate 'Edit' %}
+        </button>
+      </a>
+      <a href='{% url "teacher:teacher_video_create" %}'>
+        <button class="text-white px-4 py-1 rounded-3 fw-semibold downloader m-1" style="border: none;">
+          {% translate 'Add video' %}
+        </button>
+      </a>
+      <a href='{% url "teacher:teacher_content" %}'>
+        <button class="text-white px-4 py-1 rounded-3 fw-semibold downloader m-1" style="border: none;">
+          {% translate 'My videos' %}
+        </button>
+      </a>
+      <a href='{% url "videos:create_shorts" %}'>
+        <button class="text-white px-4 py-1 rounded-3 fw-semibold downloader m-1" style="border: none;">
+          {% translate 'Add shorts' %}
+        </button>
+      </a>
     </div>
-    
-</div>
-{% include "core/footer.html"%}
-{% include "core/static_files/scripts.html"%}
+
+    <div class="mt-2 row d-block d-md-flex">
+      <div class="col-12 col-md-5 col-lg-5 text-center justify-content-center mx-auto text-lg-start align-items-lg-start justify-content-lg-start">
+        {% if request.user.user_avatar %}
+          <img src="{{ request.user.user_avatar.url }}" alt="{% translate 'User Photo' %}" class="img-fluid" style="border-radius: 50px; width: 300px; height: 300px; object-fit: cover;">
+        {% else %}
+          <img src="" alt="{% translate 'User Photo' %}" class="img-fluid" style="border-radius: 50%; width: 300px; height: 300px; object-fit: cover;">
+        {% endif %}
+      </div>
+
+      <div class="d-flex ms-4 text-lg-center justify-content-center align-items-lg-center col-9 col-md-5 col-lg-5">
+        <div class="d-flex justify-content-center align-items-center mt-3 mt-md-0">
+          <div class="row">
+            <div class="d-flex align-items-center pb-3">
+              <div class="h5 fw-semibold align-items-center">
+                <i class="bi bi-person-fill me-2 text-primary"></i>{% translate 'Nickname' %}: 
+                <span class="ms-1">{{ request.user.username }}</span>
+              </div>
+            </div>
+            <div class="d-flex align-items-center pb-3">
+              <div class="h5 fw-semibold align-items-center">
+                <i class="bi bi-briefcase-fill me-2 text-success"></i>{% translate 'Job' %}: 
+                <span class="ms-1">{% if request.user.job %}{{ request.user.job }}{% else %} {% translate 'Edit your job...' %} {% endif %}</span>
+              </div>
+            </div>
+            <div class="d-flex align-items-center pb-3">
+              <div class="h5 fw-semibold align-items-center">
+                <i class="bi bi-telephone-fill me-2 text-danger"></i>{% translate 'Phone number' %}: 
+                <span class="ms-1">{% if request.user.telephone_number %}{{ request.user.telephone_number }}{% else %} {% translate 'Edit your number...' %} {% endif %}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include "core/footer.html" %}
+  {% include "core/static_files/scripts.html" %}
 </body>
 
 </html>

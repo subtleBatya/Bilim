@@ -1,75 +1,80 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BILIM Videos</title>
-  {% include "core/static_files/links.html"%}
+  <title>{% translate 'BILIM Videos' %}</title>
+  {% include "core/static_files/links.html" %}
 </head>
+
 <body>
- {% comment %} {% include "core/hero.html" with content="Bilim Video Courses" image_path="core/images/course.webp"%} {% endcomment %}
- <div class="video-player">
-  <video id="video-player" width="100%" height="700px" controls>
+  {% comment %} {% include "core/hero.html" with content="{% translate 'Bilim Video Courses' %}" image_path="core/images/course.webp" %} {% endcomment %}
+  
+  <div class="video-player">
+    <video id="video-player" width="100%" height="700px" controls>
       <source id="video-source" src="{{video.shorts_video.url }}" type="video/mp4">
-      Your browser does not support the video tag.
-  </video>
-</div>
-
-
+      {% translate 'Your browser does not support the video tag.' %}
+    </video>
   </div>
+
   <div class="mx-auto mt-3" style="width: 90vw;">
     <div class="d-flex" style="flex-direction:column;">
 
       <div id="video-actions" class="d-flex justify-content-start align-items-center">
         <button id="like-btn" class="btn fs-5{% if request.user in video.likes.all %} btn-success {% else %} btn-primary {% endif %}" 
-    data-video-id="{{ video.id }}">
-    👍<b> Like </b> <span id="like-count">{{ video.shorts_likes.count }}</span>
+          data-video-id="{{ video.id }}">
+          👍<b>{% translate 'Like' %}</b> <span id="like-count">{{ video.shorts_likes.count }}</span>
         </button>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>  Title: </b>  <span id="view-count">{{video.shorts_title}} </span>
+        <b>{% translate 'Title:' %} </b>  <span id="view-count">{{video.shorts_title}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>  Views: </b>  <span id="view-count">{{video.shorts_views}} </span>
-      </div>
-
-
-      <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>  Author: </b>  <span id="view-count">{{video.shorts_author.username}} </span>
-      </div>
-
-
-      <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>  Added date: </b>  <span id="view-count">{{video.shorts_added_date}} </span>
+        <b>{% translate 'Views:' %} </b>  <span id="view-count">{{video.shorts_views}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>  Description: </b>  <span id="view-count">{{video.shorts_description}} </span>
+        <b>{% translate 'Author:' %} </b>  <span id="view-count">{{video.shorts_author.username}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b></b> <a href="{% url "auth:accept_video_shorts" video.id %}"> <button class="btn btn-primary">Accept video</button> </a>
-        <a href="{% url "auth:decline_video_shorts" video.id %}"> <button class="btn btn-danger">Decline video</button> </a>
+        <b>{% translate 'Added date:' %} </b>  <span id="view-count">{{video.shorts_added_date}}</span>
       </div>
 
-     
+      <div id="view-counter" class="fs-5 mt-2 ms-2">
+        <b>{% translate 'Description:' %} </b>  <span id="view-count">{{video.shorts_description}}</span>
+      </div>
+
+      <div id="view-counter" class="fs-5 mt-2 ms-2">
+        <b></b> 
+        <a href="{% url 'auth:accept_video_shorts' video.id %}"> 
+          <button class="btn btn-primary">{% translate 'Accept video' %}</button> 
+        </a>
+        <a href="{% url 'auth:decline_video_shorts' video.id %}"> 
+          <button class="btn btn-danger">{% translate 'Decline video' %}</button> 
+        </a>
+      </div>
 
     </div>
   </div>
 
-  {% include "core/footer.html"%}
-{% include "core/static_files/scripts.html"%}
+  {% include "core/footer.html" %}
+  {% include "core/static_files/scripts.html" %}
+  
   <script src="https://vjs.zencdn.net/8.5.2/video.min.js"></script>
-  <script src="{% static 'core/js/video_player.js'%}"></script>
+  <script src="{% static 'core/js/video_player.js' %}"></script>
+  
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const likeBtn = document.getElementById("like-btn");
       const likeCount = document.getElementById("like-count");
       const videoId = likeBtn.dataset.videoId; // Get video ID from button attribute
-  
+
       if (likeBtn) {
           likeBtn.addEventListener("click", function () {
               fetch(`/videos/like-video/${videoId}/`, {  // Updated URL structure
@@ -94,7 +99,7 @@
           });
       }
   });
-  
+
   // Function to get CSRF token from cookies
   function getCookie(name) {
       let cookieValue = null;
