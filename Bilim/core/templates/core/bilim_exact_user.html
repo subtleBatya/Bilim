@@ -46,6 +46,7 @@
             <button id="gen_btn" style="cursor: pointer;" class="btn downloader">{% translate 'General' %}</button>
             <button id="exam_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Videos' %}</button>
             <button id="class_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Full information' %}</button>
+            <button id="subs_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Videos' %}</button>
         </div>
 
         <div class=" mt-5 ">
@@ -127,6 +128,37 @@
                     {% endfor %}
                 </div>
             </div>
+
+
+            <section id="subs_block" style="width: 100vw;">
+                <div class="wrapper-card">
+                    <h4 style="font-weight: normal; text-align: center; margin: 2rem 0;" >{% translate 'User videos' %}</h4>
+                    <div class="cols-card">
+                      {% for popular_video in user_videos %}
+                        <div class="col-card" ontouchstart="this.classList.toggle('hover');">
+                                <div class="container-card">
+                                    <div class="front">
+                                        <img src="{{popular_video.poster.url}}" alt="{% translate 'Python Course' %}">
+                                        <div class="inner">
+                                            <p>{{popular_video.title|truncatewords:6}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="back">
+                                        <div class="inner">
+                                            <p>{{popular_video.description|truncatewords:15}}</p>
+                                            <a href="{% url 'videos:video_of_course' popular_video.id %}" class="btn downloader rounded-3">{% translate 'View Video' %}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                          </div>
+                          {% empty%}
+                          <div class="w-100 text-center">
+                            <h5>{% translate 'No videos added yet' %} </h5>
+                        </div>
+                          {% endfor %}
+                      </div>
+                  </div>
+              </section>
 
         </div>
     </div>
