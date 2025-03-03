@@ -1,9 +1,10 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invalid Credentials</title>
+    <title>{% translate 'Ошибка'%}</title>
     <style>
         /* Global styles */
         * {
@@ -93,9 +94,9 @@
 <body>
     <div class="container">
         <div class="error-box">
-            <h1>Что-то пошло не так!</h1>
-            <p>Попробуйте по поезже!</p>
-            <a href="{% url 'core:index' %}" class="btn">Домой</a>
+            <h1>{% translate 'Что-то пошло не так!'%}</h1>
+            <p>{% translate 'Попробуйте по поезже!'%}</p>
+            <a href="{% url 'core:index' %}" class="btn">{% translate 'Домой'%}</a>
         </div>
     </div>
 </body>

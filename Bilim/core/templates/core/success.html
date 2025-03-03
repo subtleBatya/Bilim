@@ -1,9 +1,10 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Successful</title>
+    <title>{% translate 'Успешно'%}</title>
     <style>
         /* Global styles */
         * {
@@ -141,9 +142,9 @@
                     <path class="checkmark" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
                 </svg>
             </div>
-            <h1>Операция успешно!</h1>
-            <p>Спасибо что используете нашу платформу!</p>
-            <a href="{% url 'core:index' %}" class="btn-back-home">Домой</a>
+            <h1>{% translate 'Операция успешно!'%}</h1>
+            <p>{% translate 'Спасибо что используете нашу платформу!'%}</p>
+            <a href="{% url 'core:index' %}" class="btn-back-home">{% translate 'Домой'%}</a>
         </div>
     </div>
 </body>

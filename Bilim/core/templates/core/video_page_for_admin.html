@@ -18,7 +18,7 @@
     <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" download="none" data-setup='{}'>
       <source src="{{video.video.url}}" type="video/mp4" />
       <p class="vjs-no-js">
-        {% translate 'To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.' %}
+        {% translate 'Ваш браузер не поддерживает HTML5 видео теги' %}
         <a href="https://videojs.com/html5-video-support/" target="_blank">{% translate 'supports HTML5 video' %}</a>.
       </p>
     </video>
@@ -35,40 +35,40 @@
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>{% translate 'Title:' %} </b>  <span id="view-count">{{video.title}}</span>
+        <b>{% translate 'Имя:' %} </b>  <span id="view-count">{{video.title}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>{% translate 'Category:' %} </b>  <span id="view-count">{{video.category}}</span>
+        <b>{% translate 'Категория видео:' %} </b>  <span id="view-count">{{video.category}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>{% translate 'Course:' %} </b>  <span id="view-count">{{video.course}}</span>
+        <b>{% translate 'Категория курса:' %} </b>  <span id="view-count">{{video.course}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>{% translate 'Views:' %} </b>  <span id="view-count">{{video.views}}</span>
+        <b>{% translate 'Просмотры:' %} </b>  <span id="view-count">{{video.views}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>{% translate 'Author:' %} </b>  <span id="view-count">{{video.author.username}}</span>
+        <b>{% translate 'Автор:' %} </b>  <span id="view-count">{{video.author.username}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>{% translate 'Added date:' %} </b>  <span id="view-count">{{video.added_date}}</span>
+        <b>{% translate 'Дата добавления:' %} </b>  <span id="view-count">{{video.added_date}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>{% translate 'Description:' %} </b>  <span id="view-count">{{video.description}}</span>
+        <b>{% translate 'Описание видео:' %} </b>  <span id="view-count">{{video.description}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
         <b></b> 
         <a href="{% url 'auth:accept_video' video.id %}"> 
-          <button class="btn btn-primary">{% translate 'Accept video' %}</button> 
+          <button class="btn btn-primary">{% translate 'Принять видео' %}</button> 
         </a>
         <a href="{% url 'auth:decline_video' video.id %}"> 
-          <button class="btn btn-danger">{% translate 'Decline video' %}</button> 
+          <button class="btn btn-danger">{% translate 'Отклонить видео' %}</button> 
         </a>
       </div>
 

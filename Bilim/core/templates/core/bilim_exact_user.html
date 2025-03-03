@@ -20,7 +20,7 @@
 
         <div class=" d-flex text-center fs-1 mb-3 mx-auto" style="width: 90vw;">
             
-            <div>{% if request.user != user %}{% translate 'Bilim user profile' %}{% else %}{% translate 'Your Profile' %} {% endif %} </div>
+            <div>{% if request.user != user %}{% translate 'Профиль пользователя BILIM' %}{% else %}{% translate 'Ваш профиль' %} {% endif %} </div>
         </div>
 
         <div class="d-flex align-items-center justify-content-between mb-5 mx-auto" style="width: 90vw;">
@@ -33,20 +33,20 @@
                     {% endif %}
                 </div>
                 <div class="d-flex justify-content-between align-items-center fw-bold fs-4 ms-4" style="flex-direction: column;">
-                    <div>{% translate 'Username' %}: <span class="text-primary">{{user.username}} </span> </div>
-                    <div>{% translate 'Who' %}:<span class="text-primary">{% if user.is_student %} {% translate 'Student' %}{% elif user.is_teacher %}{% translate 'Teacher' %} {% endif %}</span></div>
-                    <div>{% translate 'Job' %}:{% if user.job%} <span class="text-primary"> {{user.job}}</span> {% else %}<span class="text-primary">{% translate 'Not edited' %}</span>{% endif %} </span></div>
-                    <div>{% translate 'Subscribers' %}:<span class="text-primary">{{user.followers.count}} </span></div>
-                    {% if request.user != user %} <a href="{% url "users:follow" user.id %}" class="btn downloader" id="subscribeBtn">{% if request.user in user.followers.all %}{% translate 'Subscribed' %}{% else %}{% translate 'Subscribe' %} {% endif %} </a>{% endif %}
+                    <div>{% translate 'Имя' %}: <span class="text-primary">{{user.username}} </span> </div>
+                    <div>{% translate 'Роль' %}:<span class="text-primary">{% if user.is_student %} {% translate 'Студент' %}{% elif user.is_teacher %}{% translate 'Учитель' %} {% endif %}</span></div>
+                    <div>{% translate 'Работа' %}:{% if user.job%} <span class="text-primary"> {{user.job}}</span> {% else %}<span class="text-primary">{% translate 'Нет информаций' %}</span>{% endif %} </span></div>
+                    <div>{% translate 'Подписчики' %}:<span class="text-primary">{{user.followers.count}} </span></div>
+                    {% if request.user != user %} <a href="{% url "users:follow" user.id %}" class="btn downloader" id="subscribeBtn">{% if request.user in user.followers.all %}{% translate 'Подписан' %}{% else %}{% translate 'Подписаться' %} {% endif %} </a>{% endif %}
                 </div>
             </div>
         </div>
 
         <div id="button_blocks" class="d-flex gap-4 mt-5 mx-auto m-1 p-2 " style="flex-direction: row; justify-content: space-between; ">
-            <button id="gen_btn" style="cursor: pointer;" class="btn downloader">{% translate 'General' %}</button>
-            <button id="exam_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Videos' %}</button>
-            <button id="class_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Full information' %}</button>
-            <button id="subs_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Videos' %}</button>
+            <button id="gen_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Общее' %}</button>
+            <button id="exam_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Все видео' %}</button>
+            <button id="class_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Умение' %}</button>
+            <button id="subs_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Видео подписчиков' %}</button>
         </div>
 
         <div class=" mt-5 ">
@@ -55,23 +55,23 @@
             <!-- GENERAL BLOCK -->
                 <div class="col-md-4">
                     <div class="mb-3">
-                      <h4>{% translate 'About user' %}</h4>
-                      <p>{% if user.about_me %} {{ user.about_me }} {% else %} {% translate 'There is nothing about this user!' %} {% endif %} </p>
+                      <h4>{% translate 'О пользователе' %}</h4>
+                      <p>{% if user.about_me %} {{ user.about_me }} {% else %} {% translate 'Пользователь не предоставил никаких информаций' %} {% endif %} </p>
                     </div>
                     <div class="mb-3">
-                      <h4>{% translate 'About this user goals' %}</h4>
-                      <p> {% if user.about_my_goals %} {{ user.about_my_goals}} {% else %} {% translate 'There is nothing about this user\'s goals!' %} {% endif %} </p>
+                      <h4>{% translate 'Цели пользователя' %}</h4>
+                      <p> {% if user.about_my_goals %} {{ user.about_my_goals}} {% else %} {% translate 'Пользователь не предоставил никаких информаций' %} {% endif %} </p>
                     </div>
                 </div>
             {% elif user.is_teacher %}
                 <div class="col-md-4">
                         <div class="mb-3">
                         <h1>{% translate 'About User' %}</h1>
-                        <p>{% if user.job %} {{ user.job }} {% else %} {% translate 'There is nothing about this user!' %} {% endif %} </p>
+                        <p>{% if user.job %} {{ user.job }} {% else %} {% translate 'Пользователь не предоставил никаких информаций' %} {% endif %} </p>
                         </div>
                         <div class="mb-3">
                         <h1>{% translate 'Telephone number' %}:</h1>
-                        <p> {% if user.telephone_number %} {{ user.telephone_number}} {% else %} {% translate 'There is nothing about this user\'s phone number!' %} {% endif %} </p>
+                        <p> {% if user.telephone_number %} {{ user.telephone_number}} {% else %} {% translate 'Пользователь не предоставил никаких информаций' %} {% endif %} </p>
                         </div>
                 </div>
             {% endif %}
@@ -79,13 +79,13 @@
             
 <section id="exams_block" style="width: 100vw;">
     <div class="wrapper-card">
-        <h4 style="font-weight: normal; text-align: center; margin: 2rem 0;" >{% translate 'User videos' %}</h4>
+        <h4 style="font-weight: normal; text-align: center; margin: 2rem 0;" >{% translate 'Видео пользователя' %}</h4>
         <div class="cols-card">
           {% for popular_video in user_videos %}
             <div class="col-card" ontouchstart="this.classList.toggle('hover');">
                     <div class="container-card">
                         <div class="front">
-                            <img src="{{popular_video.poster.url}}" alt="{% translate 'Python Course' %}">
+                            <img src="{{popular_video.poster.url}}" alt="">
                             <div class="inner">
                                 <p>{{popular_video.title|truncatewords:6}}</p>
                             </div>
@@ -100,7 +100,7 @@
               </div>
               {% empty%}
               <div class="w-100 text-center">
-                <h5>{% translate 'No videos added yet' %} </h5>
+                <h5>{% translate 'Пользователь не предоставил никаких видео' %} </h5>
             </div>
               {% endfor %}
           </div>
@@ -110,7 +110,7 @@
             <!-- CLASSES BLOCK -->
 
             <div id="class_block" class="mx-auto d-none " style="width: 90vw;">
-                <center><h4>{% translate 'User abilities' %}</h4></center>
+                <center><h4>{% translate 'Умение пользователя' %}</h4></center>
                 <div class="d-flex flex-wrap justify-content-start"> 
                     <!-- Display abilities if the user has any -->
                     {% for abilities in user.user_abilities.all %}
@@ -123,37 +123,37 @@
                     {% empty %}
                         <!-- Display message if no abilities -->
                         <div class="w-100 text-center">
-                            <h5>{% translate 'No abilities... ' %}</h5>
+                            <h5>{% translate 'Пользователь не предоставил никаких информаций' %}</h5>
                         </div>
                     {% endfor %}
                 </div>
             </div>
 
 
-            <section id="subs_block" style="width: 100vw;">
+            <section id="subs_block" style="width: 100vw;" class="d-none">
                 <div class="wrapper-card">
-                    <h4 style="font-weight: normal; text-align: center; margin: 2rem 0;" >{% translate 'User videos' %}</h4>
+                    <h4 style="font-weight: normal; text-align: center; margin: 2rem 0;" >{% translate 'Видео подписчиков' %}</h4>
                     <div class="cols-card">
-                      {% for popular_video in user_videos %}
+                      {% for subscribe_video in subscribe_videos %}
                         <div class="col-card" ontouchstart="this.classList.toggle('hover');">
                                 <div class="container-card">
                                     <div class="front">
-                                        <img src="{{popular_video.poster.url}}" alt="{% translate 'Python Course' %}">
+                                        <img src="{{subscribe_video.poster.url}}" alt="">
                                         <div class="inner">
-                                            <p>{{popular_video.title|truncatewords:6}}</p>
+                                            <p>{{subscribe_video.title|truncatewords:6}}</p>
                                         </div>
                                     </div>
                                     <div class="back">
                                         <div class="inner">
-                                            <p>{{popular_video.description|truncatewords:15}}</p>
-                                            <a href="{% url 'videos:video_of_course' popular_video.id %}" class="btn downloader rounded-3">{% translate 'View Video' %}</a>
+                                            <p>{{subscribe_video.description|truncatewords:15}}</p>
+                                            <a href="{% url 'videos:video_of_course' subscribe_video.id %}" class="btn downloader rounded-3">{% translate 'Посмотреть видео' %}</a>
                                         </div>
                                     </div>
                                 </div>
                           </div>
                           {% empty%}
                           <div class="w-100 text-center">
-                            <h5>{% translate 'No videos added yet' %} </h5>
+                            <h5>{% translate 'Пользователи на которых вы подписаны не добавили ещё видео ' %} </h5>
                         </div>
                           {% endfor %}
                       </div>

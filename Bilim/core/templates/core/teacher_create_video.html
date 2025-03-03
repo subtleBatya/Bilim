@@ -6,14 +6,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% translate 'BILIM Teachers create'%}</title>
+<title>{% translate 'BILIM Добавить'%}</title>
   {% include "core/static_files/links.html" %}
   
 
 </head>
 
 <body>
- {% include "core/hero.html" with content="Upload your videos" image_path="core/images/profile_teacher_image.png"%}
+ {% include "core/hero.html" with content=_("Загрузите свои видео учитель") image_path="core/images/profile_teacher_image.png"%}
   
  <div class=" text-center mx-auto" style="width: 90vw;">
     <hr class="p-1">
@@ -28,12 +28,12 @@
               
                     <div class="text-center">
                         <div class="mb-3" style="border: 1px solid #8f95dd;">
-                                <label for="fileUpload" class="form-label text-dark fw-bold mt-3">{% translate 'Upload Video'%}</label>
+                                <label for="fileUpload" class="form-label text-dark fw-bold mt-3">{% translate 'Загрузить видео'%}</label>
                                 <div class=" p-4 text-center bg-white">
-                                    <p class="mb-3 fw-bold">{% translate 'Upload only to 20 min video'%}</p>
+                                    <p class="mb-3 fw-bold">{% translate 'Видео должен быть менее 20 минут'%}</p>
                                     <button 
                                         class="btn fw-bold border border-secondary downloader text-white" style="color:#000;" 
-                                        onclick="document.getElementById('fileUpload').click()">{% translate 'Click to Add Here'%}</button>
+                                        onclick="document.getElementById('fileUpload').click()">{% translate 'Нажмите чтобы добавить видео'%}</button>
                                     <input 
                                         name="video"
                                         type="file" 
@@ -67,37 +67,37 @@
                 
                 <div class=" text-start fs-5 fw-bold col-11 col-md-5 align-items-md-center" >
                     <div class="mb-3 row">
-                        <label class="col" for="">{% translate 'Name:'%}</label>
-                        <input name='video_title' class="col form-control" type="text" placeholder="Video name">
+                        <label class="col" for="">{% translate 'Имя видео:'%}</label>
+                        <input name='video_title' class="col form-control" type="text" placeholder="">
                     </div>
                      <div class="mb-3 row">
-                        <label class="col" for="">{% translate 'Description:'%}</label>
-                        <textarea name='video_description' class="col form-control" type="text" placeholder="Video description" maxlength='250' row='4'></textarea>
+                        <label class="col" for="">{% translate 'Описание видео:'%}</label>
+                        <textarea name='video_description' class="col form-control" type="text" placeholder="" maxlength='250' row='4'></textarea>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col" for="">{% translate 'Poster:'%}</label>
-                        <input name='poster' class="col form-control" type="file" placeholder="Video name" accept="image/*">
+                        <label class="col" for="">{% translate 'Постер видео:'%}</label>
+                        <input name='poster' class="col form-control" type="file" placeholder="" accept="image/*">
                     </div>
                     <div class=" row mb-2">
-                        <label class="col-6" for="">{% translate 'Video category:'%}</label>
+                        <label class="col-6" for="">{% translate 'Категория видео:'%}</label>
                         <select name="main_cat" class="col form-control form-select" style="height: 5vh;" id="category" name="category">
-                            <option value=""  class="text-secondary" disabled selected>{% translate 'Choose category:'%}</option> 
+                            <option value=""  class="text-secondary" disabled selected>{% translate 'Выберите категорию:'%}</option> 
                             {% for main_cat in main_category%}
                             <option value="{{ main_cat.category_name }}"  class="">{{ main_cat.category_name }}</option> 
                             {% empty %}
-                            <option value=""  class="text-secondary" disabled selected>{% translate 'No category:'%}</option> 
+                            <option value=""  class="text-secondary" disabled selected>{% translate 'Нет категорий:'%}</option> 
                             {% endfor %}
                         </select>
                     </div>
 
                     <div class=" row">
-                        <label class="col-6" for="">Course category:</label>
+                        <label class="col-6" for="">{% translate 'Категория курса:'%}</label>
                         <select name="course_cat" class="col form-control form-select" style="height: 5vh;" id="category" name="category">
-                            <option value=""  class="text-secondary" disabled selected>{% translate 'Choose category:'%}</option> 
+                            <option value=""  class="text-secondary" disabled selected>{% translate 'Выберите категорию:'%}</option> 
                             {% for course_cat in course_category %}
                             <option value="{{ course_cat.course_name }}"  class="">{{ course_cat.course_name }}</option> 
                             {% empty %}
-                            <option value=""  class="text-secondary" disabled selected>N{% translate 'No category:'%}</option> 
+                            <option value=""  class="text-secondary" disabled selected>N{% translate 'Нет категорий:'%}</option> 
                             {% endfor %}
                         </select>
                     </div>
@@ -118,7 +118,7 @@
                     id="submitBtn" 
                     class="downloader text-center text-white px-4 py-1 rounded-3 fw-medium"
                     style="border: none;">
-                    {% translate 'Save'%}
+                    {% translate 'Сохранить'%}
                     </button>
             
                 </div>

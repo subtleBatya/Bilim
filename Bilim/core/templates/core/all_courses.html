@@ -5,18 +5,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% translate 'BILIM Courses' %}</title>
+  <title>{% translate 'BILIM курсы' %}</title>
   {% include 'core/static_files/links.html'%}
 </head>
 <body>
-{% include "core/hero.html" with content="Find your own course" image_path="core/images/course.webp"%}
+{% include "core/hero.html" with content=_("Найди свои курсы") image_path="core/images/course.webp"%}
   <!--Poisk-->
 <form action="" method="get">
   <div class="container-fluid">
     <div class="d-flex flex-column flex-lg-row justify-content-end align-items-start align-items-lg-center py-2 px-3">
         <!-- Поле поиска -->
         <div class="position-relative me-0 mb-3 mb-lg-0 me-lg-3">
-            <input name="video_name" type="text" class="form-control pe-5 rounded-4 expand-input fs-4" placeholder="{% translate 'Search...' %}" style="border: 1px solid #8F92DD;" {% if video_name %} value={{video_name}} {% endif%}>
+            <input name="video_name" type="text" class="form-control pe-5 rounded-4 expand-input fs-4" placeholder="{% translate 'Поиск...' %}" style="border: 1px solid #8F92DD;" {% if video_name %} value={{video_name}} {% endif%}>
             <span class="position-absolute top-50 translate-middle-y end-0 me-2" style="color: #8F92DD;"></span>
         </div>
 
@@ -24,17 +24,17 @@
           <!-- Category Select -->
           <div class="mb-3 mb-lg-0">
             <select name="category" class="form-select rounded-4 fs-4" style="border: 1px solid #8F92DD; background-color: #8F92DD; color: white; width: 10rem;">
-              <option value="">{% translate 'All' %}</option>
+              <option value="">{% translate 'Все' %}</option>
               {% for category in category_courses %}
               <option value="{{category.course_name}}" {% if course_name == category.course_name %} selected {% endif %}>{{category.course_name}}</option>
               {% empty %}
-              <option value="">{% translate 'No category' %}</option>
+              <option value="">{% translate 'Нет категории' %}</option>
               {% endfor %}
             </select>
           </div>
           
         <!-- Sort Button -->
-        <button type="submit" class="btn btn-secondary downloader rounded-4 fs-5 text-center" style="margin-left: 10px; height:50px;">{% translate 'Sort' %}</button>
+        <button type="submit" class="btn btn-secondary downloader rounded-4 fs-5 text-center" style="margin-left: 10px; height:50px;">{% translate 'Сортировать' %}</button>
         </div>
        
     </div>
@@ -49,7 +49,7 @@
           <div class="col-card" ontouchstart="this.classList.toggle('hover');">
                   <div class="container-card">
                       <div class="front">
-                          <img src="{{video.poster.url}}" alt="{% translate 'Python Course' %}">
+                          <img src="{{video.poster.url}}" alt="">
                           <div class="inner">
                               <p>{% translate video.title|truncatewords:5 %}</p>
                           </div>
@@ -57,14 +57,14 @@
                       <div class="back">
                           <div class="inner">
                               <p>{% translate video.description|truncatewords:10 %}</p>
-                              <a href="{% url 'videos:video_of_course' video.id %}"><button class="btn downloader rounded-3">{% translate 'View Course' %}</button></a>
+                              <a href="{% url 'videos:video_of_course' video.id %}"><button class="btn downloader rounded-3">{% translate 'Посмотреть' %}</button></a>
                           </div>
                       </div>
                   </div>
             </div>
             {% empty %}
             <div class='w-100 text-center text'>
-              <h3 class='text-danger'>{% translate 'No courses are pending' %}</h3>
+              <h3 class='text-danger'>{% translate 'Нет никаких видео курсов' %}</h3>
             </div>
             {% endfor %}
         </div>

@@ -5,13 +5,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% translate 'BILIM Users' %}</title>
+  <title>{% translate 'Пользователи BILIM' %}</title>
   {% include 'core/static_files/links.html'%}
   
 </head>
 
 <body>
-  {% include "core/hero.html" with content="All users of Bilim" image_path="core/images/users_image.png"%}
+  {% include "core/hero.html" with content=_("Все Пользователи BILIM") image_path="core/images/users_image.png"%}
 <div class="mx-auto text-center fs-1 mb-3">
     {% translate 'Users of Bilim' %}
 </div>
@@ -22,23 +22,23 @@
             <div class="pb-4 mx-auto">
                 <div class="image-wrapper shadow rounded-5 text-center p-3">
                     {% if user.user_avatar %}
-                        <img class="img-fluid hover-img rounded-5" style="height:350px;" src="{{ user.user_avatar.url }}" alt="{% translate 'User Avatar' %}">
+                        <img class="img-fluid hover-img rounded-5" style="height:350px;" src="{{ user.user_avatar.url }}" alt="{% translate 'Фото пользователя' %}">
                     {% else %}
-                        <img class="img-fluid hover-img rounded-5" style="height:350px; object-fit:cover;" src="{% static 'core/images/default_profile_image.png' %}" alt="{% translate 'Default Avatar' %}">
+                        <img class="img-fluid hover-img rounded-5" style="height:350px; object-fit:cover;" src="{% static 'core/images/default_profile_image.png' %}" alt="{% translate 'Аватар' %}">
                     {% endif %}
                     
                     <div class="h5 pt-2 fw-medium" style="color: #1C59A1;">
-                        {% if user.is_student %}{% translate 'Student' %}{% elif user.is_teacher %}{% translate 'Teacher' %} {% endif %}: {{ user.username }}
+                        {% if user.is_student %}{% translate 'Студент' %}{% elif user.is_teacher %}{% translate 'Учитель' %} {% endif %}: {{ user.username }}
                     </div>
                     
                     <div class="pb-4 fw-medium">
-                        {% if user.about_me %}{{ user.about_me }}{% else %}{% translate 'Nothing yet!' %}{% endif %}
+                        {% if user.about_me %}{{ user.about_me }}{% else %}{% translate 'Нет информаций' %}{% endif %}
                     </div>
 
                     <!-- Centered Button -->
                     <div class="d-flex justify-content-between align-items-center">
-                        <a href={% url "users:exact_user" user.id %} class="btn downloader">{% translate 'View Profile' %}</a>
-                       {% if request.user != user %} <a href="{% url "users:follow" user.id %}" class="btn downloader" id="subscribeBtn">{% if request.user in user.followers.all %}{% translate 'Subscribed' %}{% else %}{% translate 'Subscribe' %} {% endif %} </a>{% endif %}
+                        <a href={% url "users:exact_user" user.id %} class="btn downloader">{% translate 'Профиль' %}</a>
+                       {% if request.user != user %} <a href="{% url "users:follow" user.id %}" class="btn downloader" id="subscribeBtn">{% if request.user in user.followers.all %}{% translate 'Подписан' %}{% else %}{% translate 'Подписаться' %} {% endif %} </a>{% endif %}
                     </div>
                    
                 </div>

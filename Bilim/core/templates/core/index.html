@@ -10,14 +10,14 @@
 </head>
 
 <body>
-  {% include "core/hero.html" with content="For everyone" image_path="core/images/graduation-hat.png" %}
+  {% include "core/hero.html" with content=_("Курсы для всех") image_path="core/images/graduation-hat.png" %}
   
   <section id="recently-seen">
     <h1 class="text-center my-4">
       {% if request.user.recent_seen_video.count > 0 %}
-        {% translate 'Recently Seen' %}
+        {% translate 'Недавно просмотренные' %}
       {% else %}
-        {% translate 'All courses' %}
+        {% translate 'Все категории курсов' %}
       {% endif %}
     </h1>
     <div class="container">
@@ -36,7 +36,7 @@
                 <div class="scroll-item">
                     <img src="{{course.image.url}}" class="img-fluid">
                     <h4 class="m-2">{{course.category_name}}</h4>
-                    <a href="{% url 'videos:all_courses' course.id %}" class="btn downloader mb-3">{% translate 'View a course' %}</a>
+                    <a href="{% url 'videos:all_courses' course.id %}" class="btn downloader mb-3">{% translate 'Посмотреть' %}</a>
                 </div>
                     {% endfor %}
                 {% endfor %}
@@ -48,14 +48,14 @@
   <section id="popular-courses" style="width: 100vw;">
     <div class="wrapper-card">
         <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;">
-          {% translate 'Popular videos' %}
+          {% translate 'Популярные курсы' %}
         </h1>
         <div class="cols-card">
           {% for popular_video in popular_videos %}
             <div class="col-card" ontouchstart="this.classList.toggle('hover');">
               <div class="container-card">
                 <div class="front">
-                    <img src="{{popular_video.poster.url}}" alt="{% translate 'Python Course' %}">
+                    <img src="{{popular_video.poster.url}}" alt="">
                     <div class="inner">
                         <p>{{popular_video.title|truncatewords:6}}</p>
                     </div>
@@ -63,7 +63,7 @@
                 <div class="back">
                     <div class="inner">
                         <p>{{popular_video.description|truncatewords:15}}</p>
-                        <a href="{% url 'videos:video_of_course' popular_video.id %}" class="btn downloader rounded-3">{% translate 'View Video' %}</a>
+                        <a href="{% url 'videos:video_of_course' popular_video.id %}" class="btn downloader rounded-3">{% translate 'Посмотреть' %}</a>
                     </div>
                 </div>
               </div>
@@ -77,23 +77,22 @@
     <!-- First row: one block spanning the entire width -->
     <div class="row align-items-center mb-4 block block-color-1 text-white" style="border-radius: 30px; padding: 20px;">
       <div class="col-md-6 text-center">
-          <img src="{% static 'core/images/about_platform.png' %}" alt="{% translate 'Platform Image' %}" class="img-fluid" style="height: 230px; width: 80%; object-fit: cover; border-radius: 15px;">
+          <img src="{% static 'core/images/about_platform.png' %}" alt="" class="img-fluid" style="height: 230px; width: 80%; object-fit: cover; border-radius: 15px;">
       </div>
       <div class="col-md-6 text-section">
-          <h1 class="fw-bold text-center">{% translate 'Welcome to BILIM platform!' %}</h1>
+          <h1 class="fw-bold text-center">{% translate 'Добро пожаловать в BILIM!' %}</h1>
           <p class="text">
-            {% translate 'On our platform, everyone will find something that helps unlock their potential. We offer the best educational courses, inspiring materials, and unique opportunities for personal growth. At "Bilim", learning becomes an exciting journey, where every step brings you closer to your goal.' %}
+            {% translate '  На нашей платформе каждый найдет то, что поможет раскрыть потенциал. Мы предлагаем лучшие образовательные курсы, вдохновляющие материалы и уникальные возможности для личностного роста. В "Билим" обучение превращается в увлекательное путешествие, где каждый шаг приближает вас к вашей цели.' %}
           </p>
           <ul class="text fw-semibold" style="text-align:left;">
-              <li>📚 {% translate 'Expert courses' %}</li>
-              <li>🎓 {% translate 'Interactive learning' %}</li>
-              <li>🌐 {% translate 'Available anytime' %}</li>
-              <li>🚀 {% translate 'Personalized approach' %}</li>
+              <li>📚 {% translate 'Экспертные курсы' %}</li>
+              <li>🎓 {% translate 'Интерактивное обучение' %}</li>
+              <li>🌐 {% translate 'Доступность в любое время' %}</li>
+              <li>🚀 {% translate 'Персонализированный подход' %}</li>
           </ul>
       </div>
     </div>
-
-    <!-- Second row: two blocks each with 50% width -->
+{% comment %} 
     <div class="d-flex mb-4 justify-content-between" id="about">
         <!-- First block -->
         <div class="d-block align-items-center block block-color-2 about2 text-white">
@@ -120,7 +119,7 @@
           </div>
         </div>
     </div>      
-  </section>
+  </section> {% endcomment %}
 
   {% include 'core/scientists.html' %}
   

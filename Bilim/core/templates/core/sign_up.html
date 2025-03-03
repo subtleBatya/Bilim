@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% translate 'BILIM Sign Up' %}</title>
+    <title>{% translate 'Зарегистрироваться BILIM' %}</title>
     {% include "core/static_files/links.html"%}
     <link rel="stylesheet" href="{% static 'core/css/login.css'%}">
 </head>
@@ -14,10 +14,10 @@
 <body class="mx-auto text-center font-outfit">
     <div class="position-relative">
         <a href="">
-            <div class="flag m-3"><img src="{% static 'core/images/turkmen-flag.png'%}" alt="{% translate 'Turkmen Flag' %}"></div>
+            <div class="flag m-3"><img src="{% static 'core/images/turkmen-flag.png'%}" alt=""></div>
         </a>
         <a href="">
-            <div class="flag_2 m-3"><img src="{% static 'core/images/turkmen-flag.png'%}" alt="{% translate 'Turkmen Flag' %}"></div>
+            <div class="flag_2 m-3"><img src="{% static 'core/images/russian-flag.png'%}" alt=""></div>
         </a>
     </div>
     
@@ -26,37 +26,37 @@
             style="border: 1px solid rgb(128, 128, 128, 0.1); z-index: 11; top: 15%;">
             <div class="col-md-7 col-lg-5 col-12 col-sm-9 mx-auto">
                 <div class="mt-5 bg-secondary"></div>
-                <div class="logo pt-3"><img src="{% static 'core/images/turkmen-flag.png'%}" alt="{% translate 'Turkmen Flag' %}"></div>
-                <div class="d-md-none h3">{% translate 'Bilim University' %}</div>
-                <div class="h3 col-sm-12">{% translate 'Create an account' %}</div>
-                <div class="small">{% translate 'Already have an account?' %} <span class=" "><a href="{% url 'auth:login'%}">{% translate 'Log in' %}</a></span></div>
+                <div class="logo pt-3"><img src="{% static 'core/images/turkmen-flag.png'%}" alt=""></div>
+                <div class="d-md-none h3">{% translate 'Платформа BILIM' %}</div>
+                <div class="h3 col-sm-12">{% translate 'Создайте аккаунт' %}</div>
+                <div class="small">{% translate 'Уже есть аккаунт?' %} <span><a href="{% url 'auth:login'%}">{% translate 'Войти' %}</a></span></div>
 
                 <form action="{% url "auth:sign_up"%}" method="post">
                     {% csrf_token %}
                     <div class="w-100 mx-auto mt-3 d-flex justify-content-between" style="color:black;">
                         <div>
-                            <input type="radio" required name="option" id="" value="student">{% translate 'Student' %}
+                            <input type="radio" required name="option" id="" value="student">{% translate 'Студент' %}
                         </div>
                         <div>
-                            <input type="radio" required name="option" id="" value="teacher">{% translate 'Teacher' %}
+                            <input type="radio" required name="option" id="" value="teacher">{% translate 'Учитель' %}
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="mt-2 text-start">
-                            <div class="small text-small">{% translate 'Email address' %}</div>
+                            <div class="small text-small">{% translate 'Электронный адрес' %}</div>
                             <input class="w-100 p-2 form-control" required type="email" name="email" id="email">
                         </div>
                         <div class="mt-2 text-start">
-                            <div class="small text-small">{% translate 'Password' %}</div>
+                            <div class="small text-small">{% translate 'Пароль' %}</div>
                             <input class="w-100 p-2 form-control" required type="password" name="password" id="password">
                         </div>
                         <div class="mt-2 text-start">
-                            <div class="small text-small">{% translate 'Name' %}</div>
+                            <div class="small text-small">{% translate 'Логин' %}</div>
                             <input class="w-100 p-2 form-control" required type="text" name="username" id="username">
                         </div>
                     </div>
                     <div class="mb-5 text-center">
-                        <button id="registerButton" disabled class="p-2 rounded-5 border-0 text-white fs-5 fw-light w-100" style="background-color: gray; cursor: not-allowed;">{% translate 'Create an account' %}</button>
+                        <button id="registerButton" disabled class="p-2 rounded-5 border-0 text-white fs-5 fw-light w-100" style="background-color: gray; cursor: not-allowed;">{% translate 'Создать аккаунт' %}</button>
                     </div>
                 </form>
             </div>

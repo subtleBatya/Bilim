@@ -6,34 +6,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% translate 'BILIM Teachers profile' %}</title>
+  <title>{% translate 'BILIM' %}</title>
   {% include "core/static_files/links.html" %}
 </head>
 
 <body>
-  {% include "core/hero.html" with content="View your profile teacher" image_path="core/images/profile_teacher_image.png" %}
+  {% include "core/hero.html" with content=_("Ваш профиль учитель") image_path="core/images/profile_teacher_image.png" %}
   
   <!-- Textarea -->
   <div class="mx-auto justify-content-between align-items-start" style="width: 90vw;">
     <div class="col-12 mx-auto text-start text-lg-end mt-3">
       <a href='{% url "teacher:teacher_edit" %}'>
         <button class="text-white px-4 py-1 rounded-3 fw-semibold downloader m-1" style="border: none;">
-          {% translate 'Edit' %}
+          {% translate 'Редактировать' %}
         </button>
       </a>
       <a href='{% url "teacher:teacher_video_create" %}'>
         <button class="text-white px-4 py-1 rounded-3 fw-semibold downloader m-1" style="border: none;">
-          {% translate 'Add video' %}
+          {% translate 'Добавить видео' %}
         </button>
       </a>
       <a href='{% url "teacher:teacher_content" %}'>
         <button class="text-white px-4 py-1 rounded-3 fw-semibold downloader m-1" style="border: none;">
-          {% translate 'My videos' %}
+          {% translate 'Мои видео' %}
         </button>
       </a>
       <a href='{% url "videos:create_shorts" %}'>
         <button class="text-white px-4 py-1 rounded-3 fw-semibold downloader m-1" style="border: none;">
-          {% translate 'Add shorts' %}
+          {% translate 'Добавить shorts' %}
         </button>
       </a>
     </div>
@@ -52,19 +52,19 @@
           <div class="row">
             <div class="d-flex align-items-center pb-3">
               <div class="h5 fw-semibold align-items-center">
-                <i class="bi bi-person-fill me-2 text-primary"></i>{% translate 'Nickname' %}: 
+                <i class="bi bi-person-fill me-2 text-primary"></i>{% translate 'Имя' %}: 
                 <span class="ms-1">{{ request.user.username }}</span>
               </div>
             </div>
             <div class="d-flex align-items-center pb-3">
               <div class="h5 fw-semibold align-items-center">
-                <i class="bi bi-briefcase-fill me-2 text-success"></i>{% translate 'Job' %}: 
-                <span class="ms-1">{% if request.user.job %}{{ request.user.job }}{% else %} {% translate 'Edit your job...' %} {% endif %}</span>
+                <i class="bi bi-briefcase-fill me-2 text-success"></i>{% translate 'Работа' %}: 
+                <span class="ms-1">{% if request.user.job %}{{ request.user.job }}{% else %} {% translate 'Нет информаций.' %} {% endif %}</span>
               </div>
             </div>
             <div class="d-flex align-items-center pb-3">
               <div class="h5 fw-semibold align-items-center">
-                <i class="bi bi-telephone-fill me-2 text-danger"></i>{% translate 'Phone number' %}: 
+                <i class="bi bi-telephone-fill me-2 text-danger"></i>{% translate 'Телефонный номер ' %}: 
                 <span class="ms-1">{% if request.user.telephone_number %}{{ request.user.telephone_number }}{% else %} {% translate 'Edit your number...' %} {% endif %}</span>
               </div>
             </div>

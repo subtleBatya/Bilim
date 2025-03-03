@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% translate 'BILIM Videos' %}</title>
+  <title>{% translate 'BILIM Админ' %}</title>
   {% include "core/static_files/links.html" %}
 </head>
 
@@ -16,47 +16,47 @@
   <div class="video-player">
     <video id="video-player" width="100%" height="700px" controls>
       <source id="video-source" src="{{video.shorts_video.url }}" type="video/mp4">
-      {% translate 'Your browser does not support the video tag.' %}
+      {% translate 'Ваш браузер не поддерживает видео' %}
     </video>
   </div>
 
   <div class="mx-auto mt-3" style="width: 90vw;">
     <div class="d-flex" style="flex-direction:column;">
 
-      <div id="video-actions" class="d-flex justify-content-start align-items-center">
+      {% comment %} <div id="video-actions" class="d-flex justify-content-start align-items-center">
         <button id="like-btn" class="btn fs-5{% if request.user in video.likes.all %} btn-success {% else %} btn-primary {% endif %}" 
           data-video-id="{{ video.id }}">
-          👍<b>{% translate 'Like' %}</b> <span id="like-count">{{ video.shorts_likes.count }}</span>
+          👍<b>{% translate 'Like' %}</b> <span id="like-count">{{ video.shorts_likes.count.all }}</span>
         </button>
+      </div> {% endcomment %}
+
+      <div id="view-counter" class="fs-5 mt-2 ms-2">
+        <b>{% translate 'Имя видео:' %} </b>  <span id="view-count">{{video.shorts_title}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>{% translate 'Title:' %} </b>  <span id="view-count">{{video.shorts_title}}</span>
+        <b>{% translate 'Просмотры:' %} </b>  <span id="view-count">{{video.shorts_views}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>{% translate 'Views:' %} </b>  <span id="view-count">{{video.shorts_views}}</span>
+        <b>{% translate 'Автор:' %} </b>  <span id="view-count">{{video.shorts_author.username}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>{% translate 'Author:' %} </b>  <span id="view-count">{{video.shorts_author.username}}</span>
+        <b>{% translate 'Дата добавления:' %} </b>  <span id="view-count">{{video.shorts_added_date}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>{% translate 'Added date:' %} </b>  <span id="view-count">{{video.shorts_added_date}}</span>
-      </div>
-
-      <div id="view-counter" class="fs-5 mt-2 ms-2">
-        <b>{% translate 'Description:' %} </b>  <span id="view-count">{{video.shorts_description}}</span>
+        <b>{% translate 'Описание видео:' %} </b>  <span id="view-count">{{video.shorts_description}}</span>
       </div>
 
       <div id="view-counter" class="fs-5 mt-2 ms-2">
         <b></b> 
         <a href="{% url 'auth:accept_video_shorts' video.id %}"> 
-          <button class="btn btn-primary">{% translate 'Accept video' %}</button> 
+          <button class="btn btn-primary">{% translate 'Принять видео' %}</button> 
         </a>
         <a href="{% url 'auth:decline_video_shorts' video.id %}"> 
-          <button class="btn btn-danger">{% translate 'Decline video' %}</button> 
+          <button class="btn btn-danger">{% translate 'Отклонить видео' %}</button> 
         </a>
       </div>
 
@@ -68,7 +68,7 @@
   
   <script src="https://vjs.zencdn.net/8.5.2/video.min.js"></script>
   <script src="{% static 'core/js/video_player.js' %}"></script>
-  
+{% comment %}   
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const likeBtn = document.getElementById("like-btn");
@@ -116,7 +116,7 @@
       return cookieValue;
   }
   
-  </script>
+  </script> {% endcomment %}
 </body>
 
 </html>

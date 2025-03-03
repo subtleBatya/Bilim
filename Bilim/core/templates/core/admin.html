@@ -4,15 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BILIM Courses</title>
+  <title>BILIM курсы</title>
   {% include 'core/static_files/links.html'%}
 </head>
 <body>
-{% include "core/hero.html" with content="Accept or decline courses" image_path="core/images/course.webp"%}
+{% include "core/hero.html" with content=_("Принять или отклонить курсы") image_path="core/images/course.webp"%}
    
 <section id="popular-courses" style="width: 100vw;">
     <div class="wrapper-card">
-        <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >Videos pending to accept or decline</h1>
+        <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >Видео которые ждут действия</h1>
         <div class="cols-card">
             {% for video in all_videos %}
             <div class="col-card" ontouchstart="this.classList.toggle('hover');">
@@ -26,14 +26,14 @@
                         <div class="back">
                             <div class="inner">
                                 <p>{{video.description|truncatewords:10}}</p>
-                                <a href="{% url "auth:admin_video" video.id %}"><button class="btn downloader rounded-3">View Course</button></a>
+                                <a href="{% url "auth:admin_video" video.id %}"><button class="btn downloader rounded-3">Посмотреть</button></a>
                             </div>
                         </div>
                     </div>
               </div>
               {% empty %}
               <div class='w-100 text-center text'>
-                <h3 class='text-danger'>No courses are pending </h3>
+                <h3 class='text-danger'>Никаких видео ждущих действия </h3>
               </div>
               {% endfor %}
           </div>
@@ -45,7 +45,7 @@
 
   <section id="popular-courses" style="width: 100vw;">
     <div class="wrapper-card">
-        <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >Shorts pending to accept or decline</h1>
+        <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >Shorts ждущих действия</h1>
         <div class="cols-card">
             {% for video in shorts %}
             <div class="col-card" ontouchstart="this.classList.toggle('hover');">
@@ -59,14 +59,14 @@
                         <div class="back">
                             <div class="inner">
                                 <p>{{video.shorts_description|truncatewords:10}}</p>
-                                <a href="{% url "auth:admin_video_shorts" video.id %}"><button class="btn downloader rounded-3">View Course</button></a>
+                                <a href="{% url "auth:admin_video_shorts" video.id %}"><button class="btn downloader rounded-3">Посмотреть</button></a>
                             </div>
                         </div>
                     </div>
               </div>
               {% empty %}
               <div class='w-100 text-center text'>
-                <h3 class='text-danger'>No courses are pending </h3>
+                <h3 class='text-danger'>Никаких Shorts не ждут действия</h3>
               </div>
               {% endfor %}
           </div>

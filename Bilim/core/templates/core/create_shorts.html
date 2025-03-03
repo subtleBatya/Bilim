@@ -6,12 +6,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% translate 'BILIM create shorts' %}</title>
+  <title>{% translate 'Создать видео BILIM' %}</title>
   {% include "core/static_files/links.html" %}
 </head>
 
 <body>
- {% include "core/hero.html" with content="Upload your videos" image_path="core/images/profile_teacher_image.png"%}
+ {% include "core/hero.html" with content=_("Загрузите свои видео") image_path="core/images/profile_teacher_image.png"%}
   
  <div class="text-center mx-auto" style="width: 90vw;">
     <hr class="p-1">
@@ -25,13 +25,13 @@
                 <div class="col-12 col-md-3 col-lg-3 text-sm-center align-items-sm-center" style="height: 10vh;">
                     <div class="text-center">
                         <div class="mb-3" style="border: 1px solid #8f95dd;">
-                                <label for="fileUpload" class="form-label text-dark fw-bold mt-3">{% translate 'Upload Video' %}</label>
+                                <label for="fileUpload" class="form-label text-dark fw-bold mt-3">{% translate 'Загрузите видео' %}</label>
                                 <div class="p-4 text-center bg-white">
-                                    <p class="mb-3 fw-bold">{% translate 'Upload only to 1 min video' %}</p>
+                                    <p class="mb-3 fw-bold">{% translate 'Видео должен быть не больше 1 минуты' %}</p>
                                     <button type="button"
                                         class="btn fw-bold border border-secondary downloader text-white" style="color:#000;" 
                                         onclick="document.getElementById('fileUpload').click()">
-                                        {% translate 'Click to Add Here' %}
+                                        {% translate 'Нажмите чтобы добавить' %}
                                     </button>
                                     <input 
                                         name="video"
@@ -54,16 +54,16 @@
                 
                 <div class="text-start fs-5 fw-bold col-11 col-md-5 align-items-md-center" >
                     <div class="mb-3 row">
-                        <label class="col" for="">{% translate 'Title' %}:</label>
-                        <input name='video_title' class="col form-control" type="text" placeholder="{% translate 'Video name' %}">
+                        <label class="col" for="">{% translate 'Заголовок' %}:</label>
+                        <input name='video_title' class="col form-control" type="text" placeholder="{% translate 'Имя видео' %}" required>
                     </div>
                      <div class="mb-3 row">
-                        <label class="col" for="">{% translate 'Description' %}:</label>
-                        <textarea name='video_description' class="col form-control" type="text" placeholder="{% translate 'Video description' %}" maxlength='250' row='4'></textarea>
+                        <label class="col" for="">{% translate 'Описание' %}:</label>
+                        <textarea name='video_description' class="col form-control" type="text" placeholder="{% translate 'Описание видео' %}" maxlength='250' row='4' required></textarea>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col" for="">{% translate 'Poster' %}:</label>
-                        <input name='poster' class="col form-control" type="file" placeholder="{% translate 'Video name' %}" accept="image/*">
+                        <label class="col" for="">{% translate 'Постер' %}:</label>
+                        <input name='poster' class="col form-control" type="file" placeholder="{% translate 'Постер видео' %}" accept="image/*" required>
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                     id="submitBtn" 
                     class="downloader text-center text-white px-4 py-1 rounded-3 fw-medium"
                     style="border: none;">
-                    {% translate 'Save' %}
+                    {% translate 'Сохранить' %}
                     </button>
             
                 </div>
@@ -100,7 +100,7 @@ function handleFileUpload(input) {
     fileInfoContainer.innerHTML = "";
 
     if (files.length > 1) {
-        alert("{% translate 'You can only upload one file at a time.' %}");
+        alert("{% translate 'Вы можете добавить только 1 видео за раз!' %}");
         input.value = ""; // Clear the input to prevent uploading multiple files
         return;
     }
@@ -114,7 +114,7 @@ function handleFileUpload(input) {
         window.URL.revokeObjectURL(video.src); // Clean up the object URL
 
         if (video.duration > maxDuration) {
-            alert(`{% translate 'The video' %} "${fileName}" {% translate 'exceeds the maximum allowed duration of 20 minutes.' %}`);
+            alert(`{% translate 'The video' %} "${fileName}" {% translate 'Ваше видео превышает лимит 1 минуту!' %}`);
             input.value = ""; // Clear the input to prevent uploading
             return;
         }
@@ -125,7 +125,7 @@ function handleFileUpload(input) {
 
         // Create file name display
         const fileNameDisplay = document.createElement("p");
-        fileNameDisplay.textContent = `{% translate 'Selected File:' %} ${fileName}`;
+        fileNameDisplay.textContent = `{% translate 'Выбранный файл' %} ${fileName}`;
         fileNameDisplay.className = "fw-bold text-dark mb-1";
 
         // Create progress bar
@@ -140,7 +140,7 @@ function handleFileUpload(input) {
         // Create Remove button
         const removeButton = document.createElement("button");
         removeButton.className = "btn btn-danger btn-sm";
-        removeButton.textContent = "{% translate 'Remove' %}";
+        removeButton.textContent = "{% translate 'Убрать' %}";
         removeButton.onclick = () => removeFile(fileContainer, input);
 
         // Append file name, progress bar, and remove button to the file container
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
         progressText.innerText = "0%";
 
         submitButton.disabled = true;
-        submitButton.innerText = "{% translate 'Uploading...' %}";
+        submitButton.innerText = "{% translate 'Загрузка...' %}";
 
         // Create an XMLHttpRequest to track upload progress
         let xhr = new XMLHttpRequest();
@@ -223,20 +223,20 @@ document.addEventListener("DOMContentLoaded", function () {
         // Handle successful upload
         xhr.onload = function () {
             if (xhr.status === 200) {
-                alert("{% translate 'Video uploaded successfully!' %}");
+                alert("{% translate 'Видео добавдено успешно!' %}");
                 form.reset();
             } else {
-                alert("{% translate 'Upload failed. Try again.' %}");
+                alert("{% translate 'Произошла ошибка! Повторите поезже!' %}");
             }
             submitButton.disabled = false;
-            submitButton.innerText = "{% translate 'Save' %}";
+            submitButton.innerText = "{% translate 'Сохранить' %}";
         };
 
         // Handle errors
         xhr.onerror = function () {
-            alert("{% translate 'Upload error. Check your internet connection.' %}");
+            alert("{% translate 'Произошла ошибка! Проверьте интернет!' %}");
             submitButton.disabled = false;
-            submitButton.innerText = "{% translate 'Save' %}";
+            submitButton.innerText = "{% translate 'Сохранить' %}";
         };
 
         // Send the request

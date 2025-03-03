@@ -23,10 +23,13 @@ def exact_user(request, id):
             user = User.objects.get(id=id)
             user_videos = VideoCourse.objects.filter(author=user)
             courses = Video_category.objects.all()
+            subscribers = user.followers.all()
+            subscribe_videos = VideoCourse.objects.filter(author__in=subscribers)
             context = {
                 "user": user,
                 "user_videos": user_videos,
-                "courses":courses
+                "courses":courses,
+                "subscribed_videos":subscribe_videos
             }
             return render(request, "core/bilim_exact_user.html", context)
         

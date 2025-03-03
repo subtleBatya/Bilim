@@ -6,19 +6,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% translate 'BILIM Teacher Edit' %}</title>
+  <title>{% translate 'BILIM Редактировать' %}</title>
   {% include "core/static_files/links.html" %}
   <link rel="stylesheet" href="{% static 'core/css/teacher_edit.css' %}">
 </head>
 
 <body>
-  {% include "core/hero.html" with content="Update your profile Teacher" image_path="core/images/profile_teacher_image.png" %}
+  {% include "core/hero.html" with content=_("Редактируйте свой профиль учитель") image_path="core/images/profile_teacher_image.png" %}
   
   <div class="text-center mx-auto" style="width: 90vw;">
     <hr class="p-3">
   </div>
   
-  <form action="" method="post" enctype="multipart/form-data">
+  <form action="{% url "teacher:teacher_edit" %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="mx-auto d-md-flex align-items-md-center" style="width: 90vw;">
       <div class="col-11 col-md-5 me-md-2 me-lg-0">
@@ -28,10 +28,10 @@
             <label for="photoUpload" class="photo-container mx-auto text-center">
               <div class="photo-wrapper mx-auto text-center">
                 {% if request.user.user_avatar %}
-                  <img src="{{ request.user.user_avatar.url }}" alt="{% translate 'Photo' %}" id="photoPreview" class="img-fluid">
+                  <img src="{{ request.user.user_avatar.url }}" alt="" id="photoPreview" class="img-fluid">
                 {% else %}
                   <span id="photoIcon" class="photo-icon">+</span>
-                  <img src="" alt="{% translate 'Photo' %}" id="photoPreview" class="img-fluid" style="display: none;">
+                  <img src="" alt="" id="photoPreview" class="img-fluid" style="display: none;">
                 {% endif %}
               </div>
               <div class="photo-overlay">
@@ -40,42 +40,41 @@
             </label>
             <input type="file" id="photoUpload" style="display: none;" accept="image/*" onchange="updatePhotoPreview(event)" name="profile_image">
           </div>
-        </form>
       </div>
       
       <div class="d-block ms-4 col-10 col-md-6">
         <div class="row align-items-center pb-3">
           <label class="h5 align-items-center col fw-semibold form-check-label">
-            <i class="bi bi-person-fill me-2 text-primary"></i>{% translate 'Nickname' %}:
+            <i class="bi bi-person-fill me-2 text-primary"></i>{% translate 'Имя' %}:
           </label>
           <div class="h6 col text-small ms-1">
-            <input name="username" class="form-control rounded-1" type="text" placeholder="{% translate 'Nickname' %}" value="{{ request.user.username }}">
+            <input name="username" class="form-control rounded-1" type="text" placeholder="{% translate 'Введите имя' %}" value="{{ request.user.username }}">
           </div>
         </div>
         
         <div class="row align-items-center pb-3">
           <label class="h5 col align-items-center fw-semibold form-check-label">
-            <i class="bi bi-briefcase-fill me-2 text-success"></i>{% translate 'Job' %}:
+            <i class="bi bi-briefcase-fill me-2 text-success"></i>{% translate 'Работа' %}:
           </label>
           <div class="h6 col text-small ms-1">
-            <input name="job" class="form-control rounded-1" type="text" placeholder="{% translate 'Job' %}" value="{% if request.user.job %}{{ request.user.job }}{% else %}{% endif %}">
+            <input name="job" class="form-control rounded-1" type="text" placeholder="{% translate 'Введите работу' %}" value="{% if request.user.job %}{{ request.user.job }}{% else %}{% endif %}">
           </div>
         </div>
         
         <div class="row align-items-center">
           <label class="h5 col align-items-center fw-semibold form-check-label">
-            <i class="bi bi-telephone-fill me-2 text-danger"></i>{% translate 'Phone number' %}:
+            <i class="bi bi-telephone-fill me-2 text-danger"></i>{% translate 'Телефонный номер' %}:
           </label>
           <div class="h6 col text-small ms-1">
-            <input name="phone_number" class="form-control rounded-1" type="text" placeholder="{% translate 'Phone number' %}" pattern="^\+993[0-9]{8}$" id="tel_number" value="{% if request.user.telephone_number %}{{ request.user.telephone_number }}{% else %}{% endif %}">
+            <input name="phone_number" class="form-control rounded-1" type="text" placeholder="{% translate 'Введите ваш номер' %}" pattern="^\+993[0-9]{8}$" id="tel_number" value="{% if request.user.telephone_number %}{{ request.user.telephone_number }}{% else %}{% endif %}">
           </div>
         </div>
       </div>
     </div>
   
     <div class="justify-content-end mx-auto text-end" style="width: 90vw;">
-      <button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">
-        {% translate 'Save' %}
+      <button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;" type="submit">
+        {% translate 'Сохранить' %}
       </button>
     </div>
   </form>

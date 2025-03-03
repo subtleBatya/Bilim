@@ -18,14 +18,14 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mx-auto" data-aos="slide-down" data-aos-duration="1500">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'core:index' %}">{% translate 'Home' %}</a>
+                        <a class="nav-link" href="{% url 'core:index' %}">{% translate 'Главная' %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'library:library' %}">{% translate 'Library' %}</a>
+                        <a class="nav-link" href="{% url 'library:library' %}">{% translate 'Библиотека' %}</a>
                     </li>
                     {% if request.user.is_staff %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'auth:admin_page' %}">{% translate 'Admin' %}</a>
+                        <a class="nav-link" href="{% url 'auth:admin_page' %}">{% translate 'Админ' %}</a>
                     </li>
                     {% endif %}
                     <li class="nav-item">
@@ -34,7 +34,7 @@
                     {% if courses %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="coursesDropadmin_pagedown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {% translate 'Courses' %}
+                            {% translate 'Все курсы' %}
                         </a>
                         <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
                             {% for course in courses %}
@@ -45,17 +45,17 @@
                     {% endif %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {% translate 'Profile' %}
+                            {% translate 'Дополнительно' %}
                         </a>
                         <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
                             {% if request.user.is_student %}
-                            <li><a class="dropdown-item hover-effect" href="{% url 'auth:profile' %}">{% translate 'My Profile' %}</a></li>
+                            <li><a class="dropdown-item hover-effect" href="{% url 'auth:profile' %}">{% translate 'Мой профиль' %}</a></li>
                             {% elif request.user.is_teacher %}
-                            <li><a class="dropdown-item hover-effect" href="{% url 'teacher:teacher_profile' %}">{% translate 'My Profile' %}</a></li>
+                            <li><a class="dropdown-item hover-effect" href="{% url 'teacher:teacher_profile' %}">{% translate 'Мой профиль' %}</a></li>
                             {% endif %}
-                            <li><a class="dropdown-item hover-effect" href="{% url 'users:all_users' %}">{% translate 'All users' %}</a></li>
-                            <li><a class="dropdown-item hover-effect" href="{% url 'applications:application' %}">{% translate 'Requests and proposals' %}</a></li>
-                            <li><a class="dropdown-item hover-effect" href="{% url 'auth:logout' %}">{% translate 'Logout' %}</a></li>
+                            <li><a class="dropdown-item hover-effect" href="{% url 'users:all_users' %}">{% translate 'Все пользователи' %}</a></li>
+                            <li><a class="dropdown-item hover-effect" href="{% url 'applications:application' %}">{% translate 'Жалобы и заявки' %}</a></li>
+                            <li><a class="dropdown-item hover-effect" href="{% url 'auth:logout' %}">{% translate 'Выйти' %}</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -70,7 +70,7 @@
 
     <div class="row m-5" data-aos="slide-up" data-aos-duration="2500">
         <div class="col-7">
-            <h1 class="display-3 fw-bold" style="color: #fff;">{% translate 'Bilim University Platform' %}</h1>
+            <h1 class="display-3 fw-bold" style="color: #fff;">{% translate 'Платформа BILIM' %}</h1>
             <div class="row">
                 <h5 class="display-6" style="color: #fff">{{ content }}</h5>
             </div>

@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% translate 'BILIM Videos' %}</title>
+  <title>{% translate 'BILIM Видео Учителей' %}</title>
   {% include "core/static_files/links.html" %}
 </head>
 
@@ -16,14 +16,14 @@
   <div class="video-player">
     <video id="video-player" width="100%" height="700px" controls>
       <source id="video-source" src="{{video.video.url }}" type="video/mp4">
-      {% translate 'Your browser does not support the video tag.' %}
+      {% translate 'Ваш браузер не поддерживает видео теги' %}
     </video>
   </div>
 
   <div class="mx-auto mt-3" style="width: 90vw;">
     <div class="d-flex">
       <div id="view-counter" class="fs-4 mt-2 ms-2">
-        <b>{% translate 'Views:' %} </b> <span id="view-count">{{video.views}}</span>
+        <b>{% translate 'Просмотры:' %} </b> <span id="view-count">{{video.views}}</span>
       </div>
     </div>
   </div>

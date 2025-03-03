@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% translate 'BILIM Login' %}</title>
+  <title>{% translate 'Вход BILIM' %}</title>
   <link rel="stylesheet" href="{% static 'core/css/login.css' %}">
   {% include "core/static_files/links.html" %}
 </head>
@@ -13,11 +13,11 @@
 <!-- Flags -->
     <div class="position-relative">
       <a href="">
-        <div class="flag m-3"><img src="{% static 'core/images/turkmen-flag.png' %}" alt=""></div>
+        <div class="flag m-3 "><img src="{% static 'core/images/turkmen-flag.png' %}" alt=""></div>
       </a>
       
       <a href="">
-        <div class="flag_2 m-3" style=""><img src="{% static 'core/images/turkmen-flag.png' %}" alt=""></div>
+        <div class="flag_2 m-3"><img src="{% static 'core/images/russian-flag.png' %}" alt=""></div>
       </a>
     </div>
     <div class="d-flex mx-auto justify-content-center align-items-center">
@@ -25,31 +25,31 @@
           <div class="col-md-9 col-lg-5 col-12 col-sm-9 mx-auto">
               <div class="mt-5 bg-secondary"></div>
               <div class="logo pt-3"><img src="{% static 'core/images/course.webp' %}" alt=""></div>
-              <div class="d-md-none h3">{% translate 'Bilim University' %}</div>
-              <div class="fs-5 fw-medium text-center" style="color:black;">{% translate 'Welcome Back! Login to your account' %}</div>
+              <div class="d-md-none h3">{% translate 'Платформа BILIM' %}</div>
+              <div class="fs-5 fw-medium text-center" style="color:black;">{% translate 'С возвращением! Зайдите в свой аккаунт' %}</div>
               
             <form action="{% url 'auth:login' %}" method="post">
               {% csrf_token %}
                 <div class="mb-3">
                   <div class="mt-3 text-start ">
-                      <input class="w-100 p-3 small form-control" type="text" placeholder="{% translate 'Username' %}" name="username" id="username">
+                      <input class="w-100 p-3 small form-control" type="text" placeholder="{% translate 'Логин' %}" name="username" id="username">
                   </div>
                   <div class="mt-3 text-start">
-                      <input class="w-100 p-3 small form-control" type="password" placeholder="{% translate 'Password' %}" name="password" id="password">
+                      <input class="w-100 p-3 small form-control" type="password" placeholder="{% translate 'Пароль' %}" name="password" id="password">
                   </div>
               </div>
               <a href="">
                 <div class="mb-5 text-center">
-                  <button id="loginButton" disabled class="p-2 rounded-5 border-0 text-white fs-5 fw-light w-100" style="background-color: gray; cursor: not-allowed;">{% translate 'Login' %}</button>
+                  <button id="loginButton" disabled class="p-2 rounded-5 border-0 text-white fs-5 fw-light w-100" style="background-color: gray; cursor: not-allowed;">{% translate 'Войти' %}</button>
                 </div>
               </a>
             </form>              
               <div class="text-center small mb-2">
-                <p class="text text-center">{% translate "Don't have an account?" %}</p>
+                <p class="text text-center">{% translate "У вас нет аккаунта?" %}</p>
               </div>
               <a href="{% url 'auth:sign_up' %}">
                 <div class="mb-5 text-center">
-                  <button class="sign_up rounded-5 border-0 text-white small p-2 w-100 fw-light" >{% translate 'Sign up' %}</button>
+                  <button class="sign_up rounded-5 border-0 text-white small p-2 w-100 fw-light" >{% translate 'Зарегистрироваться' %}</button>
                 </div>
               </a>  
           </div>  

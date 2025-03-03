@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% translate 'Edit User Profile' %}</title>
+    <title>{% translate 'Редактировать профиль' %}</title>
     {% include "core/static_files/links.html" %}
     <style>
         label {
@@ -32,12 +32,12 @@
     </style>
 </head>
 <body>
-    {% include "core/hero.html" with content="{% translate 'Edit your profile' %}" image_path="core/images/course.webp" %}
+    {% include "core/hero.html" with content=_("Редактируйте свой профиль") image_path="core/images/course.webp" %}
     <div class="container mt-5 form-container">
         <div class="row">
             <!-- Profile Picture Section -->
             <div class="col-md-3">
-                <h3 class="mb-3 text-center">{% translate 'Your Picture' %}</h3>
+                <h3 class="mb-3 text-center">{% translate 'Ваш аватар' %}</h3>
                 <form action="{% url 'auth:edit_profile' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-4 text-center text-md-start">
@@ -56,28 +56,28 @@
 
             <!-- General Information Section -->
             <div class="col-md-4">
-                <h3 class="mb-3">{% translate 'General Information' %}</h3>
+                <h3 class="mb-3">{% translate 'Общая информация' %}</h3>
                 <div class="mb-4 form-group">
-                    <label for="fullname" class="form-label">{% translate 'Nickname' %}:</label>
-                    <input name='username' type="text" class="form-control" id="fullname" placeholder="{% translate 'Nickname' %}" value="{{request.user.username}}">
+                    <label for="fullname" class="form-label">{% translate 'Имя' %}:</label>
+                    <input name='username' type="text" class="form-control" id="fullname" placeholder="{% translate 'Введите имя' %}" value="{{request.user.username}}">
                 </div>
                 <div class="mb-4 form-group">
-                    <label for="profession" class="form-label">{% translate 'Job' %}:</label>
-                    <input name="job" type="text" class="form-control" id="profession" placeholder="{% translate 'Write your Job' %}" value="{% if request.user.job %}{{request.user.job}}{% else %}{% endif %}">
+                    <label for="profession" class="form-label">{% translate 'Работа' %}:</label>
+                    <input name="job" type="text" class="form-control" id="profession" placeholder="{% translate 'Введите работу' %}" value="{% if request.user.job %}{{request.user.job}}{% else %}{% endif %}">
                 </div>
                 <div class="mb-4 form-group">
-                    <label for="motivation" class="form-label">{% translate 'About me' %}:</label>
-                    <textarea name="about_me" class="form-control" id="motivation" placeholder="{% translate 'Write about yourself' %}" maxlength="200" rows=4>{% if request.user.about_me %}{{request.user.about_me}}{% endif %}</textarea>
+                    <label for="motivation" class="form-label">{% translate 'Про меня' %}:</label>
+                    <textarea name="about_me" class="form-control" id="motivation" placeholder="{% translate 'Введите информацию о вас' %}" maxlength="200" rows=4>{% if request.user.about_me %}{{request.user.about_me}}{% endif %}</textarea>
                 </div>
                 <div class="mb-4 form-group">
-                    <label for="goals" class="form-label">{% translate 'Goals' %}:</label>
-                    <textarea name="goals" class="form-control" id="goals" placeholder="{% translate 'Write about goals' %}" maxlength="200" rows=4>{% if request.user.about_my_goals%}{{request.user.about_my_goals}}{% endif %}</textarea>
+                    <label for="goals" class="form-label">{% translate 'Цели' %}:</label>
+                    <textarea name="goals" class="form-control" id="goals" placeholder="{% translate 'Напишите о своих целях' %}" maxlength="200" rows=4>{% if request.user.about_my_goals%}{{request.user.about_my_goals}}{% endif %}</textarea>
                 </div>
             </div>
 
             <!-- Information About Yourself Section -->
             <div class="col-md-5">
-                <h3 class="mb-3 text-center">{% translate 'Information About Yourself' %}</h3>
+                <h3 class="mb-3 text-center">{% translate 'Умения либо о вас' %}</h3>
                 <div class="choose-fields d-flex">
                     {% for ability in abilities %}
                         {% if ability in request.user.user_abilities.all %}
@@ -99,7 +99,7 @@
                 </div>
                 <input type="hidden" id="selectedAbilities" name="selected_abilities">
                 <div class="btn-container">
-                    <button type="submit" class="btn save-button downloader fs-5">{% translate 'Save' %}</button>
+                    <button type="submit" class="btn save-button downloader fs-5">{% translate 'Сохранить' %}</button>
                 </div>
             </div>
         </div>
@@ -128,7 +128,7 @@ function toggleField(fieldId) {
             selectedAbilities.push(fieldId);
             card.classList.add('active');
         } else {
-            alert("{% translate 'You can select a maximum of 3 fields.' %}");
+            alert("{% translate 'Вы можете выбрать только 3 элемента' %}");
         }
     }
 

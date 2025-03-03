@@ -5,11 +5,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% translate 'Bilim Book-details' %}</title>
+  <title>{% translate 'Библиотека Bilim' %}</title>
   {% include 'core/static_files/links.html'%}
 </head>
 <body>
-  {% include 'core/hero.html' with content="Book details" image_path="core/images/library.png"%}
+  {% include 'core/hero.html' with content=_("О книге") image_path="core/images/library.png"%}
  <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
     <div class="row w-100" style="max-width: 1200px;">
       <!-- Левая колонка: картинка -->
@@ -17,19 +17,19 @@
         <img 
     src="{{book.book_poster.url}}" 
     class="custom-image" 
-    alt="{% translate 'Book poster' %}">
+    alt="{% translate 'Постер' %}">
       </div>
       <!-- Правая колонка: заголовки и текст -->
       <div class="col-md-6">
         <div class="d-flex flex-column justify-content-between h-100">
           <div>
             <h1 class='text-center'>{{book.name}} </h1> 
-            <h6 class="text-center p-3">({{book.views}} {% translate 'Customer reviews' %})</h6>
+            <h6 class="text-center p-3">({{book.views}}{% if book.views < 5 and book.views > 1 %} {% translate 'Просмотра' %} {% elif book.views == 1 %} {% translate 'Просмотр' %} {% else %} {% translate 'Просмотров' %}  {% endif %})</h6>
             <p style="text-align: justify;">{{book.description}} </p>
           </div>
           <div>
-            <h5 class="mb-5"><b>{% translate 'Category' %}:</b>{{book.category}} </h5>
-            <a href="{{book.book_file.url}}" download class="btn btn-primary downloader mt-0 rounded-3">{% translate 'Download' %}</a>
+            <h5 class="mb-5"><b>{% translate 'Категории' %}:</b>{{book.category}} </h5>
+            <a href="{{book.book_file.url}}" download class="btn btn-primary downloader mt-0 rounded-3">{% translate 'Загрузить' %}</a>
           </div>
         </div>
       </div>
