@@ -28,12 +28,12 @@
               
                     <div class="text-center">
                         <div class="mb-3" style="border: 1px solid #8f95dd;">
-                                <label for="fileUpload" class="form-label text-dark fw-bold mt-3">Upload Video</label>
+                                <label for="fileUpload" class="form-label text-dark fw-bold mt-3">{% translate 'Upload Video'%}</label>
                                 <div class=" p-4 text-center bg-white">
-                                    <p class="mb-3 fw-bold">Upload only to 20 min video</p>
+                                    <p class="mb-3 fw-bold">{% translate 'Upload only to 20 min video'%}</p>
                                     <button 
                                         class="btn fw-bold border border-secondary downloader text-white" style="color:#000;" 
-                                        onclick="document.getElementById('fileUpload').click()">Click to Add Here</button>
+                                        onclick="document.getElementById('fileUpload').click()">{% translate 'Click to Add Here'%}</button>
                                     <input 
                                         name="video"
                                         type="file" 
@@ -55,37 +55,37 @@
                     </div>  
                 </div>
 
-                <div class="col-md-1" style="margin-top: 22vh;">
+                <div class="col-md-1 d-md-none" style="margin-top: 22vh;">
                     <div>
                         <!-- Progress Bar Container -->
                         <div id="progressContainer" style="display: none; width: 100%; margin-top: 10px;">
                             <div id="progressBar" style="width: 0%; height: 20px; background-color: green;"></div>
                             <p id="progressText">0%</p>
-                        </div>
+                        </div>  
                     </div>
                 </div>
                 
                 <div class=" text-start fs-5 fw-bold col-11 col-md-5 align-items-md-center" >
                     <div class="mb-3 row">
-                        <label class="col" for="">Ady:</label>
+                        <label class="col" for="">{% translate 'Name:'%}</label>
                         <input name='video_title' class="col form-control" type="text" placeholder="Video name">
                     </div>
                      <div class="mb-3 row">
-                        <label class="col" for="">Description:</label>
+                        <label class="col" for="">{% translate 'Description:'%}</label>
                         <textarea name='video_description' class="col form-control" type="text" placeholder="Video description" maxlength='250' row='4'></textarea>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col" for="">Poster:</label>
+                        <label class="col" for="">{% translate 'Poster:'%}</label>
                         <input name='poster' class="col form-control" type="file" placeholder="Video name" accept="image/*">
                     </div>
                     <div class=" row mb-2">
-                        <label class="col-6" for="">Video category:</label>
+                        <label class="col-6" for="">{% translate 'Video category:'%}</label>
                         <select name="main_cat" class="col form-control form-select" style="height: 5vh;" id="category" name="category">
-                            <option value=""  class="text-secondary" disabled selected>Choose category</option> 
+                            <option value=""  class="text-secondary" disabled selected>{% translate 'Choose category:'%}</option> 
                             {% for main_cat in main_category%}
                             <option value="{{ main_cat.category_name }}"  class="">{{ main_cat.category_name }}</option> 
                             {% empty %}
-                            <option value=""  class="text-secondary" disabled selected>No category</option> 
+                            <option value=""  class="text-secondary" disabled selected>{% translate 'No category:'%}</option> 
                             {% endfor %}
                         </select>
                     </div>
@@ -93,11 +93,11 @@
                     <div class=" row">
                         <label class="col-6" for="">Course category:</label>
                         <select name="course_cat" class="col form-control form-select" style="height: 5vh;" id="category" name="category">
-                            <option value=""  class="text-secondary" disabled selected>Choose category</option> 
+                            <option value=""  class="text-secondary" disabled selected>{% translate 'Choose category:'%}</option> 
                             {% for course_cat in course_category %}
                             <option value="{{ course_cat.course_name }}"  class="">{{ course_cat.course_name }}</option> 
                             {% empty %}
-                            <option value=""  class="text-secondary" disabled selected>No category</option> 
+                            <option value=""  class="text-secondary" disabled selected>N{% translate 'No category:'%}</option> 
                             {% endfor %}
                         </select>
                     </div>
@@ -118,7 +118,7 @@
                     id="submitBtn" 
                     class="downloader text-center text-white px-4 py-1 rounded-3 fw-medium"
                     style="border: none;">
-                    Save
+                    {% translate 'Save'%}
                     </button>
             
                 </div>

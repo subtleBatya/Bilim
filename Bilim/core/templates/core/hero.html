@@ -1,109 +1,108 @@
 {% load static %}
+{% load i18n %}
 <div class="hero w-100">
-        <nav class="navbar navbar-expand-lg bg-transparent">
-            <div class="container-fluid">
-                <!-- Left Section: Logo and Brand Name -->
-                <div class="navbar-brand d-flex align-items-center" data-aos="slide-right" data-aos-duration="1500">
-                    <img src="{% static 'core/images/course.webp'%}" alt="Logo" class="logo">
-                    <span class="brand-name">BILIM</span>
-                </div>
-    
-                <!-- Hamburger Button for Mobile -->
-                <button class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-    
-                <!-- Center Section: Navigation Menu -->
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav mx-auto" data-aos="slide-down" data-aos-duration="1500">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'core:index'%}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'library:library'%}">Library</a>
-                        </li>
-                        {% if request.user.is_staff %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'auth:admin_page'%}">Admin</a>
-                        </li>
-                        {% endif %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'videos:shorts'%}">#Shorts</a>
-                        </li>
-                        {% if courses %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="coursesDropadmin_pagedown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Courses
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
-                                {% for course in courses %}
-                                <li><a class="dropdown-item hover-effect" href="{% url "videos:all_courses" course.id %}">{{course.category_name}}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                        {% endif %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Profile
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
-                                {% if request.user.is_student %}
-                                <li><a class="dropdown-item hover-effect" href="{% url "auth:profile"%}">My Profil</a></li>
-                                {% elif request.user.is_teacher %}
-                                <li><a class="dropdown-item hover-effect" href="{% url "teacher:teacher_profile"%}">My Profile</a></li>
-                                {% endif %}
-                                {% comment %} <li><a class="dropdown-item hover-effect" href="{% url 'auth:payment'%}">Payment</a></li> {% endcomment %}
-                                <li><a class="dropdown-item hover-effect" href="{% url 'users:all_users'%}">All users</a></li>
-                                <li><a class="dropdown-item hover-effect" href="{% url 'applications:application'%}">Teklipler we arzalar</a></li>
-                                <li><a class="dropdown-item hover-effect" href="{% url 'auth:logout'%}">Logout</a></li>
-                            </ul>
-                        </li>
-                        
-                    </ul>
-    
-                    <!-- Right Section: Avatar and Username -->
-                    <div class="d-flex align-items-center" data-aos="slide-left" data-aos-duration="1500">
-                        <span class="username me-2">{{ request.user.username }} </span>
-                    </div>
-                </div>
+    <nav class="navbar navbar-expand-lg bg-transparent">
+        <div class="container-fluid">
+            <!-- Left Section: Logo and Brand Name -->
+            <div class="navbar-brand d-flex align-items-center" data-aos="slide-right" data-aos-duration="1500">
+                <img src="{% static 'core/images/course.webp' %}" alt="Logo" class="logo">
+                <span class="brand-name">BILIM</span>
             </div>
-        </nav>
-        <div class="row m-5" data-aos="slide-up" data-aos-duration="2500">
-            <div class="col-7">
-                <h1 class="display-3 fw-bold" style="color: #fff;">Bilim University Platformasy</h1>
-                <div class="row">
-                    <h5 class="display-6" style="color: #fff">{{content}}</h5>
+
+            <!-- Hamburger Button for Mobile -->
+            <button class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Center Section: Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mx-auto" data-aos="slide-down" data-aos-duration="1500">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'core:index' %}">{% translate 'Home' %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'library:library' %}">{% translate 'Library' %}</a>
+                    </li>
+                    {% if request.user.is_staff %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'auth:admin_page' %}">{% translate 'Admin' %}</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'videos:shorts' %}">#Shorts</a>
+                    </li>
+                    {% if courses %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="coursesDropadmin_pagedown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% translate 'Courses' %}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
+                            {% for course in courses %}
+                            <li><a class="dropdown-item hover-effect" href="{% url 'videos:all_courses' course.id %}">{{ course.category_name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% translate 'Profile' %}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
+                            {% if request.user.is_student %}
+                            <li><a class="dropdown-item hover-effect" href="{% url 'auth:profile' %}">{% translate 'My Profile' %}</a></li>
+                            {% elif request.user.is_teacher %}
+                            <li><a class="dropdown-item hover-effect" href="{% url 'teacher:teacher_profile' %}">{% translate 'My Profile' %}</a></li>
+                            {% endif %}
+                            <li><a class="dropdown-item hover-effect" href="{% url 'users:all_users' %}">{% translate 'All users' %}</a></li>
+                            <li><a class="dropdown-item hover-effect" href="{% url 'applications:application' %}">{% translate 'Requests and proposals' %}</a></li>
+                            <li><a class="dropdown-item hover-effect" href="{% url 'auth:logout' %}">{% translate 'Logout' %}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Right Section: Avatar and Username -->
+                <div class="d-flex align-items-center" data-aos="slide-left" data-aos-duration="1500">
+                    <span class="username me-2">{{ request.user.username }} </span>
                 </div>
-            </div>
-            <div class="col-5">
-                <img src="{% static image_path %}" alt="" class="indexImage">
             </div>
         </div>
-        <div class="wave">
-            <svg viewBox="1 0 1200 320" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#fff" fill-opacity="1" d="M0,160L40,144C80,128,160,96,240,96C320,96,400,128,480,160C560,192,640,224,720,224C800,224,880,192,960,181.3C1040,171,1120,181,1200,192C1280,203,1360,213,1400,218.7L1440,224L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>
-            </svg>
+    </nav>
+
+    <div class="row m-5" data-aos="slide-up" data-aos-duration="2500">
+        <div class="col-7">
+            <h1 class="display-3 fw-bold" style="color: #fff;">{% translate 'Bilim University Platform' %}</h1>
+            <div class="row">
+                <h5 class="display-6" style="color: #fff">{{ content }}</h5>
+            </div>
+        </div>
+        <div class="col-5">
+            <img src="{% static image_path %}" alt="" class="indexImage">
         </div>
     </div>
 
+    <div class="wave">
+        <svg viewBox="1 0 1200 320" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#fff" fill-opacity="1" d="M0,160L40,144C80,128,160,96,240,96C320,96,400,128,480,160C560,192,640,224,720,224C800,224,880,192,960,181.3C1040,171,1120,181,1200,192C1280,203,1360,213,1400,218.7L1440,224L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>
+        </svg>
+    </div>
+</div>
 
-    <script>
-        // Function to toggle the navbar visibility
-        function toggleNavbar() {
-            const navbar = document.querySelector('.navbar-collapse');
-            const isCollapsed = navbar.classList.contains('show');
-    
-            if (isCollapsed) {
-                // Hide the navbar
-                navbar.classList.remove('show');
-            } else {
-                // Show the navbar
-                navbar.classList.add('show');
-            }
+<script>
+    // Function to toggle the navbar visibility
+    function toggleNavbar() {
+        const navbar = document.querySelector('.navbar-collapse');
+        const isCollapsed = navbar.classList.contains('show');
+
+        if (isCollapsed) {
+            // Hide the navbar
+            navbar.classList.remove('show');
+        } else {
+            // Show the navbar
+            navbar.classList.add('show');
         }
-    
-        // Add event listener to the hamburger button
-        const navbarToggler = document.querySelector('.navbar-toggler');
-        navbarToggler.addEventListener('click', toggleNavbar);
-    </script>
-    
+    }
+
+    // Add event listener to the hamburger button
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    navbarToggler.addEventListener('click', toggleNavbar);
+</script>

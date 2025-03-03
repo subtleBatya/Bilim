@@ -1,10 +1,11 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BILIM</title>
+    <title>{% translate 'BILIM' %}</title>
     {% include "core/static_files/links.html"%}
     <style>
         #button_blocks{
@@ -19,33 +20,33 @@
 
         <div class=" d-flex text-center fs-1 mb-3 mx-auto" style="width: 90vw;">
             
-            <div>{% if request.user != user %}Bilim user profile{% else %}Your Profile {% endif %} </div>
+            <div>{% if request.user != user %}{% translate 'Bilim user profile' %}{% else %}{% translate 'Your Profile' %} {% endif %} </div>
         </div>
-
 
         <div class="d-flex align-items-center justify-content-between mb-5 mx-auto" style="width: 90vw;">
             <div class="d-flex justify-content-center align-items-center " style="flex-wrap:wrap;">
                 <div class="">
                     {% if user.user_avatar %}
-                    <img class="" style="width: 10vw; width: 100px; border-radius: 30px;" src="{{ user.user_avatar.url }}" alt="">
+                    <img class="" style="width: 10vw; width: 100px; border-radius: 30px;" src="{{ user.user_avatar.url }}" alt="{% translate 'User Avatar' %}">
                     {% else %}
-                    <img class="" style="width: 10vw; width: 100px; border-radius: 50%;" src="{% static "core/images/default_profile_image.png"%}" alt="">
+                    <img class="" style="width: 10vw; width: 100px; border-radius: 50%;" src="{% static "core/images/default_profile_image.png"%}" alt="{% translate 'Default Avatar' %}">
                     {% endif %}
                 </div>
                 <div class="d-flex justify-content-between align-items-center fw-bold fs-4 ms-4" style="flex-direction: column;">
-                    <div>Username: <span class="text-primary">{{user.username}} </span> </div>
-                    <div>Who:<span class="text-primary">{% if user.is_student %} Student{% elif user.is_teacher %}Teacher {% endif %}</span></div>
-                    <div>Job:{% if user.job%} <span class="text-primary"> {{user.job}}</span> {% else %}<span class="text-primary"> Not edited </span>{% endif %} </span></div>
-                     <div>Subscribers:<span class="text-primary">{{user.followers.count}} </span></div>
-                     {% if request.user != user %} <a href="{% url "users:follow" user.id %}" class="btn downloader" id="subscribeBtn">{% if request.user in user.followers.all %}Subscribed{% else %}Subscribe{% endif %} </a>{% endif %}
+                    <div>{% translate 'Username' %}: <span class="text-primary">{{user.username}} </span> </div>
+                    <div>{% translate 'Who' %}:<span class="text-primary">{% if user.is_student %} {% translate 'Student' %}{% elif user.is_teacher %}{% translate 'Teacher' %} {% endif %}</span></div>
+                    <div>{% translate 'Job' %}:{% if user.job%} <span class="text-primary"> {{user.job}}</span> {% else %}<span class="text-primary">{% translate 'Not edited' %}</span>{% endif %} </span></div>
+                    <div>{% translate 'Subscribers' %}:<span class="text-primary">{{user.followers.count}} </span></div>
+                    {% if request.user != user %} <a href="{% url "users:follow" user.id %}" class="btn downloader" id="subscribeBtn">{% if request.user in user.followers.all %}{% translate 'Subscribed' %}{% else %}{% translate 'Subscribe' %} {% endif %} </a>{% endif %}
                 </div>
             </div>
         </div>
 
         <div id="button_blocks" class="d-flex gap-4 mt-5 mx-auto m-1 p-2 " style="flex-direction: row; justify-content: space-between; ">
-            <button id="gen_btn" style="cursor: pointer;" class="btn downloader">General</button>
-            <button id="exam_btn" style="cursor: pointer;" class="btn downloader">Videos</button>
-            <button id="class_btn" style="cursor: pointer;" class="btn downloader">Full information</button>
+            <button id="gen_btn" style="cursor: pointer;" class="btn downloader">{% translate 'General' %}</button>
+            <button id="exam_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Videos' %}</button>
+            <button id="class_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Full information' %}</button>
+            <button id="subs_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Videos' %}</button>
         </div>
 
         <div class=" mt-5 ">
@@ -54,23 +55,23 @@
             <!-- GENERAL BLOCK -->
                 <div class="col-md-4">
                     <div class="mb-3">
-                      <h4>About user</h4>
-                      <p>{% if user.about_me %} {{ user.about_me }} {% else %} There is nothing about this user! {% endif %} </p>
+                      <h4>{% translate 'About user' %}</h4>
+                      <p>{% if user.about_me %} {{ user.about_me }} {% else %} {% translate 'There is nothing about this user!' %} {% endif %} </p>
                     </div>
                     <div class="mb-3">
-                      <h4>About this user goals</h4>
-                      <p> {% if user.about_my_goals %} {{ user.about_my_goals}} {% else %} There is nothing about this user's goals! {% endif %} </p>
+                      <h4>{% translate 'About this user goals' %}</h4>
+                      <p> {% if user.about_my_goals %} {{ user.about_my_goals}} {% else %} {% translate 'There is nothing about this user\'s goals!' %} {% endif %} </p>
                     </div>
                 </div>
             {% elif user.is_teacher %}
                 <div class="col-md-4">
                         <div class="mb-3">
-                        <h1>About User</h1>
-                        <p>{% if user.job %} {{ user.job }} {% else %} There is nothing about this user! {% endif %} </p>
+                        <h1>{% translate 'About User' %}</h1>
+                        <p>{% if user.job %} {{ user.job }} {% else %} {% translate 'There is nothing about this user!' %} {% endif %} </p>
                         </div>
                         <div class="mb-3">
-                        <h1>Telephone number:</h1>
-                        <p> {% if user.telephone_number %} {{ user.telephone_number}} {% else %} There is nothing about this user's phone number! {% endif %} </p>
+                        <h1>{% translate 'Telephone number' %}:</h1>
+                        <p> {% if user.telephone_number %} {{ user.telephone_number}} {% else %} {% translate 'There is nothing about this user\'s phone number!' %} {% endif %} </p>
                         </div>
                 </div>
             {% endif %}
@@ -78,13 +79,13 @@
             
 <section id="exams_block" style="width: 100vw;">
     <div class="wrapper-card">
-        <h4 style="font-weight: normal; text-align: center; margin: 2rem 0;" >User videos</h4>
+        <h4 style="font-weight: normal; text-align: center; margin: 2rem 0;" >{% translate 'User videos' %}</h4>
         <div class="cols-card">
           {% for popular_video in user_videos %}
             <div class="col-card" ontouchstart="this.classList.toggle('hover');">
                     <div class="container-card">
                         <div class="front">
-                            <img src="{{popular_video.poster.url}}" alt="Python Course">
+                            <img src="{{popular_video.poster.url}}" alt="{% translate 'Python Course' %}">
                             <div class="inner">
                                 <p>{{popular_video.title|truncatewords:6}}</p>
                             </div>
@@ -92,14 +93,14 @@
                         <div class="back">
                             <div class="inner">
                                 <p>{{popular_video.description|truncatewords:15}}</p>
-                                <a href="{% url "videos:video_of_course" popular_video.id %}" class="btn downloader rounded-3">View Video</a>
+                                <a href="{% url 'videos:video_of_course' popular_video.id %}" class="btn downloader rounded-3">{% translate 'View Video' %}</a>
                             </div>
                         </div>
                     </div>
               </div>
               {% empty%}
               <div class="w-100 text-center">
-                <h5>No videos added yet </h5>
+                <h5>{% translate 'No videos added yet' %} </h5>
             </div>
               {% endfor %}
           </div>
@@ -109,7 +110,7 @@
             <!-- CLASSES BLOCK -->
 
             <div id="class_block" class="mx-auto d-none " style="width: 90vw;">
-                <center><h4>User abilities</h4></center>
+                <center><h4>{% translate 'User abilities' %}</h4></center>
                 <div class="d-flex flex-wrap justify-content-start"> 
                     <!-- Display abilities if the user has any -->
                     {% for abilities in user.user_abilities.all %}
@@ -122,11 +123,42 @@
                     {% empty %}
                         <!-- Display message if no abilities -->
                         <div class="w-100 text-center">
-                            <h5>No abilities... </h5>
+                            <h5>{% translate 'No abilities... ' %}</h5>
                         </div>
                     {% endfor %}
                 </div>
             </div>
+
+
+            <section id="subs_block" style="width: 100vw;">
+                <div class="wrapper-card">
+                    <h4 style="font-weight: normal; text-align: center; margin: 2rem 0;" >{% translate 'User videos' %}</h4>
+                    <div class="cols-card">
+                      {% for popular_video in user_videos %}
+                        <div class="col-card" ontouchstart="this.classList.toggle('hover');">
+                                <div class="container-card">
+                                    <div class="front">
+                                        <img src="{{popular_video.poster.url}}" alt="{% translate 'Python Course' %}">
+                                        <div class="inner">
+                                            <p>{{popular_video.title|truncatewords:6}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="back">
+                                        <div class="inner">
+                                            <p>{{popular_video.description|truncatewords:15}}</p>
+                                            <a href="{% url 'videos:video_of_course' popular_video.id %}" class="btn downloader rounded-3">{% translate 'View Video' %}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                          </div>
+                          {% empty%}
+                          <div class="w-100 text-center">
+                            <h5>{% translate 'No videos added yet' %} </h5>
+                        </div>
+                          {% endfor %}
+                      </div>
+                  </div>
+              </section>
 
         </div>
     </div>

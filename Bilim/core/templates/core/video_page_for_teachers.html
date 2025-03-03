@@ -1,33 +1,37 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BILIM Videos</title>
-  {% include "core/static_files/links.html"%}
+  <title>{% translate 'BILIM Videos' %}</title>
+  {% include "core/static_files/links.html" %}
 </head>
-<body>
- {% comment %} {% include "core/hero.html" with content="Bilim Teacher Videos" image_path="core/images/course.webp"%} {% endcomment %}
- <div class="video-player">
-  <video id="video-player" width="100%" height="700px" controls>
-      <source id="video-source" src="{{video.video.url }}" type="video/mp4">
-      Your browser does not support the video tag.
-  </video>
-</div>
 
-  <div class=" mx-auto mt-3" style="width: 90vw;">
+<body>
+  {% comment %} {% include "core/hero.html" with content="Bilim Teacher Videos" image_path="core/images/course.webp" %} {% endcomment %}
+  
+  <div class="video-player">
+    <video id="video-player" width="100%" height="700px" controls>
+      <source id="video-source" src="{{video.video.url }}" type="video/mp4">
+      {% translate 'Your browser does not support the video tag.' %}
+    </video>
+  </div>
+
+  <div class="mx-auto mt-3" style="width: 90vw;">
     <div class="d-flex">
       <div id="view-counter" class="fs-4 mt-2 ms-2">
-        Views: <span id="view-count">{{video.views}}</span>
+        <b>{% translate 'Views:' %} </b> <span id="view-count">{{video.views}}</span>
       </div>
     </div>
   </div>
 
-  {% include "core/footer.html"%}
-{% include "core/static_files/scripts.html"%}
+  {% include "core/footer.html" %}
+  {% include "core/static_files/scripts.html" %}
   <script src="https://vjs.zencdn.net/8.5.2/video.min.js"></script>
-  <script src="{% static 'core/js/video_player.js'%}"></script>
+  <script src="{% static 'core/js/video_player.js' %}"></script>
 </body>
 
 </html>

@@ -1,36 +1,38 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BILIM create shorts</title>
+  <title>{% translate 'BILIM create shorts' %}</title>
   {% include "core/static_files/links.html" %}
 </head>
 
 <body>
  {% include "core/hero.html" with content="Upload your videos" image_path="core/images/profile_teacher_image.png"%}
   
- <div class=" text-center mx-auto" style="width: 90vw;">
+ <div class="text-center mx-auto" style="width: 90vw;">
     <hr class="p-1">
 </div>
 
-<form action="{% url "videos:create_shorts"%}" method="post" enctype="multipart/form-data" id="videoUploadForm">
+<form action="{% url 'videos:create_shorts' %}" method="post" enctype="multipart/form-data" id="videoUploadForm">
     {% csrf_token %}
-    <div class="mx-auto d-flex  align-items-start" style="margin-bottom: 20vh;" >
+    <div class="mx-auto d-flex align-items-start" style="margin-bottom: 20vh;">
         <div class="d-block mx-auto" style="width: 90vw;">
             <div class="row mt-md-4 ">
-                <div class=" col-12 col-md-3 col-lg-3 text-sm-center align-items-sm-center" style=" height: 10vh;">
-              
+                <div class="col-12 col-md-3 col-lg-3 text-sm-center align-items-sm-center" style="height: 10vh;">
                     <div class="text-center">
                         <div class="mb-3" style="border: 1px solid #8f95dd;">
-                                <label for="fileUpload" class="form-label text-dark fw-bold mt-3">Upload Video</label>
-                                <div class=" p-4 text-center bg-white">
-                                    <p class="mb-3 fw-bold">Upload only to 1 min video</p>
+                                <label for="fileUpload" class="form-label text-dark fw-bold mt-3">{% translate 'Upload Video' %}</label>
+                                <div class="p-4 text-center bg-white">
+                                    <p class="mb-3 fw-bold">{% translate 'Upload only to 1 min video' %}</p>
                                     <button type="button"
                                         class="btn fw-bold border border-secondary downloader text-white" style="color:#000;" 
-                                        onclick="document.getElementById('fileUpload').click()">Click to Add Here</button>
+                                        onclick="document.getElementById('fileUpload').click()">
+                                        {% translate 'Click to Add Here' %}
+                                    </button>
                                     <input 
                                         name="video"
                                         type="file" 
@@ -50,18 +52,18 @@
 
                 <div class="col-md-1 d-md-none" style="margin-top: 30vh;"></div>
                 
-                <div class=" text-start fs-5 fw-bold col-11 col-md-5 align-items-md-center" >
+                <div class="text-start fs-5 fw-bold col-11 col-md-5 align-items-md-center" >
                     <div class="mb-3 row">
-                        <label class="col" for="">Title:</label>
-                        <input name='video_title' class="col form-control" type="text" placeholder="Video name">
+                        <label class="col" for="">{% translate 'Title' %}:</label>
+                        <input name='video_title' class="col form-control" type="text" placeholder="{% translate 'Video name' %}">
                     </div>
                      <div class="mb-3 row">
-                        <label class="col" for="">Description:</label>
-                        <textarea name='video_description' class="col form-control" type="text" placeholder="Video description" maxlength='250' row='4'></textarea>
+                        <label class="col" for="">{% translate 'Description' %}:</label>
+                        <textarea name='video_description' class="col form-control" type="text" placeholder="{% translate 'Video description' %}" maxlength='250' row='4'></textarea>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col" for="">Poster:</label>
-                        <input name='poster' class="col form-control" type="file" placeholder="Video name" accept="image/*">
+                        <label class="col" for="">{% translate 'Poster' %}:</label>
+                        <input name='poster' class="col form-control" type="file" placeholder="{% translate 'Video name' %}" accept="image/*">
                     </div>
                 </div>
             </div>
@@ -77,7 +79,7 @@
                     id="submitBtn" 
                     class="downloader text-center text-white px-4 py-1 rounded-3 fw-medium"
                     style="border: none;">
-                    Save
+                    {% translate 'Save' %}
                     </button>
             
                 </div>
@@ -85,6 +87,7 @@
         </div>
     </div>
 </form>
+
 {% include "core/footer.html"%}
 <script>
 
@@ -97,7 +100,7 @@ function handleFileUpload(input) {
     fileInfoContainer.innerHTML = "";
 
     if (files.length > 1) {
-        alert("You can only upload one file at a time.");
+        alert("{% translate 'You can only upload one file at a time.' %}");
         input.value = ""; // Clear the input to prevent uploading multiple files
         return;
     }
@@ -111,7 +114,7 @@ function handleFileUpload(input) {
         window.URL.revokeObjectURL(video.src); // Clean up the object URL
 
         if (video.duration > maxDuration) {
-            alert(`The video "${fileName}" exceeds the maximum allowed duration of 20 minutes.`);
+            alert(`{% translate 'The video' %} "${fileName}" {% translate 'exceeds the maximum allowed duration of 20 minutes.' %}`);
             input.value = ""; // Clear the input to prevent uploading
             return;
         }
@@ -122,7 +125,7 @@ function handleFileUpload(input) {
 
         // Create file name display
         const fileNameDisplay = document.createElement("p");
-        fileNameDisplay.textContent = `Selected File: ${fileName}`;
+        fileNameDisplay.textContent = `{% translate 'Selected File:' %} ${fileName}`;
         fileNameDisplay.className = "fw-bold text-dark mb-1";
 
         // Create progress bar
@@ -137,7 +140,7 @@ function handleFileUpload(input) {
         // Create Remove button
         const removeButton = document.createElement("button");
         removeButton.className = "btn btn-danger btn-sm";
-        removeButton.textContent = "Remove";
+        removeButton.textContent = "{% translate 'Remove' %}";
         removeButton.onclick = () => removeFile(fileContainer, input);
 
         // Append file name, progress bar, and remove button to the file container
@@ -154,7 +157,6 @@ function handleFileUpload(input) {
             let progress = 0;
             function updateProgress() {
                 if (progress >= 100) {
-                    
                     progressBar.textContent = "100%";
                     progressBar.style.backgroundColor = "#28a745";
                     console.log("Progress complete!");
@@ -183,66 +185,65 @@ function removeFile(fileContainer, input) {
     input.value = ""; // Clear the file input field
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("videoUploadForm");
+    const fileInput = document.getElementById("fileUpload");
+    const submitButton = document.getElementById("submitBtn");
+    const progressContainer = document.getElementById("progressContainer");
+    const progressBar = document.getElementById("progressBar");
+    const progressText = document.getElementById("progressText");
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("videoUploadForm");
-        const fileInput = document.getElementById("fileUpload");
-        const submitButton = document.getElementById("submitBtn");
-        const progressContainer = document.getElementById("progressContainer");
-        const progressBar = document.getElementById("progressBar");
-        const progressText = document.getElementById("progressText");
-    
-        form.addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent default form submission
-    
-            let formData = new FormData(form);
-    
-            // Show the progress bar
-            progressContainer.style.display = "block";
-            progressBar.style.width = "0%";
-            progressText.innerText = "0%";
-    
-            submitButton.disabled = true;
-            submitButton.innerText = "Uploading...";
-    
-            // Create an XMLHttpRequest to track upload progress
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "{% url 'videos:create_shorts' %}", true);
-            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-    
-            // Track upload progress
-            xhr.upload.onprogress = function (event) {
-                if (event.lengthComputable) {
-                    let percentComplete = Math.round((event.loaded / event.total) * 100);
-                    progressBar.style.width = percentComplete + "%";
-                    progressText.innerText = percentComplete + "%";
-                }
-            };
-    
-            // Handle successful upload
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    alert("Video uploaded successfully!");
-                    form.reset();
-                } else {
-                    alert("Upload failed. Try again.");
-                }
-                submitButton.disabled = false;
-                submitButton.innerText = "Save";
-            };
-    
-            // Handle errors
-            xhr.onerror = function () {
-                alert("Upload error. Check your internet connection.");
-                submitButton.disabled = false;
-                submitButton.innerText = "Save";
-            };
-    
-            // Send the request
-            xhr.send(formData);
-        });
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        let formData = new FormData(form);
+
+        // Show the progress bar
+        progressContainer.style.display = "block";
+        progressBar.style.width = "0%";
+        progressText.innerText = "0%";
+
+        submitButton.disabled = true;
+        submitButton.innerText = "{% translate 'Uploading...' %}";
+
+        // Create an XMLHttpRequest to track upload progress
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "{% url 'videos:create_shorts' %}", true);
+        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+
+        // Track upload progress
+        xhr.upload.onprogress = function (event) {
+            if (event.lengthComputable) {
+                let percentComplete = Math.round((event.loaded / event.total) * 100);
+                progressBar.style.width = percentComplete + "%";
+                progressText.innerText = percentComplete + "%";
+            }
+        };
+
+        // Handle successful upload
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                alert("{% translate 'Video uploaded successfully!' %}");
+                form.reset();
+            } else {
+                alert("{% translate 'Upload failed. Try again.' %}");
+            }
+            submitButton.disabled = false;
+            submitButton.innerText = "{% translate 'Save' %}";
+        };
+
+        // Handle errors
+        xhr.onerror = function () {
+            alert("{% translate 'Upload error. Check your internet connection.' %}");
+            submitButton.disabled = false;
+            submitButton.innerText = "{% translate 'Save' %}";
+        };
+
+        // Send the request
+        xhr.send(formData);
     });
-    
+});
+
 </script>
  <!-- Bootstrap JS and Popper.js -->
 {% include "core/static_files/scripts.html" %} 
