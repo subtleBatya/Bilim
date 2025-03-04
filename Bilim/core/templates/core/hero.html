@@ -58,6 +58,15 @@
                             <li><a class="dropdown-item hover-effect" href="{% url 'auth:logout' %}">{% translate 'Выйти' %}</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="coursesDropadmin_pagedown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% translate 'Язык' %}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu1" aria-labelledby="coursesDropdown">
+                            <li><a class="dropdown-item hover-effect" href="/tk/{{request.get_full_path|slice:"4:"}}">Türkmençe</a></li>
+                            <li><a class="dropdown-item hover-effect" href="/ru/{{request.get_full_path|slice:"4:"}}">Русский</a></li>
+                        </ul>
+                    </li>
                 </ul>
 
                 <!-- Right Section: Avatar and Username -->

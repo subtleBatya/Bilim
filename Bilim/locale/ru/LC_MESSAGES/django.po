@@ -1,0 +1,943 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-04 09:53+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: core/templates/core/admin.html:11
+msgid "Принять или отклонить курсы"
+msgstr ""
+
+#: core/templates/core/admin.html:15
+msgid "Видео которые ждут действия"
+msgstr ""
+
+#: core/templates/core/admin.html:29 core/templates/core/admin.html:62
+#: core/templates/core/all_courses.html:60
+#: core/templates/core/bilim_exact_user.html:96
+#: core/templates/core/bilim_exact_user.html:149
+#: core/templates/core/index.html:39 core/templates/core/index.html:66
+#: core/templates/core/library.html:57 core/templates/core/profile.html:84
+#: core/templates/core/video_page.html:81
+msgid "Посмотреть"
+msgstr ""
+
+#: core/templates/core/admin.html:36
+msgid "Никаких видео ждущих действия"
+msgstr ""
+
+#: core/templates/core/admin.html:48
+msgid "Shorts ждущих действия"
+msgstr ""
+
+#: core/templates/core/admin.html:69
+msgid "Никаких Shorts не ждут действия"
+msgstr ""
+
+#: core/templates/core/all_courses.html:8
+msgid "BILIM курсы"
+msgstr ""
+
+#: core/templates/core/all_courses.html:12
+msgid "Найди свои курсы"
+msgstr ""
+
+#: core/templates/core/all_courses.html:19 core/templates/core/library.html:20
+msgid "Поиск..."
+msgstr ""
+
+#: core/templates/core/all_courses.html:27 core/templates/core/library.html:28
+msgid "Все"
+msgstr ""
+
+#: core/templates/core/all_courses.html:31 core/templates/core/library.html:32
+msgid "Нет категории"
+msgstr ""
+
+#: core/templates/core/all_courses.html:37 core/templates/core/library.html:38
+msgid "Сортировать"
+msgstr ""
+
+#: core/templates/core/all_courses.html:67
+msgid "Нет никаких видео курсов"
+msgstr ""
+
+#: core/templates/core/application.html:9
+msgid "BILIM Applications"
+msgstr ""
+
+#: core/templates/core/application.html:14
+msgid "Форма заявок или жалоб"
+msgstr ""
+
+#: core/templates/core/application.html:19
+msgid "Напишите ваши жалобы и предложение внизу"
+msgstr ""
+
+#: core/templates/core/application.html:21
+msgid "Напишите здесь..."
+msgstr ""
+
+#: core/templates/core/application.html:25
+msgid "Отправить"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:8
+#: core/templates/core/teacher_content.html:8
+#: core/templates/core/teacher_profile.html:9
+msgid "BILIM"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:23
+msgid "Профиль пользователя BILIM"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:23
+#: core/templates/core/profile.html:12
+msgid "Ваш профиль"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:30
+msgid "User Avatar"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:32
+msgid "Default Avatar"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:36
+#: core/templates/core/profile_edit.html:61
+#: core/templates/core/teacher_edit.html:48
+#: core/templates/core/teacher_profile.html:55
+msgid "Имя"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:37
+msgid "Роль"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:37
+#: core/templates/core/bilim_users.html:31 core/templates/core/sign_up.html:38
+msgid "Студент"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:37
+#: core/templates/core/bilim_users.html:31 core/templates/core/sign_up.html:41
+msgid "Учитель"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:38
+#: core/templates/core/profile_edit.html:65
+#: core/templates/core/teacher_edit.html:57
+#: core/templates/core/teacher_profile.html:61
+msgid "Работа"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:38
+#: core/templates/core/bilim_users.html:35
+msgid "Нет информаций"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:39
+msgid "Подписчики"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:40
+#: core/templates/core/bilim_users.html:41
+msgid "Подписан"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:40
+#: core/templates/core/bilim_users.html:41
+msgid "Подписаться"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:46
+msgid "Общее"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:47
+msgid "Все видео"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:48
+msgid "Умение"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:49
+#: core/templates/core/bilim_exact_user.html:135
+msgid "Видео подписчиков"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:58
+#: core/templates/core/bilim_exact_user.html:69
+msgid "О пользователе"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:59
+#: core/templates/core/bilim_exact_user.html:63
+#: core/templates/core/bilim_exact_user.html:70
+#: core/templates/core/bilim_exact_user.html:74
+#: core/templates/core/bilim_exact_user.html:126
+msgid "Пользователь не предоставил никаких информаций"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:62
+msgid "Цели пользователя"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:73
+#: core/templates/core/teacher_edit.html:66
+msgid "Телефонный номер"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:82
+msgid "Видео пользователя"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:103
+msgid "Пользователь не предоставил никаких видео"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:113
+msgid "Умение пользователя"
+msgstr ""
+
+#: core/templates/core/bilim_exact_user.html:156
+msgid "Пользователи на которых вы подписаны не добавили ещё видео "
+msgstr ""
+
+#: core/templates/core/bilim_users.html:8
+#: core/templates/core/bilim_users.html:16
+msgid "Пользователи BILIM"
+msgstr ""
+
+#: core/templates/core/bilim_users.html:14
+msgid "Все Пользователи BILIM"
+msgstr ""
+
+#: core/templates/core/bilim_users.html:25
+msgid "Фото пользователя"
+msgstr ""
+
+#: core/templates/core/bilim_users.html:27
+msgid "Аватар"
+msgstr ""
+
+#: core/templates/core/bilim_users.html:40
+msgid "Профиль"
+msgstr ""
+
+#: core/templates/core/book_details.html:8 core/templates/core/library.html:8
+msgid "Библиотека Bilim"
+msgstr ""
+
+#: core/templates/core/book_details.html:12
+msgid "О книге"
+msgstr ""
+
+#: core/templates/core/book_details.html:20
+#: core/templates/core/create_shorts.html:65
+msgid "Постер"
+msgstr ""
+
+#: core/templates/core/book_details.html:27
+msgid "Просмотра"
+msgstr ""
+
+#: core/templates/core/book_details.html:27
+msgid "Просмотр"
+msgstr ""
+
+#: core/templates/core/book_details.html:27
+msgid "Просмотров"
+msgstr ""
+
+#: core/templates/core/book_details.html:31
+msgid "Категории"
+msgstr ""
+
+#: core/templates/core/book_details.html:32
+msgid "Загрузить"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:9
+msgid "Создать видео BILIM"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:14
+msgid "Загрузите свои видео"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:28
+msgid "Загрузите видео"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:30
+msgid "Видео должен быть не больше 1 минуты"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:34
+msgid "Нажмите чтобы добавить"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:57
+#: core/templates/core/create_shorts.html:58
+#: core/templates/core/teacher_content.html:39
+msgid "Имя видео"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:61
+msgid "Описание"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:62
+msgid "Описание видео"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:66
+msgid "Постер видео"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:82
+#: core/templates/core/create_shorts.html:232
+#: core/templates/core/create_shorts.html:239
+#: core/templates/core/profile_edit.html:102
+#: core/templates/core/teacher_create_video.html:121
+#: core/templates/core/teacher_edit.html:103
+msgid "Сохранить"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:103
+msgid "Вы можете добавить только 1 видео за раз!"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:117
+msgid "Видео"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:117
+msgid "Ваше видео превышает лимит 1 минуту!"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:128
+msgid "Выбранный файл"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:143
+msgid "Убрать"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:207
+msgid "Загрузка..."
+msgstr ""
+
+#: core/templates/core/create_shorts.html:226
+msgid "Видео добавдено успешно!"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:229
+msgid "Произошла ошибка! Повторите поезже!"
+msgstr ""
+
+#: core/templates/core/create_shorts.html:237
+msgid "Произошла ошибка! Проверьте интернет!"
+msgstr ""
+
+#: core/templates/core/error.html:7
+msgid "Ошибка"
+msgstr ""
+
+#: core/templates/core/error.html:97
+msgid "Что-то пошло не так!"
+msgstr ""
+
+#: core/templates/core/error.html:98
+msgid "Попробуйте по поезже!"
+msgstr ""
+
+#: core/templates/core/error.html:99 core/templates/core/success.html:147
+msgid "Домой"
+msgstr ""
+
+#: core/templates/core/footer.html:9
+msgid "О нас"
+msgstr ""
+
+#: core/templates/core/footer.html:10
+msgid "Мы предоставляем лучшие курсы для наших клиентов."
+msgstr ""
+
+#: core/templates/core/footer.html:27
+msgid "Полезные ссылки"
+msgstr ""
+
+#: core/templates/core/footer.html:29 core/templates/core/hero.html:21
+msgid "Главная"
+msgstr ""
+
+#: core/templates/core/footer.html:30
+msgid "#shorts"
+msgstr ""
+
+#: core/templates/core/footer.html:31 core/templates/core/hero.html:24
+msgid "Библиотека"
+msgstr ""
+
+#: core/templates/core/footer.html:32
+msgid "Жалобы и предложения"
+msgstr ""
+
+#: core/templates/core/footer.html:38
+msgid "Контакты"
+msgstr ""
+
+#: core/templates/core/footer.html:40
+msgid "Телефон: 48 45 50"
+msgstr ""
+
+#: core/templates/core/footer.html:41
+msgid "Email: kepilliyollar54@gmail.com"
+msgstr ""
+
+#: core/templates/core/footer.html:49
+msgid "All rights reserved."
+msgstr ""
+
+#: core/templates/core/hero.html:28
+msgid "Админ"
+msgstr ""
+
+#: core/templates/core/hero.html:37
+msgid "Все курсы"
+msgstr ""
+
+#: core/templates/core/hero.html:48
+msgid "Дополнительно"
+msgstr ""
+
+#: core/templates/core/hero.html:52 core/templates/core/hero.html:54
+#: core/templates/core/profile.html:8
+msgid "Мой профиль"
+msgstr ""
+
+#: core/templates/core/hero.html:56
+msgid "Все пользователи"
+msgstr ""
+
+#: core/templates/core/hero.html:57
+msgid "Жалобы и заявки"
+msgstr ""
+
+#: core/templates/core/hero.html:58
+msgid "Выйти"
+msgstr ""
+
+#: core/templates/core/hero.html:63
+msgid "Язык"
+msgstr ""
+
+#: core/templates/core/hero.html:82 core/templates/core/login.html:28
+#: core/templates/core/login.html:64 core/templates/core/sign_up.html:30
+#: core/templates/core/sign_up.html:71
+msgid "Платформа BILIM"
+msgstr ""
+
+#: core/templates/core/index.html:13
+msgid "Курсы для всех"
+msgstr ""
+
+#: core/templates/core/index.html:18
+msgid "Недавно просмотренные"
+msgstr ""
+
+#: core/templates/core/index.html:20
+msgid "Все категории курсов"
+msgstr ""
+
+#: core/templates/core/index.html:51
+msgid "Популярные курсы"
+msgstr ""
+
+#: core/templates/core/index.html:83
+msgid "Добро пожаловать в BILIM!"
+msgstr ""
+
+#: core/templates/core/index.html:85
+msgid ""
+"На нашей платформе каждый найдет то, что поможет раскрыть потенциал. Мы "
+"предлагаем лучшие образовательные курсы, вдохновляющие материалы и "
+"уникальные возможности для личностного роста. В \"Билим\" обучение "
+"превращается в увлекательное путешествие, где каждый шаг приближает вас к "
+"вашей цели."
+msgstr ""
+
+#: core/templates/core/index.html:88
+msgid "Экспертные курсы"
+msgstr ""
+
+#: core/templates/core/index.html:89
+msgid "Интерактивное обучение"
+msgstr ""
+
+#: core/templates/core/index.html:90
+msgid "Доступность в любое время"
+msgstr ""
+
+#: core/templates/core/index.html:91
+msgid "Персонализированный подход"
+msgstr ""
+
+#: core/templates/core/library.html:12
+msgid "Большая библиотека Bilim"
+msgstr ""
+
+#: core/templates/core/library.html:46
+msgid "Все книги"
+msgstr ""
+
+#: core/templates/core/library.html:53
+msgid "Книга"
+msgstr ""
+
+#: core/templates/core/library.html:63
+msgid "Нет никаких книг"
+msgstr ""
+
+#: core/templates/core/login.html:8
+msgid "Вход BILIM"
+msgstr ""
+
+#: core/templates/core/login.html:29
+msgid "С возвращением! Зайдите в свой аккаунт"
+msgstr ""
+
+#: core/templates/core/login.html:35 core/templates/core/sign_up.html:54
+msgid "Логин"
+msgstr ""
+
+#: core/templates/core/login.html:38 core/templates/core/sign_up.html:50
+msgid "Пароль"
+msgstr ""
+
+#: core/templates/core/login.html:43 core/templates/core/sign_up.html:32
+msgid "Войти"
+msgstr ""
+
+#: core/templates/core/login.html:48
+msgid "У вас нет аккаунта?"
+msgstr ""
+
+#: core/templates/core/login.html:52
+msgid "Зарегистрироваться"
+msgstr ""
+
+#: core/templates/core/payment.html:8
+msgid "Оплата BILIM"
+msgstr ""
+
+#: core/templates/core/payment.html:13
+msgid "Оплата за курсы"
+msgstr ""
+
+#: core/templates/core/payment.html:18
+msgid "Оплата по промокоду"
+msgstr ""
+
+#: core/templates/core/payment.html:19
+msgid "Оплата по карточке"
+msgstr ""
+
+#: core/templates/core/payment.html:25
+msgid "Ваш промокод"
+msgstr ""
+
+#: core/templates/core/payment.html:27
+msgid "Введите промокод"
+msgstr ""
+
+#: core/templates/core/payment.html:28 core/templates/core/payment.html:62
+msgid "Оплатить"
+msgstr ""
+
+#: core/templates/core/payment.html:34
+msgid "Онлайн оплата"
+msgstr ""
+
+#: core/templates/core/payment.html:37
+msgid "Номер карты"
+msgstr ""
+
+#: core/templates/core/payment.html:38
+msgid "Введите номер карты"
+msgstr ""
+
+#: core/templates/core/payment.html:42
+msgid "Срок истекание"
+msgstr ""
+
+#: core/templates/core/payment.html:47
+msgid "Введите CVV"
+msgstr ""
+
+#: core/templates/core/payment.html:52
+msgid "Всё правильно"
+msgstr ""
+
+#: core/templates/core/payment.html:55
+msgid "Срок оплаты"
+msgstr ""
+
+#: core/templates/core/payment.html:56
+msgid "Методы оплаты"
+msgstr ""
+
+#: core/templates/core/payment.html:57
+msgid "1 месяц / 30ман"
+msgstr ""
+
+#: core/templates/core/payment.html:58
+msgid "2 месяца / 60ман"
+msgstr ""
+
+#: core/templates/core/payment.html:59
+msgid "3 месяца / 90ман"
+msgstr ""
+
+#: core/templates/core/payment.html:65
+msgid "Нажимая кнопку всё правильно вы подтверждаете что всё правильно!"
+msgstr ""
+
+#: core/templates/core/profile.html:34
+msgid "Обо мне"
+msgstr ""
+
+#: core/templates/core/profile.html:35 core/templates/core/profile.html:39
+#: core/templates/core/profile.html:58
+msgid "Нет информаций. Редактируйте свой профиль"
+msgstr ""
+
+#: core/templates/core/profile.html:38
+msgid "Мои цели"
+msgstr ""
+
+#: core/templates/core/profile.html:45
+msgid "Мои умения"
+msgstr ""
+
+#: core/templates/core/profile.html:65 core/templates/core/profile_edit.html:8
+msgid "Редактировать профиль"
+msgstr ""
+
+#: core/templates/core/profile.html:70
+msgid "Мои Shorts"
+msgstr ""
+
+#: core/templates/core/profile.html:91
+msgid "Нет видео"
+msgstr ""
+
+#: core/templates/core/profile.html:94
+#: core/templates/core/teacher_profile.html:26
+msgid "Добавить видео"
+msgstr ""
+
+#: core/templates/core/profile_edit.html:35
+msgid "Редактируйте свой профиль"
+msgstr ""
+
+#: core/templates/core/profile_edit.html:40
+msgid "Ваш аватар"
+msgstr ""
+
+#: core/templates/core/profile_edit.html:59
+msgid "Общая информация"
+msgstr ""
+
+#: core/templates/core/profile_edit.html:62
+#: core/templates/core/teacher_edit.html:51
+msgid "Введите имя"
+msgstr ""
+
+#: core/templates/core/profile_edit.html:66
+#: core/templates/core/teacher_edit.html:60
+msgid "Введите работу"
+msgstr ""
+
+#: core/templates/core/profile_edit.html:69
+msgid "Про меня"
+msgstr ""
+
+#: core/templates/core/profile_edit.html:70
+msgid "Введите информацию о вас"
+msgstr ""
+
+#: core/templates/core/profile_edit.html:73
+msgid "Цели"
+msgstr ""
+
+#: core/templates/core/profile_edit.html:74
+msgid "Напишите о своих целях"
+msgstr ""
+
+#: core/templates/core/profile_edit.html:80
+#: core/templates/core/teacher_edit.html:79
+msgid "Умения либо о вас"
+msgstr ""
+
+#: core/templates/core/profile_edit.html:131
+#: core/templates/core/teacher_edit.html:133
+msgid "Вы можете выбрать только 3 элемента"
+msgstr ""
+
+#: core/templates/core/scientists.html:4
+msgid "Великие цитаты, Великих людей"
+msgstr ""
+
+#: core/templates/core/sign_up.html:9
+msgid "Зарегистрироваться BILIM"
+msgstr ""
+
+#: core/templates/core/sign_up.html:31
+msgid "Создайте аккаунт"
+msgstr ""
+
+#: core/templates/core/sign_up.html:32
+msgid "Уже есть аккаунт?"
+msgstr ""
+
+#: core/templates/core/sign_up.html:46
+msgid "Электронный адрес"
+msgstr ""
+
+#: core/templates/core/sign_up.html:59
+msgid "Создать аккаунт"
+msgstr ""
+
+#: core/templates/core/success.html:7
+msgid "Успешно"
+msgstr ""
+
+#: core/templates/core/success.html:145
+msgid "Операция успешно!"
+msgstr ""
+
+#: core/templates/core/success.html:146
+msgid "Спасибо что используете нашу платформу!"
+msgstr ""
+
+#: core/templates/core/teacher_content.html:14
+msgid "Посмотрите ваши уроки учитель"
+msgstr ""
+
+#: core/templates/core/teacher_content.html:43
+msgid "Категория видео"
+msgstr ""
+
+#: core/templates/core/teacher_content.html:47
+msgid "Категория курса"
+msgstr ""
+
+#: core/templates/core/teacher_content.html:51
+msgid "Дата добавления"
+msgstr ""
+
+#: core/templates/core/teacher_content.html:55
+#: core/templates/core/teacher_content.html:58
+msgid "Принято"
+msgstr ""
+
+#: core/templates/core/teacher_content.html:60
+msgid "Отклонено"
+msgstr ""
+
+#: core/templates/core/teacher_content.html:71
+msgid "Просмотры"
+msgstr ""
+
+#: core/templates/core/teacher_content.html:79
+msgid "Лайки"
+msgstr ""
+
+#: core/templates/core/teacher_create_video.html:9
+msgid "BILIM Добавить"
+msgstr ""
+
+#: core/templates/core/teacher_create_video.html:16
+msgid "Загрузите свои видео учитель"
+msgstr ""
+
+#: core/templates/core/teacher_create_video.html:31
+msgid "Загрузить видео"
+msgstr ""
+
+#: core/templates/core/teacher_create_video.html:33
+msgid "Видео должен быть менее 20 минут"
+msgstr ""
+
+#: core/templates/core/teacher_create_video.html:36
+msgid "Нажмите чтобы добавить видео"
+msgstr ""
+
+#: core/templates/core/teacher_create_video.html:70
+#: core/templates/core/video_page_for_admin_shorts.html:36
+msgid "Имя видео:"
+msgstr ""
+
+#: core/templates/core/teacher_create_video.html:74
+#: core/templates/core/video_page_for_admin.html:64
+#: core/templates/core/video_page_for_admin_shorts.html:52
+msgid "Описание видео:"
+msgstr ""
+
+#: core/templates/core/teacher_create_video.html:78
+msgid "Постер видео:"
+msgstr ""
+
+#: core/templates/core/teacher_create_video.html:82
+#: core/templates/core/video_page_for_admin.html:44
+msgid "Категория видео:"
+msgstr ""
+
+#: core/templates/core/teacher_create_video.html:84
+#: core/templates/core/teacher_create_video.html:96
+msgid "Выберите категорию:"
+msgstr ""
+
+#: core/templates/core/teacher_create_video.html:88
+#: core/templates/core/teacher_create_video.html:100
+msgid "Нет категорий:"
+msgstr ""
+
+#: core/templates/core/teacher_create_video.html:94
+#: core/templates/core/video_page_for_admin.html:48
+msgid "Категория курса:"
+msgstr ""
+
+#: core/templates/core/teacher_edit.html:9
+msgid "BILIM Редактировать"
+msgstr ""
+
+#: core/templates/core/teacher_edit.html:15
+msgid "Редактируйте свой профиль учитель"
+msgstr ""
+
+#: core/templates/core/teacher_edit.html:69
+msgid "Введите ваш номер"
+msgstr ""
+
+#: core/templates/core/teacher_profile.html:14
+msgid "Ваш профиль учитель"
+msgstr ""
+
+#: core/templates/core/teacher_profile.html:21
+msgid "Редактировать"
+msgstr ""
+
+#: core/templates/core/teacher_profile.html:31
+msgid "Мои видео"
+msgstr ""
+
+#: core/templates/core/teacher_profile.html:36
+msgid "Добавить shorts"
+msgstr ""
+
+#: core/templates/core/teacher_profile.html:62
+msgid "Нет информаций."
+msgstr ""
+
+#: core/templates/core/teacher_profile.html:67
+msgid "Телефонный номер "
+msgstr ""
+
+#: core/templates/core/teacher_profile.html:68
+msgid "Напишите свой номер"
+msgstr ""
+
+#: core/templates/core/video_page.html:9
+msgid "BILIM Видео"
+msgstr ""
+
+#: core/templates/core/video_page.html:43
+msgid "Ваш браузер не поддерживает видео тег"
+msgstr ""
+
+#: core/templates/core/video_page.html:52
+#: core/templates/core/video_page_for_admin.html:35
+msgid "Like"
+msgstr ""
+
+#: core/templates/core/video_page.html:57
+#: core/templates/core/video_page_for_admin.html:52
+#: core/templates/core/video_page_for_admin_shorts.html:40
+#: core/templates/core/video_page_for_teachers.html:27
+msgid "Просмотры:"
+msgstr ""
+
+#: core/templates/core/video_page.html:65
+msgid "Похожие видео"
+msgstr ""
+
+#: core/templates/core/video_page_for_admin.html:9
+msgid "BILIM Videos"
+msgstr ""
+
+#: core/templates/core/video_page_for_admin.html:23
+msgid "Ваш браузер не поддерживает HTML5 видео теги"
+msgstr ""
+
+#: core/templates/core/video_page_for_admin.html:40
+msgid "Имя:"
+msgstr ""
+
+#: core/templates/core/video_page_for_admin.html:56
+#: core/templates/core/video_page_for_admin_shorts.html:44
+msgid "Автор:"
+msgstr ""
+
+#: core/templates/core/video_page_for_admin.html:60
+#: core/templates/core/video_page_for_admin_shorts.html:48
+msgid "Дата добавления:"
+msgstr ""
+
+#: core/templates/core/video_page_for_admin.html:70
+#: core/templates/core/video_page_for_admin_shorts.html:58
+msgid "Принять видео"
+msgstr ""
+
+#: core/templates/core/video_page_for_admin.html:73
+#: core/templates/core/video_page_for_admin_shorts.html:61
+msgid "Отклонить видео"
+msgstr ""
+
+#: core/templates/core/video_page_for_admin_shorts.html:9
+msgid "BILIM Админ"
+msgstr ""
+
+#: core/templates/core/video_page_for_admin_shorts.html:20
+msgid "Ваш браузер не поддерживает видео"
+msgstr ""
+
+#: core/templates/core/video_page_for_teachers.html:9
+msgid "BILIM Видео Учителей"
+msgstr ""
+
+#: core/templates/core/video_page_for_teachers.html:20
+msgid "Ваш браузер не поддерживает видео теги"
+msgstr ""

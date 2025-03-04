@@ -9,6 +9,27 @@ body {
     
 }
 
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('Comfortaa-VariableFont_wght.ttf') format('truetype-variations'); /* Use truetype-variations for variable fonts */
+    font-weight: 100 900; /* Define the range of font weights */
+    font-style: normal;
+  }
+  
+  body {
+    font-family: 'Comfortaa', sans-serif;
+  }
+  
+  h1 , h2, h3, h4, h5, h6{
+    font-family: 'Comfortaa';
+    font-weight: 700; /* Example: Using a bold weight */
+  }
+  
+  p, li, a, div {
+    font-family: 'Comfortaa';
+    font-weight: 800; /* Example: Using a light weight */
+  }
+
 a{
     text-decoration: none;
 }
@@ -284,7 +305,6 @@ a{
   
   .front .inner span{
     color: rgba(255,255,255,0.7);
-    font-family: 'Montserrat';
     font-weight: 300;
   }
   

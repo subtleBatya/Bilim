@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="{% static 'core/css/payment.css' %}">
 </head>
 <body>
-  {% include "core/hero.html" with content=_("Pay for your education") image_path="core/images/payment.png" %}
+  {% include "core/hero.html" with content=_("Оплата за курсы") image_path="core/images/payment.png" %}
   
   <!-- Payment Options -->
   <div class="container-fluid py-3">
@@ -53,7 +53,7 @@
       </div>
       <div class="mb-3">
         <select class="form-select" aria-label="{% translate 'Срок оплаты' %}">
-          <option selected>{% translate 'Payment methods' %}</option>
+          <option selected>{% translate 'Методы оплаты' %}</option>
           <option value="1">{% translate '1 месяц / 30ман'%}</option>
           <option value="2">{% translate '2 месяца / 60ман'%}</option>
           <option value="3">{% translate '3 месяца / 90ман'%}</option>

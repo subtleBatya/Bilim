@@ -54,7 +54,7 @@
                 
                 <div class="text-start fs-5 fw-bold col-11 col-md-5 align-items-md-center" >
                     <div class="mb-3 row">
-                        <label class="col" for="">{% translate 'Заголовок' %}:</label>
+                        <label class="col" for="">{% translate 'Имя видео' %}:</label>
                         <input name='video_title' class="col form-control" type="text" placeholder="{% translate 'Имя видео' %}" required>
                     </div>
                      <div class="mb-3 row">
@@ -114,7 +114,7 @@ function handleFileUpload(input) {
         window.URL.revokeObjectURL(video.src); // Clean up the object URL
 
         if (video.duration > maxDuration) {
-            alert(`{% translate 'The video' %} "${fileName}" {% translate 'Ваше видео превышает лимит 1 минуту!' %}`);
+            alert(`{% translate 'Видео' %} "${fileName}" {% translate 'Ваше видео превышает лимит 1 минуту!' %}`);
             input.value = ""; // Clear the input to prevent uploading
             return;
         }

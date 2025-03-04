@@ -41,9 +41,9 @@
     <div class="mt-2 row d-block d-md-flex">
       <div class="col-12 col-md-5 col-lg-5 text-center justify-content-center mx-auto text-lg-start align-items-lg-start justify-content-lg-start">
         {% if request.user.user_avatar %}
-          <img src="{{ request.user.user_avatar.url }}" alt="{% translate 'User Photo' %}" class="img-fluid" style="border-radius: 50px; width: 300px; height: 300px; object-fit: cover;">
+          <img src="{{ request.user.user_avatar.url }}" alt="" class="img-fluid" style="border-radius: 50px; width: 300px; height: 300px; object-fit: cover;">
         {% else %}
-          <img src="" alt="{% translate 'User Photo' %}" class="img-fluid" style="border-radius: 50%; width: 300px; height: 300px; object-fit: cover;">
+          <img src="" alt="" class="img-fluid" style="border-radius: 50%; width: 300px; height: 300px; object-fit: cover;">
         {% endif %}
       </div>
 
@@ -65,7 +65,7 @@
             <div class="d-flex align-items-center pb-3">
               <div class="h5 fw-semibold align-items-center">
                 <i class="bi bi-telephone-fill me-2 text-danger"></i>{% translate 'Телефонный номер ' %}: 
-                <span class="ms-1">{% if request.user.telephone_number %}{{ request.user.telephone_number }}{% else %} {% translate 'Edit your number...' %} {% endif %}</span>
+                <span class="ms-1">{% if request.user.telephone_number %}{{ request.user.telephone_number }}{% else %} {% translate 'Напишите свой номер' %} {% endif %}</span>
               </div>
             </div>
           </div>

@@ -70,8 +70,34 @@
           </div>
         </div>
       </div>
+      
     </div>
-  
+
+    
+            <!-- Information About Yourself Section -->
+            <div class="col-md-5">
+              <h3 class="mb-3 text-center">{% translate 'Умения либо о вас' %}</h3>
+              <div class="choose-fields d-flex">
+                  {% for ability in abilities %}
+                      {% if ability in request.user.user_abilities.all %}
+                      <div class="field-card active" id="{{ ability.name|slugify }}Card" onclick="toggleField('{{ ability.name|slugify }}')">
+                          <div>
+                              <i class="{{ ability.ability_icon }} text-warning field-icon"></i>
+                              <p>{{ ability.name }}</p>
+                          </div>
+                      </div>
+                      {% else %}
+                      <div class="field-card" id="{{ ability.name|slugify }}Card" onclick="toggleField('{{ ability.name|slugify }}')">
+                          <div>
+                              <i class="{{ ability.ability_icon }} text-warning field-icon"></i>
+                              <p>{{ ability.name }}</p>
+                          </div>
+                      </div>
+                      {% endif %}
+                  {% endfor %}
+              </div>
+              <input type="hidden" id="selectedAbilities" name="selected_abilities">
+    
     <div class="justify-content-end mx-auto text-end" style="width: 90vw;">
       <button class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;" type="submit">
         {% translate 'Сохранить' %}
@@ -104,7 +130,7 @@
           selectedAbilities.push(fieldId);
           card.classList.add('active');
         } else {
-          alert("{% translate 'You can select a maximum of 3 fields.' %}");
+          alert("{% translate 'Вы можете выбрать только 3 элемента' %}");
         }
       }
 

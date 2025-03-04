@@ -13,10 +13,10 @@
 
 <body class="mx-auto text-center font-outfit">
     <div class="position-relative">
-        <a href="">
+        <a href="/tk/{{request.get_full_path|slice:"4:"}}">
             <div class="flag m-3"><img src="{% static 'core/images/turkmen-flag.png'%}" alt=""></div>
         </a>
-        <a href="">
+        <a href="/ru/{{request.get_full_path|slice:"4:"}}">
             <div class="flag_2 m-3"><img src="{% static 'core/images/russian-flag.png'%}" alt=""></div>
         </a>
     </div>
@@ -64,11 +64,11 @@
             <div class="d-flex d-none d-md-flex align-items-center">
                 <div class="d-block align-items-center">
                     <div class="d-flex align-items-center">
-                        <div><img style="width: 7vw;" src="{% static 'core/images/logo_2.webp'%}" alt="{% translate 'Logo 2' %}"></div>
-                        <div><img style="width: 11vw;" src="{% static 'core/images/logo_3.webp'%}" alt="{% translate 'Logo 3' %}"></div>
-                        <div><img style="width: 9vw;" src="{% static 'core/images/logo_1.webp'%}" alt="{% translate 'Logo 1' %}"></div>
+                        <div><img style="width: 7vw;" src="{% static 'core/images/logo_2.webp'%}" alt=""></div>
+                        <div><img style="width: 11vw;" src="{% static 'core/images/logo_3.webp'%}" alt=""></div>
+                        <div><img style="width: 9vw;" src="{% static 'core/images/logo_1.webp'%}" alt=""></div>
                     </div>
-                    <div class="h2 fw-bold mt-3">{% translate 'Bilim University' %}</div>
+                    <div class="h2 fw-bold mt-3">{% translate 'Платформа BILIM' %}</div>
                 </div>
             </div>
         </div>
