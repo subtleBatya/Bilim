@@ -37,7 +37,7 @@
         </button>
       </a>
     </div>
-
+    
     <div class="mt-2 row d-block d-md-flex">
       <div class="col-12 col-md-5 col-lg-5 text-center justify-content-center mx-auto text-lg-start align-items-lg-start justify-content-lg-start">
         {% if request.user.user_avatar %}
@@ -48,8 +48,28 @@
       </div>
 
       <div class="d-flex ms-4 text-lg-center justify-content-center align-items-lg-center col-9 col-md-5 col-lg-5">
+        
         <div class="d-flex justify-content-center align-items-center mt-3 mt-md-0">
+          
           <div class="row">
+
+            <div class="d-flex flex-wrap justify-content-start mb-4">
+              <!-- Display abilities if the teacher has any -->
+              {% for user_abilities in request.user.user_abilities.all %}
+                  <div class="icon-column d-flex flex-column align-items-center m-2 p-3 border rounded shadow-sm" style="width:35%;">
+                      <div class="icon-container d-flex align-items-center justify-content-center mb-2">
+                          <i class="{{ user_abilities.ability_icon }} text-primary" style="font-size: 2rem;"></i>
+                      </div>
+                      <p class="text-center">{{ user_abilities.name }}</p>
+                  </div>
+              {% empty %}
+                  <!-- Display message if no abilities -->
+                  <div class="w-100 text-center">
+                      <h5>{% translate "Нет информаций. Редактируйте свой профиль" %}</h5>
+                  </div>
+              {% endfor %}
+          </div>
+
             <div class="d-flex align-items-center pb-3">
               <div class="h5 fw-semibold align-items-center">
                 <i class="bi bi-person-fill me-2 text-primary"></i>{% translate 'Имя' %}: 

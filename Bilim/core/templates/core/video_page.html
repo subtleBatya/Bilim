@@ -10,7 +10,14 @@
   {% include "core/static_files/links.html" %}
   
   <style>
+
     .video-container {
+      margin-top: 5vh;
+      max-width: 90%;
+      display: flex;
+      justify-content: center;
+    }
+    {% comment %} .video-container {
       text-align: center;
       margin: auto;
       position: relative;
@@ -29,19 +36,31 @@
         max-height: 600px;
         padding:0px;
       }
-    }
+    } {% endcomment %}
   </style>
 </head>
 
 <body>
   {% comment %} {% include "core/hero.html" with content="Bilim Video Courses" image_path="core/images/course.webp" %} {% endcomment %}
   
-  <div class="video-player">
+
+
+    <div class="video-container">
+        <video id="my-video" class="video-js vjs-default-skin vjs-fluid" controls preload="auto">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    
+
+
+  {% comment %} <div class="video-player">
     <video id="video-player" width="100%" height="700px" controls>
       <source id="video-source" src="{{video.video.url }}" type="video/mp4">
       {% translate 'Ваш браузер не поддерживает видео тег' %}
     </video>
-  </div>
+  </div> {% endcomment %}
 
   <div class="mx-auto mt-3" style="width: 90vw;">
     <div class="d-flex">
