@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from authentication.models import User
+from authentication.models import User, User_abilities
 from videos.models import Video_course, Video_category, VideoCourse as VideoLesson
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -93,8 +93,10 @@ def teacher_edit(request):
     if request.method == "GET":
         if request.user.is_teacher:
             courses = Video_category.objects.all()
+            abilities = User_abilities.objects.all()
             context ={
-                "courses":courses
+                "courses":courses,
+                "abilities": abilities,
             }
             return render(request, "core/teacher_edit.html", context)
     if request.method == "POST":
@@ -103,14 +105,19 @@ def teacher_edit(request):
         phone_number = request.POST.get("phone_number")
         image = request.FILES.get("profile_image")
         teacher = User.objects.get(username=request.user.username)
+        selected_abilities = request.POST.get("selected_abilities")
+        selected_abilities = selected_abilities.split(",")
         if not (image == None):
             teacher.user_avatar = image
         else:
             teacher.user_avatar = teacher.user_avatar
-        
+        for i in range(len(selected_abilities)):
+            selected_abilities[i] = selected_abilities[i].title().strip()
+        abilities = User_abilities.objects.filter(name__in=selected_abilities)
         teacher.username = username
         teacher.job = job
         teacher.telephone_number = phone_number
+        teacher.user_abilities.set(abilities)
         try:
             teacher.save()
             return redirect("teacher:teacher_profile")

@@ -52,7 +52,7 @@
         <div class="d-flex justify-content-center align-items-center mt-3 mt-md-0">
           
           <div class="row">
-
+            <h3 class="text-center">{% translate 'User abilities'%} </h3>
             <div class="d-flex flex-wrap justify-content-start mb-4">
               <!-- Display abilities if the teacher has any -->
               {% for user_abilities in request.user.user_abilities.all %}
