@@ -56,15 +56,14 @@ def teacher_video_create(request):
         if request.user.is_teacher:
             video = request.FILES.get("video")
             video_title = request.POST.get("video_title")
-            main_category_name = request.POST.get("main_cat")
             course_category_name = request.POST.get("course_cat")
             video_description = request.POST.get("video_description")
             poster = request.FILES.get("poster")
 
             # Validate categories
             try:
-                main_category = Video_category.objects.get(category_name=main_category_name)
                 course_category = Video_course.objects.get(course_name=course_category_name)
+                main_category = Video_category.objects.get(category_name=course_category.related_category)
             except Video_category.DoesNotExist:
                 return JsonResponse({"error": "Invalid main category"}, status=400)
             except Video_course.DoesNotExist:

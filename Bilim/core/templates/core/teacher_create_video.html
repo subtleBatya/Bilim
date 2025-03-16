@@ -78,7 +78,7 @@
                         <label class="col" for="">{% translate 'Постер видео:'%}</label>
                         <input name='poster' class="col form-control" type="file" placeholder="" accept="image/*">
                     </div>
-                    <div class=" row mb-2">
+                    {% comment %} <div class=" row mb-2">
                         <label class="col-6" for="">{% translate 'Категория видео:'%}</label>
                         <select name="main_cat" class="col form-control form-select" style="height: 5vh;" id="category" name="category">
                             <option value=""  class="text-secondary" disabled selected>{% translate 'Выберите категорию:'%}</option> 
@@ -88,7 +88,7 @@
                             <option value=""  class="text-secondary" disabled selected>{% translate 'Нет категорий:'%}</option> 
                             {% endfor %}
                         </select>
-                    </div>
+                    </div> {% endcomment %}
 
                     <div class=" row">
                         <label class="col-6" for="">{% translate 'Категория курса:'%}</label>
@@ -108,11 +108,11 @@
             </div>
             <div class="text-center mt-4">
                 <div>
-                    <!-- Progress Bar Container -->
-                    <!-- <div id="progressContainer" style="display: none; width: 100%; margin-top: 10px;">
+                      <!-- Progress Bar Container -->
+                     <div id="progressContainer" style="display: none; width: 100%; margin-top: 10px;">
                         <div id="progressBar" style="width: 0%; height: 20px; background-color: green;"></div>
                         <p id="progressText">0%</p>
-                    </div> -->
+                    </div> 
 
                     <button type="submit" 
                     id="submitBtn" 

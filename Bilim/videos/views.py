@@ -12,7 +12,7 @@ def all_courses(request, id):
     if request.method == "GET":
         courses = Video_category.objects.all()
         main_category = Video_category.objects.get(id=id)
-        category_course = category_courses.objects.filter(related_category__category_name=main_category.category_name)
+        category_course = category_courses.objects.filter(related_category=main_category)
         course_category = request.GET.get("category")
         video_name = request.GET.get("video_name")
         all_videos = VideoCourse.objects.filter(accepted=True, category__category_name=main_category.category_name)
@@ -50,7 +50,7 @@ def video_of_course(request, id):
 
         video.views += 1
         video.save()
-        popular_videos = VideoCourse.objects.all().exclude(author=request.user).order_by("?")[:20]
+        popular_videos = VideoCourse.objects.filter(accepted=True).exclude(author=request.user).order_by("?")[:20]
         context = {
             "video": video,
             "courses":courses,

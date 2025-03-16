@@ -43,7 +43,7 @@
         {% if request.user.user_avatar %}
           <img src="{{ request.user.user_avatar.url }}" alt="" class="img-fluid" style="border-radius: 50px; width: 300px; height: 300px; object-fit: cover;">
         {% else %}
-          <img src="" alt="" class="img-fluid" style="border-radius: 50%; width: 300px; height: 300px; object-fit: cover;">
+          <img src="{% static "core/images/default_profile_image.png" %}" alt="" class="img-fluid" style="border-radius: 50%; width: 300px; height: 300px; object-fit: cover;">
         {% endif %}
       </div>
 
