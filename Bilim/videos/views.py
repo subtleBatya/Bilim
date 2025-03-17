@@ -15,13 +15,13 @@ def all_courses(request, id):
         category_course = category_courses.objects.filter(related_category=main_category)
         course_category = request.GET.get("category")
         video_name = request.GET.get("video_name")
-        all_videos = VideoCourse.objects.filter(accepted=True, category__category_name=main_category.category_name)
+        all_videos = VideoCourse.objects.filter(accepted=True, category=main_category)
         if course_category and video_name:
-            all_videos = VideoCourse.objects.filter(accepted=True, title__icontains=video_name, course__course_name=course_category, category__category_name=main_category.category_name)
+            all_videos = VideoCourse.objects.filter(accepted=True, title__icontains=video_name, course__course_name=course_category, category=main_category)
         if course_category and not video_name:
-            all_videos = VideoCourse.objects.filter(accepted=True, course__course_name=course_category, category__category_name=main_category.category_name)
+            all_videos = VideoCourse.objects.filter(accepted=True, course__course_name=course_category, category=main_category)
         if not course_category and video_name:
-            all_videos = VideoCourse.objects.filter(accepted=True, title__icontains=video_name, category__category_name=main_category.category_name)
+            all_videos = VideoCourse.objects.filter(accepted=True, title__icontains=video_name, category=main_category)
         context = {
             "all_videos": all_videos,
             "category_courses": category_course,
