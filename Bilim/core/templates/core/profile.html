@@ -73,15 +73,15 @@
                 <div class="col-card" ontouchstart="this.classList.toggle('hover');">
                         <div class="container-card">
                             <div class="front">
-                                <img src="{{popular_video.poster.url}}" alt="Python Course">
+                                <img src="{{popular_video.shorts_poster.url}}" alt="Python Course">
                                 <div class="inner">
-                                    <p>{{popular_video.title|truncatewords:6}}</p>
+                                    <p>{{popular_video.shorts_title|truncatewords:6}}</p>
                                 </div>
                             </div>
                             <div class="back">
                                 <div class="inner">
-                                    <p>{{popular_video.description|truncatewords:15}}</p>
-                                    <a href="{% url "videos:video_of_course" popular_video.id %}" class="btn downloader rounded-3">{% translate "Посмотреть" %}</a>
+                                    <p>{{popular_video.shorts_description|truncatewords:15}}</p>
+                                    <a href="{% url "videos:user_shorts" popular_video.id %}" class="btn downloader rounded-3">{% translate "Посмотреть" %}</a>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +91,9 @@
                     <h5>{% translate "Нет видео" %}</h5>
                   </div>
                   {% endfor %}
+                  <div class="container text-center">
                   <a href="{% url "videos:create_shorts"%}" class="btn downloader w-50">{% translate "Добавить видео" %}</a>
+                  <div>
               </div>
           </div>
       </section>

@@ -19,6 +19,7 @@ class User(AbstractUser):
     about_me_shorter = models.ManyToManyField("About_user", blank=True)
     user_abilities = models.ManyToManyField("User_abilities", blank=True)
     followers = models.ManyToManyField("self", symmetrical=False, related_name="following", blank=True)
+    followed = models.ManyToManyField("self", symmetrical=False, related_name="follow", blank=True)
     
     
 

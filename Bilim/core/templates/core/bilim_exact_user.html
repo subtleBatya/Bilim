@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="csrf-token" content="{{ csrf_token }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% translate 'BILIM' %}</title>
@@ -37,7 +38,19 @@
                     <div>{% translate 'Роль' %}:<span class="text-primary">{% if user.is_student %} {% translate 'Студент' %}{% elif user.is_teacher %}{% translate 'Учитель' %} {% endif %}</span></div>
                     <div>{% translate 'Работа' %}:{% if user.job%} <span class="text-primary"> {{user.job}}</span> {% else %}<span class="text-primary">{% translate 'Нет информаций' %}</span>{% endif %} </span></div>
                     <div>{% translate 'Подписчики' %}:<span class="text-primary">{{user.followers.count}} </span></div>
-                    {% if request.user != user %} <a href="{% url "users:follow" user.id %}" class="btn downloader" id="subscribeBtn">{% if request.user in user.followers.all %}{% translate 'Подписан' %}{% else %}{% translate 'Подписаться' %} {% endif %} </a>{% endif %}
+                {% if request.user != user %}
+                    <a href="{% url 'users:follow' user.id %}" 
+                    class="btn downloader" 
+                    id="subscribeBtn" 
+                    data-user-id="{{ user.id }}">
+                        {% if request.user in user.followers.all %}
+                            {% translate 'Подписан' %}
+                        {% else %}
+                            {% translate 'Подписаться' %}
+                        {% endif %}
+                    </a>
+                {% endif %}
+
                 </div>
             </div>
         </div>
@@ -46,7 +59,11 @@
             <button id="gen_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Общее' %}</button>
             <button id="exam_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Все видео' %}</button>
             <button id="class_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Умение' %}</button>
+            {% if user == request.user %}
             <button id="subs_btn" style="cursor: pointer;" class="btn downloader">{% translate 'Видео подписчиков' %}</button>
+            {% else %}
+            <button id="subs_btn" style="cursor: pointer; display:none" class="btn downloader">{% translate 'Видео подписчиков' %}</button>
+            {% endif %}
         </div>
 
         <div class=" mt-5 ">
@@ -134,7 +151,7 @@
                 <div class="wrapper-card">
                     <h4 style="font-weight: normal; text-align: center; margin: 2rem 0;" >{% translate 'Видео подписчиков' %}</h4>
                     <div class="cols-card">
-                      {% for subscribe_video in subscribe_videos %}
+                      {% for subscribe_video in subscribed_videos %}
                         <div class="col-card" ontouchstart="this.classList.toggle('hover');">
                                 <div class="container-card">
                                     <div class="front">
@@ -164,6 +181,48 @@
     </div>
 {% include "core/static_files/scripts.html"%}
 <script src="{% static "core/js/monitoring.js"%}"></script>
+
+<script>
+    function getCSRFToken() {
+        return document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+    }
+    
+    document.addEventListener("DOMContentLoaded", function () {
+        const subscribeBtn = document.getElementById("subscribeBtn");
+    
+        if (subscribeBtn) {
+            subscribeBtn.addEventListener("click", function (event) {
+                event.preventDefault();  // Prevent default link behavior
+    
+                const userId = subscribeBtn.getAttribute("data-user-id");
+    
+                fetch(`/users/follow/${userId}`, {
+                    method: "POST",
+                    headers: {
+                        "X-Requested-With": "XMLHttpRequest",
+                        "X-CSRFToken": getCSRFToken()
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.followed) {
+                        subscribeBtn.textContent = "Подписан";
+                    } else {
+                        subscribeBtn.textContent = "Подписаться";
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+            });
+        }
+    
+        function getCSRFToken() {
+            return document.cookie.split("; ")
+                .find(row => row.startsWith("csrftoken="))
+                ?.split("=")[1];
+        }
+    });
+    </script>
+    
 </body>
 
 </html>

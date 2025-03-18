@@ -4,51 +4,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="csrf-token" content="{{ csrf_token }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% translate 'Пользователи BILIM' %}</title>
-  {% include 'core/static_files/links.html'%}
-  
+  {% include 'core/static_files/links.html' %}
 </head>
 
 <body>
-  {% include "core/hero.html" with content=_("Все Пользователи BILIM") image_path="core/images/users_image.png"%}
-<div class="mx-auto text-center fs-1 mb-3">
-    {% translate 'Пользователи BILIM' %}
-</div>
+  {% include "core/hero.html" with content=_("Все Пользователи BILIM") image_path="core/images/users_image.png" %}
 
-<div class="popular_images mx-auto" style="width: 95vw;">
-    <div class="row mx-auto mb-3 courses">
-        {% for user in users %}
-            <div class="pb-4 mx-auto">
-                <div class="image-wrapper shadow rounded-5 text-center p-3">
-                    {% if user.user_avatar %}
-                        <img class="img-fluid hover-img rounded-5" style="height:350px;" src="{{ user.user_avatar.url }}" alt="{% translate 'Фото пользователя' %}">
-                    {% else %}
-                        <img class="img-fluid hover-img rounded-5" style="height:350px; object-fit:cover;" src="{% static 'core/images/default_profile_image.png' %}" alt="{% translate 'Аватар' %}">
-                    {% endif %}
-                    
-                    <div class="h5 pt-2 fw-medium" style="color: #1C59A1;">
-                        {% if user.is_student %}{% translate 'Студент' %}{% elif user.is_teacher %}{% translate 'Учитель' %} {% endif %}: {{ user.username }}
-                    </div>
-                    
-                    <div class="pb-4 fw-medium">
-                        {% if user.about_me %}{{ user.about_me }}{% else %}{% translate 'Нет информаций' %}{% endif %}
-                    </div>
+  <div class="mx-auto text-center fs-1 mb-3">
+      {% translate 'Пользователи BILIM' %}
+  </div>
 
-                    <!-- Centered Button -->
-                    <div class="d-flex justify-content-between align-items-center">
-                        <a href={% url "users:exact_user" user.id %} class="btn downloader">{% translate 'Профиль' %}</a>
-                       {% if request.user != user %} <a href="{% url "users:follow" user.id %}" class="btn downloader" id="subscribeBtn">{% if request.user in user.followers.all %}{% translate 'Подписан' %}{% else %}{% translate 'Подписаться' %} {% endif %} </a>{% endif %}
-                    </div>
-                   
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-</div>
+  <div class="popular_images mx-auto" style="width: 95vw;">
+      <div class="row mx-auto mb-3 courses">
+          {% for user in users %}
+              <div class="pb-4 mx-auto">
+                  <div class="image-wrapper shadow rounded-5 text-center p-3">
+                      {% if user.user_avatar %}
+                          <img class="img-fluid hover-img rounded-5" style="height:350px;" src="{{ user.user_avatar.url }}" alt="{% translate 'Фото пользователя' %}">
+                      {% else %}
+                          <img class="img-fluid hover-img rounded-5" style="height:350px; object-fit:cover;" src="{% static 'core/images/default_profile_image.png' %}" alt="{% translate 'Аватар' %}">
+                      {% endif %}
 
-    {% include "core/footer.html"%}
-{% include "core/static_files/scripts.html"%}
+                      <div class="h5 pt-2 fw-medium" style="color: #1C59A1;">
+                          {% if user.is_student %}{% translate 'Студент' %}{% elif user.is_teacher %}{% translate 'Учитель' %}{% endif %}: {{ user.username }}
+                      </div>
+
+                      <div class="pb-4 fw-medium">
+                          {% if user.about_me %}{{ user.about_me }}{% else %}{% translate 'Нет информаций' %}{% endif %}
+                      </div>
+
+                      <!-- Centered Buttons -->
+                      <div class="d-flex justify-content-between align-items-center">
+                          <a href="{% url 'users:exact_user' user.id %}" class="btn downloader">{% translate 'Профиль' %}</a>
+                          {% if request.user != user %}
+                          <a href="{% url 'users:follow' user.id %}" 
+                             class="btn downloader subscribeBtn" 
+                             data-user-id="{{ user.id }}">
+                              {% if request.user in user.followers.all %}
+                                  {% translate 'Подписан' %}
+                              {% else %}
+                                  {% translate 'Подписаться' %}
+                              {% endif %}
+                          </a>
+                      {% endif %}
+                      
+                      </div>
+                  </div>
+              </div>
+          {% endfor %}
+      </div>
+  </div>
+
+  {% include "core/footer.html" %}
+  {% include "core/static_files/scripts.html" %}
+
+  <!-- JavaScript to Handle Follow/Unfollow Asynchronously -->
+  <script>
+    function getCSRFToken() {
+        return document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+    }
+    
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".subscribeBtn").forEach(button => {
+            button.addEventListener("click", function (event) {
+                event.preventDefault(); // Prevent default link behavior
+    
+                const userId = this.getAttribute("data-user-id");
+    
+                fetch(`/users/follow/${userId}`, {  // Ensure correct URL pattern
+                    method: "POST",
+                    headers: {
+                        "X-Requested-With": "XMLHttpRequest",
+                        "X-CSRFToken": getCSRFToken()
+                    },
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.followed) {
+                        this.textContent = "{% translate 'Подписан' %}";
+                    } else {
+                        this.textContent = "{% translate 'Подписаться' %}";
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+            });
+        });
+    
+        function getCSRFToken() {
+            return document.cookie.split("; ")
+                .find(row => row.startsWith("csrftoken="))
+                ?.split("=")[1];
+        }
+    });
+    
+  </script>
+
 </body>
-
 </html>

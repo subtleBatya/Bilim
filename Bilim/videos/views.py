@@ -116,3 +116,18 @@ def shorts(request):
             'has_next': page_obj.has_next(),  # Check if more pages are available
             'next_page_number': page_obj.next_page_number() if page_obj.has_next() else None,
         })
+    
+
+def user_shorts(request, id):
+    if request.method == "GET":
+        videos = Short_video.objects.filter(shorts_author=request.user)
+        paginator = Paginator(videos, 1) 
+        page_number = request.GET.get('page', 10)
+        page_obj = paginator.get_page(page_number)
+
+        return render(request, 'core/shorts/shorts.html', {
+            'page_obj': page_obj,
+            'has_next': page_obj.has_next(),  # Check if more pages are available
+            'next_page_number': page_obj.next_page_number() if page_obj.has_next() else None,
+        })
+

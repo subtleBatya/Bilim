@@ -79,7 +79,7 @@ def profile(request):
     if request.method == "GET":
         if request.user.is_student:
             courses = Video_category.objects.all()
-            popular_videos = VideoCourse.objects.filter(author=request.user)
+            popular_videos = Short_video.objects.filter(shorts_author=request.user)
             context = {
                 "courses":courses,
                 "popular_videos": popular_videos
@@ -159,7 +159,7 @@ def accept_video(request, id):
         try:
             html_message = format_html(f"""
                 <div style="text-align: center; font-family: Arial, sans-serif; padding: 20px;">
-                    <img src="https://yourwebsite.com/static/images/tick.png" alt="Accepted" style="width: 100px;">
+                    <img src="https://kepilli.com.tm/static/core/img/logo.svg" alt="Accepted" style="width: 100px;">
                     <h2 style="color: #4CAF50;">Ваше видео успешно принято!</h2>
                     <h2 style="color: #4CAF50;">Siziň widoeňyz üstünlikli goýuldy!</h2>
                     <p style="font-size: 16px; color: #333;">С уважением, команда <strong>Bilim!</strong></p>
@@ -192,7 +192,7 @@ def accept_video_shorts(request, id):
         try:
             html_message = format_html(f"""
                 <div style="text-align: center; font-family: Arial, sans-serif; padding: 20px;">
-                    <img src="https://yourwebsite.com/static/images/tick.png" alt="Accepted" style="width: 100px;">
+                    <img src="https://kepilli.com.tm/static/core/img/logo.svg" alt="Accepted" style="width: 100px;">
                     <h2 style="color: #4CAF50;">Ваше видео успешно принято!</h2>
                     <h2 style="color: #4CAF50;">Siziň widoeňyz üstünlikli goýuldy!</h2>
                     <p style="font-size: 16px; color: #333;">С уважением, команда <strong>Bilim!</strong></p>
@@ -221,7 +221,7 @@ def decline_video(request, id):
         try:
             html_message = format_html(f"""
                 <div style="text-align: center; font-family: Arial, sans-serif; padding: 20px;">
-                    <img src="https://yourwebsite.com/static/images/error.png" alt="Rejected" style="width: 100px;">
+                    <img src="https://kepilli.com.tm/static/core/img/logo.svg" alt="Rejected" style="width: 100px;">
                     <h2 style="color: #E53935;">К сожалению, ваше видео не принято!</h2>
                     <h2 style="color: #E53935;">Gynansakda siziň wideoňyz kabul edilmedi!</h2>
                     <p style="font-size: 16px; color: #333;">Пожалуйста, проверьте правильность введенных данных.</p>
@@ -256,7 +256,7 @@ def decline_video_shorts(request, id):
         try:
             html_message = format_html(f"""
                 <div style="text-align: center; font-family: Arial, sans-serif; padding: 20px;">
-                    <img src="https://yourwebsite.com/static/images/error.png" alt="Rejected" style="width: 100px;">
+                    <img src="https://kepilli.com.tm/static/core/img/logo.svg" alt="Rejected" style="width: 100px;">
                     <h2 style="color: #E53935;">К сожалению, ваше видео не принято!</h2>
                     <h2 style="color: #E53935;">Gynansakda siziň wideoňyz kabul edilmedi!</h2>
                     <p style="font-size: 16px; color: #333;">Пожалуйста, проверьте правильность введенных данных.</p>
