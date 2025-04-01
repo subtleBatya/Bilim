@@ -5,10 +5,11 @@
   } */
 
 
-  html, body {
-    overflow-x: hidden;
-    width: 100%;
+  .popular_images {
+    overflow: hidden;
+    max-width: 100%;
   }
+  
 
 
   .swiper-container {
