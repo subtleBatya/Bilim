@@ -67,7 +67,7 @@
                     </div>
                     <div class="mb-4 form-group">
                         <label for="motivation" class="form-label">About me:</label>
-                        <textarea name="about_me" class="form-control" id="motivation" placeholder="Write about yourself" maxlength="200" rows=4>{{request.user.about_me}}</textarea>
+                        <textarea name="about_me" class="form-control" id="motivation" placeholder="Write about yourself" maxlength="200" rows=4>{% request.user.about_me %}{{request.user.about_me}}{% endif %}</textarea>
                     </div>
                     <div class="mb-4 form-group">
                         <label for="goals" class="form-label">Goals:</label>
