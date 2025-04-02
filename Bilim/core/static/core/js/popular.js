@@ -2,46 +2,85 @@ const swiper = new Swiper(".swiper-container", {
   effect: "coverflow",
   grabCursor: true,
   centeredSlides: true,
-  slidesPerView: 3, // Default for larger screens
+  slidesPerView: "auto", // Change to "auto" to prevent extra width issues
   coverflowEffect: {
     rotate: 0, 
-    stretch: -40, 
-    depth: 200, 
+    stretch: -20, // Reduce this value
+    depth: 150, 
     modifier: 2, 
     slideShadows: false,
   },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
   loop: true,
   breakpoints: {
-    // Small devices (mobile)
     0: {
       slidesPerView: 1,
       coverflowEffect: {
-        stretch: -30, 
-        depth: 180, 
+        stretch: -10, 
+        depth: 120, 
       },
     },
-    // Medium devices (tablets)
     768: {
       slidesPerView: 2,
       coverflowEffect: {
-        stretch: -30, 
-        depth: 150, 
+        stretch: -15, 
+        depth: 140, 
       },
     },
-    // Large devices (desktops)
     1024: {
       slidesPerView: 3,
       coverflowEffect: {
-        stretch: -40, 
-        depth: 300, 
+        stretch: -20, 
+        depth: 200, 
       },
     },
   },
 });
+
+
+// const swiper = new Swiper(".swiper-container", {
+//   effect: "coverflow",
+//   grabCursor: true,
+//   centeredSlides: true,
+//   slidesPerView: 3, // Default for larger screens
+//   coverflowEffect: {
+//     rotate: 0, 
+//     stretch: -40, 
+//     depth: 200, 
+//     modifier: 2, 
+//     slideShadows: false,
+//   },
+//   navigation: {
+//     nextEl: ".swiper-button-next",
+//     prevEl: ".swiper-button-prev",
+//   },
+//   loop: true,
+//   breakpoints: {
+//     // Small devices (mobile)
+//     0: {
+//       slidesPerView: 1,
+//       coverflowEffect: {
+//         stretch: -30, 
+//         depth: 180, 
+//       },
+//     },
+//     // Medium devices (tablets)
+//     768: {
+//       slidesPerView: 2,
+//       coverflowEffect: {
+//         stretch: -30, 
+//         depth: 150, 
+//       },
+//     },
+//     // Large devices (desktops)
+//     1024: {
+//       slidesPerView: 3,
+//       coverflowEffect: {
+//         stretch: -40, 
+//         depth: 300, 
+//       },
+//     },
+//   },
+// });
 
 
 

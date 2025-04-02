@@ -37,13 +37,19 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    const observerOptions = {
-        // threshold: 0.2,
-        // rootMargin: "0px 0px -50% 0px",
-        // threshold: [0.1, 0.5, 0.9],
-        threshold: [0.9, 0.3, 0.5],
+    // const observerOptions = {
+    //     // threshold: 0.2,
+    //     // rootMargin: "0px 0px -50% 0px",
+    //     // threshold: [0.1, 0.5, 0.9],
+    //     threshold: [0.9, 0.3, 0.5],
 
+    // };
+
+    const observerOptions = {
+        root: null, // Observe entire viewport
+        threshold: [0.6, 0.8, 1.0], // Adjust thresholds for better transitions
     };
+    
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 

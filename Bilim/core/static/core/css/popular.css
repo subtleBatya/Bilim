@@ -4,6 +4,14 @@
     margin: auto;
   } */
 
+  html {
+    width: 100%;
+
+  }
+  body {
+    overflow-x: hidden;
+    position: relative;
+  }
 
   .popular_images {
     overflow: hidden;

@@ -4,13 +4,25 @@ body {
     scroll-behavior: smooth;
 }
 
-.section {
+
+
+/* .section {
     position: sticky;
     top: 1%;
     transform: translateY(50px);
     z-index: 1;
     transition: 0.5s ease, opacity 0.5s ease;
+} */
+
+.section {
+    position: sticky;
+    top: 0; /* Stick to top */
+    height: 100vh; /* Ensure it covers the viewport */
+    transform: translateY(0); /* Reset previous transform */
+    z-index: 1;
+    transition: 0.5s ease, opacity 0.5s ease;
 }
+
 
 .section::before {
     content: "";
