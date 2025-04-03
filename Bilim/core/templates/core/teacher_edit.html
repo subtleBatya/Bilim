@@ -7,6 +7,67 @@
   <title>BILIM Teacher Edit</title>
   {% include "core/static_files/links.html"%}
   <link rel="stylesheet" href="{% static "core/css/teacher_edit.css"%}">
+
+  <style>
+    .photo-container {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        border-radius: 50%;
+        width: 300px;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f8f9fa;
+        overflow: hidden;
+    }
+
+    .photo-wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .photo-container img {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .photo-icon {
+        font-size: 3rem;
+        color: #aaa;
+    }
+
+    .photo-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.6);
+        opacity: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .plus-sign {
+        font-size: 4rem;
+        color: white;
+        font-weight: bold;
+    }
+
+    .photo-container:hover .photo-overlay {
+        opacity: 1;
+    }
+</style>
 </head>
 <body>
   {% include "core/hero.html" with content="Update your profile Teacher" image_path="core/images/course.webp"%}
@@ -25,6 +86,30 @@
                 <div class="h5 fw-semibold">Ady Familiyasy:</div>
                 <div class="h6 text-small ms-1"><input class="border-gray rounded-1" type="text" placeholder="Ady familiyasy"></div>
             </div> -->
+
+            <!-- Profile Picture Section -->
+            <div class="col-md-3">
+                <h3 class="mb-3 text-center">Your Picture</h3>
+                <form action="{% url "auth:edit_profile"%}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-4 text-center text-md-start">
+                        <label for="photoUpload" class="photo-container">
+                            <div class="photo-wrapper">
+                                {% if request.user.user_avatar %}
+                                <img src="{{ request.user.user_avatar.url }}" alt="Photo" id="photoPreview" class="img-fluid">
+                                {% else %}
+                                <span id="photoIcon" class="photo-icon">+</span>
+                                <img src="" alt="Photo" id="photoPreview" class="img-fluid" style="display: none;">
+                                {% endif %}
+                            </div>
+                            <div class="photo-overlay">
+                                <span class="plus-sign">+</span>
+                            </div>
+                        </label>
+                        <input type="file" id="photoUpload" style="display: none;" accept="image/*" onchange="updatePhotoPreview(event)" name="profile_image">
+                    </div>
+                </form>
+            </div>
 
             <div class=" row align-items-center pb-3">
               <label class="h5 col fw-semibold form-check-label">Ady Familiyasy:</label>
@@ -54,6 +139,104 @@
 <!-- Bootstrap JS and Popper.js -->
  {% include "core/footer.html"%}
 {% include "core/static_files/scripts.html"%}
+
+
+<script>
+    // Initialize selectedAbilities dynamically based on elements with "active" class
+function initializeSelectedAbilities() {
+    selectedAbilities = Array.from(document.getElementsByClassName("active")).map(
+        element => element.id.replace("Card", "") // Extract actual field name
+    );
+    document.getElementById("selectedAbilities").value = selectedAbilities.join(",");
+}
+
+function toggleField(fieldId) {
+    const card = document.getElementById(fieldId + "Card");
+
+    if (selectedAbilities.includes(fieldId)) {
+        // Remove ability from selection
+        selectedAbilities = selectedAbilities.filter(item => item !== fieldId);
+        card.classList.remove('active');
+    } else {
+        if (selectedAbilities.length < 3) {
+            // Add ability to selection
+            selectedAbilities.push(fieldId);
+            card.classList.add('active');
+        } else {
+            alert("You can select a maximum of 3 fields.");
+        }
+    }
+
+    // Update hidden input field
+    document.getElementById("selectedAbilities").value = selectedAbilities.join(",");
+}
+
+// // Run initialization when the page loads
+// document.addEventListener("DOMContentLoaded", initializeSelectedAbilities);
+
+
+//         function updatePhotoPreview(event) {
+//             const file = event.target.files[0];
+//             if (file) {
+//                 const reader = new FileReader();
+//                 reader.onload = function (e) {
+//                     const photoPreview = document.getElementById('photoPreview');
+//                     const photoIcon = document.getElementById('photoIcon');
+
+//                     photoPreview.src = e.target.result;
+//                     photoPreview.style.display = 'block';
+//                     photoIcon.style.display = 'none';
+//                 };
+//                 reader.readAsDataURL(file);
+//             }
+//         }
+
+    // Ensure the script runs when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+    initializeSelectedAbilities();
+    setupHoverEffect();
+});
+
+function updatePhotoPreview(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const photoPreview = document.getElementById('photoPreview');
+            const photoIcon = document.getElementById('photoIcon');
+
+            // Set image source & make it visible
+            photoPreview.src = e.target.result;
+            photoPreview.style.display = 'block';
+
+            // Hide the plus icon
+            if (photoIcon) {
+                photoIcon.style.display = 'none';
+            }
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+// Function to set up hover effect correctly
+function setupHoverEffect() {
+    const photoContainer = document.querySelector('.photo-container');
+    const photoOverlay = document.querySelector('.photo-overlay');
+
+    if (photoContainer && photoOverlay) {
+        // Show overlay on hover
+        photoContainer.addEventListener('mouseenter', function () {
+            photoOverlay.style.opacity = '1';
+        });
+
+        // Hide overlay when mouse leaves
+        photoContainer.addEventListener('mouseleave', function () {
+            photoOverlay.style.opacity = '0';
+        });
+    }
+}
+
+    </script>
 </body>
 
 </html>
