@@ -60,7 +60,7 @@
 
     .plus-sign {
         font-size: 4rem;
-        color: white;
+        color: rgba(2, 2, 31, 0.6);
         font-weight: bold;
     }
 
@@ -81,14 +81,14 @@
         <div class="">
             <img src="../../images/man.webp" alt="" style="width: 15vw;">
         </div>
-        <div class=" d-block ms-4">
+        <div class=" d-block d-lg-flex align-items-lg-center ms-4">
             <!-- <div class=" d-flex align-items-center pb-3">
                 <div class="h5 fw-semibold">Ady Familiyasy:</div>
                 <div class="h6 text-small ms-1"><input class="border-gray rounded-1" type="text" placeholder="Ady familiyasy"></div>
             </div> -->
 
             <!-- Profile Picture Section -->
-            <div class="col-md-3">
+            <div class="col-md-3 col-lg-6">
                 <h3 class="mb-3 text-center">Your Picture</h3>
                 <form action="{% url "auth:edit_profile"%}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -110,25 +110,28 @@
                     </div>
                 </form>
             </div>
-
-            <div class=" row align-items-center pb-3">
-              <label class="h5 col fw-semibold form-check-label">Ady Familiyasy:</label>
-              <div class="h6 col text-small ms-1"><input class="form-control rounded-1" type="text" placeholder="Ady familiyasy"></div>
+            <div class="text-lg-center">
+                <div class=" row align-items-center pb-3">
+                    <label class="h5 col fw-semibold form-check-label">Ady Familiyasy:</label>
+                    <div class="h6 col text-small ms-1"><input class="form-control rounded-1" type="text" placeholder="Ady familiyasy"></div>
+                  </div>
+      
+                  <div class=" row align-items-center pb-3">
+                    <label class="h5 col fw-semibold form-check-label">Hunari:</label>
+                    <div class="h6 col text-small ms-1"><input class="form-control rounded-1" type="text" placeholder="UI dizayner"></div>
+                  </div>
+      
+                  <div class=" row align-items-center pb-3">
+                      <label class="h5 col fw-semibold form-check-label">Derejesi:</label>
+                      <div class="h6 col text-small ms-1"><input class="form-control rounded-1" type="text" placeholder="Derejesi"></div>
+                  </div>
+                  <div class=" row align-items-center ">
+                      <label class="h5 col fw-semibold form-check-label">Tel nomeri:</label>
+                      <div class="h6 col text-small ms-1"><input class="form-control rounded-1" type="text" placeholder="Tel nomeri"></div>
+                  </div>
             </div>
 
-            <div class=" row align-items-center pb-3">
-              <label class="h5 col fw-semibold form-check-label">Hunari:</label>
-              <div class="h6 col text-small ms-1"><input class="form-control rounded-1" type="text" placeholder="UI dizayner"></div>
-            </div>
-
-            <div class=" row align-items-center pb-3">
-                <label class="h5 col fw-semibold form-check-label">Derejesi:</label>
-                <div class="h6 col text-small ms-1"><input class="form-control rounded-1" type="text" placeholder="Derejesi"></div>
-            </div>
-            <div class=" row align-items-center ">
-                <label class="h5 col fw-semibold form-check-label">Tel nomeri:</label>
-                <div class="h6 col text-small ms-1"><input class="form-control rounded-1" type="text" placeholder="Tel nomeri"></div>
-            </div>
+            
         </div>
     </div>
 </div>
