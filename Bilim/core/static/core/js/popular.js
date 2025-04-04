@@ -1,40 +1,64 @@
-const swiper = new Swiper(".swiper-container", {
-  effect: "coverflow",
-  grabCursor: true,
+
+const swiper = new Swiper(".swiper", {
+  slidesPerView: 5,
+  spaceBetween: 0,
   centeredSlides: true,
-  slidesPerView: "auto", // Change to "auto" to prevent extra width issues
-  coverflowEffect: {
-    rotate: 0, 
-    stretch: -20, // Reduce this value
-    depth: 150, 
-    modifier: 2, 
-    slideShadows: false,
-  },
   loop: true,
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-      coverflowEffect: {
-        stretch: -10, 
-        depth: 120, 
-      },
-    },
-    768: {
-      slidesPerView: 2,
-      coverflowEffect: {
-        stretch: -15, 
-        depth: 140, 
-      },
-    },
-    1024: {
-      slidesPerView: 3,
-      coverflowEffect: {
-        stretch: -20, 
-        depth: 200, 
-      },
-    },
+  simulateTouch: 'ontouchstart' in window || navigator.maxTouchPoints > 0,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
   },
-});
+})
+
+const calculateHeight = () => {
+  const swiperSlideElements = Array.from(document.querySelectorAll('.swiper .swiper-slide'))
+  if (!swiperSlideElements.length) return
+  const width = swiperSlideElements[0].getBoundingClientRect().width
+  const height = Math.round(width / (16 / 9))
+  swiperSlideElements.map(element => element.style.height = `${height}px`)
+}
+
+document.addEventListener("DOMContentLoaded", calculateHeight)
+addEventListener('resize', calculateHeight)
+
+// const swiper = new Swiper(".swiper-container", {
+//   effect: "coverflow",
+//   grabCursor: true,
+//   centeredSlides: true,
+//   slidesPerView: "auto", // Change to "auto" to prevent extra width issues
+//   coverflowEffect: {
+//     rotate: 0, 
+//     stretch: -20, // Reduce this value
+//     depth: 150, 
+//     modifier: 2, 
+//     slideShadows: false,
+//   },
+//   loop: true,
+//   breakpoints: {
+//     0: {
+//       slidesPerView: 1,
+//       coverflowEffect: {
+//         stretch: -10, 
+//         depth: 120, 
+//       },
+//     },
+//     768: {
+//       slidesPerView: 2,
+//       coverflowEffect: {
+//         stretch: -15, 
+//         depth: 140, 
+//       },
+//     },
+//     1024: {
+//       slidesPerView: 3,
+//       coverflowEffect: {
+//         stretch: -20, 
+//         depth: 200, 
+//       },
+//     },
+//   },
+// });
 
 
 // const swiper = new Swiper(".swiper-container", {
