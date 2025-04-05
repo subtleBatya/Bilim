@@ -1,12 +1,12 @@
-@layer swiper {
+/* @layer swiper {
   .swiper {
     width: 90%;
-    max-width: 1200px; /* Limits max width on large screens */
-    height: auto;
+    max-width: 1200px; /* Limits max width on large screens 
+    height: 80%;
   }
 
   .swiper-slide {
-    scale: 1.1; /* Prevents extreme zoom on small screens */
+    scale: 1.1; /* Prevents extreme zoom on small screens 
     transition: scale 250ms ease-in-out;
   }
 
@@ -22,17 +22,17 @@
   .swiper-slide img {
     display: block;
     width: 100%;
-    height: auto; /* Maintains aspect ratio */
+    height: auto; /* Maintains aspect ratio 
     object-fit: cover;
   }
 
   .swiper-button {
     --position: 5%;
   }
-}
+} */
 
 
-/* @layer reset, base, swiper;
+@layer reset, base, swiper;
 
 @import url('https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css') layer(base);
 
@@ -79,7 +79,7 @@
 
   .swiper-button {
     --position       : 17%;
-    /* background-color : #F04E23;
+    background-color : #F04E23;
     height           : 3rem;
     width            : 3rem; 
     border-radius    : 0.5rem;

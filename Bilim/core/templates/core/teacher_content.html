@@ -18,10 +18,11 @@
 
 <div class="mx-auto d-flex  align-items-start" >
     <div class="d-block mx-auto" style="width: 90%;">
-        
+        {% if lessons %}
         <div class="text-end">
             <button id="cnt_edit_btn" class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">Edit</button>
         </div>
+        {% endif %}
         {% for lesson in lessons %}
         <div class="mt-5 d-flex col-11 mx-auto  align-items-center" >
             <div class=" d-block d-lg-flex col-10 mx-auto justify-content-between align-items-lg-center">
@@ -83,14 +84,19 @@
             
         </div>
         {% empty%}
-
+        <div class="text-center">
+            <div>
+                <a href="{% url "teacher:teacher_video_create"%}"><button class="text-white px-4 py-1 rounded-3 fw-medium downloader fs-1" style="border: none;">Taze Kurs Gosmak</button></a>
+            </div>
+        </div>
         {% endfor %}
-
+        {% if lessons %}
         <div class="text-end">
             <div>
                 <a href="{% url "teacher:teacher_video_create"%}"><button class="text-white px-4 py-1 rounded-3 fw-medium downloader" style="border: none;">Taze Kurs Gosmak</button></a>
             </div>
         </div>
+        {% endif %}
 
     </div>
 </div>
