@@ -30,7 +30,7 @@ def teacher_video_create(request):
             return render(request, "core/teacher_create_video.html", context)
     if request.method == "POST":
         if request.user.is_teacher:
-            video = request.POST.get("video")
+            video = request.FILES.get("video")
             video_title = request.POST.get("video_title")
             main_category = Video_category.objects.get(category_name=request.POST.get("main_cat"))
             course_category = Video_course.objects.get(course_name=request.POST.get("course_cat"))
