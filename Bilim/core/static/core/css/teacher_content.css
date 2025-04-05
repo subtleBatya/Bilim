@@ -32,6 +32,19 @@
         opacity: 1;
     }
 
+    @media (hover: hover) {
+        .photo-wrapper:hover .photo-overlay {
+            opacity: 1;
+        }
+    }
+
+    /* Keep overlay always visible on mobile devices */
+    @media (max-width: 991px) {
+        .photo-overlay {
+            opacity: 1;
+        }
+    }
+
     .play-button {
         width: 60px;
         height: 60px;
