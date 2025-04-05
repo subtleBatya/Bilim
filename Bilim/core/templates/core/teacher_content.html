@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BILIM Teachers content</title>
   {% include "core/static_files/links.html" %}
+  <link rel="stylesheet" href="{% static "core/css/teacher_content.css"%}">
+  
 </head>
 
 <body>
@@ -28,11 +30,21 @@
             <div class=" d-block d-lg-flex col-10 mx-auto justify-content-between align-items-lg-stretch">
                 <div class="  mx-auto text-center rounded-2 col-12 col-lg-4 d-flex flex-column" style="height: 100%;">
                     
-                        <img class=" w-100 h-100 object-fit-cover" src="{{lesson.poster.url}}"  alt="">
-                    
-                    <div>
-                        <a href="" style="text-decoration:none;"><div class=" text-black  fw-medium align-items-start text-center ">Click here to play</div></a>
-                    </div>
+                        <!-- <img class=" w-100 h-100 object-fit-cover" src="{{lesson.poster.url}}"  alt=""> -->
+                        
+                            <div>
+                                <div class="photo-wrapper">
+                                    <img class="w-100 h-100 object-fit-cover" src="{{lesson.poster.url}}" alt="Lesson Image">
+                                    <div class="photo-overlay">
+                                        <div class="play-button"></div>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            
+                            
+                        
+                   
                     
                 </div>
                 <div class="d-block text-start mx-auto mt-2 col-10 col-lg-5">
