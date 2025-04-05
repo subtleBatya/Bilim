@@ -1,26 +1,57 @@
-
 const swiper = new Swiper(".swiper", {
-  slidesPerView: 5,
-  spaceBetween: 0,
+  slidesPerView: "auto", // Adjusts dynamically
+  spaceBetween: 10, // Adds spacing for better layout
   centeredSlides: true,
   loop: true,
-  simulateTouch: 'ontouchstart' in window || navigator.maxTouchPoints > 0,
+  simulateTouch: "ontouchstart" in window || navigator.maxTouchPoints > 0,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
-})
+  breakpoints: {
+    320: { slidesPerView: 1 }, // Mobile: 1 slide
+    480: { slidesPerView: 2 }, // Small screens: 2 slides
+    768: { slidesPerView: 3 }, // Tablets: 3 slides
+    1024: { slidesPerView: 4 }, // Desktops: 4 slides
+    1440: { slidesPerView: 5 }, // Large screens: 5 slides
+  },
+});
 
 const calculateHeight = () => {
-  const swiperSlideElements = Array.from(document.querySelectorAll('.swiper .swiper-slide'))
-  if (!swiperSlideElements.length) return
-  const width = swiperSlideElements[0].getBoundingClientRect().width
-  const height = Math.round(width / (16 / 9))
-  swiperSlideElements.map(element => element.style.height = `${height}px`)
-}
+  const swiperSlideElements = document.querySelectorAll('.swiper .swiper-slide');
+  if (!swiperSlideElements.length) return;
+  const width = swiperSlideElements[0].getBoundingClientRect().width;
+  const height = Math.round(width / (16 / 9)); // Maintain aspect ratio
+  swiperSlideElements.forEach(element => element.style.height = `${height}px`);
+};
 
-document.addEventListener("DOMContentLoaded", calculateHeight)
-addEventListener('resize', calculateHeight)
+document.addEventListener("DOMContentLoaded", calculateHeight);
+window.addEventListener("resize", calculateHeight);
+
+
+
+// const swiper = new Swiper(".swiper", {
+//   slidesPerView: 5,
+//   spaceBetween: 0,
+//   centeredSlides: true,
+//   loop: true,
+//   simulateTouch: 'ontouchstart' in window || navigator.maxTouchPoints > 0,
+//   navigation: {
+//     nextEl: ".swiper-button-next",
+//     prevEl: ".swiper-button-prev",
+//   },
+// })
+
+// const calculateHeight = () => {
+//   const swiperSlideElements = Array.from(document.querySelectorAll('.swiper .swiper-slide'))
+//   if (!swiperSlideElements.length) return
+//   const width = swiperSlideElements[0].getBoundingClientRect().width
+//   const height = Math.round(width / (16 / 9))
+//   swiperSlideElements.map(element => element.style.height = `${height}px`)
+// }
+
+// document.addEventListener("DOMContentLoaded", calculateHeight)
+// addEventListener('resize', calculateHeight)
 
 // const swiper = new Swiper(".swiper-container", {
 //   effect: "coverflow",

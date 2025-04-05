@@ -1,4 +1,38 @@
-@layer reset, base, swiper;
+@layer swiper {
+  .swiper {
+    width: 90%;
+    max-width: 1200px; /* Limits max width on large screens */
+    height: auto;
+  }
+
+  .swiper-slide {
+    scale: 1.1; /* Prevents extreme zoom on small screens */
+    transition: scale 250ms ease-in-out;
+  }
+
+  .swiper-slide-active {
+    scale: 1.5;
+  }
+
+  .swiper-slide-prev,
+  .swiper-slide-next {
+    scale: 1.3;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: auto; /* Maintains aspect ratio */
+    object-fit: cover;
+  }
+
+  .swiper-button {
+    --position: 5%;
+  }
+}
+
+
+/* @layer reset, base, swiper;
 
 @import url('https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css') layer(base);
 
@@ -47,7 +81,7 @@
     --position       : 17%;
     /* background-color : #F04E23;
     height           : 3rem;
-    width            : 3rem; */
+    width            : 3rem; 
     border-radius    : 0.5rem;
     
     &.swiper-button-prev {
@@ -82,7 +116,24 @@
     min-height  : 100svh;
     background  : #eee;
   }
-}
+} */
+
+
+
+
+
+
+
+/* NEW ONES END HERE  */
+
+
+
+
+
+
+
+
+
 
 
 
