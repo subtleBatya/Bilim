@@ -8,7 +8,11 @@
   <title>BILIM Teachers content</title>
   {% include "core/static_files/links.html" %}
   <link rel="stylesheet" href="{% static "core/css/teacher_content.css"%}">
-  
+  <style>
+    /* * {
+        border: 4px green solid !important ;
+    } */
+  </style>
 </head>
 
 <body>
@@ -19,7 +23,7 @@
 </div>
 
 <div class="mx-auto d-flex  align-items-start" >
-    <div class="d-block mx-auto" style="width: 90%;">
+    <div class="d-block mx-auto" style="width: 100%;">
         {% if lessons %}
         <div class="text-end">
             <button id="cnt_edit_btn" class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">Edit</button>
@@ -47,7 +51,7 @@
                    
                     
                 </div>
-                <div class="d-block text-start mx-auto mt-2 col-10 col-lg-5">
+                <div class="d-block text-start  mt-2 col-12 col-lg-5">
                     <div class=" d-flex align-items-center pb-1">
                         <div class="fs-md-4 fw-semibold fs-4">Video title:</div>
                         <div class="p fw-bold text-small ms-1 fs-4 ">{{lesson.title}} </div>
@@ -101,8 +105,8 @@
             
         </div>
         {% empty%}
-        <div class="text-center">
-            <div>
+        <div class="text-center" style="width: 95%;">
+            <div class="">
                 <a href="{% url "teacher:teacher_video_create"%}"><button class="text-white px-4 py-1 rounded-3 fw-medium downloader fs-1" style="border: none;">Taze Kurs Gosmak</button></a>
             </div>
         </div>
