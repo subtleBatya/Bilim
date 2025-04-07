@@ -17,20 +17,20 @@
     <hr class="p-1">
 </div>
 
-<div class="mx-auto d-flex  align-items-start" >
-    <div class="d-block mx-auto" style="width: 100%;">
+<div class=" d-flex  align-items-start" >
+    <div class="d-block " style="width: 100%;">
         {% if lessons %}
         <div class="text-end">
             <button id="cnt_edit_btn" class="text-white px-4 py-1 rounded-3 fw-semibold downloader" style="border: none;">Edit</button>
         </div>
         {% endif %}
         {% for lesson in lessons %}
-        <div class="mt-5 d-flex col-11 mx-auto  align-items-center" >
-            <div class=" d-block d-lg-flex col-12 mx-auto justify-content-between align-items-lg-stretch">
-                <div class="mx-auto text-center rounded-2 col-12 col-lg-5 d-flex flex-column" style="height: 30vh;">
+        <div class="mt-5 d-flex col-12   align-items-center" >
+            <div class=" d-block d-lg-flex col-10  justify-content-between align-items-lg-center">
+                <div class=" text-center rounded-2 col-10 col-lg-5 d-flex flex-column justify-content-between">
                         
-                            <div>
-                                <div class="photo-wrapper" style="height: 30vh;">
+                            <div class="photo-container">
+                                <div class="photo-wrapper">
                                     <img class="" src="{{lesson.poster.url}}" alt="Lesson Image">
                                     <div class="photo-overlay">
                                         <div class="play-button"></div>
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                 </div>
-                <div class="d-block text-start  mt-2 col-12 col-lg-7">
+                <div class="d-block text-start  mt-2 col-10 col-lg-6">
                     <div class=" d-flex align-items-center pb-1">
                         <div class="fs-md-4 fw-semibold fs-4">Video title:</div>
                         <div class="p fw-bold text-small ms-1 fs-4 ">{{lesson.title}} </div>
@@ -60,7 +60,7 @@
                         <div class="p fw-bold text-small ms-1 fs-4"> {% if lesson.accepted %} <span class="bg-success text-white">Accepted</span> {% else %} <span class="bg-danger text-white">Unaccepted</span> {% endif %} </div>
                     </div>
                    
-                    <div class=" d-flex align-items-center mb-1">
+                    <div class=" d-flex align-items-center mb-1 col-lg-1">
                         <div class=" ">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill text-warning" viewBox="0 0 16 16">
                                 <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
@@ -84,16 +84,17 @@
                 </div>
             </div>
             <a href="{% url "teacher:teacher_content_delete" lesson.id %}">
-            <div class="col-1 text-start">
+            <div class="col-2 col-lg-1  ">
                 <svg id="" style="display: none; object-fit: cover;" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-trash3-fill text-primary trash_icon"  viewBox="0 0 16 16">
                     <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
                 </svg>
-            </div></a>
+            </div>
+            </a>
             
             
         </div>
         {% empty%}
-        <div class="text-center" style="width: 95%;">
+        <div class="text-center" >
             <div class="">
                 <a href="{% url "teacher:teacher_video_create"%}"><button class="text-white px-4 py-1 rounded-3 fw-medium downloader fs-1" style="border: none;">Taze Kurs Gosmak</button></a>
             </div>

@@ -1,4 +1,16 @@
-
+    .photo-container {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        border-radius: 50px;
+        width: 300px;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f8f9fa;
+        overflow: hidden;
+    }
     .photo-wrapper {
         position: relative;
         overflow: hidden;
