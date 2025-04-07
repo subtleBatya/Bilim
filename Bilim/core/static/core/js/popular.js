@@ -1,34 +1,84 @@
-const swiper = new Swiper(".swiper", {
-  slidesPerView: "auto", // Adjusts dynamically
-  spaceBetween: 10, // Adds spacing for better layout
-  centeredSlides: true,
-  loop: true,
-  simulateTouch: "ontouchstart" in window || navigator.maxTouchPoints > 0,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  breakpoints: {
-    320: { slidesPerView: 1 }, // Mobile: 1 slide
-    480: { slidesPerView: 2 }, // Small screens: 2 slides
-    768: { slidesPerView: 3 }, // Tablets: 3 slides
-    1024: { slidesPerView: 4 }, // Desktops: 4 slides
-    1440: { slidesPerView: 5 }, // Large screens: 5 slides
-  },
-});
 
-const calculateHeight = () => {
-  const swiperSlideElements = document.querySelectorAll('.swiper .swiper-slide');
-  if (!swiperSlideElements.length) return;
-  const width = swiperSlideElements[0].getBoundingClientRect().width;
-  const height = Math.round(width / (16 / 9)); // Maintain aspect ratio
-  swiperSlideElements.forEach(element => element.style.height = `${height}px`);
-};
+  var swiper = new Swiper('.swiper-container', {
+    effect: 'coverflow',  // Enable Coverflow effect
+    grabCursor: true,     // Enable cursor grab effect
+    centeredSlides: true, // Center the slides
+    slidesPerView: 1,     // Default for small screens (only 1 image visible)
+    spaceBetween: 10,     // Space between slides
+    loop: true,           // Enable looping of slides
+    coverflowEffect: {
+      rotate: 50,         // Set the rotation degree for coverflow effect
+      stretch: 0,         // Set the stretch between the slides
+      depth: 100,         // Set the depth effect for perspective
+      modifier: 1,        // Set the modifier for scaling
+      slideShadows: true, // Enable shadows on the slides
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      // When window width is >= 768px (tablets)
+      768: {
+        slidesPerView: 2,  // Show 2 slides on medium screens
+        spaceBetween: 20,
+      },
+      // When window width is >= 1024px (desktops)
+      1024: {
+        slidesPerView: 3,  // Show 3 slides on large screens
+        spaceBetween: 30,
+      },
+    },
+  });
 
-document.addEventListener("DOMContentLoaded", calculateHeight);
-window.addEventListener("resize", calculateHeight);
+
+  window.addEventListener('load', function() {
+    document.body.style.overflowX = 'hidden'; // Disable horizontal scroll on page load
+  
+    // After a short delay, re-enable overflow if needed
+    setTimeout(() => {
+      document.body.style.overflowX = ''; // Reset overflow (if needed)
+    }, 1000);
+  });
 
 
+/*  BELOW IS THE UNMODIFIED VERSION BEFORE 17.02.2025 */
+
+// const swiper = new Swiper(".swiper", {
+//   slidesPerView: "auto", // Adjusts dynamically
+//   spaceBetween: 10, // Adds spacing for better layout
+//   centeredSlides: true,
+//   loop: true,
+//   simulateTouch: "ontouchstart" in window || navigator.maxTouchPoints > 0,
+//   navigation: {
+//     nextEl: ".swiper-button-next",
+//     prevEl: ".swiper-button-prev",
+//   },
+//   breakpoints: {
+//     320: { slidesPerView: 1 }, // Mobile: 1 slide
+//     480: { slidesPerView: 2 }, // Small screens: 2 slides
+//     768: { slidesPerView: 3 }, // Tablets: 3 slides
+//     1024: { slidesPerView: 4 }, // Desktops: 4 slides
+//     1440: { slidesPerView: 5 }, // Large screens: 5 slides
+//   },
+// });
+
+// const calculateHeight = () => {
+//   const swiperSlideElements = document.querySelectorAll('.swiper .swiper-slide');
+//   if (!swiperSlideElements.length) return;
+//   const width = swiperSlideElements[0].getBoundingClientRect().width;
+//   const height = Math.round(width / (16 / 9)); // Maintain aspect ratio
+//   swiperSlideElements.forEach(element => element.style.height = `${height}px`);
+// };
+
+// document.addEventListener("DOMContentLoaded", calculateHeight);
+// window.addEventListener("resize", calculateHeight);
+
+/*  ABOVE IS THE UNMODIFIED VERSION BEFORE 17.02.2025 */
 
 // const swiper = new Swiper(".swiper", {
 //   slidesPerView: 5,

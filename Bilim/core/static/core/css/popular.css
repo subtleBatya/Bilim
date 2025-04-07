@@ -1,3 +1,56 @@
+
+
+* {
+  outline: 4px solid lightblue;
+}
+
+.swiper-container {
+  max-width: 90%;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden; /* Prevent overflow */
+  position: relative;
+}
+
+.swiper-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.swiper-slide > img {
+  width: 100%;      /* Ensure images fill the width of the slide */
+  height: auto;     /* Keep aspect ratio */
+  border-radius: 10px;  /* Optional: add rounded corners */
+  object-fit: cover;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+  height: 300px; /* Adjust for large screens */
+  flex-shrink: 0;  /* Prevent slide from shrinking */
+}
+
+@media (max-width: 767px) {
+  .swiper-slide {
+    height: 200px; /* Adjust for small screens */
+    
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .swiper-slide {
+    height: 250px; /* Adjust for tablets */
+    
+  }
+}
+
+
+
+
+
+
 /* @layer swiper {
   .swiper {
     width: 90%;
@@ -32,6 +85,10 @@
 } */
 
 
+/*  BELOW IS THE UNMODIFIED VERSION BEFORE 17.02.2025 */
+
+
+/* 
 @layer reset, base, swiper;
 
 @import url('https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css') layer(base);
@@ -117,10 +174,10 @@
     background  : #eee;
   }
 } */
+ */
 
 
-
-
+/* ABOVE IS THE UNMODIFIED VERSION BEFORE 17.02.2025 */
 
 
 
