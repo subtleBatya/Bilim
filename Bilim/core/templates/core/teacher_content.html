@@ -17,7 +17,7 @@
     <hr class="p-1">
 </div>
 
-<div class=" d-flex  align-items-start" >
+<div class=" " style="width: 90vw; overflow-x: hidden;" >
     <div class="d-block " style="width: 100%;">
         {% if lessons %}
         <div class="text-end">
@@ -26,8 +26,8 @@
         {% endif %}
         {% for lesson in lessons %}
         <div class="mt-5 d-flex col-12   align-items-center" >
-            <div class=" d-block d-lg-flex col-10  justify-content-between align-items-lg-center">
-                <div class=" text-center rounded-2 col-10 col-lg-5 d-flex flex-column justify-content-between">
+            <div class=" d-block d-lg-flex col-10 mx-md-auto text-md-center justify-content-between align-items-lg-center">
+                <div class="text-start text-md-center text-lg-start rounded-2 col-10 col-lg-5 ">
                         
                             <div class="photo-container">
                                 <div class="photo-wrapper">
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                 </div>
-                <div class="d-block text-start  mt-2 col-10 col-lg-6">
+                <div class="d-block text-start  mt-2 col-10 col-lg-5">
                     <div class=" d-flex align-items-center pb-1">
                         <div class="fs-md-4 fw-semibold fs-4">Video title:</div>
                         <div class="p fw-bold text-small ms-1 fs-4 ">{{lesson.title}} </div>
@@ -60,7 +60,7 @@
                         <div class="p fw-bold text-small ms-1 fs-4"> {% if lesson.accepted %} <span class="bg-success text-white">Accepted</span> {% else %} <span class="bg-danger text-white">Unaccepted</span> {% endif %} </div>
                     </div>
                    
-                    <div class=" d-flex align-items-center mb-1 col-lg-1">
+                    <div class=" d-flex align-items-center mb-1 col-lg-2">
                         <div class=" ">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill text-warning" viewBox="0 0 16 16">
                                 <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
