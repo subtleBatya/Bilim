@@ -16,9 +16,10 @@
         overflow: hidden;
     }
 
-    .photo-wrapper img {
-        display: block;
+    .photo-wrapper > img {
         
+        width: 300px;
+        height: 300px;
         transition: 0.3s ease-in-out;
     }
 
