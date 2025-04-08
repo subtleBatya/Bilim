@@ -1,49 +1,75 @@
-
-  var swiper = new Swiper('.swiper-container', {
-    effect: 'coverflow',  // Enable Coverflow effect
-    grabCursor: true,     // Enable cursor grab effect
-    centeredSlides: true, // Center the slides
-    slidesPerView: 1,     // Default for small screens (only 1 image visible)
-    spaceBetween: 10,     // Space between slides
-    loop: true,           // Enable looping of slides
-    coverflowEffect: {
-      rotate: 50,         // Set the rotation degree for coverflow effect
-      stretch: 0,         // Set the stretch between the slides
-      depth: 100,         // Set the depth effect for perspective
-      modifier: 1,        // Set the modifier for scaling
-      slideShadows: true, // Enable shadows on the slides
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    breakpoints: {
-      // When window width is >= 768px (tablets)
-      768: {
-        slidesPerView: 2,  // Show 2 slides on medium screens
-        spaceBetween: 20,
+var swiper = new Swiper('.swiper', {
+  effect: 'coverflow',
+  grabCursor: true,
+  centeredSlides: true,
+  initialSlide: 2,
+  speed: 600,
+  preventClicks: true,
+  slidesPerView: 'auto',
+  coverflowEffect: {
+        rotate: 0,         // Set the rotation degree for coverflow effect
+        stretch: 80,         // Set the stretch between the slides
+        depth: 350,         // Set the depth effect for perspective
+        modifier: 1,        // Set the modifier for scaling
+        slideShadows: true, // Enable shadows on the slides
       },
-      // When window width is >= 1024px (desktops)
-      1024: {
-        slidesPerView: 3,  // Show 3 slides on large screens
-        spaceBetween: 30,
+      on: {
+        click(event) {
+          swiper.slideTo(this.clickedIndex);
+        },
       },
-    },
-  });
-
-
-  window.addEventListener('load', function() {
-    document.body.style.overflowX = 'hidden'; // Disable horizontal scroll on page load
+      pagination: {
+        el: '.swiper-pagination',
+      },
+})
   
-    // After a short delay, re-enable overflow if needed
-    setTimeout(() => {
-      document.body.style.overflowX = ''; // Reset overflow (if needed)
-    }, 1000);
-  });
+  // BELOW ARE 18.02.2025 CHANGES
+
+  // var swiper = new Swiper('.swiper-container', {
+  //   effect: 'coverflow',  // Enable Coverflow effect
+  //   grabCursor: true,     // Enable cursor grab effect
+  //   centeredSlides: true, // Center the slides
+  //   slidesPerView: 1,     // Default for small screens (only 1 image visible)
+  //   spaceBetween: 10,     // Space between slides
+  //   loop: true,           // Enable looping of slides
+  //   coverflowEffect: {
+  //     rotate: -20,         // Set the rotation degree for coverflow effect
+  //     stretch: 0,         // Set the stretch between the slides
+  //     depth: 100,         // Set the depth effect for perspective
+  //     modifier: 1,        // Set the modifier for scaling
+  //     slideShadows: true, // Enable shadows on the slides
+  //   },
+  //   navigation: {
+  //     nextEl: '.swiper-button-next',
+  //     prevEl: '.swiper-button-prev',
+  //   },
+  //   pagination: {
+  //     el: '.swiper-pagination',
+  //     clickable: true,
+  //   },
+  //   breakpoints: {
+  //     // When window width is >= 768px (tablets)
+  //     768: {
+  //       slidesPerView: 2,  // Show 2 slides on medium screens
+  //       spaceBetween: 20,
+  //     },
+  //     // When window width is >= 1024px (desktops)
+  //     1024: {
+  //       slidesPerView: 3,  // Show 3 slides on large screens
+  //       spaceBetween: 30,
+  //     },
+  //   },
+  // });
+
+
+  // window.addEventListener('load', function() {
+  //   document.body.style.overflowX = 'hidden'; // Disable horizontal scroll on page load
+  
+  //   // After a short delay, re-enable overflow if needed
+  //   setTimeout(() => {
+  //     document.body.style.overflowX = ''; // Reset overflow (if needed)
+  //   }, 1000);
+  // });
 
 
 /*  BELOW IS THE UNMODIFIED VERSION BEFORE 17.02.2025 */
