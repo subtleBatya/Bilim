@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Чат с видео</title>
+  <link rel="stylesheet" href="{% static "core/css/font.css"%}">
+  <link rel="stylesheet" href="{% static "core/css/room.css"%}">
+</head>
+<body>
+
+  <!-- CHAT -->
+  <div class="chat-section">
+    <div class="chat-header">Chat</div>
+    <div class="chat-messages" id="messages"></div>
+    <form class="chat-input" onsubmit="sendMessage(event)">
+      <input type="text" id="messageInput" placeholder="Введите сообщение..." />
+      <button type="submit">Отправить</button>
+    </form>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="video-section" id="video-section">
+    
+    </div>
+
+    <div class="small-videos">
+      <div class="small-video-container">
+        <video class="small-video" autoplay muted loop>
+          <source src="video1.mp4" type="video/mp4">
+        </video>
+        <button class="mute-btn" onclick="alert('Отключен звук у Видео 1')">🔇</button>
+      </div>
+  </div>
+
+  <script>
+    
+  </script>
+  <script src="{% static 'core/js/AgoraRTC_N-4.8.0.js'%}" ></script>
+  <script src="{% static 'core/js/chat.js'%}"></script>
+</body>
+</html>
+ 

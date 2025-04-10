@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "applications",
     "teachers",
     "videos",
+    "video_chat"
 ]
 
 MIDDLEWARE = [
@@ -160,3 +161,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'kepilliyollar54@gmail.com'
 EMAIL_HOST_PASSWORD = 'gqfvexlehpyttncg'
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://252e-34-159-238-146.ngrok-free.app'
+]

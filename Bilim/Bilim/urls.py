@@ -29,7 +29,8 @@ urlpatterns = i18n_patterns(
     path("videos/", include("videos.urls")),
     path("users/", include("users.urls")),
     path('teacher/', include("teachers.urls")),
-    path("exams/", include("exams.urls"))
+    path("exams/", include("exams.urls")),
+    path("chat/", include("video_chat.urls"))
 )
 
 

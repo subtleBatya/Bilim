@@ -67,6 +67,11 @@
                             <li><a class="dropdown-item hover-effect" href="/ru/{{request.get_full_path|slice:"4:"}}">Русский</a></li>
                         </ul>
                     </li>
+                    {% if request.user.is_teacher %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "video_chat:create_chat"%}">Провести Урок</a>
+                    </li>
+                    {% endif %}
                 </ul>
 
                 <!-- Right Section: Avatar and Username -->

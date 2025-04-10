@@ -1,0 +1,107 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "core/css/font.css"%}">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            background-color: #fff;
+            backdrop-filter: blur(2px);
+            border-radius: 40px;
+        }
+        #startLesson{
+            width: 10rem;
+            height: auto;
+            padding: 10px;
+            margin: 10px;
+            background-color: #8f92dd ;
+            border-radius:30px;
+            transition: all 0.5s ease-in-out;
+        }
+
+        #startLesson:hover{
+            background-color: #FFA000;
+            transition: all 0.5s ease-in-out;
+            cursor: pointer;
+        }
+        #animateBackground{
+            width: 100%;
+            height: 100vh;
+            background-image:  linear-gradient(135deg, #373985, #8f95dd);
+            position: fixed;
+            z-index: -100;
+            top: 0;
+            left: 0;
+            background-size: 200% 200%;
+            animation: gradientAnimation 10s ease infinite alternate;
+        }
+
+        @keyframes gradientAnimation {
+            0%{
+                background-position: 0% 50%;
+            }
+            100%{
+                background-position: 100% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="animateBackground"></div>
+    <div class="container">
+        <h1>Нажмите для создание онлайн урока</h1>
+        <div class="input_group">
+            <button id="startLesson">Начать урок</button>
+        </div>
+    </div>
+
+
+    <script>
+    let handleSubmit = async (e) => {
+        e.preventDefault();
+        let username = "{{ request.user.username }}"
+        const room = "public";
+        const langPrefix = window.location.pathname.split('/')[1]; 
+
+        let response = await fetch(`/${langPrefix}/chat/get_token_for_chat_room/?channel=${room}`)
+        let data = await response.json()
+        let uid = data.uid
+        let token = data.token
+
+        sessionStorage.setItem("UID", uid)
+        sessionStorage.setItem("token", token)
+        sessionStorage.setItem("username", username)
+        sessionStorage.setItem("room", room)
+
+
+        window.location.pathname = `/${langPrefix}`+'/chat' +'/chat/' +`${room}`+'/';
+
+    }
+
+    const startLessonBtn = document.querySelector("#startLesson");
+    startLessonBtn.addEventListener("click", handleSubmit)
+    </script>
+</body>
+</html>
