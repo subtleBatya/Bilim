@@ -418,10 +418,38 @@ a{
     justify-content: center; 
     align-items: center; 
     text-align: center; 
-    width:30vw; 
+    width:40vw; 
     height: 30%;
     margin: 0 auto;
 } 
+
+@media (width: 250px) {
+    .video-container {
+        
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    width: 80vw; 
+    height: 30%;
+    margin: 0 auto;
+    }
+    
+}
+
+@media (width: 250px) {
+    .video-js .vjs-tech {
+        
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    width: 100%;
+    height: 31%;
+    margin: 0 auto;
+    }
+    
+}
  
 /* Video Styling */
 .video-js .vjs-tech {
