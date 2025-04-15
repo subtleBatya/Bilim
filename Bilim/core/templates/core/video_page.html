@@ -10,7 +10,7 @@
 </head>
 <body>
  {% include "core/hero.html" with content="Bilim Video Courses" image_path="core/images/course.webp"%}
-    <div class="video-container h-50">
+    <div class="video-container">
       <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" download="none" data-setup='{}'>
         <source src="{{video.video.url}}" type="video/mp4" />
         <p class="vjs-no-js">
