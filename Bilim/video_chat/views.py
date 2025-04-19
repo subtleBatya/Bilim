@@ -13,8 +13,13 @@ def create_chat(request):
 
 @login_required
 def room(request, room_name):
-    if request.user.is_teacher:
-        return render(request, "core/video_chat/room.html")
+    return render(request, "core/video_chat/room.html")
+    
+    
+@login_required
+def available_lesson_for_student(request):
+    if request.user.is_student:
+        return render(request, "core/video_chat/join_chat.html")
     
 
 
@@ -23,7 +28,6 @@ def getToken(request):
     appId = "f761c240f7164bf293c1cb58eb3c5e8d"
     appCertificate = "f17e4fa36fc840bf98495ccef9d557da"
     channelName = request.GET.get("channel")
-    print(channelName)
     uid = random.randint(1, 230)
     expirationTimeInSeconds = 3600
     currentTimeStamp = int(time.time())

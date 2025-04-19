@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Lessons</title>
+    {% include "core/static_files/links.html" %}
+    <style>
+        .navbar {
+            background: linear-gradient(135deg, #373985, #8f95dd) !important;
+            color: white !important;
+        }
+        .navbar-brand, .navbar-text {
+            color: white !important;
+        }
+        .navbar-nav .nav-link {
+            color: white !important;
+        } .video-section {
+            width: 70%;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            gap: 20px;
+            background-color: #f0f2f5;
+            padding: 20px;
+            box-sizing: border-box;
+          }
+          
+          /* This keeps 3 per row on desktop, fewer on smaller screens */
+          .main-video-container {
+            flex: 1 1 calc(33.333% - 20px);
+            max-width: calc(33.333% - 20px);
+            height: 300px;
+            background-color: #007bff;
+            border-radius: 10px;
+            border: 2px solid black;
+            overflow: hidden;
+            padding: 10px;
+            position: relative;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          }
+          
+          /* Video inside container */
+          .main-video {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+          }
+          
+          /* Responsive behavior */
+          @media (max-width: 1024px) {
+            .main-video-container {
+              flex: 1 1 calc(50% - 20px);
+              max-width: calc(50% - 20px);
+            }
+          }
+          
+          @media (max-width: 600px) {
+            .main-video-container {
+              flex: 1 1 100%;
+              max-width: 100%;
+            }
+          }
+          
+          
+          @media (max-width: 768px) {
+            body {
+              flex-direction: column;
+            }
+          
+            .chat-section {
+              width: 100%;
+              height: 50vh;
+              border-right: none;
+              border-bottom: 1px solid #e0e0e0;
+            }
+          
+            .video-section {
+              width: 100%;
+              height: 50vh;
+            }
+          }
+          
+          
+              .video-controls{
+                position: fixed;
+                left:35%;
+                bottom: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 10px;
+                position: absolute;
+                
+              }
+          
+              button{
+                width: auto;
+                padding: 10px;
+                border-radius: 30px;
+                box-shadow: 2px 2px 2px 1px black;
+                cursor: pointer;
+                transition: all 0.5s ease-in-out;
+              }
+          
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-color: #f8f9fa; 
+        }
+        .lesson-container{
+            border: 1px solid black;
+            border-radius: 30px;
+            box-shadow: 4px 4px 4px 2px black;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <span class="navbar-text">
+                Welcome Student to your lessons
+            </span>
+            <div class="navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <div class="user-info">
+                            <div class="avatar" style="background-image: url('{{request.user.user_avatar.url}}'); background-size: cover; background-position: center;"></div>
+                            <span class="nav-link disabled">{{request.user.username}}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="lesson-container mt-4">
+            <h1 class="lesson-title">Introduction to Algebra</h1>
+            <p class="teacher-name">Teacher: Jane Smith</p>
+            <button class="btn btn-primary join-button">Join Lesson</button>
+        </div>
+
+        <div class="lesson-container mt-4">
+            <h1 class="lesson-title">Advanced Calculus</h1>
+            <p class="teacher-name">Teacher: Dr. Robert Jones</p>
+            <button class="btn btn-primary join-button">Join Lesson</button>
+        </div>
+
+        <div class="lesson-container mt-4">
+            <h1 class="lesson-title">Introduction to Algebra</h1>
+            <p class="teacher-name">Teacher: Jane Smith</p>
+            <a href="{% url "video_chat:room" 'public' %}" class="btn btn-primary join-button">Join Lesson</a>
+        </div>
+
+        <div class="lesson-container mt-4">
+            <h1 class="lesson-title">Advanced Calculus</h1>
+            <p class="teacher-name">Teacher: Dr. Robert Jones</p>
+            <button class="btn btn-primary join-button">Join Lesson</button>
+        </div>
+
+        <div class="lesson-container mt-4">
+            <h1 class="lesson-title">Introduction to Algebra</h1>
+            <p class="teacher-name">Teacher: Jane Smith</p>
+            <button class="btn btn-primary join-button">Join Lesson</button>
+        </div>
+
+        <div class="lesson-container mt-4">
+            <h1 class="lesson-title">Advanced Calculus</h1>
+            <p class="teacher-name">Teacher: Dr. Robert Jones</p>
+            <button class="btn btn-primary join-button">Join Lesson</button>
+        </div>
+
+        
+
+    </div>
+
+    
+    {% include "core/static_files/scripts.html"%}
+</body>
+</html>

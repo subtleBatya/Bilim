@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -164,5 +165,5 @@ EMAIL_HOST_PASSWORD = 'gqfvexlehpyttncg'
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://252e-34-159-238-146.ngrok-free.app'
+    'https://9c4e-45-81-243-66.ngrok-free.app'
 ]

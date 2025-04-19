@@ -77,12 +77,13 @@
         </div>
     </div>
 
+    <p id="is_teacher" style="display: none;">{{request.user.username}}</p>
 
     <script>
     let handleSubmit = async (e) => {
         e.preventDefault();
-        let username = "{{ request.user.username }}"
-        const room = "public";
+        let username = document.getElementById("is_teacher").textContent
+        const room = 'public';
         const langPrefix = window.location.pathname.split('/')[1]; 
 
         let response = await fetch(`/${langPrefix}/chat/get_token_for_chat_room/?channel=${room}`)

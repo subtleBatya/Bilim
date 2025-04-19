@@ -71,6 +71,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url "video_chat:create_chat"%}">Провести Урок</a>
                     </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "video_chat:available_lessons"%}">Присоединится к урокам</a>
+                    </li>
                     {% endif %}
                 </ul>
 
