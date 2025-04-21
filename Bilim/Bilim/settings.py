@@ -78,9 +78,19 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Bilim.wsgi.application'
+#WSGI_APPLICATION = 'Bilim.wsgi.application'
+ASGI_APPLICATION = "Bilim.asgi.application"
 
 
+
+CHANNEL_LAYERS = {
+    'default':{
+        'BACKEND':'channels_redis.core.RedisChannelLayer',
+        'CONFIG':{
+            'hosts':[('127.0.0.1', 6379)]
+        }
+    }
+}
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -165,5 +175,5 @@ EMAIL_HOST_PASSWORD = 'gqfvexlehpyttncg'
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://9c4e-45-81-243-66.ngrok-free.app'
+    'https://02ac-45-81-243-66.ngrok-free.app'
 ]

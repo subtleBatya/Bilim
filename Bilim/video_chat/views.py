@@ -5,6 +5,7 @@ import time
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from .models import *
 # Create your views here.
 @login_required
 def create_chat(request):
@@ -13,7 +14,9 @@ def create_chat(request):
 
 @login_required
 def room(request, room_name):
-    return render(request, "core/video_chat/room.html")
+    print(f'Here is chat_room: {room_name}')
+    group_chat, created = Group_chat.objects.get_or_create(group_name=room_name)
+    return render(request, "core/video_chat/room.html", {"room_name":room_name})
     
     
 @login_required
@@ -38,3 +41,7 @@ def getToken(request):
     
     return JsonResponse({'token': token, 'uid': uid}, safe=False)
 
+
+
+
+    
