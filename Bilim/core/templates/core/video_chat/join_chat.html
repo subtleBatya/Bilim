@@ -147,47 +147,44 @@
             </div>
         </div>
     </nav>
-
+   
     <div class="container mt-4">
-        <div class="lesson-container mt-4">
-            <h1 class="lesson-title">Introduction to Algebra</h1>
-            <p class="teacher-name">Teacher: Jane Smith</p>
-            <button class="btn btn-primary join-button">Join Lesson</button>
-        </div>
-
-        <div class="lesson-container mt-4">
-            <h1 class="lesson-title">Advanced Calculus</h1>
-            <p class="teacher-name">Teacher: Dr. Robert Jones</p>
-            <button class="btn btn-primary join-button">Join Lesson</button>
-        </div>
-
-        <div class="lesson-container mt-4">
-            <h1 class="lesson-title">Introduction to Algebra</h1>
-            <p class="teacher-name">Teacher: Jane Smith</p>
-            <a href="{% url "video_chat:room" 'public' %}" class="btn btn-primary join-button">Join Lesson</a>
-        </div>
-
-        <div class="lesson-container mt-4">
-            <h1 class="lesson-title">Advanced Calculus</h1>
-            <p class="teacher-name">Teacher: Dr. Robert Jones</p>
-            <button class="btn btn-primary join-button">Join Lesson</button>
-        </div>
-
-        <div class="lesson-container mt-4">
-            <h1 class="lesson-title">Introduction to Algebra</h1>
-            <p class="teacher-name">Teacher: Jane Smith</p>
-            <button class="btn btn-primary join-button">Join Lesson</button>
-        </div>
-
-        <div class="lesson-container mt-4">
-            <h1 class="lesson-title">Advanced Calculus</h1>
-            <p class="teacher-name">Teacher: Dr. Robert Jones</p>
-            <button class="btn btn-primary join-button">Join Lesson</button>
-        </div>
-
+      {% for lesson in lessons %}
+      <div class="lesson-container mt-4">
+          <h1 class="lesson-title">{{ lesson.lesson_name }}</h1>
+          <p class="teacher-name">Teacher: {{ lesson.teacher_name }}</p>
+          <button class="btn btn-primary join-button" data-room="{{ lesson.lesson_name }}">Join Lesson</button>
+      </div>
+      {% empty %}
+      <center><h2>Здесь нет уроков для вас</h2></center>
+      {% endfor %}
+      
+       
         
 
     </div>
+
+    <script>
+      const langPrefix = window.location.pathname.split('/')[1];
+      
+      document.querySelectorAll(".join-button").forEach(button => {
+          button.addEventListener("click", async () => {
+              const room = button.dataset.room;
+      
+              // Get token for this specific room
+              let response = await fetch(`/${langPrefix}/chat/get_token_for_chat_room/?channel=${room}`);
+              let data = await response.json();
+      
+              sessionStorage.setItem("UID", data.uid);
+              sessionStorage.setItem("token", data.token);
+              sessionStorage.setItem("username", data.username);
+              sessionStorage.setItem("room", room);
+      
+              window.location.pathname = `/${langPrefix}/chat/chat/${room}/`;
+          });
+      });
+      </script>
+      
 
     
     {% include "core/static_files/scripts.html"%}

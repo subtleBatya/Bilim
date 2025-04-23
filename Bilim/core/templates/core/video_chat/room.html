@@ -41,7 +41,7 @@
   
     chatSocket.onmessage = function (e) {
       const data = JSON.parse(e.data);
-      displayMessage(data.username || '{{request.user.username}}', data.message, 'request.user.user_avatar');
+      displayMessage(data.username || '{{request.user.username}}', data.message);
     };
   
     chatSocket.onclose = function (e) {
@@ -72,10 +72,6 @@
       const msgDiv = document.createElement("div");
       msgDiv.classList.add("message");
   
-      const avatar = document.createElement("img");
-      avatar.src = avatarUrl;
-      avatar.classList.add("avatar");
-  
       const content = document.createElement("div");
       content.classList.add("message-content");
   
@@ -88,7 +84,6 @@
       content.appendChild(name);
       content.appendChild(text);
   
-      msgDiv.appendChild(avatar);
       msgDiv.appendChild(content);
   
       messagesContainer.appendChild(msgDiv);

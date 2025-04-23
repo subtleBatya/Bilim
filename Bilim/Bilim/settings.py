@@ -175,5 +175,5 @@ EMAIL_HOST_PASSWORD = 'gqfvexlehpyttncg'
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://02ac-45-81-243-66.ngrok-free.app'
+    'https://6992-34-148-6-212.ngrok-free.appx'
 ]

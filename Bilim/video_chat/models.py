@@ -17,3 +17,14 @@ class ChatMessage(models.Model):
 
     def __str__(self):
         return f'{self.send_time}, {self.sender.username}, {self.message}'
+    
+
+
+class New_lesson(models.Model):
+    lesson_name = models.CharField(max_length=255, unique=True)
+    teacher_name = models.CharField(max_length=255, blank=True)
+    accept_granted_students = models.ManyToManyField(User, blank=True)
+
+
+    def __str__(self):
+        return self.lesson_name

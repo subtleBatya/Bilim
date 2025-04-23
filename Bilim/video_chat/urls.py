@@ -7,5 +7,6 @@ urlpatterns = [
     path("", create_chat, name="create_chat"),
     path("chat/<str:room_name>/", room, name="room" ),
     path("get_token_for_chat_room/", getToken, name="get_token"),
-    path("available_lessons/", available_lesson_for_student, name="available_lessons" )
+    path("available_lessons/", available_lesson_for_student, name="available_lessons" ),
+    path('create_lesson/', create_lesson, name='create_lesson'),
 ]

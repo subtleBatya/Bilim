@@ -5,7 +5,7 @@ from videos.models import VideoCourse
 # Create your models here.
 class User(AbstractUser):
     telephone_number = models.CharField(max_length=255, blank=True, null=True)
-    user_avatar = models.ImageField(upload_to="user/images/", blank=True, null=True)
+    user_avatar = models.ImageField(upload_to="user/images/", blank=True, null=True, default='user/images/default_profile_image.png')
     recent_seen_video = models.ManyToManyField(
         VideoCourse,
         related_name="User_last_seen_videos", 

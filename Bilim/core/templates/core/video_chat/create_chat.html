@@ -72,34 +72,82 @@
     <div id="animateBackground"></div>
     <div class="container">
         <h1>Нажмите для создание онлайн урока</h1>
+        <div class="students-list" style="margin-top: 20px; max-height: 200px; overflow-y: auto; width: 100%;">
+            <h3 style="margin-bottom: 10px;">Выберите студентов:</h3>
+            <form id="studentForm">
+                {% for student in students %}
+                <div>
+                    <label>
+                        <input type="checkbox" name="student" value="{{ student.username }}">
+                        {{ student.username }}
+                    </label>
+                </div>
+                {% endfor %}
+            </form>
+        </div>
+        
         <div class="input_group">
             <button id="startLesson">Начать урок</button>
         </div>
     </div>
-
     <p id="is_teacher" style="display: none;">{{request.user.username}}</p>
-
+    
     <script>
     let handleSubmit = async (e) => {
-        e.preventDefault();
-        let username = document.getElementById("is_teacher").textContent
-        const room = crypto.randomUUID();
-        const langPrefix = window.location.pathname.split('/')[1]; 
+    e.preventDefault();
 
-        let response = await fetch(`/${langPrefix}/chat/get_token_for_chat_room/?channel=${room}`)
-        let data = await response.json()
-        let uid = data.uid
-        let token = data.token
+    let selectedStudents = Array.from(document.querySelectorAll('input[name="student"]:checked'))
+        .map(checkbox => checkbox.value);
 
-        sessionStorage.setItem("UID", uid)
-        sessionStorage.setItem("token", token)
-        sessionStorage.setItem("username", username)
-        sessionStorage.setItem("room", room)
-
-
-        window.location.pathname = `/${langPrefix}`+'/chat' +'/chat/' +`${room}`+'/';
-
+    if (selectedStudents.length === 0) {
+        alert("Пожалуйста, выберите хотя бы одного студента.");
+        return;
     }
+
+    let username = document.getElementById("is_teacher").textContent;
+    const room = crypto.randomUUID();
+    const langPrefix = window.location.pathname.split('/')[1];
+
+    // 1. Create Lesson
+    await fetch(`/${langPrefix}/chat/create_lesson/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')  // CSRF helper function below
+        },
+        body: JSON.stringify({
+            lesson_name: room,
+            students: selectedStudents
+        })
+    });
+
+    // 2. Get token
+    let response = await fetch(`/${langPrefix}/chat/get_token_for_chat_room/?channel=${room}`);
+    let data = await response.json();
+
+    sessionStorage.setItem("UID", data.uid);
+    sessionStorage.setItem("token", data.token);
+    sessionStorage.setItem("username", username);
+    sessionStorage.setItem("room", room);
+
+    window.location.pathname = `/${langPrefix}/chat/chat/${room}/`;
+};
+
+// CSRF token helper (Django needs this)
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            if (cookie.trim().startsWith(name + '=')) {
+                cookieValue = decodeURIComponent(cookie.trim().substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
 
     const startLessonBtn = document.querySelector("#startLesson");
     startLessonBtn.addEventListener("click", handleSubmit)

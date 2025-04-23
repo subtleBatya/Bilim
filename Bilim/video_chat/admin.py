@@ -3,3 +3,4 @@ from .models import *
 # Register your models here.
 admin.site.register(Group_chat)
 admin.site.register(ChatMessage)
+admin.site.register(New_lesson)

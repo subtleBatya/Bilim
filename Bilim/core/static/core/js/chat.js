@@ -1,46 +1,4 @@
 
-// for chatting 
-function sendMessage(e) {
-    e.preventDefault();
-    const input = document.getElementById('messageInput');
-    const message = input.value.trim();
-    if (message !== '') {
-      const messagesContainer = document.getElementById('messages');
-
-      const msgDiv = document.createElement('div');
-      msgDiv.classList.add('message');
-
-      const avatar = document.createElement('img');
-      avatar.src = 'image.png';
-
-      const content = document.createElement('div');
-      content.classList.add('message-content');
-
-      const name = document.createElement('strong');
-      name.textContent = 'Пользователь';
-
-      const text = document.createElement('span');
-      text.textContent = message;
-
-      content.appendChild(name);
-      content.appendChild(text);
-
-      msgDiv.appendChild(avatar);
-      msgDiv.appendChild(content);
-
-      messagesContainer.appendChild(msgDiv);
-
-      input.value = '';
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-  }
-
-
-
-//   for video
-
-
-
 const APP_ID = 'f761c240f7164bf293c1cb58eb3c5e8d'
 const TOKEN = sessionStorage.getItem('token')
 const CHANNEL = sessionStorage.getItem('room')
@@ -93,9 +51,8 @@ let handleUserJoin = async (user, mediaType) => {
     if(player != null){
       player.remove()
     }
-
     player = ` <div class="main-video-container" id="user-container-${user.uid}">
-      <center><h5 style="color:white">${NAME}</h5></center>
+      <center><h5 style="color:white">${user.uid}</h5></center>
       <div class="main-video" id="main-video-${user.uid}">
       </div>
       `
