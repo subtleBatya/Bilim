@@ -97,7 +97,7 @@
                 {% for student in students %}
                 <div>
                     <label>
-                        <input type="checkbox" name="student" value="{{ student.username }}">
+                        <input type="checkbox" name="student" value="{{ student.username }}" required>
                         {{ student.username }}
                     </label>
                 </div>

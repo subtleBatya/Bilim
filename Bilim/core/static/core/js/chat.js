@@ -62,8 +62,12 @@ let handleUserJoin = async (user, mediaType) => {
     if(player != null){
       player.remove()
     }
+
+    let response = await fetch(`/chat/get_username_by_uid/?uid=${user.uid}`);
+    let data = await response.json();
+    let username = data.username || user.uid;
     player = ` <div class="main-video-container" id="user-container-${user.uid}">
-      <center><h5 style="color:white">${user.uid}</h5></center>
+      <center><h5 style="color:white">${username}</h5></center>
       <div class="main-video" id="main-video-${user.uid}">
       </div>
       `
@@ -81,8 +85,13 @@ let handleUserJoin = async (user, mediaType) => {
 
 
 let handleUserLeft = async (user) => {
+
+  let delete_user = await fetch(`/chat/quit_user/?room_name=${CHANNEL}?uid=${user.uid}`)
+  let data = await delete_user.json()
+  console.log(data.result)
   delete remoteUsers[user.uid]
   document.getElementById(`user-container-${user.uid}`).remove()
+
 }
 
 

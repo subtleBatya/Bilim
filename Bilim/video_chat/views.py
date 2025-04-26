@@ -8,17 +8,21 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import *
 from authentication.models import User, subscription
 import json
-from django.http import HttpResponseForbidden, HttpResponseNotFound
+from django.http import HttpResponseForbidden, HttpResponseNotFound, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404
 import datetime
 from django.utils import timezone
 # Create your views here.
 @login_required
 def create_chat(request):
-    context = {
-    "students": request.user.followers.all()
-    }
-    return render(request, "core/video_chat/create_chat.html", context)
+    if request.user.is_teacher:
+        context = {
+        "students": request.user.followers.all()
+        }
+        return render(request, "core/video_chat/create_chat.html", context) 
+    else:
+        return HttpResponseNotAllowed("You are not allowed here! You are a student!")
+
 
 
 
@@ -73,6 +77,8 @@ def room(request, room_name):
         
         if lesson.data_created + datetime.timedelta(hours=2, minutes=30) < timezone.now():
             return HttpResponseForbidden("The lesson is expired")
+        if request.user in group_chat.users.all():
+            return HttpResponseNotAllowed("You are already here in the lesson")
         # Add student to group chat if not already in
         if request.user not in group_chat.users.all():
             group_chat.users.add(request.user)
@@ -111,6 +117,38 @@ def getToken(request):
     role = 1
     username = request.user.username
     token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpiredTs)
-    
+    user = request.user
+    user.uid = uid
+    user.save()
     return JsonResponse({'token': token, 'uid': uid, "username": username}, safe=False)
+
+
+
+
+
+@csrf_exempt
+def get_username_by_uid(request):
+    uid = request.GET.get("uid")
+    try:
+        user = User.objects.get(uid=uid)
+        return JsonResponse({"username": user.username})
+    except User.DoesNotExist:
+        return JsonResponse({"username": "Unknown"})
+
+
+@login_required
+def quit_user(request):
+    room_name = request.GET.get("room_name")
+    uid = request.GET.get("uid")
+    try:
+        user = User.objects.get(uid=uid)
+        group = Group_chat.objects.get(group_name=room_name)
+        group.users.remove(user)
+        group.save()
+        print("success")
+        return JsonResponse({"result": "User deleted"})
+    except group.DoesNotExist:
+        return JsonResponse({"result": "Group does not exist"})
+    except Exception as e:
+        return JsonResponse({"result": f"Error: {e}"})
 
