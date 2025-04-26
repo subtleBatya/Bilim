@@ -9,6 +9,9 @@ from .models import *
 from authentication.models import User, subscription
 import json
 from django.http import HttpResponseForbidden, HttpResponseNotFound
+from django.shortcuts import get_object_or_404
+import datetime
+from django.utils import timezone
 # Create your views here.
 @login_required
 def create_chat(request):
@@ -33,13 +36,13 @@ def create_lesson(request):
 
         lesson_name = data.get("lesson_name")
         students = data.get("students", [])
-
+        lesson = data.get('lesson')
         if not lesson_name:
             return JsonResponse({"error": "Missing lesson_name"}, status=400)
 
-        print(f"Creating lesson: {lesson_name} for students: {students}")
+        print(f"Creating lesson: {lesson_name} for students: {students} Lesson name for students: {lesson}")
 
-        lesson = New_lesson.objects.create(lesson_name=lesson_name,teacher_name=request.user.username)
+        lesson = New_lesson.objects.create(lesson_name_for_students=lesson, lesson_name=lesson_name,teacher_name=request.user.username)
 
         users = User.objects.filter(username__in=students)
         print("Matching users:", users)
@@ -56,21 +59,33 @@ def create_lesson(request):
 
 
 
+
 @login_required
 def room(request, room_name):
+    # Get or create the group chat first (shared by both student and teacher)
+    group_chat, created = Group_chat.objects.get_or_create(group_name=room_name)
+
     if request.user.is_student: 
-        try:
-            #stundent_subscription = subscription.objects.get(username=request.user)
-            lesson = New_lesson.objects.get(lesson_name=room_name)
-            if request.user not in lesson.accept_granted_students.all() :
-                return HttpResponseForbidden("You don't have access to this lesson.")
-        except New_lesson.DoesNotExist:
-            return HttpResponseNotFound("Lesson not found.")
-        group_chat, created = Group_chat.objects.get_or_create(group_name=room_name)
+        lesson = get_object_or_404(New_lesson, lesson_name=room_name)
+        
+        if request.user not in lesson.accept_granted_students.all():
+            return HttpResponseForbidden("You don't have access to this lesson.")
+        
+        if lesson.data_created + datetime.timedelta(hours=2, minutes=30) < timezone.now():
+            return HttpResponseForbidden("The lesson is expired")
+        # Add student to group chat if not already in
+        if request.user not in group_chat.users.all():
+            group_chat.users.add(request.user)
+
         return render(request, "core/video_chat/room.html", {"room_name": room_name})
-    if request.user.is_teacher:
-        group_chat, created = Group_chat.objects.get_or_create(group_name=room_name)
+
+    elif request.user.is_teacher:
+        # Add teacher to group chat if not already in
+        if request.user not in group_chat.users.all():
+            group_chat.users.add(request.user)
+
         return render(request, "core/video_chat/room.html", {"room_name": room_name})
+
 
     
     

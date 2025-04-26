@@ -10,7 +10,8 @@ const client = AgoraRTC.createClient({mode:"rtc", codec:"vp8"})
 
 let localTracks = []
 let remoteUsers = {}
-
+let screenTrack = null
+let isScreenSharing = false
 
 //  this function is for local stream user
 
@@ -22,7 +23,17 @@ let joinAndDisplayLocalStream = async () =>{
   
    UID = await client.join(APP_ID, CHANNEL, TOKEN, UID)
    
-   localTracks = await AgoraRTC.createMicrophoneAndCameraTracks()
+   localTracks = await AgoraRTC.createMicrophoneAndCameraTracks({
+    microphoneId: null,
+    cameraId: null,
+    encoderConfig: "720p_1",
+    audioConfig: {
+      AEC: true,  // Acoustic Echo Cancellation
+      AGC: true,  // Automatic Gain Control
+      ANS: true   // Automatic Noise Suppression
+    }
+  });
+  
 
    let player = ` <div class="main-video-container" id="user-container-${UID}">
       <center><h5 style="color:white">${NAME}</h5></center>
@@ -114,6 +125,44 @@ let toggleMicrophone = async (e) =>{
     e.target.style.color = "#fff"
   }
 }
+
+
+let toggleScreenShare = async (e) => {
+  if (!isScreenSharing) {
+    // Stop camera video
+    await localTracks[1].stop()
+    await localTracks[1].close()
+
+    // Start screen sharing
+    screenTrack = await AgoraRTC.createScreenVideoTrack()
+
+    // Replace camera with screen
+    await client.unpublish([localTracks[1]])
+    await client.publish([screenTrack])
+
+    screenTrack.play(`main-video-${UID}`)
+
+    isScreenSharing = true
+
+    e.target.style.backgroundColor = "red"
+  } else {
+    // Stop screen share
+    await screenTrack.stop()
+    await screenTrack.close()
+
+    // Restart camera video
+    localTracks[1] = await AgoraRTC.createCameraVideoTrack()
+    await client.unpublish([screenTrack])
+    await client.publish([localTracks[1]])
+
+    localTracks[1].play(`main-video-${UID}`)
+
+    isScreenSharing = false
+
+    e.target.style.backgroundColor = "#fff"
+  }
+}
+
 joinAndDisplayLocalStream()
 
 
@@ -126,3 +175,6 @@ videoBtn.addEventListener('click', toggleCamera)
 
 let audioBtn = document.getElementById("mic-btn")
 audioBtn.addEventListener("click", toggleMicrophone)
+
+let displayScreenVideo = document.getElementById("display-btn");
+displayScreenVideo.addEventListener("click", toggleScreenShare);

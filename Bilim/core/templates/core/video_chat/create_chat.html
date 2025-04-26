@@ -58,6 +58,22 @@
             animation: gradientAnimation 10s ease infinite alternate;
         }
 
+        input{
+            font-size: 20px;
+            padding:5px;
+            margin:5px;
+            outline:none;
+            border: 1px solid #373985;
+            border-radius: 20px;
+            transition: all 0.5s ease-in-out;
+        }
+
+        input:focus{
+            border: 1px solid #FFA000;
+            transform: scale(1.1);
+            transition: all 0.5s ease-in-out;
+        }
+
         @keyframes gradientAnimation {
             0%{
                 background-position: 0% 50%;
@@ -66,13 +82,16 @@
                 background-position: 100% 50%;
             }
         }
+    
     </style>
 </head>
 <body>
     <div id="animateBackground"></div>
     <div class="container">
-        <h1>Нажмите для создание онлайн урока</h1>
+        <h1 style="text-align: center;">Введите имя урока для создание онлайн урока</h1>
+        <input type="text" required id="lesson">
         <div class="students-list" style="margin-top: 20px; max-height: 200px; overflow-y: auto; width: 100%;">
+            
             <h3 style="margin-bottom: 10px;">Выберите студентов:</h3>
             <form id="studentForm">
                 {% for student in students %}
@@ -107,7 +126,7 @@
     let username = document.getElementById("is_teacher").textContent;
     const room = crypto.randomUUID();
     const langPrefix = window.location.pathname.split('/')[1];
-
+    const lesson = document.getElementById("lesson").value;
     // 1. Create Lesson
     await fetch(`/${langPrefix}/chat/create_lesson/`, {
         method: 'POST',
@@ -117,7 +136,8 @@
         },
         body: JSON.stringify({
             lesson_name: room,
-            students: selectedStudents
+            students: selectedStudents,
+            lesson : lesson
         })
     });
 

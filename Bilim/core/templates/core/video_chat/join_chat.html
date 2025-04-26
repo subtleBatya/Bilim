@@ -90,7 +90,7 @@
           
               .video-controls{
                 position: fixed;
-                left:35%;
+                left:0;
                 bottom: 20px;
                 display: flex;
                 justify-content: center;
@@ -151,8 +151,9 @@
     <div class="container mt-4">
       {% for lesson in lessons %}
       <div class="lesson-container mt-4">
-          <h1 class="lesson-title">{{ lesson.lesson_name }}</h1>
-          <p class="teacher-name">Teacher: {{ lesson.teacher_name }}</p>
+          <h1 class="lesson-title">{{ lesson.lesson_name_for_students }}</h1>
+          <p class="teacher-name">Учитель: {{ lesson.teacher_name }}</p>
+          <p class="teacher-name">Дата начало: {{ lesson.data_created }}</p>
           <button class="btn btn-primary join-button" data-room="{{ lesson.lesson_name }}">Join Lesson</button>
       </div>
       {% empty %}

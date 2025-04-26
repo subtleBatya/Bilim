@@ -21,10 +21,12 @@ class ChatMessage(models.Model):
 
 
 class New_lesson(models.Model):
+    lesson_name_for_students = models.CharField(max_length=255)
     lesson_name = models.CharField(max_length=255, unique=True)
-    teacher_name = models.CharField(max_length=255, blank=True)
+    teacher_name = models.CharField(max_length=255)
     accept_granted_students = models.ManyToManyField(User, blank=True)
-
+    data_created = models.DateTimeField(auto_now_add=True)
+    
 
     def __str__(self):
-        return self.lesson_name
+        return self.lesson_name_for_students

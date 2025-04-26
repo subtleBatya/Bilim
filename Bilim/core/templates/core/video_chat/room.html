@@ -8,6 +8,28 @@
   <link rel="stylesheet" href="{% static "core/css/font.css"%}">
   <link rel="stylesheet" href="{% static "core/css/room.css"%}">
 </head>
+<style>
+  .fullscreen-video {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullscreen-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* This preserves aspect ratio and fits fully in the box */
+}
+
+
+</style>
 <body>
 
   <!-- CHAT -->
@@ -90,6 +112,32 @@
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
   </script>
+
+
+<script>
+  document.getElementById("video-sections").addEventListener("click", function(e) {
+  const container = e.target.closest(".main-video-container");
+  if (!container) return;
+
+  // Toggle fullscreen class
+  const alreadyFullscreen = container.classList.contains("fullscreen-video");
+
+  // Remove fullscreen from any other container
+  document.querySelectorAll(".fullscreen-video").forEach(el => el.classList.remove("fullscreen-video"));
+
+  if (!alreadyFullscreen) {
+    container.classList.add("fullscreen-video");
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    document.querySelectorAll(".fullscreen-video").forEach(el => el.classList.remove("fullscreen-video"));
+  }
+});
+
+
+</script>
   
   <script src="{% static 'core/js/AgoraRTC_N-4.8.0.js'%}" ></script>
   <script src="{% static 'core/js/chat.js'%}"></script>

@@ -171,7 +171,8 @@ form.chat-input input {
       height: 50vh;
     }
     .video-controls{
-      left:10%;
+      left:0% !important;
+      bottom:1% !important;
     }
 
   }
