@@ -88,11 +88,11 @@
 <body>
     <div id="animateBackground"></div>
     <div class="container">
-        <h1 style="text-align: center;">Введите имя урока для создание онлайн урока</h1>
+        <h1 style="text-align: center;">{% translate 'Введите имя урока для создание онлайн урока'%}</h1>
         <input type="text" required id="lesson">
         <div class="students-list" style="margin-top: 20px; max-height: 200px; overflow-y: auto; width: 100%;">
             
-            <h3 style="margin-bottom: 10px;">Выберите студентов:</h3>
+            <h3 style="margin-bottom: 10px;">{% translate 'Выберите студентов:'%}</h3>
             <form id="studentForm">
                 {% for student in students %}
                 <div>
@@ -106,7 +106,7 @@
         </div>
         
         <div class="input_group">
-            <button id="startLesson">Начать урок</button>
+            <button id="startLesson">{% translate 'Начать урок'%}</button>
         </div>
     </div>
     <p id="is_teacher" style="display: none;">{{request.user.username}}</p>

@@ -86,9 +86,6 @@ let handleUserJoin = async (user, mediaType) => {
 
 let handleUserLeft = async (user) => {
 
-  let delete_user = await fetch(`/chat/quit_user/?room_name=${CHANNEL}?uid=${user.uid}`)
-  let data = await delete_user.json()
-  console.log(data.result)
   delete remoteUsers[user.uid]
   document.getElementById(`user-container-${user.uid}`).remove()
 

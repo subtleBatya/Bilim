@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-04 09:53+0500\n"
+"POT-Creation-Date: 2025-04-30 11:32+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,33 +18,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: core/templates/core/admin.html:11
+#: core/templates/core/admin.html:12
 msgid "Принять или отклонить курсы"
 msgstr "Kurslary kabul etmek ýa-da ret etmek"
 
-#: core/templates/core/admin.html:15
+#: core/templates/core/admin.html:16
 msgid "Видео которые ждут действия"
 msgstr "Jogaba garaşýan wideolar"
 
-#: core/templates/core/admin.html:29 core/templates/core/admin.html:62
+#: core/templates/core/admin.html:30 core/templates/core/admin.html:63
 #: core/templates/core/all_courses.html:60
-#: core/templates/core/bilim_exact_user.html:96
-#: core/templates/core/bilim_exact_user.html:149
+#: core/templates/core/bilim_exact_user.html:113
+#: core/templates/core/bilim_exact_user.html:166
 #: core/templates/core/index.html:39 core/templates/core/index.html:66
 #: core/templates/core/library.html:57 core/templates/core/profile.html:84
-#: core/templates/core/video_page.html:81
+#: core/templates/core/video_page.html:121
 msgid "Посмотреть"
 msgstr "Görmek"
 
-#: core/templates/core/admin.html:36
+#: core/templates/core/admin.html:37
 msgid "Никаких видео ждущих действия"
 msgstr "Jogaba garaşýan wideolar ýok"
 
-#: core/templates/core/admin.html:48
+#: core/templates/core/admin.html:49
 msgid "Shorts ждущих действия"
 msgstr "Jogaba garaşýan Shorts"
 
-#: core/templates/core/admin.html:69
+#: core/templates/core/admin.html:70
 msgid "Никаких Shorts не ждут действия"
 msgstr "Hiç hili Shorts jogaba garaşmaýar"
 
@@ -93,136 +93,140 @@ msgid "Напишите здесь..."
 msgstr "Şu taýda ýazyň..."
 
 #: core/templates/core/application.html:25
+#: core/templates/core/video_chat/room.html:42
 msgid "Отправить"
 msgstr "Ibermek"
 
-#: core/templates/core/bilim_exact_user.html:8
+#: core/templates/core/bilim_exact_user.html:9
 #: core/templates/core/teacher_content.html:8
 #: core/templates/core/teacher_profile.html:9
 msgid "BILIM"
 msgstr "BILIM"
 
-#: core/templates/core/bilim_exact_user.html:23
+#: core/templates/core/bilim_exact_user.html:24
 msgid "Профиль пользователя BILIM"
 msgstr "BILIM ulanyjy profili"
 
-#: core/templates/core/bilim_exact_user.html:23
+#: core/templates/core/bilim_exact_user.html:24
 #: core/templates/core/profile.html:12
 msgid "Ваш профиль"
 msgstr "Siziň profiliňiz"
 
-#: core/templates/core/bilim_exact_user.html:30
+#: core/templates/core/bilim_exact_user.html:31
 msgid "User Avatar"
 msgstr "Ulanyjy awatary"
 
-#: core/templates/core/bilim_exact_user.html:32
+#: core/templates/core/bilim_exact_user.html:33
 msgid "Default Avatar"
 msgstr "Default Avatar"
 
-#: core/templates/core/bilim_exact_user.html:36
+#: core/templates/core/bilim_exact_user.html:37
 #: core/templates/core/profile_edit.html:61
-#: core/templates/core/teacher_edit.html:48
-#: core/templates/core/teacher_profile.html:55
+#: core/templates/core/teacher_edit.html:70
+#: core/templates/core/teacher_profile.html:75
 msgid "Имя"
 msgstr "At"
 
-#: core/templates/core/bilim_exact_user.html:37
+#: core/templates/core/bilim_exact_user.html:38
 msgid "Роль"
 msgstr "Roly"
 
-#: core/templates/core/bilim_exact_user.html:37
-#: core/templates/core/bilim_users.html:31 core/templates/core/sign_up.html:38
+#: core/templates/core/bilim_exact_user.html:38
+#: core/templates/core/bilim_users.html:32 core/templates/core/sign_up.html:38
 msgid "Студент"
 msgstr "Talyp"
 
-#: core/templates/core/bilim_exact_user.html:37
-#: core/templates/core/bilim_users.html:31 core/templates/core/sign_up.html:41
+#: core/templates/core/bilim_exact_user.html:38
+#: core/templates/core/bilim_users.html:32 core/templates/core/sign_up.html:41
 msgid "Учитель"
 msgstr "Mugallym"
 
-#: core/templates/core/bilim_exact_user.html:38
+#: core/templates/core/bilim_exact_user.html:39
 #: core/templates/core/profile_edit.html:65
-#: core/templates/core/teacher_edit.html:57
-#: core/templates/core/teacher_profile.html:61
+#: core/templates/core/teacher_edit.html:79
+#: core/templates/core/teacher_profile.html:81
 msgid "Работа"
 msgstr "Iş"
 
-#: core/templates/core/bilim_exact_user.html:38
-#: core/templates/core/bilim_users.html:35
+#: core/templates/core/bilim_exact_user.html:39
+#: core/templates/core/bilim_users.html:36
 msgid "Нет информаций"
 msgstr "Maglumat ýok"
 
-#: core/templates/core/bilim_exact_user.html:39
+#: core/templates/core/bilim_exact_user.html:40
 msgid "Подписчики"
 msgstr "Podpiskalar"
 
-#: core/templates/core/bilim_exact_user.html:40
-#: core/templates/core/bilim_users.html:41
+#: core/templates/core/bilim_exact_user.html:47
+#: core/templates/core/bilim_users.html:47
+#: core/templates/core/bilim_users.html:92
 msgid "Подписан"
 msgstr "Podpiska edilen"
 
-#: core/templates/core/bilim_exact_user.html:40
-#: core/templates/core/bilim_users.html:41
+#: core/templates/core/bilim_exact_user.html:49
+#: core/templates/core/bilim_users.html:49
+#: core/templates/core/bilim_users.html:94
 msgid "Подписаться"
 msgstr "Podpiska etmek"
 
-#: core/templates/core/bilim_exact_user.html:46
+#: core/templates/core/bilim_exact_user.html:59
 msgid "Общее"
 msgstr "Ähli"
 
-#: core/templates/core/bilim_exact_user.html:47
+#: core/templates/core/bilim_exact_user.html:60
 msgid "Все видео"
 msgstr "Hemme wideo"
 
-#: core/templates/core/bilim_exact_user.html:48
+#: core/templates/core/bilim_exact_user.html:61
 msgid "Умение"
 msgstr "Başarnyk"
 
-#: core/templates/core/bilim_exact_user.html:49
-#: core/templates/core/bilim_exact_user.html:135
+#: core/templates/core/bilim_exact_user.html:63
+#: core/templates/core/bilim_exact_user.html:65
+#: core/templates/core/bilim_exact_user.html:152
 msgid "Видео подписчиков"
 msgstr "Podpiskalaryň wideolary"
 
-#: core/templates/core/bilim_exact_user.html:58
-#: core/templates/core/bilim_exact_user.html:69
+#: core/templates/core/bilim_exact_user.html:75
+#: core/templates/core/bilim_exact_user.html:86
 msgid "О пользователе"
 msgstr "Ulanyjy barada"
 
-#: core/templates/core/bilim_exact_user.html:59
-#: core/templates/core/bilim_exact_user.html:63
-#: core/templates/core/bilim_exact_user.html:70
-#: core/templates/core/bilim_exact_user.html:74
-#: core/templates/core/bilim_exact_user.html:126
+#: core/templates/core/bilim_exact_user.html:76
+#: core/templates/core/bilim_exact_user.html:80
+#: core/templates/core/bilim_exact_user.html:87
+#: core/templates/core/bilim_exact_user.html:91
+#: core/templates/core/bilim_exact_user.html:143
 msgid "Пользователь не предоставил никаких информаций"
 msgstr "Ulanyjy hiç hili maglumat bermedi"
 
-#: core/templates/core/bilim_exact_user.html:62
+#: core/templates/core/bilim_exact_user.html:79
 msgid "Цели пользователя"
 msgstr "Ulanyjynyň maksatlary"
 
-#: core/templates/core/bilim_exact_user.html:73
-#: core/templates/core/teacher_edit.html:66
+#: core/templates/core/bilim_exact_user.html:90
+#: core/templates/core/teacher_edit.html:88
 msgid "Телефонный номер"
 msgstr "Telefon belgisi"
 
-#: core/templates/core/bilim_exact_user.html:82
+#: core/templates/core/bilim_exact_user.html:99
 msgid "Видео пользователя"
 msgstr "Ulanyjynyň wideolary"
 
-#: core/templates/core/bilim_exact_user.html:103
+#: core/templates/core/bilim_exact_user.html:120
 msgid "Пользователь не предоставил никаких видео"
 msgstr "Ulanyjy hiç hili wideo maglumat bermedi"
 
-#: core/templates/core/bilim_exact_user.html:113
+#: core/templates/core/bilim_exact_user.html:130
 msgid "Умение пользователя"
 msgstr "Ulanyjy başarnyklary"
 
-#: core/templates/core/bilim_exact_user.html:156
+#: core/templates/core/bilim_exact_user.html:173
 msgid "Пользователи на которых вы подписаны не добавили ещё видео "
 msgstr "Podpiska edilen ulanyjylar hiç hili wideo ýüklemediler"
 
-#: core/templates/core/bilim_users.html:8
-#: core/templates/core/bilim_users.html:16
+#: core/templates/core/bilim_users.html:9
+#: core/templates/core/bilim_users.html:17
 msgid "Пользователи BILIM"
 msgstr "BILIM ulanyjylar"
 
@@ -230,15 +234,15 @@ msgstr "BILIM ulanyjylar"
 msgid "Все Пользователи BILIM"
 msgstr "Hemme BILIM ulanyjylary"
 
-#: core/templates/core/bilim_users.html:25
+#: core/templates/core/bilim_users.html:26
 msgid "Фото пользователя"
 msgstr "Ulanyjy suraty"
 
-#: core/templates/core/bilim_users.html:27
+#: core/templates/core/bilim_users.html:28
 msgid "Аватар"
 msgstr "Awatar"
 
-#: core/templates/core/bilim_users.html:40
+#: core/templates/core/bilim_users.html:41
 msgid "Профиль"
 msgstr "Profil"
 
@@ -317,8 +321,8 @@ msgstr "Wideonyň posteri"
 #: core/templates/core/create_shorts.html:232
 #: core/templates/core/create_shorts.html:239
 #: core/templates/core/profile_edit.html:102
-#: core/templates/core/teacher_create_video.html:121
-#: core/templates/core/teacher_edit.html:103
+#: core/templates/core/teacher_create_video.html:122
+#: core/templates/core/teacher_edit.html:99
 msgid "Сохранить"
 msgstr "Ýatda saklamak"
 
@@ -327,10 +331,9 @@ msgid "Вы можете добавить только 1 видео за раз!
 msgstr "Siz 1 wagtda diňe 1 wideo ýükläp bilýäňiz!"
 
 #: core/templates/core/create_shorts.html:117
-#, fuzzy
-#| msgid "BILIM Видео"
+#: core/templates/core/video_chat/room.html:53
 msgid "Видео"
-msgstr "BILIM wideo"
+msgstr "Wideo"
 
 #: core/templates/core/create_shorts.html:117
 msgid "Ваше видео превышает лимит 1 минуту!"
@@ -453,7 +456,7 @@ msgstr "Çykmak"
 msgid "Язык"
 msgstr "Dil"
 
-#: core/templates/core/hero.html:82 core/templates/core/login.html:28
+#: core/templates/core/hero.html:91 core/templates/core/login.html:28
 #: core/templates/core/login.html:64 core/templates/core/sign_up.html:30
 #: core/templates/core/sign_up.html:71
 msgid "Платформа BILIM"
@@ -487,10 +490,10 @@ msgid ""
 "превращается в увлекательное путешествие, где каждый шаг приближает вас к "
 "вашей цели."
 msgstr ""
-"Bu platformada her kim öz ukybyny artdyrmaga mümkinçilik tapar. Biz "
-"gowy okuw kurslaryny size hödürleýaris , ylham getirýän maglumatlary we "
-"şahsy ösüş üçin ýeke-täk mümkinçilik taparsyňyz. BILIM platformada okuw "
-"syýahata öwrülýär we her ädimiňiz bolsa siziň öz maksadyňyza ýetirýär."
+"Bu platformada her kim öz ukybyny artdyrmaga mümkinçilik tapar. Biz gowy "
+"okuw kurslaryny size hödürleýaris , ylham getirýän maglumatlary we şahsy "
+"ösüş üçin ýeke-täk mümkinçilik taparsyňyz. BILIM platformada okuw syýahata "
+"öwrülýär we her ädimiňiz bolsa siziň öz maksadyňyza ýetirýär."
 
 #: core/templates/core/index.html:88
 msgid "Экспертные курсы"
@@ -557,10 +560,8 @@ msgid "Оплата BILIM"
 msgstr "BILIM töleg"
 
 #: core/templates/core/payment.html:13
-#, fuzzy
-#| msgid "Оплата по карточке"
 msgid "Оплата за курсы"
-msgstr "Kart arkaly töleg"
+msgstr "Kurs üçin töleg"
 
 #: core/templates/core/payment.html:18
 msgid "Оплата по промокоду"
@@ -611,10 +612,8 @@ msgid "Срок оплаты"
 msgstr "Töleg möhleti"
 
 #: core/templates/core/payment.html:56
-#, fuzzy
-#| msgid "Срок оплаты"
 msgid "Методы оплаты"
-msgstr "Töleg möhleti"
+msgstr "Töleg görnüşi"
 
 #: core/templates/core/payment.html:57
 msgid "1 месяц / 30ман"
@@ -638,6 +637,7 @@ msgstr "Men barada"
 
 #: core/templates/core/profile.html:35 core/templates/core/profile.html:39
 #: core/templates/core/profile.html:58
+#: core/templates/core/teacher_profile.html:68
 msgid "Нет информаций. Редактируйте свой профиль"
 msgstr "Maglumat ýok. Profiliňizi üýtgediň"
 
@@ -661,7 +661,7 @@ msgstr "Meniň Shorts"
 msgid "Нет видео"
 msgstr "Wideo ýok"
 
-#: core/templates/core/profile.html:94
+#: core/templates/core/profile.html:95
 #: core/templates/core/teacher_profile.html:26
 msgid "Добавить видео"
 msgstr "Wideo goşmak"
@@ -679,12 +679,12 @@ msgid "Общая информация"
 msgstr "Ähli maglumat"
 
 #: core/templates/core/profile_edit.html:62
-#: core/templates/core/teacher_edit.html:51
+#: core/templates/core/teacher_edit.html:73
 msgid "Введите имя"
 msgstr "Adyňyzy giriziň"
 
 #: core/templates/core/profile_edit.html:66
-#: core/templates/core/teacher_edit.html:60
+#: core/templates/core/teacher_edit.html:82
 msgid "Введите работу"
 msgstr "Işiziňi giriziň"
 
@@ -705,12 +705,11 @@ msgid "Напишите о своих целях"
 msgstr "Maksatlaryňyz barada ýazyň"
 
 #: core/templates/core/profile_edit.html:80
-#: core/templates/core/teacher_edit.html:79
 msgid "Умения либо о вас"
 msgstr "Başarnyklar ýa-da siz barada"
 
 #: core/templates/core/profile_edit.html:131
-#: core/templates/core/teacher_edit.html:133
+#: core/templates/core/teacher_edit.html:129
 msgid "Вы можете выбрать только 3 элемента"
 msgstr "Siz diňe 3 element belläp bilýaňiz"
 
@@ -751,45 +750,31 @@ msgid "Спасибо что используете нашу платформу!
 msgstr "Biziň platformamyzy ulananyňyz üçin minnetdar!"
 
 #: core/templates/core/teacher_content.html:14
-#, fuzzy
-#| msgid "Редактируйте свой профиль учитель"
 msgid "Посмотрите ваши уроки учитель"
-msgstr "Profiliňizi üýtgediň mugallym"
+msgstr "Sapaklaryňyzy görüň mugallym!"
 
 #: core/templates/core/teacher_content.html:43
-#, fuzzy
-#| msgid "Категория видео:"
 msgid "Категория видео"
 msgstr "Wideo kategoriýasy:"
 
 #: core/templates/core/teacher_content.html:47
-#, fuzzy
-#| msgid "Категория курса:"
 msgid "Категория курса"
 msgstr "Kurs kategoriýasy:"
 
 #: core/templates/core/teacher_content.html:51
-#, fuzzy
-#| msgid "Дата добавления:"
 msgid "Дата добавления"
 msgstr "Goýulan wagty:"
 
 #: core/templates/core/teacher_content.html:55
 #: core/templates/core/teacher_content.html:58
-#, fuzzy
-#| msgid "Принять видео"
 msgid "Принято"
-msgstr "Kabul etmek"
+msgstr "Kabul edildi"
 
 #: core/templates/core/teacher_content.html:60
-#, fuzzy
-#| msgid "Отклонить видео"
 msgid "Отклонено"
-msgstr "Ret etmek"
+msgstr "Ret edildi"
 
 #: core/templates/core/teacher_content.html:71
-#, fuzzy
-#| msgid "Просмотры:"
 msgid "Просмотры"
 msgstr "Görülenler:"
 
@@ -823,7 +808,7 @@ msgid "Имя видео:"
 msgstr "Wideo ady:"
 
 #: core/templates/core/teacher_create_video.html:74
-#: core/templates/core/video_page_for_admin.html:64
+#: core/templates/core/video_page_for_admin.html:62
 #: core/templates/core/video_page_for_admin_shorts.html:52
 msgid "Описание видео:"
 msgstr "Wideo düşündirilişi:"
@@ -832,25 +817,18 @@ msgstr "Wideo düşündirilişi:"
 msgid "Постер видео:"
 msgstr "Wideo posteri:"
 
-#: core/templates/core/teacher_create_video.html:82
-#: core/templates/core/video_page_for_admin.html:44
-msgid "Категория видео:"
-msgstr "Wideo kategoriýasy:"
+#: core/templates/core/teacher_create_video.html:95
+#: core/templates/core/video_page_for_admin.html:46
+msgid "Категория курса:"
+msgstr "Kurs kategoriýasy:"
 
-#: core/templates/core/teacher_create_video.html:84
-#: core/templates/core/teacher_create_video.html:96
+#: core/templates/core/teacher_create_video.html:97
 msgid "Выберите категорию:"
 msgstr "Kategoriýany saýlaň:"
 
-#: core/templates/core/teacher_create_video.html:88
-#: core/templates/core/teacher_create_video.html:100
+#: core/templates/core/teacher_create_video.html:101
 msgid "Нет категорий:"
 msgstr "Kategoriýa ýok:"
-
-#: core/templates/core/teacher_create_video.html:94
-#: core/templates/core/video_page_for_admin.html:48
-msgid "Категория курса:"
-msgstr "Kurs kategoriýasy:"
 
 #: core/templates/core/teacher_edit.html:9
 msgid "BILIM Редактировать"
@@ -860,7 +838,12 @@ msgstr "BILIM üýtgetmeler"
 msgid "Редактируйте свой профиль учитель"
 msgstr "Profiliňizi üýtgediň mugallym"
 
-#: core/templates/core/teacher_edit.html:69
+#: core/templates/core/teacher_edit.html:46
+#: core/templates/core/teacher_profile.html:55
+msgid "User abilities"
+msgstr ""
+
+#: core/templates/core/teacher_edit.html:91
 msgid "Введите ваш номер"
 msgstr "Nomeriňizi giriziň"
 
@@ -880,41 +863,93 @@ msgstr "Meniň wideolarym"
 msgid "Добавить shorts"
 msgstr "Shorts goşmak"
 
-#: core/templates/core/teacher_profile.html:62
+#: core/templates/core/teacher_profile.html:82
 msgid "Нет информаций."
 msgstr "Maglumat ýok."
 
-#: core/templates/core/teacher_profile.html:67
+#: core/templates/core/teacher_profile.html:87
 msgid "Телефонный номер "
 msgstr "Telefon belgi"
 
-#: core/templates/core/teacher_profile.html:68
-#, fuzzy
-#| msgid "Введите ваш номер"
+#: core/templates/core/teacher_profile.html:88
 msgid "Напишите свой номер"
 msgstr "Nomeriňizi giriziň"
+
+#: core/templates/core/video_chat/create_chat.html:91
+msgid "Введите имя урока для создание онлайн урока"
+msgstr ""
+
+#: core/templates/core/video_chat/create_chat.html:95
+msgid "Выберите студентов:"
+msgstr "Okuwçylary saýlaň:"
+
+#: core/templates/core/video_chat/create_chat.html:109
+msgid "Начать урок"
+msgstr "Sapagy başlatmak"
+
+#: core/templates/core/video_chat/join_chat.html:7
+msgid "Уроки"
+msgstr "Sapaklar"
+
+#: core/templates/core/video_chat/join_chat.html:136
+msgid "Добро пожаловать на ваши уроки"
+msgstr "BILIM-e hoş geldiňiz!"
+
+#: core/templates/core/video_chat/join_chat.html:155
+msgid "Учитель:"
+msgstr "Mugallym"
+
+#: core/templates/core/video_chat/join_chat.html:156
+msgid "Дата начало:"
+msgstr "Goýulan wagty:"
+
+#: core/templates/core/video_chat/join_chat.html:157
+msgid "Присоединится"
+msgstr "Goşulmak"
+
+#: core/templates/core/video_chat/join_chat.html:160
+msgid "Здесь нет уроков для вас"
+msgstr "Bu ýerde siz üçin sapak ýok"
+
+#: core/templates/core/video_chat/room.html:8
+#: core/templates/core/video_chat/room.html:38
+msgid "Урок"
+msgstr "Sapak"
+
+#: core/templates/core/video_chat/room.html:52
+msgid "Микрофон"
+msgstr "Mikrofon"
+
+#: core/templates/core/video_chat/room.html:54
+msgid "Поделиться"
+msgstr "Podpiska etmek"
+
+#: core/templates/core/video_chat/room.html:55
+msgid "Покинуть"
+msgstr "Çykmak"
 
 #: core/templates/core/video_page.html:9
 msgid "BILIM Видео"
 msgstr "BILIM wideo"
 
-#: core/templates/core/video_page.html:43
+#: core/templates/core/video_page.html:53
+#: core/templates/core/video_page_for_admin.html:22
 msgid "Ваш браузер не поддерживает видео тег"
 msgstr "Siziň brauzeriňiz wideo tegi görkezip bilmeýär"
 
-#: core/templates/core/video_page.html:52
-#: core/templates/core/video_page_for_admin.html:35
+#: core/templates/core/video_page.html:92
+#: core/templates/core/video_page_for_admin.html:33
 msgid "Like"
 msgstr "Laýk"
 
-#: core/templates/core/video_page.html:57
-#: core/templates/core/video_page_for_admin.html:52
+#: core/templates/core/video_page.html:97
+#: core/templates/core/video_page_for_admin.html:50
 #: core/templates/core/video_page_for_admin_shorts.html:40
 #: core/templates/core/video_page_for_teachers.html:27
 msgid "Просмотры:"
 msgstr "Görülenler:"
 
-#: core/templates/core/video_page.html:65
+#: core/templates/core/video_page.html:105
 msgid "Похожие видео"
 msgstr "Meňzeş wideolar"
 
@@ -922,30 +957,30 @@ msgstr "Meňzeş wideolar"
 msgid "BILIM Videos"
 msgstr "BILIM wideolar"
 
-#: core/templates/core/video_page_for_admin.html:23
-msgid "Ваш браузер не поддерживает HTML5 видео теги"
-msgstr "Siziň brauzeriňiz wideo tegi görkezip bilmeýär"
-
-#: core/templates/core/video_page_for_admin.html:40
+#: core/templates/core/video_page_for_admin.html:38
 msgid "Имя:"
 msgstr "At:"
 
-#: core/templates/core/video_page_for_admin.html:56
+#: core/templates/core/video_page_for_admin.html:42
+msgid "Категория видео:"
+msgstr "Wideo kategoriýasy:"
+
+#: core/templates/core/video_page_for_admin.html:54
 #: core/templates/core/video_page_for_admin_shorts.html:44
 msgid "Автор:"
 msgstr "Awtory:"
 
-#: core/templates/core/video_page_for_admin.html:60
+#: core/templates/core/video_page_for_admin.html:58
 #: core/templates/core/video_page_for_admin_shorts.html:48
 msgid "Дата добавления:"
 msgstr "Goýulan wagty:"
 
-#: core/templates/core/video_page_for_admin.html:70
+#: core/templates/core/video_page_for_admin.html:68
 #: core/templates/core/video_page_for_admin_shorts.html:58
 msgid "Принять видео"
 msgstr "Kabul etmek"
 
-#: core/templates/core/video_page_for_admin.html:73
+#: core/templates/core/video_page_for_admin.html:71
 #: core/templates/core/video_page_for_admin_shorts.html:61
 msgid "Отклонить видео"
 msgstr "Ret etmek"
@@ -965,3 +1000,4 @@ msgstr "BILIM mugallym wideolary"
 #: core/templates/core/video_page_for_teachers.html:20
 msgid "Ваш браузер не поддерживает видео теги"
 msgstr "Siziň brauzeriňiz wideo tegi görkezip bilmeýär"
+

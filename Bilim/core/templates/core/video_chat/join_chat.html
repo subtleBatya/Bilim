@@ -1,10 +1,11 @@
 {% load static %}
 <!DOCTYPE html>
+{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Lessons</title>
+    <title>{% translate 'Уроки'%}</title>
     {% include "core/static_files/links.html" %}
     <style>
         .navbar {
@@ -133,7 +134,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <span class="navbar-text">
-                Welcome Student to your lessons
+                {% translate 'Добро пожаловать на ваши уроки'%}
             </span>
             <div class="navbar-collapse justify-content-end">
                 <ul class="navbar-nav">
@@ -152,12 +153,12 @@
       {% for lesson in lessons %}
       <div class="lesson-container mt-4">
           <h1 class="lesson-title">{{ lesson.lesson_name_for_students }}</h1>
-          <p class="teacher-name">Учитель: {{ lesson.teacher_name }}</p>
-          <p class="teacher-name">Дата начало: {{ lesson.data_created }}</p>
-          <button class="btn btn-primary join-button" data-room="{{ lesson.lesson_name }}">Join Lesson</button>
+          <p class="teacher-name">{% translate 'Учитель:'%} {{ lesson.teacher_name }}</p>
+          <p class="teacher-name">{% translate 'Дата начало:'%} {{ lesson.data_created }}</p>
+          <button class="btn btn-primary join-button" data-room="{{ lesson.lesson_name }}">{% translate 'Присоединится'%}</button>
       </div>
       {% empty %}
-      <center><h2>Здесь нет уроков для вас</h2></center>
+      <center><h2>{% translate 'Здесь нет уроков для вас'%}</h2></center>
       {% endfor %}
       
        

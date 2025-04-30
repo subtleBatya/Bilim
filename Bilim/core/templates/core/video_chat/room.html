@@ -1,10 +1,11 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Чат с видео</title>
+  <title>{% translate 'Урок'%}</title>
   <link rel="stylesheet" href="{% static "core/css/font.css"%}">
   <link rel="stylesheet" href="{% static "core/css/room.css"%}">
 </head>
@@ -34,11 +35,11 @@
 
   <!-- CHAT -->
   <div class="chat-section">
-    <div class="chat-header">Chat</div>
+    <div class="chat-header">{% translate 'Урок'%}</div>
     <div class="chat-messages" id="messages"></div>
     <form class="chat-input" onsubmit="sendMessage(event)">
       <input type="text" id="messageInput" placeholder="Введите сообщение..." />
-      <button type="submit" id="send">Отправить</button>
+      <button type="submit" id="send">{% translate 'Отправить'%}</button>
     </form>
     {{room_name|json_script:"room_name"}}
   </div>
@@ -48,10 +49,10 @@
   </div>
 
   <div class="video-controls">
-    <button id="mic-btn">🎙️ Микрофон</button>
-    <button id="video-btn">📷 Видео</button>
-    <button id="display-btn">🖥️ Поделиться</button>
-    <button id="leave-btn">➡️ Покинуть</button>
+    <button id="mic-btn">🎙️ {% translate 'Микрофон'%}</button>
+    <button id="video-btn">📷 {% translate 'Видео'%}</button>
+    <button id="display-btn">🖥️ {% translate 'Поделиться'%}</button>
+    <button id="leave-btn">➡️ {% translate 'Покинуть'%}</button>
   </div>
   <script>
     const roomName = JSON.parse(document.getElementById("room_name").textContent);
