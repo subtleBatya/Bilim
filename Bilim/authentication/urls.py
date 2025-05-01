@@ -18,3 +18,6 @@ urlpatterns = [
     path("accept_video_shorts/<int:id>", accept_video_shorts, name="accept_video_shorts"),
     path("decline_video_shorts/<int:id>", decline_video_shorts, name="decline_video_shorts")
 ]
+
+
+

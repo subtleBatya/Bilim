@@ -30,3 +30,12 @@ def success(request):
 @login_required
 def error(request):
     return render(request, "core/error.html")
+
+
+
+def error_404_view(request, exception):
+    return render(request, "core/404.html", status=404)
+
+
+def error_500_view(request):
+    return render(request, "core/500.html", status=500)
