@@ -6,31 +6,47 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from authentication.models import User, UserRecentVideo
 import random
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+from django.core.paginator import Paginator, EmptyPage
 # Create your views here.
+
 @login_required
 def all_courses(request, id):
-    if request.method == "GET":
-        courses = Video_category.objects.all()
-        main_category = Video_category.objects.get(id=id)
-        category_course = category_courses.objects.filter(related_category=main_category)
-        course_category = request.GET.get("category")
-        video_name = request.GET.get("video_name")
-        all_videos = VideoCourse.objects.filter(accepted=True, category=main_category)
-        if course_category and video_name:
-            all_videos = VideoCourse.objects.filter(accepted=True, title__icontains=video_name, course__course_name=course_category, category=main_category)
-        if course_category and not video_name:
-            all_videos = VideoCourse.objects.filter(accepted=True, course__course_name=course_category, category=main_category)
-        if not course_category and video_name:
-            all_videos = VideoCourse.objects.filter(accepted=True, title__icontains=video_name, category=main_category)
-        context = {
-            "all_videos": all_videos,
-            "category_courses": category_course,
-            "course_name":course_category,
-            "video_name": video_name,
-            "main_cat_name": main_category.category_name,
-            "courses":courses
-        }
-        return render(request, "core/all_courses.html", context)
+    courses = Video_category.objects.all()
+    main_category = Video_category.objects.get(id=id)
+    category_course = category_courses.objects.filter(related_category=main_category)
+    course_category = request.GET.get("category")
+    video_name = request.GET.get("video_name")
+
+    all_videos = VideoCourse.objects.filter(accepted=True, category=main_category)
+
+    if course_category:
+        all_videos = all_videos.filter(course__course_name=course_category)
+    if video_name:
+        all_videos = all_videos.filter(title__icontains=video_name)
+
+    paginator = Paginator(all_videos, 10)  # Show 10 per page
+    page_number = request.GET.get('page', 1)
+
+    try:
+        page_obj = paginator.get_page(page_number)
+    except EmptyPage:
+        return JsonResponse({'html': '', 'has_next': False})
+
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        html = render_to_string("core/video_cards.html", {"all_videos": page_obj}, request=request)
+        return JsonResponse({"html": html, "has_next": page_obj.has_next()})
+
+    context = {
+        "all_videos": page_obj,
+        "category_courses": category_course,
+        "course_name": course_category,
+        "video_name": video_name,
+        "main_cat_name": main_category.category_name,
+        "courses": courses
+    }
+    return render(request, "core/all_courses.html", context)
 
 @login_required
 def video_of_course(request, id):

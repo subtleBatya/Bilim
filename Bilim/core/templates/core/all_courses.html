@@ -44,35 +44,51 @@
 <section id="popular-courses" style="width: 100vw;">
   <div class="wrapper-card">
       <h1 style="font-size: 2.5rem; font-weight: normal; text-align: center; margin: 2rem 0;" >{% translate main_cat_name %}</h1>
-      <div class="cols-card">
-          {% for video in all_videos %}
-          <div class="col-card" ontouchstart="this.classList.toggle('hover');">
-                  <div class="container-card">
-                      <div class="front">
-                          <img src="{{video.poster.url}}" alt="">
-                          <div class="inner">
-                              <p>{% translate video.title|truncatewords:5 %}</p>
-                          </div>
-                      </div>
-                      <div class="back">
-                          <div class="inner">
-                              <p>{% translate video.description|truncatewords:10 %}</p>
-                              <a href="{% url 'videos:video_of_course' video.id %}"><button class="btn downloader rounded-3">{% translate 'Посмотреть' %}</button></a>
-                          </div>
-                      </div>
-                  </div>
-            </div>
-            {% empty %}
-            <div class='w-100 text-center text'>
-              <h3 class='text-danger'>{% translate 'Нет никаких видео курсов' %}</h3>
-            </div>
-            {% endfor %}
+      <div class="cols-card" id="video-container">
+          {% include "core/video_cards.html"%}
         </div>
     </div>
 </section>
 
   {% include "core/footer.html"%}
   {% include "core/static_files/scripts.html"%}
+
+  <script>
+    let page = 2;
+    let loading = false;
+    let hasNext = true;
+    
+    window.onscroll = function () {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100 && !loading && hasNext) {
+            loading = true;
+            loadMoreVideos();
+        }
+    };
+    
+    function loadMoreVideos() {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set("page", page);
+    
+        fetch(window.location.pathname + "?" + urlParams.toString(), {
+            headers: {
+                "X-Requested-With": "XMLHttpRequest"
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.html.trim() !== "") {
+                document.getElementById("video-container").insertAdjacentHTML("beforeend", data.html);
+                page++;
+                hasNext = data.has_next;  // <- Stop if no next page
+                loading = false;
+            } else {
+                hasNext = false;
+            }
+        });
+    }
+    </script>
+    
+    
 </body>
 
 </html>

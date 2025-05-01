@@ -1,0 +1,23 @@
+<!-- templates/core/video_cards.html -->
+ {% load static %}
+ {% load i18n %}
+{% for video in all_videos %}
+<div class="col-card" ontouchstart="this.classList.toggle('hover');">
+    <div class="container-card">
+        <div class="front">
+            <img src="{{video.poster.url}}" alt="">
+            <div class="inner">
+                <p>{% translate video.title|truncatewords:5 %}</p>
+            </div>
+        </div>
+        <div class="back">
+            <div class="inner">
+                <p>{% translate video.description|truncatewords:10 %}</p>
+                <a href="{% url 'videos:video_of_course' video.id %}">
+                    <button class="btn downloader rounded-3">{% translate 'Посмотреть' %}</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
