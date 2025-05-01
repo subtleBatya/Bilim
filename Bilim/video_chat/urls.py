@@ -10,5 +10,4 @@ urlpatterns = [
     path("available_lessons/", available_lesson_for_student, name="available_lessons" ),
     path('create_lesson/', create_lesson, name='create_lesson'),
     path("get_username_by_uid/", get_username_by_uid, name="get_username_by_uid"),
-    path("quit_user/", quit_user, name="quit_user")
 ]

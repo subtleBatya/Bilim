@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     "applications",
     "teachers",
     "videos",
-    "video_chat"
+    "video_chat",
+    "django_celery_beat"
 ]
 
 MIDDLEWARE = [
@@ -175,5 +176,15 @@ EMAIL_HOST_PASSWORD = 'gqfvexlehpyttncg'
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://d814-45-81-243-66.ngrok-free.app'
+    'https://9f9b-45-81-243-66.ngrok-free.app'
 ]
+
+
+
+#Configure redis broker 
+CELERY_BROKER_URL = 'redis://localhost:6380/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6380/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Ashgabat'
