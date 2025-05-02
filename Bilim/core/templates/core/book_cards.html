@@ -1,0 +1,18 @@
+{% load static %}
+{% load i18n %}
+{% for book in books %}
+        <div class="col" data-aos="zoom-in" data-aos-duration="2000">
+          <a href="{% url 'library:book_details' book.id %}" class="book-details" style="text-decoration: none; color: black;">
+            <div class="card-book rounded-4">
+              <img src="{{book.book_poster.url}}" class="card-img-top" alt="{% translate 'Книга' %}">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title text-center mt-3 fs-5"> {{book.name}}</h5>
+                <p class="text p-1" style="font-size:12px;">{{book.description|truncatewords:17}}</p>
+                <a href="{{book.book_file.url}}" target="_blank" class="btn downloader mx-auto rounded-2">{% translate 'Посмотреть' %}</a>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% empty %}
+        <center><h1 class="text-danger">{% translate 'Нет никаких книг' %}</h1></center>
+      {% endfor %}

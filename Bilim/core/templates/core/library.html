@@ -45,27 +45,50 @@
   <div class="container py-4" style="width: 90vw;">
     <h1 class="text-center mb-4">{% translate 'Все книги' %}</h1>
 
-    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-5">
-      {% for book in books %}
-        <div class="col" data-aos="zoom-in" data-aos-duration="2000">
-          <a href="{% url 'library:book_details' book.id %}" class="book-details" style="text-decoration: none; color: black;">
-            <div class="card-book rounded-4">
-              <img src="{{book.book_poster.url}}" class="card-img-top" alt="{% translate 'Книга' %}">
-              <div class="card-body d-flex flex-column justify-content-between">
-                <h5 class="card-title text-center mt-3 fs-5"> {{book.name}}</h5>
-                <p class="text p-1" style="font-size:12px;">{{book.description|truncatewords:17}}</p>
-                <a href="{{book.book_file.url}}" target="_blank" class="btn downloader mx-auto rounded-2">{% translate 'Посмотреть' %}</a>
-              </div>
-            </div>
-          </a>
-        </div>
-      {% empty %}
-        <center><h1 class="text-danger">{% translate 'Нет никаких книг' %}</h1></center>
-      {% endfor %}
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-5" id="book-container">
+      {% include "core/book_cards.html"%}
     </div>
   </div>
 
   {% include 'core/footer.html' %}
   {% include "core/static_files/scripts.html" %}
+
+
+  
+  <script>
+    let bookPage = 2;
+  let bookLoading = false;
+  let bookHasNext = true;
+
+  window.addEventListener("scroll", function () {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50 && !bookLoading && bookHasNext) {
+      bookLoading = true;
+      loadMoreBooks();
+    }
+  });
+
+  function loadMoreBooks() {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("page", bookPage);
+
+    fetch(window.location.pathname + "?" + urlParams.toString(), {
+      headers: {
+        "X-Requested-With": "XMLHttpRequest"
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.html.trim() !== "") {
+          document.getElementById("book-container").insertAdjacentHTML("beforeend", data.html);
+          bookPage++;
+          bookHasNext = data.has_next;
+        } else {
+          bookHasNext = false;
+        }
+        bookLoading = false;
+      });
+  }
+
+  </script>
 </body>
 </html>
