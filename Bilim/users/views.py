@@ -4,18 +4,30 @@ from django.contrib.auth.decorators import login_required
 from videos.models import VideoCourse, Video_category
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
+from django.core.paginator import Paginator, EmptyPage
+from django.template.loader import render_to_string
 # Create your views here.
 @login_required
 def all_users(request):
     if request.user.is_student or request.user.is_teacher:
-        if request.method == "GET":
-            users = User.objects.all()
-            courses = Video_category.objects.all()
-            context = {
-                "users":users,
-                "courses":courses
-            }
-            return render(request, "core/bilim_users.html", context)
+        users = User.objects.all()
+        paginator = Paginator(users, 6)  # 10 users per page
+        page_number = request.GET.get("page", 1)
+
+        try:
+            page_obj = paginator.get_page(page_number)
+        except EmptyPage:
+            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                return JsonResponse({"html": "", "has_next": False})
+            page_obj = paginator.get_page(paginator.num_pages)
+
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            html = render_to_string("core/users_chunk.html", {"users": page_obj}, request=request)
+            return JsonResponse({"html": html, "has_next": page_obj.has_next()})
+
+        return render(request, "core/bilim_users.html", {
+            "users": page_obj
+        })
 
 
 @login_required
