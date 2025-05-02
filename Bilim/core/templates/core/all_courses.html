@@ -59,7 +59,10 @@
     let hasNext = true;
     
     window.onscroll = function () {
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100 && !loading && hasNext) {
+        const scrollPosition = window.innerHeight + window.scrollY;
+        const threshold = document.body.offsetHeight * 0.9;  // 90% scroll
+    
+        if (scrollPosition >= threshold && !loading && hasNext) {
             loading = true;
             loadMoreVideos();
         }
@@ -79,7 +82,7 @@
             if (data.html.trim() !== "") {
                 document.getElementById("video-container").insertAdjacentHTML("beforeend", data.html);
                 page++;
-                hasNext = data.has_next;  // <- Stop if no next page
+                hasNext = data.has_next;
                 loading = false;
             } else {
                 hasNext = false;
@@ -87,6 +90,7 @@
         });
     }
     </script>
+    
     
     
 </body>
