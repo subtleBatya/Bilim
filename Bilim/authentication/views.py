@@ -176,7 +176,7 @@ def accept_video(request, id):
                 </div>
             """)
 
-            send_custom_email(video.author.email, "BILIM EDUCATION", html_message)
+            send_custom_email([video.author.email], "BILIM EDUCATION", html_message)
             video.accepted = True
             video.save()
             return redirect("auth:admin_page")
@@ -205,7 +205,7 @@ def accept_video_shorts(request, id):
                 </div>
             """)
 
-            send_custom_email(video.shorts_author.email, "BILIM EDUCATION", html_message)
+            send_custom_email([video.shorts_author.email], "BILIM EDUCATION", html_message)
             video.shorts_accepted = True
             video.save()
             return redirect("auth:admin_page")
@@ -240,7 +240,7 @@ def decline_video(request, id):
                 </div>
             """)
 
-            send_custom_email(video.author.email, "BILIM EDUCATION", html_message)
+            send_custom_email([video.author.email], "BILIM EDUCATION", html_message)
             video.delete()
             return redirect("auth:admin_page")
         except Exception as e:
@@ -271,7 +271,7 @@ def decline_video_shorts(request, id):
                 </div>
             """)
 
-            send_custom_email(video.shorts_author.email, "BILIM EDUCATION", html_message)
+            send_custom_email([video.shorts_author.email], "BILIM EDUCATION", html_message)
             video.delete()
             return redirect("auth:admin_page")
         except Exception as e:
@@ -284,7 +284,7 @@ def send_custom_email(toemail, subject, html_message):
             subject, 
             "",  # Plain text version (optional)
             settings.EMAIL_HOST_USER,   
-            [toemail],
+            recipient_list=toemail,
             fail_silently=False,
             html_message=html_message  # Send as HTML
         )

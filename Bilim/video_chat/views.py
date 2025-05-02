@@ -12,6 +12,9 @@ from django.http import HttpResponseForbidden, HttpResponseNotFound, HttpRespons
 from django.shortcuts import get_object_or_404
 import datetime
 from django.utils import timezone
+from django.core.mail import send_mail
+from django.utils.html import format_html
+from authentication.views import send_custom_email
 # Create your views here.
 @login_required
 def create_chat(request):
@@ -54,7 +57,27 @@ def create_lesson(request):
         lesson.accept_granted_students.set(users)
         lesson.save()
 
+        user_emails = [user.email for user in users if user.email]
 
+        try:
+            html_message = f"""
+                    <div style="text-align: center; font-family: Arial, sans-serif; padding: 20px;">
+                    <img src="https://kepilli.com.tm/static/core/img/logo.svg" alt="Accepted" style="width: 100px;">
+                    <h2 style="color: #4CAF50;">Ваш учитель начал урок!</h2>
+                    <h2 style="color: #4CAF50;">Mugallymyňyz sapagy başlady!</h2>
+                    <h2 style="color: #4CAF50;">Зайдите на платформу и присоединитесь к уроку!</h2>
+                    <h2 style="color: #4CAF50;">Platforma girip sapaga goşulyň!</h2>
+                     <hr style="margin: 20px 0;">
+                    <p>✨ Имя урока {lesson}.</p>
+                    <p>✨ Sapagyň ady {lesson}.</p>
+                    <p style="font-size: 16px; color: #333;">С уважением, команда <strong>Bilim!</strong></p>
+                    <p style="font-size: 16px; color: #333;">Hormatlamak bilen <strong>Bilim</strong> komandasy!</p>
+                </div>
+"""         
+            send_custom_email(user_emails, "BILIM EDUCATION", html_message)
+            print("Message send Successfully!")
+        except Exception as e:
+            print(f"Error: {e}")
 
         return JsonResponse({"status": "ok"})
 
@@ -72,7 +95,7 @@ def room(request, room_name):
     if request.user.is_student: 
         lesson = get_object_or_404(New_lesson, lesson_name=room_name)
         
-        if request.user not in lesson.accept_granted_students.all():
+        if request.user not in lesson.accept_granted_students.all() and request.user.subscription.is_active() :
             return HttpResponseForbidden("You don't have access to this lesson.")
         
         if lesson.data_created + datetime.timedelta(hours=2, minutes=30) < timezone.now():
