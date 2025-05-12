@@ -7,85 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static "core/css/font.css"%}">
-    <style>
-        *{
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-        body{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .container{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            background-color: #fff;
-            backdrop-filter: blur(2px);
-            border-radius: 40px;
-        }
-        #startLesson{
-            width: 10rem;
-            height: auto;
-            padding: 10px;
-            margin: 10px;
-            background-color: #8f92dd ;
-            border-radius:30px;
-            transition: all 0.5s ease-in-out;
-        }
-
-        #startLesson:hover{
-            background-color: #FFA000;
-            transition: all 0.5s ease-in-out;
-            cursor: pointer;
-        }
-        #animateBackground{
-            width: 100%;
-            height: 100vh;
-            background-image:  linear-gradient(135deg, #373985, #8f95dd);
-            position: fixed;
-            z-index: -100;
-            top: 0;
-            left: 0;
-            background-size: 200% 200%;
-            animation: gradientAnimation 10s ease infinite alternate;
-        }
-
-        input{
-            font-size: 20px;
-            padding:5px;
-            margin:5px;
-            outline:none;
-            border: 1px solid #373985;
-            border-radius: 20px;
-            transition: all 0.5s ease-in-out;
-        }
-
-        input:focus{
-            border: 1px solid #FFA000;
-            transform: scale(1.1);
-            transition: all 0.5s ease-in-out;
-        }
-
-        @keyframes gradientAnimation {
-            0%{
-                background-position: 0% 50%;
-            }
-            100%{
-                background-position: 100% 50%;
-            }
-        }
-    
-    </style>
+    <link rel="stylesheet" href="{% static "core/css/create_chat.css"%}">
 </head>
 <body>
+
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-content">
+      <div class="loading-step" id="step1">{% translate "Получение IP адреса"%}<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
+      <div class="loading-step" id="step2">{% translate "Получение ICE Candidates"%}<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
+      <div class="loading-step" id="step3">{% translate "Получение токена"%}<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
+      <div class="loading-step" id="step4">{% translate "Отправка приглашение на урок"%}<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
+    </div>
+  </div>
+
     <div id="animateBackground"></div>
     <div class="container">
         <h1 style="text-align: center;">{% translate 'Введите имя урока для создание онлайн урока'%}</h1>
@@ -106,7 +40,7 @@
         </div>
         
         <div class="input_group">
-            <button id="startLesson">{% translate 'Начать урок'%}</button>
+            <button id="startLesson" onclick="startLoading()">{% translate 'Начать урок'%}</button>
         </div>
     </div>
     <p id="is_teacher" style="display: none;">{{request.user.username}}</p>
@@ -171,6 +105,24 @@ function getCookie(name) {
 
     const startLessonBtn = document.querySelector("#startLesson");
     startLessonBtn.addEventListener("click", handleSubmit)
+    </script>
+    <script>
+    function startLoading() {
+      document.getElementById("loadingOverlay").style.display = "block";
+
+      const steps = ["step1", "step2", "step3", "step4"];
+      let i = 0;
+
+      function activateNextStep() {
+        if (i < steps.length) {
+          document.getElementById(steps[i]).classList.add("active");
+          setTimeout(activateNextStep, 1700);
+          i++;
+        }
+      }
+
+      activateNextStep();
+    }
     </script>
 </body>
 </html>

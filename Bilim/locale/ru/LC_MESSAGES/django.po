@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-30 11:32+0500\n"
+"POT-Creation-Date: 2025-05-12 19:22+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,11 +29,11 @@ msgid "Видео которые ждут действия"
 msgstr ""
 
 #: core/templates/core/admin.html:30 core/templates/core/admin.html:63
-#: core/templates/core/all_courses.html:60
 #: core/templates/core/bilim_exact_user.html:113
 #: core/templates/core/bilim_exact_user.html:166
-#: core/templates/core/index.html:39 core/templates/core/index.html:66
-#: core/templates/core/library.html:57 core/templates/core/profile.html:84
+#: core/templates/core/book_cards.html:11 core/templates/core/index.html:39
+#: core/templates/core/index.html:66 core/templates/core/profile.html:84
+#: core/templates/core/video_cards.html:17
 #: core/templates/core/video_page.html:121
 msgid "Посмотреть"
 msgstr ""
@@ -72,10 +72,6 @@ msgstr ""
 
 #: core/templates/core/all_courses.html:37 core/templates/core/library.html:38
 msgid "Сортировать"
-msgstr ""
-
-#: core/templates/core/all_courses.html:67
-msgid "Нет никаких видео курсов"
 msgstr ""
 
 #: core/templates/core/application.html:9
@@ -134,12 +130,12 @@ msgid "Роль"
 msgstr ""
 
 #: core/templates/core/bilim_exact_user.html:38
-#: core/templates/core/bilim_users.html:32 core/templates/core/sign_up.html:38
+#: core/templates/core/sign_up.html:38 core/templates/core/users_chunk.html:13
 msgid "Студент"
 msgstr ""
 
 #: core/templates/core/bilim_exact_user.html:38
-#: core/templates/core/bilim_users.html:32 core/templates/core/sign_up.html:41
+#: core/templates/core/sign_up.html:41 core/templates/core/users_chunk.html:13
 msgid "Учитель"
 msgstr ""
 
@@ -151,7 +147,7 @@ msgid "Работа"
 msgstr ""
 
 #: core/templates/core/bilim_exact_user.html:39
-#: core/templates/core/bilim_users.html:36
+#: core/templates/core/users_chunk.html:17
 msgid "Нет информаций"
 msgstr ""
 
@@ -160,14 +156,14 @@ msgid "Подписчики"
 msgstr ""
 
 #: core/templates/core/bilim_exact_user.html:47
-#: core/templates/core/bilim_users.html:47
-#: core/templates/core/bilim_users.html:92
+#: core/templates/core/bilim_users.html:57
+#: core/templates/core/users_chunk.html:28
 msgid "Подписан"
 msgstr ""
 
 #: core/templates/core/bilim_exact_user.html:49
-#: core/templates/core/bilim_users.html:49
-#: core/templates/core/bilim_users.html:94
+#: core/templates/core/bilim_users.html:59
+#: core/templates/core/users_chunk.html:30
 msgid "Подписаться"
 msgstr ""
 
@@ -236,16 +232,12 @@ msgstr ""
 msgid "Все Пользователи BILIM"
 msgstr ""
 
-#: core/templates/core/bilim_users.html:26
-msgid "Фото пользователя"
+#: core/templates/core/book_cards.html:7
+msgid "Книга"
 msgstr ""
 
-#: core/templates/core/bilim_users.html:28
-msgid "Аватар"
-msgstr ""
-
-#: core/templates/core/bilim_users.html:41
-msgid "Профиль"
+#: core/templates/core/book_cards.html:17
+msgid "Нет никаких книг"
 msgstr ""
 
 #: core/templates/core/book_details.html:8 core/templates/core/library.html:8
@@ -389,39 +381,39 @@ msgstr ""
 msgid "Мы предоставляем лучшие курсы для наших клиентов."
 msgstr ""
 
-#: core/templates/core/footer.html:27
+#: core/templates/core/footer.html:28
 msgid "Полезные ссылки"
 msgstr ""
 
-#: core/templates/core/footer.html:29 core/templates/core/hero.html:21
+#: core/templates/core/footer.html:30 core/templates/core/hero.html:21
 msgid "Главная"
 msgstr ""
 
-#: core/templates/core/footer.html:30
+#: core/templates/core/footer.html:31
 msgid "#shorts"
 msgstr ""
 
-#: core/templates/core/footer.html:31 core/templates/core/hero.html:24
+#: core/templates/core/footer.html:32 core/templates/core/hero.html:24
 msgid "Библиотека"
 msgstr ""
 
-#: core/templates/core/footer.html:32
+#: core/templates/core/footer.html:33
 msgid "Жалобы и предложения"
 msgstr ""
 
-#: core/templates/core/footer.html:38
+#: core/templates/core/footer.html:39
 msgid "Контакты"
 msgstr ""
 
-#: core/templates/core/footer.html:40
+#: core/templates/core/footer.html:41
 msgid "Телефон: 48 45 50"
 msgstr ""
 
-#: core/templates/core/footer.html:41
+#: core/templates/core/footer.html:42
 msgid "Email: kepilliyollar54@gmail.com"
 msgstr ""
 
-#: core/templates/core/footer.html:49
+#: core/templates/core/footer.html:50
 msgid "All rights reserved."
 msgstr "Все права защищены"
 
@@ -515,14 +507,6 @@ msgstr ""
 
 #: core/templates/core/library.html:46
 msgid "Все книги"
-msgstr ""
-
-#: core/templates/core/library.html:53
-msgid "Книга"
-msgstr ""
-
-#: core/templates/core/library.html:63
-msgid "Нет никаких книг"
 msgstr ""
 
 #: core/templates/core/login.html:8
@@ -873,39 +857,67 @@ msgstr ""
 msgid "Напишите свой номер"
 msgstr ""
 
-#: core/templates/core/video_chat/create_chat.html:91
+#: core/templates/core/users_chunk.html:7
+msgid "Фото пользователя"
+msgstr ""
+
+#: core/templates/core/users_chunk.html:9
+msgid "Аватар"
+msgstr ""
+
+#: core/templates/core/users_chunk.html:22
+msgid "Профиль"
+msgstr ""
+
+#: core/templates/core/video_chat/create_chat.html:145
+msgid "Получение IP адреса"
+msgstr ""
+
+#: core/templates/core/video_chat/create_chat.html:146
+msgid "Получение ICE Candidates"
+msgstr ""
+
+#: core/templates/core/video_chat/create_chat.html:147
+msgid "Получение токена"
+msgstr ""
+
+#: core/templates/core/video_chat/create_chat.html:148
+msgid "Отправка приглашение на урок"
+msgstr ""
+
+#: core/templates/core/video_chat/create_chat.html:154
 msgid "Введите имя урока для создание онлайн урока"
 msgstr ""
 
-#: core/templates/core/video_chat/create_chat.html:95
+#: core/templates/core/video_chat/create_chat.html:158
 msgid "Выберите студентов:"
 msgstr ""
 
-#: core/templates/core/video_chat/create_chat.html:109
+#: core/templates/core/video_chat/create_chat.html:172
 msgid "Начать урок"
 msgstr ""
 
-#: core/templates/core/video_chat/join_chat.html:7
+#: core/templates/core/video_chat/join_chat.html:8
 msgid "Уроки"
 msgstr ""
 
-#: core/templates/core/video_chat/join_chat.html:136
+#: core/templates/core/video_chat/join_chat.html:137
 msgid "Добро пожаловать на ваши уроки"
 msgstr ""
 
-#: core/templates/core/video_chat/join_chat.html:155
+#: core/templates/core/video_chat/join_chat.html:156
 msgid "Учитель:"
 msgstr ""
 
-#: core/templates/core/video_chat/join_chat.html:156
+#: core/templates/core/video_chat/join_chat.html:157
 msgid "Дата начало:"
 msgstr ""
 
-#: core/templates/core/video_chat/join_chat.html:157
+#: core/templates/core/video_chat/join_chat.html:158
 msgid "Присоединится"
 msgstr ""
 
-#: core/templates/core/video_chat/join_chat.html:160
+#: core/templates/core/video_chat/join_chat.html:161
 msgid "Здесь нет уроков для вас"
 msgstr ""
 

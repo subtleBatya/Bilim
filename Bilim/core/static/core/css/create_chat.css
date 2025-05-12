@@ -1,0 +1,129 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    background-color: #fff;
+    backdrop-filter: blur(2px);
+    border-radius: 40px;
+}
+#startLesson{
+    width: 10rem;
+    height: auto;
+    padding: 10px;
+    margin: 10px;
+    background-color: #8f92dd ;
+    border-radius:30px;
+    transition: all 0.5s ease-in-out;
+}
+
+#startLesson:hover{
+    background-color: #FFA000;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+#animateBackground{
+    width: 100%;
+    height: 100vh;
+    background-image:  linear-gradient(135deg, #373985, #8f95dd);
+    position: fixed;
+    z-index: -100;
+    top: 0;
+    left: 0;
+    background-size: 200% 200%;
+    animation: gradientAnimation 10s ease infinite alternate;
+}
+
+input{
+    font-size: 20px;
+    padding:5px;
+    margin:5px;
+    outline:none;
+    border: 1px solid #373985;
+    border-radius: 20px;
+    transition: all 0.5s ease-in-out;
+}
+
+input:focus{
+    border: 1px solid #FFA000;
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+
+@keyframes gradientAnimation {
+    0%{
+        background-position: 0% 50%;
+    }
+    100%{
+        background-position: 100% 50%;
+    }
+}
+
+
+.loading-overlay {
+display: none;
+position: fixed;
+z-index: 9999;
+top: 0; left: 0;
+width: 100%;
+height: 100%;
+background-image: linear-gradient(135deg, #373985, #8f95dd);
+color: white;
+text-align: center;
+padding: 40px 20px;
+}
+
+.loading-content {
+max-width: 500px;
+margin: 0 auto;
+}
+
+.loading-step {
+font-size: 1.5rem;
+margin-bottom: 20px;
+opacity: 0.3;
+transition: opacity 0.5s;
+}
+
+.loading-step.active {
+opacity: 1;
+}
+
+.dots {
+display: inline-block;
+}
+
+.dots span {
+animation: blink 1s infinite;
+font-size: 1.2rem;
+}
+
+.dots span:nth-child(2) { animation-delay: 0.2s; }
+.dots span:nth-child(3) { animation-delay: 0.4s; }
+.dots span:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes blink {
+0%, 20% { opacity: 0; }
+50% { opacity: 1; }
+100% { opacity: 0; }
+}
+
+@media (max-width: 600px) {
+.loading-step {
+  font-size: 1.2rem;
+}
+}
