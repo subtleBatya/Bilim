@@ -27,9 +27,11 @@
         <div class="students-list" style="margin-top: 20px; max-height: 200px; overflow-y: auto; width: 100%;">
             
             <h3 style="margin-bottom: 10px;">{% translate 'Выберите студентов:'%}</h3>
+            <label for="">Поиск: </label> 
+            <input type="text" name="searchStudents" id="studentSearch">
             <form id="studentForm">
                 {% for student in students %}
-                <div>
+                <div class="students d-block">
                     <label>
                         <input type="checkbox" name="student" value="{{ student.username }}" required>
                         {{ student.username }}
@@ -119,10 +121,30 @@ function getCookie(name) {
           setTimeout(activateNextStep, 1700);
           i++;
         }
+        else{
+            document.getElementById("loadingOverlay").style.display = "none";
+        }
       }
 
       activateNextStep();
     }
+    
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let search = document.getElementById("studentSearch");
+            search.addEventListener("input", (event) => {
+                let students = document.querySelectorAll(".students");
+                for (var i = 0; i < students.length; i++) {
+                    if (students[i].textContent.toLowerCase().includes(event.target.value.toLowerCase())) {
+                        students[i].style.display = "block";
+                    } else {
+                        students[i].style.display = "none";
+                    }
+                }
+            });
+        });
+            
     </script>
 </body>
 </html>

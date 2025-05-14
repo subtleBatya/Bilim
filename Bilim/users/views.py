@@ -9,7 +9,7 @@ from django.template.loader import render_to_string
 # Create your views here.
 @login_required
 def all_users(request):
-    if request.user.is_student or request.user.is_teacher:
+    if request.user.is_student or request.user.is_teacher and request.method == "GET" :
         users = User.objects.all()
         paginator = Paginator(users, 6)  # 10 users per page
         page_number = request.GET.get("page", 1)
@@ -28,6 +28,19 @@ def all_users(request):
         return render(request, "core/bilim_users.html", {
             "users": page_obj
         })
+
+
+@login_required
+def search_users(request):
+    if request.method == "GET":
+        username = request.GET.get("user_name")
+        users = User.objects.filter(username__icontains=username)
+        context = {
+            "users": users,
+            "user_name": username
+        }
+        return render(request, "core/bilim_users.html", context)
+
 
 
 @login_required
