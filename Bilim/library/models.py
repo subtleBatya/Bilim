@@ -8,8 +8,8 @@ class BookCategory(models.Model):
         return self.category_name
 
     class Meta:
-        verbose_name = 'BookCategory'
-        verbose_name_plural = 'BookCategories'
+        verbose_name = 'Book Category'
+        verbose_name_plural = 'Book Categories'
 
 
 class Book(models.Model):

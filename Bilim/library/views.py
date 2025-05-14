@@ -6,6 +6,13 @@ from videos.models import Video_category
 from django.core.paginator import Paginator, EmptyPage
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+
+#API views
+from rest_framework.decorators import api_view
+from rest_framework.response import Response 
+from .serializer import BookSerializer
+from rest_framework import status 
+
 @login_required
 def library(request):
     book_name = request.GET.get("book_name")
@@ -60,3 +67,11 @@ def book_details(request, id):
             "courses": courses
         }
         return render(request, "core/book_details.html", context)
+    
+
+@login_required
+@api_view(["GET"])
+def api_books_get(request):
+    books = Book.objects.all()
+    serialized_data = BookSerializer(books, many=True).data
+    return Response(serialized_data)
