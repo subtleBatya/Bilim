@@ -17,7 +17,6 @@ class User(AbstractUser):
     about_me = models.TextField(blank=True, null=True)
     about_my_goals = models.TextField(blank=True, null=True)
     job = models.CharField(max_length=255, blank=True, null=True)
-    about_me_shorter = models.ManyToManyField("About_user", blank=True)
     user_abilities = models.ManyToManyField("User_abilities", blank=True)
     followers = models.ManyToManyField("self", symmetrical=False, related_name="following", blank=True)
     followed = models.ManyToManyField("self", symmetrical=False, related_name="follow", blank=True)
@@ -47,20 +46,8 @@ class subscription(models.Model):
         return self.subscription_end_date < timezone.now()
     
     def __str__(self):
-        return self.username
-    
+        return self.username.username   
 
-class About_user(models.Model):
-    icon = models.CharField(max_length=30)
-    text = models.CharField(max_length=30)
-
-    class Meta:
-        verbose_name = 'About User'
-        verbose_name_plural = 'About Users'
-
-    def __str__(self):
-        return f"{self.text}"
-    
 
 
 class User_abilities(models.Model):

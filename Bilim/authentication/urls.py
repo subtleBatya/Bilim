@@ -16,7 +16,12 @@ urlpatterns = [
     path("accept_video/<int:id>", accept_video, name="accept_video"),
     path("decline_video/<int:id>", decline_video, name="decline_video"),
     path("accept_video_shorts/<int:id>", accept_video_shorts, name="accept_video_shorts"),
-    path("decline_video_shorts/<int:id>", decline_video_shorts, name="decline_video_shorts")
+    path("decline_video_shorts/<int:id>", decline_video_shorts, name="decline_video_shorts"),
+    path("api_users_get/", api_user_get, name="api_users_get"),
+    path("api_users_create/", api_user_create, name="api_users_create"),
+    path("api_subscription_get/", api_subscription_get, name="api_subscription_get"),
+    path("api_subscription_post/", api_subscription_post, name="api_subscription_post"),
+    path("api_user_abilities_get/", api_user_abilities_get, name="api_user_abilities_get")
 ]
 
 

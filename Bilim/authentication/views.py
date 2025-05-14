@@ -1,12 +1,20 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login, logout, authenticate
 from django.contrib.auth.hashers import make_password
-from .models import User, User_abilities
+from .models import User, User_abilities, subscription
 from django.contrib.auth.decorators import login_required
 from videos.models import VideoCourse, Video_category, Short_video
 from django.core.mail import send_mail
 from django.conf import settings
 from django.utils.html import format_html
+
+#API views
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from .serializer import UserSerializer, SubscriptionSerializer, UserAbilitiesSerializer
+
+
 #ready function
 def login(request):
     if request.method == "GET":
@@ -43,6 +51,7 @@ def sign_up(request):
         except Exception as e:
             return redirect("core:error")
 
+
 @login_required
 def payment(request):
     if request.method == "GET":
@@ -65,6 +74,7 @@ def admin_page(request):
             "shorts":shorts
         }
         return render(request, "core/admin.html", context)
+
 
 #ready function
 @login_required
@@ -291,3 +301,54 @@ def send_custom_email(toemail, subject, html_message):
         print("Successfully sent email")
     except Exception as e:
         print(f"Failed to send email: {e}")
+
+
+
+@login_required
+@api_view(["GET"])
+def api_user_get(request):
+    users = User.objects.all()
+    serialized_data = UserSerializer(users, many=True).data
+    return Response(serialized_data)
+
+
+@login_required
+@api_view(["POST"])
+def api_user_create(request):
+    data = request.data 
+    serializer = UserSerializer(data=data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+    
+
+@login_required
+@api_view(["GET"])
+def api_subscription_get(request):
+    subscriptions = subscription.objects.all()
+    serialized_data = SubscriptionSerializer(subscriptions, many=True).data
+    return Response(serialized_data)
+
+
+@login_required
+@api_view(["POST"])
+def api_subscription_post(request):
+    data = request.data
+    serializer = SubscriptionSerializer(data=data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED )
+    else:
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+    
+
+@login_required
+@api_view(["GET"])
+def api_user_abilities_get(request):
+    user_abilities = User_abilities.objects.all()
+    serialized_data = UserAbilitiesSerializer(user_abilities, many=True).data
+    return Response(serialized_data)
+
+

@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'daphne',
     'modeltranslation',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -176,7 +177,7 @@ EMAIL_HOST_PASSWORD = 'gqfvexlehpyttncg'
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://e6a9-45-81-243-66.ngrok-free.app'
+    'https://7c70-45-81-243-66.ngrok-free.app'
 ]
 
 
