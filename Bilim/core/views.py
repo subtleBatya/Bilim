@@ -3,6 +3,11 @@ from django.contrib.auth.decorators import login_required
 from videos.models import Video_category, VideoCourse as Videos
 from .models import Scientist
 from django.db.models import Count
+
+#API view
+from rest_framework.decorators import api_view
+from rest_framework.response import Response 
+from .serializer import ScientistSerializer
 # Create your views here.
 @login_required
 def index(request):
@@ -39,3 +44,10 @@ def error_404_view(request, exception):
 
 def error_500_view(request):
     return render(request, "core/500.html", status=500)
+
+
+@api_view(["GET"])
+def api_get_scientist(request):
+    scientists = Scientist.objects.all()
+    data = ScientistSerializer(scientists, many=True).data 
+    return Response(data)

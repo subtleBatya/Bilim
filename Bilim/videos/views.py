@@ -8,8 +8,14 @@ from authentication.models import User, UserRecentVideo
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage
-# Create your views here.
 
+#api views
+from rest_framework.decorators import api_view
+from rest_framework.response import Response 
+from rest_framework import status
+from .serializer import VideoCourseSerializer, short_video_serializer
+
+# Create your views here.
 @login_required
 def all_courses(request, id):
     courses = Video_category.objects.all()
@@ -146,3 +152,16 @@ def user_shorts(request, id):
             'next_page_number': page_obj.next_page_number() if page_obj.has_next() else None,
         })
 
+
+@api_view(["GET"])
+def api_videocourses_get(request):
+    videos = VideoCourse.objects.all()
+    serialized_data = VideoCourseSerializer(videos, many=True).data
+    return Response(serialized_data)
+
+
+@api_view(["GET"])
+def api_shorts_get(request):
+    videos = Short_video.objects.all()
+    serialized_data = short_video_serializer(videos, many=True).data
+    return Response(serialized_data)

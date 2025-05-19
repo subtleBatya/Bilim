@@ -11,4 +11,6 @@ urlpatterns = [
     path("shorts/<int:id>/", user_shorts, name="user_shorts"),
     path("create_shorts/", create_shorts, name="create_shorts"),
     path("like-video/<int:video_id>/", like_video, name="like_video"),
+    path("api_videocourses_get/", api_videocourses_get, name="api_videocourses_get"),
+    path("api_shorts_get/", api_shorts_get, name="api_shorts_get")
 ]
