@@ -30,7 +30,7 @@
                         <div class="mb-3" style="border: 1px solid #8f95dd;">
                                 <label for="fileUpload" class="form-label text-dark fw-bold mt-3">{% translate 'Загрузить видео'%}</label>
                                 <div class=" p-4 text-center bg-white">
-                                    <p class="mb-3 fw-bold">{% translate 'Видео должен быть менее 20 минут'%}</p>
+                                    <p class="mb-3 fw-bold" id="videoname">{% translate 'Видео должен быть менее 20 минут'%}</p>
                                     <button 
                                         class="btn fw-bold border border-secondary downloader text-white" style="color:#000;" 
                                         onclick="document.getElementById('fileUpload').click()">{% translate 'Нажмите чтобы добавить видео'%}</button>
@@ -128,69 +128,135 @@
 </form>
 {% include "core/footer.html"%}
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("videoUploadForm");
-        const fileInput = document.getElementById("fileUpload");
-        const submitButton = document.getElementById("submitBtn");
-        const progressContainer = document.getElementById("progressContainer");
-        const progressBar = document.getElementById("progressBar");
-        const progressText = document.getElementById("progressText");
-    
-        form.addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent default form submission
-    
-            let formData = new FormData(form);
-    
-            // Show the progress bar
-            progressContainer.style.display = "block";
-            progressBar.style.width = "0%";
-            progressText.innerText = "0%";
-    
-            submitButton.disabled = true;
-            submitButton.innerText = "Uploading...";
-    
-            // Create an XMLHttpRequest to track upload progress
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "{% url 'teacher:teacher_video_create' %}", true);
-            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-    
-            // Track upload progress
-            xhr.upload.onprogress = function (event) {
-                if (event.lengthComputable) {
-                    let percentComplete = Math.round((event.loaded / event.total) * 100);
-                    progressBar.style.width = percentComplete + "%";
-                    progressText.innerText = percentComplete + "%";
-                }
-            };
-    
-            // Handle successful upload
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    alert("Video uploaded successfully!");
-                    form.reset();
-                } else {
-                    alert("Upload failed. Try again.");
-                }
-                submitButton.disabled = false;
-                submitButton.innerText = "Save";
-            };
-    
-            // Handle errors
-            xhr.onerror = function () {
-                alert("Upload error. Check your internet connection.");
-                submitButton.disabled = false;
-                submitButton.innerText = "Save";
-            };
-    
-            // Send the request
-            xhr.send(formData);
-        });
+   
+function handleFileUpload(input) {
+    const files = Array.from(input.files); // Get all selected files
+    const fileInfoContainer = document.getElementById("fileInfoContainer");
+    const maxDuration = 1 * 60; // 20 minutes in seconds
+
+    // Clear any existing file information to ensure only one file is processed
+    fileInfoContainer.innerHTML = "";
+
+    if (files.length > 1) {
+        alert("{% translate 'Вы можете добавить только 1 видео за раз!' %}");
+        input.value = ""; // Clear the input to prevent uploading multiple files
+        return;
+    }
+
+    const file = files[0]; // Get the first (and only) file
+    const video = document.createElement("video");
+    video.preload = "metadata";
+    const fileName = file.name; // Store filename before clearing input
+
+    video.onloadedmetadata = function () {
+        window.URL.revokeObjectURL(video.src); // Clean up the object URL
+
+        if (video.duration > maxDuration) {
+            alert(`{% translate 'Видео' %} "${fileName}" {% translate 'Ваше видео превышает лимит 1 минуту!' %}`);
+            input.value = ""; // Clear the input to prevent uploading
+            return;
+        }
+
+        let video_name = document.getElementById("videoname");
+        
+        // Create file name display
+        const fileNameDisplay = document.createElement("p");
+        fileNameDisplay.textContent = `{% translate 'Выбранный файл' %} ${fileName}`;
+        fileNameDisplay.className = "fw-bold text-dark mb-1";
+        video_name.textContent = `{% translate 'Выбранный файл' %} ${fileName}`;
+        // Create progress bar
+        const progressBarContainer = document.createElement("div");
+        progressBarContainer.className = "progress mb-2 h-100";
+        const progressBar = document.createElement("div");
+        progressBar.className = "progress-bar";
+        progressBar.style.width = "0%";
+        progressBar.textContent = "0%";
+        progressBarContainer.appendChild(progressBar);
+
+        // Create Remove button
+        const removeButton = document.createElement("button");
+        removeButton.className = "btn btn-danger btn-sm";
+        removeButton.textContent = "{% translate 'Убрать' %}";
+        removeButton.onclick = () => removeFile(fileContainer, input);
+
+       
+
+        // Ensure Progress Bar is in DOM before updating
+        
+    };
+
+    video.src = URL.createObjectURL(file); // Load the video to check its duration
+}
+
+function removeFile(fileContainer, input) {
+    if (fileContainer) {
+        fileContainer.remove(); // Remove the file container
+    }
+    input.value = ""; // Clear the file input field
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("videoUploadForm");
+    const fileInput = document.getElementById("fileUpload");
+    const submitButton = document.getElementById("submitBtn");
+    const progressContainer = document.getElementById("progressContainer");
+    const progressBar = document.getElementById("progressBar");
+    const progressText = document.getElementById("progressText");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        let formData = new FormData(form);
+
+        // Show the progress bar
+        progressContainer.style.display = "block";
+        progressBar.style.width = "0%";
+        progressText.innerText = "0%";
+
+        submitButton.disabled = true;
+        submitButton.innerText = "{% translate 'Загрузка...' %}";
+
+        // Create an XMLHttpRequest to track upload progress
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "{% url 'videos:create_shorts' %}", true);
+        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+
+        // Track upload progress
+        xhr.upload.onprogress = function (event) {
+            if (event.lengthComputable) {
+                let percentComplete = Math.round((event.loaded / event.total) * 100);
+                progressBar.style.width = percentComplete + "%";
+                progressText.innerText = percentComplete + "%";
+            }
+        };
+
+        // Handle successful upload
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                alert("{% translate 'Видео добавдено успешно!' %}");
+                form.reset();
+            } else {
+                alert("{% translate 'Произошла ошибка! Повторите поезже!' %}");
+            }
+            submitButton.disabled = false;
+            submitButton.innerText = "{% translate 'Сохранить' %}";
+        };
+
+        // Handle errors
+        xhr.onerror = function () {
+            alert("{% translate 'Произошла ошибка! Проверьте интернет!' %}");
+            submitButton.disabled = false;
+            submitButton.innerText = "{% translate 'Сохранить' %}";
+        };
+
+        // Send the request
+        xhr.send(formData);
     });
+});
     
 </script>
  <!-- Bootstrap JS and Popper.js -->
 {% include "core/static_files/scripts.html" %} 
-<script src="{% static 'core/js/content.js' %}"></script>
 </body>
 
 </html>

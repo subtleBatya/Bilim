@@ -12,9 +12,7 @@ from django.http import HttpResponseForbidden, HttpResponseNotFound, HttpRespons
 from django.shortcuts import get_object_or_404
 import datetime
 from django.utils import timezone
-from django.core.mail import send_mail
-from django.utils.html import format_html
-from authentication.views import send_custom_email
+from authentication.tasks import send_custom_email
 # Create your views here.
 @login_required
 def create_chat(request):
@@ -74,7 +72,7 @@ def create_lesson(request):
                     <p style="font-size: 16px; color: #333;">Hormatlamak bilen <strong>Bilim</strong> komandasy!</p>
                 </div>
 """         
-            send_custom_email(user_emails, "BILIM EDUCATION", html_message)
+            send_custom_email.delay(user_emails, "BILIM EDUCATION", html_message)
             print("Message send Successfully!")
         except Exception as e:
             print(f"Error: {e}")

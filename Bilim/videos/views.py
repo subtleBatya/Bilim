@@ -10,8 +10,6 @@ from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.csrf import csrf_protect
-from django.utils.decorators import method_decorator
 #api views
 from rest_framework.decorators import api_view
 from rest_framework.response import Response 

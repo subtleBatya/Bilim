@@ -27,7 +27,7 @@
                         <div class="mb-3" style="border: 1px solid #8f95dd;">
                                 <label for="fileUpload" class="form-label text-dark fw-bold mt-3">{% translate 'Загрузите видео' %}</label>
                                 <div class="p-4 text-center bg-white">
-                                    <p class="mb-3 fw-bold">{% translate 'Видео должен быть не больше 1 минуты' %}</p>
+                                    <p class="mb-3 fw-bold" id="videoname">{% translate 'Видео должен быть не больше 1 минуты' %}</p>
                                     <button type="button"
                                         class="btn fw-bold border border-secondary downloader text-white" style="color:#000;" 
                                         onclick="document.getElementById('fileUpload').click()">
@@ -119,15 +119,13 @@ function handleFileUpload(input) {
             return;
         }
 
-        // If valid, create a container for the file
-        const fileContainer = document.createElement("div");
-        fileContainer.className = "mb-3";
-
+        let video_name = document.getElementById("videoname");
+        
         // Create file name display
         const fileNameDisplay = document.createElement("p");
         fileNameDisplay.textContent = `{% translate 'Выбранный файл' %} ${fileName}`;
         fileNameDisplay.className = "fw-bold text-dark mb-1";
-
+        video_name.textContent = `{% translate 'Выбранный файл' %} ${fileName}`;
         // Create progress bar
         const progressBarContainer = document.createElement("div");
         progressBarContainer.className = "progress mb-2 h-100";
@@ -143,36 +141,10 @@ function handleFileUpload(input) {
         removeButton.textContent = "{% translate 'Убрать' %}";
         removeButton.onclick = () => removeFile(fileContainer, input);
 
-        // Append file name, progress bar, and remove button to the file container
-        fileContainer.appendChild(fileNameDisplay);
-        fileContainer.appendChild(progressBarContainer);
-        fileContainer.appendChild(removeButton);
-        fileInfoContainer.appendChild(fileContainer);
-
-        // Debugging: Check if progressBar exists
-        console.log("Progress Bar:", progressBar);
+       
 
         // Ensure Progress Bar is in DOM before updating
-        setTimeout(() => {
-            let progress = 0;
-            function updateProgress() {
-                if (progress >= 100) {
-                    progressBar.textContent = "100%";
-                    progressBar.style.backgroundColor = "#28a745";
-                    console.log("Progress complete!");
-                    return;
-                }
-                progress += 10;
-                progressBar.style.setProperty("width", progress + "%", "important");
-                progressBar.textContent = `${progress}%`;   
-                console.log(`Progress updated: ${progress}%`);
-
-                // Use requestAnimationFrame for smoother updates
-                setTimeout(updateProgress, 300);
-            }
-
-            updateProgress();
-        }, 200);
+        
     };
 
     video.src = URL.createObjectURL(file); // Load the video to check its duration
