@@ -4,7 +4,7 @@ from django.contrib.auth.hashers import make_password
 from .models import User, User_abilities, subscription
 from django.contrib.auth.decorators import login_required
 from videos.models import VideoCourse, Video_category, Short_video
-from django.core.mail import send_mail
+from .tasks import send_custom_email
 from django.conf import settings
 from django.utils.html import format_html
 
@@ -287,21 +287,6 @@ def decline_video_shorts(request, id):
         except Exception as e:
             print("Failed to send email:", e)
             return redirect("auth:admin_page")
-
-def send_custom_email(toemail, subject, html_message):
-    try:
-        send_mail(
-            subject, 
-            "",  # Plain text version (optional)
-            settings.EMAIL_HOST_USER,   
-            recipient_list=toemail,
-            fail_silently=False,
-            html_message=html_message  # Send as HTML
-        )
-        print("Successfully sent email")
-    except Exception as e:
-        print(f"Failed to send email: {e}")
-
 
 
 @login_required

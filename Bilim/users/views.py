@@ -11,7 +11,7 @@ from django.template.loader import render_to_string
 def all_users(request):
     if request.user.is_student or request.user.is_teacher and request.method == "GET" :
         users = User.objects.all()
-        paginator = Paginator(users, 6)  # 10 users per page
+        paginator = Paginator(users, 6) 
         page_number = request.GET.get("page", 1)
 
         try:

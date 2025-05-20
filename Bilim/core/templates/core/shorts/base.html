@@ -3,12 +3,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock %} </title>
     <link rel="stylesheet" href="{% static "core/css/shorts.css"%}">
+    {% include "core/static_files/links.html" %}
+    {% include "core/static_files/scripts.html" %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
-    {% block body %}
+    {% block content %}
     {% endblock %}
 </body>
 </html>

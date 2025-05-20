@@ -8,7 +8,10 @@ from authentication.models import User, UserRecentVideo
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage
-
+from django.views import View
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_protect
+from django.utils.decorators import method_decorator
 #api views
 from rest_framework.decorators import api_view
 from rest_framework.response import Response 
@@ -124,21 +127,23 @@ def like_video(request, video_id):
 
 
 
-def shorts(request):
-    if request.method == "GET":
-        user = User.objects.get(username=request.user.username)
-        videos = Short_video.objects.filter(shorts_accepted=True).order_by("?")  
-        paginator = Paginator(videos, 10) 
-        page_number = request.GET.get('page', 1)
-        page_obj = paginator.get_page(page_number)
+class ShortsFeed(View):
+    @csrf_exempt
+    def get(self, request):
+        shorts = Short_video.objects.filter(shorts_accepted=True).order_by('-shorts_added_date')
+        return render(request, 'core/shorts/shorts.html', {'shorts': shorts})
 
-        return render(request, 'core/shorts/shorts.html', {
-            'page_obj': page_obj,
-            'has_next': page_obj.has_next(),  # Check if more pages are available
-            'next_page_number': page_obj.next_page_number() if page_obj.has_next() else None,
-        })
-    
+class IncrementShortView(View):
+    @csrf_exempt
+    def post(self, request, short_id):
+        if request.method == "POST":
+            short = get_object_or_404(Short_video, id=short_id)
+            short.shorts_views += 1
+            short.save()
+            return JsonResponse({'status': 'success', 'views': short.shorts_views})
 
+
+@login_required
 def user_shorts(request, id):
     if request.method == "GET":
         videos = Short_video.objects.filter(shorts_author=request.user)

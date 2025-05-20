@@ -1,171 +1,172 @@
-{% extends "core/shorts/base.html" %}
+{% extends 'core/shorts/base.html' %}
 {% load static %}
-{% block title %}BILIM shorts{% endblock %}
-{% block body %}
+{% block title %}Bilim-Shorts{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-0 shorts-container">
+    {% for short in shorts %}
+    <section class="short-item vh-100 w-100 position-relative" 
+             data-short-id="{{ short.id }}"
+              data-increment-url="{% url 'videos:increment-view' short.id %}">
+        <!-- Top Author Info -->
+        <div class="position-absolute top-0 start-0 end-0 text-white p-3" style="z-index: 2;">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="mb-0">{{ short.shorts_author.username }}</h5>
+                    <small class="text-white-50">{{ short.shorts_added_date|timesince }} ago</small>
+                </div>
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-eye-fill me-2"></i>
+                    <span class="view-count">{{ short.shorts_views }}</span>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%; height: 100vh; display:flex; justify-content: center; align-items: center;">
+        <!-- Video Container -->
+        <div class="h-85 w-100 d-flex justify-content-center align-items-center">
+            <video class="short-video w-70 h-80"
+                   playsinline
+                   loop 
+                   controls
+                   style="object-fit: cover;"
+                   poster="{{ short.shorts_poster.url }}">
+                <source src="{{ short.shorts_video.url }}" type="video/mp4">
+            </video>
+        </div>
+    </div>
+        <!-- Bottom Title -->
+        <div class="position-absolute bottom-0 start-0 end-0 text-white p-3" style="z-index: 2;">
+            <h6 class="mb-0">{{ short.shorts_title }}</h6>
+        </div>
+    </section>
+    {% endfor %}
+</div>
+
 <style>
-    body {
-        overflow: hidden;
+
+    .shorts-container {
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+        height: 100vh;
+        -webkit-overflow-scrolling: touch;
     }
-    .video-container {
-        text-align: center;
-        margin: auto;
-        position: relative;
-        width: 100%;
-        max-width: 800px;
+    
+    .short-item {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        background: #000;
     }
-    .video-thumbnails {
-        display: flex;
-        flex-direction: column;
-        margin-top: 20px;
+
+    .short-video {
+        max-height: 80vh;
+        background: #000;
     }
-    .thumbnail {
-        cursor: pointer;
-        margin-bottom: 10px;
-        background-size: cover;
-        background-position: center;
-        height: 120px;
-        position: relative;
-    }
-    .video-info {
-        position: absolute;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        width: 100%;
-        text-align: center;
-        padding: 5px;
-    }
-    video{
-        padding-top:100px;
-    }
-    @media(max-width:460px){
-        .video-container {
-            text-align: center;
-            margin: auto;
-            position: relative;
-            width: 100%;
-            max-width: 800px;
+
+    /* Mobile optimization */
+    @media (max-width: 768px) {
+        .short-item {
+            height: 94vh !important;
+            width: 100vw !important;
         }
-        video{
-            max-height: 600px;
-            padding:0px;
+        .short-video {
+            height: 70vh !important;
+            max-width: 100vw !important;
+            background: #000;
+        }
+
+        
+        .shorts-container {
+            scroll-behavior: smooth;
         }
     }
 </style>
 
-<div class="video-container">
-    <div class="video-player">
-        <video id="video-player" width="100%" height="700px" controls>
-            <source id="video-source" src="{{ page_obj.object_list.0.video.shorts_video.url }}" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-
-    <div id="video-thumbnails" class="video-thumbnails">
-        {% for video in page_obj.object_list %}
-        <div class="thumbnail" data-video="{{ video.shorts_video.url }}" style="background-image: url('{{ video.shorts_poster.url }}')">
-            <div class="video-info">
-                <h3>{{ video.video_name }}</h3>
-                <p>{{ video.video_description }}</p>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
 <script>
-    let currentVideoIndex = 0;
-    const videoPlayer = document.getElementById('video-player');
-    const videoSource = document.getElementById('video-source');
-    const thumbnails = document.getElementById('video-thumbnails');
+      function getCSRFToken() {
+        return document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+    }
+    
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.shorts-container');
+    let startY = 0;
+    let currentPosition = 0;
     let isScrolling = false;
-    let isLoading = false; // Prevent duplicate fetches
-    let nextPage = "{{ next_page_number }}"; // Start with the next page if available
 
-    // Function to load the next video
-    function loadNextVideo() {
-        const thumbnailList = thumbnails.querySelectorAll('.thumbnail');
-        if (currentVideoIndex < thumbnailList.length - 1) {
-            currentVideoIndex++;
-            updateVideo(thumbnailList[currentVideoIndex].dataset.video);
-        } else if (nextPage && !isLoading) {
-            fetchNextPage();
+    // Touch handling for swiping
+    container.addEventListener('touchstart', e => {
+        startY = e.touches[0].clientY;
+    }, { passive: true });
+
+    container.addEventListener('touchmove', e => {
+        if (!isScrolling) e.preventDefault();
+    }, { passive: false });
+
+    container.addEventListener('touchend', e => {
+        if (isScrolling) return;
+        
+        const endY = e.changedTouches[0].clientY;
+        const deltaY = startY - endY;
+        
+        if (Math.abs(deltaY) > 50) {
+            isScrolling = true;
+            const direction = deltaY > 0 ? 1 : -1;
+            const scrollAmount = window.innerHeight * direction;
+            
+            currentPosition = Math.max(0, currentPosition + scrollAmount);
+            currentPosition = Math.min(currentPosition, container.scrollHeight - window.innerHeight);
+            
+            container.scrollTo({
+                top: currentPosition,
+                behavior: 'smooth'
+            });
+            
+            setTimeout(() => {
+                isScrolling = false;
+            }, 500);
         }
-    }
-
-    // Function to load the previous video
-    function loadPreviousVideo() {
-        if (currentVideoIndex > 0) {
-            currentVideoIndex--;
-            const thumbnailList = thumbnails.querySelectorAll('.thumbnail');
-            updateVideo(thumbnailList[currentVideoIndex].dataset.video);
-        }
-    }
-
-    // Function to update the video player
-    function updateVideo(videoUrl) {
-        videoSource.src = videoUrl;
-        videoPlayer.load();
-        videoPlayer.play();
-    }
-
-    // Function to fetch the next page of videos
-    async function fetchNextPage() {
-        isLoading = true;
-        try {
-            const response = await fetch(`?page=${nextPage}`);
-            const html = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-
-            // Extract new video thumbnails
-            const newThumbnails = doc.querySelectorAll('.thumbnail');
-            newThumbnails.forEach(thumbnail => {
-                thumbnails.appendChild(thumbnail);
+    }, { passive: true });
+   
+  
+    // Video handling with Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target.querySelector('.short-video');
+            if (entry.isIntersecting) {
+                video.play().catch(() => {
+                    video.muted = true;
+                    video.play();
+                });
+                const shortId = entry.target.dataset.shortId;
+                const incrementUrl = entry.target.dataset.incrementUrl;
+                fetch(incrementUrl, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': getCSRFToken(),
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({})
+})
+            .then(response => response.json())
+            .then(data => {
+                entry.target.querySelector('.view-count').textContent = data.views;
             });
 
-            // Update next page number
-            const newNextPage = doc.querySelector('.pagination span.page-link a');
-            nextPage = newNextPage ? newNextPage.href.split('=')[1] : null;
-        } catch (error) {
-            console.error('Failed to fetch next page:', error);
-        } finally {
-            isLoading = false;
-        }
-    }
+            } else {
+                video.pause();
+                video.currentTime = 0;
+            }
+        });
+    }, { threshold: 0.75 });
 
-    // Scroll detection for video switching
-    window.addEventListener('wheel', (e) => {
-        if (isScrolling) return;
-        isScrolling = true;
-
-        if (e.deltaY > 0) {
-            loadNextVideo(); // Scroll down
-        } else if (e.deltaY < 0) {
-            loadPreviousVideo(); // Scroll up
-        }
-
-        setTimeout(() => {
-            isScrolling = false;
-        }, 800);
+    document.querySelectorAll('.short-item').forEach(item => {
+        observer.observe(item);
     });
 
-    // Swipe handling for touch devices
-    let touchStartY = 0;
-    window.addEventListener('touchstart', (e) => {
-        touchStartY = e.changedTouches[0].screenY;
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        currentPosition = Math.round(container.scrollTop / window.innerHeight) * window.innerHeight;
+        container.scrollTop = currentPosition;
     });
-
-    window.addEventListener('touchend', (e) => {
-        const touchEndY = e.changedTouches[0].screenY;
-        if (touchStartY - touchEndY > 50) {
-            loadNextVideo(); // Swipe up
-        } else if (touchEndY - touchStartY > 50) {
-            loadPreviousVideo(); // Swipe down
-        }
-    });
-
-    // Initial video setup
-    updateVideo(thumbnails.querySelectorAll('.thumbnail')[0].dataset.video);
+});
 </script>
-
 {% endblock %}
